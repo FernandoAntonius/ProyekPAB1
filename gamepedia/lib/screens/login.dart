@@ -9,7 +9,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // TODO: Variabel blm pasti
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -20,117 +19,156 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO: AppBar
-      appBar: AppBar(title: Text('Log In')),
-      // TODO: Body blm selesai desainy
+      backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 4),
-                  child: Image.asset(
-                    // TODO: image blm dimskin sm blm diatur
-                    'images/placeholder.png',
-                    width: 300,
-                    height: 300,
-                    fit: BoxFit.cover,
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/placeholder.png',
+                    width: 120,
+                    height: 120,
                   ),
-                ),
-                SizedBox(height: 8),
-                // TODO: blm selesai desain kotak, spacing, sm pemisahanny
-                Container(
-                  padding: const EdgeInsets.only(top: 16, bottom: 16),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.blue.shade900, Colors.deepPurple],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
+                  const SizedBox(height: 10),
+                  const Text(
+                    "GamePedia",
+                    style: TextStyle(
+                      color: Color(0xff6A5AF9),
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  child: Form(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // TODO: TextFormField email (blm desain)
-                        Text(
-                          'Email',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                          textAlign: TextAlign.start,
-                        ),
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            labelText: 'Enter your email',
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        // TODO: TextFormField passwrod (blm desain)
-                        SizedBox(height: 20),
-                        Text(
-                          'Password',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                          textAlign: TextAlign.start,
-                        ),
-                        TextFormField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            labelText: 'Enter your password',
-                            errorText: _errorText.isNotEmpty
-                                ? _errorText
-                                : null,
-                            border: OutlineInputBorder(),
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _obscurePassword = !_obscurePassword;
-                                });
-                              },
-                              icon: Icon(
-                                _obscurePassword
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
-                            ),
-                          ),
-                          obscureText: _obscurePassword,
-                        ),
-                        // TODO: 7. ElevatedButton Login masi blm pas
-                        SizedBox(height: 20),
-                        ElevatedButton(onPressed: () {}, child: Text('Log In')),
-                        // TODO: 8. TextButton Sign In blm desain
-                        SizedBox(height: 10),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Don\'t have an account? ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.deepPurple,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Sign Up',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.underline,
-                                  fontSize: 16,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 26,
+                  horizontal: 20,
                 ),
-              ],
-            ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF1A237E), Color(0xFF4A148C)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.deepPurpleAccent.withOpacity(0.4),
+                      blurRadius: 15,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Center(
+                      child: Text(
+                        "Welcome Back",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    const Text(
+                      "Email",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    const SizedBox(height: 10),
+                    TextFormField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    const Text(
+                      "Password",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    const SizedBox(height: 10),
+                    TextFormField(
+                      controller: _passwordController,
+                      decoration: InputDecoration(
+                        labelText: 'Kata Sandi',
+                        errorText: _errorText.isNotEmpty ? _errorText : null,
+                        border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _obscurePassword = !_obscurePassword;
+                            });
+                          },
+                          icon: Icon(
+                            _obscurePassword
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
+                        ),
+                      ),
+                      obscureText: _obscurePassword,
+                    ),
+                    const SizedBox(height: 30),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xff6A5AF9),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          elevation: 8,
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          "Log In",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    Center(
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Don't have an account? ",
+                          style: TextStyle(fontSize: 16, color: Colors.white70),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Sign up',
+                              style: TextStyle(
+                                color: Colors.white70,
+                                decoration: TextDecoration.underline,
+                                fontSize: 16,
+                              ),
+                              recognizer: TapGestureRecognizer()..onTap = () {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Join millions of gamers worldwide",
+                style: TextStyle(color: Colors.white38),
+              ),
+            ],
           ),
         ),
       ),
