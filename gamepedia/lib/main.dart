@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
-
+import 'package:gamepedia/screens/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SearchScreen(),
-
+      home: ProfileScreen(),
     );
   }
 }
