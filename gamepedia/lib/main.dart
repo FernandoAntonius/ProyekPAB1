@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
 import 'package:gamepedia/screens/profile_screen.dart';
@@ -13,12 +14,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GamePedia',
+      debugShowCheckedModeBanner: false,
       // TODO: utk themedata blm jd ap ap
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: ProfileScreen(),
+      // home: RegisterScreen(),
+      // home: LoginScreen(),
     );
   }
 }
