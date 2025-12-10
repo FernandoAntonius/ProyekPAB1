@@ -20,7 +20,7 @@ class _SignInScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Register')),
+     
       backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
