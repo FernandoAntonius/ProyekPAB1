@@ -34,15 +34,28 @@ class _SignInScreenState extends State<RegisterScreen> {
                   // Logo
                   Image.asset('images/console.png', height: 100),
 
-                  const Text(
-                    'GamePedia',
-                    style: TextStyle(
-                      fontSize: 36,
-                      fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                  ShaderMask(
+                    shaderCallback: (bounds) =>
+                        const LinearGradient(
+                          colors: [
+                            Color(0xFF3A3FF2),
+                            Color(0xFF7754F4),
+                            Color(0xFF965FF5),
+                          ],
+                        ).createShader(
+                          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                        ),
+                    child: Text(
+                      "GamePedia",
+                      style: TextStyle(
+                        fontSize: 42,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Quicksand',
+                        color: Colors.white, 
+                      ),
                     ),
                   ),
+
                   SizedBox(height: 30),
                   Container(
                     padding: const EdgeInsets.all(30),
@@ -78,7 +91,9 @@ class _SignInScreenState extends State<RegisterScreen> {
                               fontSize: 14,
                               color: Colors.white.withOpacity(0.6),
                             ),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(7),
+                            ),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -141,6 +156,7 @@ class _SignInScreenState extends State<RegisterScreen> {
                                 colors: [Color(0xFF1124A5), Color(0xFF6F30DC)],
                               ),
                               borderRadius: BorderRadius.circular(7),
+                             
                             ),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
@@ -165,7 +181,7 @@ class _SignInScreenState extends State<RegisterScreen> {
                       ],
                     ),
                   ),
-               
+                  SizedBox(height: 20),
                   Text(
                     'Join millions of gamers worldwide!',
                     style: TextStyle(
