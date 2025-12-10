@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({super.key});
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _SignInScreenState();
@@ -31,11 +31,9 @@ class _SignInScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.sports_esports,
-                    size: 90,
-                    color: Colors.blueAccent,
-                  ),
+                  // Logo
+                  Image.asset('images/console.png', height: 100),
+
                   const Text(
                     'GamePedia',
                     style: TextStyle(
@@ -47,7 +45,7 @@ class _SignInScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 30),
                   Container(
-                    padding: const EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       gradient: const LinearGradient(
@@ -62,19 +60,24 @@ class _SignInScreenState extends State<RegisterScreen> {
                           child: Text(
                             'Welcome',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 32,
                               fontFamily: 'Quicksand',
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 30),
 
                         TextFormField(
                           controller: _usernameController,
                           decoration: InputDecoration(
                             labelText: "Username",
+                            labelStyle: TextStyle(
+                              fontFamily: 'Quicksand',
+                              fontSize: 14,
+                              color: Colors.white.withOpacity(0.6),
+                            ),
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -83,6 +86,11 @@ class _SignInScreenState extends State<RegisterScreen> {
                           controller: _emailController,
                           decoration: InputDecoration(
                             labelText: "Email",
+                            labelStyle: TextStyle(
+                              fontFamily: 'Quicksand',
+                              fontSize: 14,
+                              color: Colors.white.withOpacity(0.6),
+                            ),
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -91,6 +99,11 @@ class _SignInScreenState extends State<RegisterScreen> {
                           controller: _passwordController,
                           decoration: InputDecoration(
                             labelText: 'Password',
+                            labelStyle: TextStyle(
+                              fontFamily: 'Quicksand',
+                              fontSize: 14,
+                              color: Colors.white.withOpacity(0.6),
+                            ),
                             errorText: _errorText.isNotEmpty
                                 ? _errorText
                                 : null,
@@ -111,14 +124,54 @@ class _SignInScreenState extends State<RegisterScreen> {
                           obscureText: _obscurePassword,
                         ),
                         //Elevated Button REgister
-                        SizedBox(height: 20),
+                        SizedBox(height: 40),
                         ElevatedButton(
                           onPressed: () {},
-                          child: Text('Register'),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                          ),
+                          child: Ink(
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFF1124A5), Color(0xFF6F30DC)],
+                              ),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 12,
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Register',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Quicksand',
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
 
                         SizedBox(height: 10),
                       ],
+                    ),
+                  ),
+               
+                  Text(
+                    'Join millions of gamers worldwide!',
+                    style: TextStyle(
+                      fontFamily: 'Quicksand',
+                      fontSize: 16,
+                      color: Colors.white,
                     ),
                   ),
                 ],
