@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/screens/register.dart';
+import 'package:gamepedia/screens/login.dart';
 
 
 void main() {
@@ -13,19 +14,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GamePedia',
       debugShowCheckedModeBanner: false,
+      // TODO: utk themedata blm jd ap ap
       theme: ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
       home: RegisterScreen(),
-      
+      home: LoginScreen(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
 
   final String title;
 
