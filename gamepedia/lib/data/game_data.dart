@@ -9,6 +9,7 @@ var gameList = [
     avaible: 'PC',
     genre: 'FPS',
     description: 'game rusak',
+    imageAssets: 'blabla',
     screenShots: [
       'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/4f/71/borobudur-and-the-sky.jpg',
       'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/5d/36/borobudur-airial-view.jpg',
