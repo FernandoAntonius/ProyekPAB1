@@ -25,7 +25,7 @@ class _SignInScreenState extends State<RegisterScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(32),
             child: Form(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -51,12 +51,12 @@ class _SignInScreenState extends State<RegisterScreen> {
                         fontSize: 42,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Quicksand',
-                        color: Colors.white, 
+                        color: Colors.white,
                       ),
                     ),
                   ),
 
-                  SizedBox(height: 30),
+                  SizedBox(height: 28),
                   Container(
                     padding: const EdgeInsets.all(30),
                     decoration: BoxDecoration(
@@ -85,6 +85,10 @@ class _SignInScreenState extends State<RegisterScreen> {
                         TextFormField(
                           controller: _usernameController,
                           decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 8,
+                            ),
                             labelText: "Username",
                             labelStyle: TextStyle(
                               fontFamily: 'Quicksand',
@@ -100,19 +104,29 @@ class _SignInScreenState extends State<RegisterScreen> {
                         TextFormField(
                           controller: _emailController,
                           decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 8,
+                            ),
                             labelText: "Email",
                             labelStyle: TextStyle(
                               fontFamily: 'Quicksand',
                               fontSize: 14,
                               color: Colors.white.withOpacity(0.6),
                             ),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(7),
+                            ),
                           ),
                         ),
                         SizedBox(height: 20),
                         TextFormField(
                           controller: _passwordController,
                           decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 8,
+                            ),
                             labelText: 'Password',
                             labelStyle: TextStyle(
                               fontFamily: 'Quicksand',
@@ -122,7 +136,9 @@ class _SignInScreenState extends State<RegisterScreen> {
                             errorText: _errorText.isNotEmpty
                                 ? _errorText
                                 : null,
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(7),
+                            ),
                             suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
@@ -156,7 +172,6 @@ class _SignInScreenState extends State<RegisterScreen> {
                                 colors: [Color(0xFF1124A5), Color(0xFF6F30DC)],
                               ),
                               borderRadius: BorderRadius.circular(7),
-                             
                             ),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
@@ -167,9 +182,9 @@ class _SignInScreenState extends State<RegisterScreen> {
                               child: const Text(
                                 'Register',
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontFamily: 'Quicksand',
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.white,
                                 ),
                               ),
