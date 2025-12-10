@@ -6,6 +6,7 @@ class Game {
   final String avaible;
   final String genre;
   final String description;
+  final String imageAssets;
   final List<String> screenShots;
   bool isFavorite;
 
@@ -19,5 +20,6 @@ class Game {
     required this.description,
     required this.screenShots,
     this.isFavorite = false,
+    required this.imageAssets,
   });
 }
