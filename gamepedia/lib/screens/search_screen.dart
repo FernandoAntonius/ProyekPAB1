@@ -31,7 +31,6 @@ class _SearchScreenState extends State<SearchScreen> {
     "Fighting",
     "Arcade",
     "Simulator",
-
   ];
 
   int selectedCategory = 1;
@@ -51,22 +50,53 @@ class _SearchScreenState extends State<SearchScreen> {
               // --- TITLE SECTION ---
               Row(
                 children: [
-                  Icon(Icons.sports_esports, color: Colors.blueAccent),
-                  const SizedBox(width: 8),
-                  const Text(
-                    "GamePedia",
-                    style: TextStyle(
+                  ShaderMask(
+                    shaderCallback: (bounds) => const LinearGradient(
+                      colors: [
+                          Color(0xFF3A3FF2),
+                          Color(0xFF7754F4),
+                          Color(0xFF965FF5),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ).createShader(bounds),
+                    child: Image.asset(
+                      'images/console.png',
+                      height: 40,
+                      width: 40,
                       color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
+                  const SizedBox(width: 8),
+                  ShaderMask(
+                    shaderCallback: (bounds) => const LinearGradient(
+                      colors: [
+                        Color(0xFF1124A5), 
+                        Color(0xFFB923FF),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ).createShader(bounds),
+                    child: const Text(
+                      "GamePedia",
+                      style: TextStyle(
+                        color: Colors.white, // ShaderMask akan override ini
+                        fontSize: 30,
+                        fontFamily: 'Quicksand',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 4),
               const Text(
                 "Discover Amazing Games",
-                style: TextStyle(color: Colors.white70, fontSize: 14),
+                style: TextStyle(
+                  color: Colors.white70, 
+                  fontSize: 14,
+                  fontFamily: 'Quicsand',
+                  ),
               ),
 
               const SizedBox(height: 16),
@@ -112,17 +142,33 @@ class _SearchScreenState extends State<SearchScreen> {
                     final bool isSelected = selectedCategory == index;
                     return Padding(
                       padding: const EdgeInsets.only(right: 8),
-                      child: ChoiceChip(
-                        label: Text(categories[index]),
-                        selected: isSelected,
-                        selectedColor: Colors.purpleAccent,
-                        backgroundColor: Colors.white10,
-                        labelStyle: TextStyle(
-                          color: isSelected ? Colors.white : Colors.white70,
-                        ),
-                        onSelected: (v) {
+                      child: GestureDetector(
+                        onTap: () {
                           setState(() => selectedCategory = index);
                         },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            gradient: isSelected
+                                ? const LinearGradient(
+                                    colors: [
+                                     Color(0xFF1124A5), 
+                                     Color(0xFFB923FF)
+                                      ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  )
+                                : null,
+                            color: isSelected ? null : Colors.white10,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            categories[index],
+                            style: TextStyle(
+                              color: isSelected ? Colors.white : Colors.white70,
+                            ),
+                          ),
+                        ),
                       ),
                     );
                   },
@@ -144,7 +190,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   itemBuilder: (context, index) {
                     final game = _filteredGames[index];
                     return Container(
-                      padding: const EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.white10,
                         borderRadius: BorderRadius.circular(16),
@@ -153,17 +199,16 @@ class _SearchScreenState extends State<SearchScreen> {
                         children: [
                           // IMAGE
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(8),
                             child: Image.asset(
                               game.imageAssets,
-                              height: 60,
+                              height: 80,
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),
                           ),
 
                           const SizedBox(height: 6),
-
                           // TITLE
                           Text(
                             game.title,
@@ -175,10 +220,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-
                           const SizedBox(height: 2),
-
-                          // SUBTEXT
                           const Text(
                             "Updated today",
                             style: TextStyle(
