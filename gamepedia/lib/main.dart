@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamepedia/screens/edit_game.dart';
 import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/login.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: const EditGameScreen(),
       initialRoute: '/',
       routes: {
         '/login': (context) => LoginScreen(),
