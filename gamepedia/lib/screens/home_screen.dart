@@ -13,6 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Game> _filteredGames = gameList;
   String _searchQuery = '';
 
+  // Asumsi: Buat list untuk popular games (ambil beberapa dari gameList atau hardcoded)
+  // Jika Anda punya data spesifik, ganti ini dengan list yang sesuai
+  final List<Game> popularGames = gameList.take(5).toList(); // Contoh: ambil 5 game pertama sebagai popular
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,8 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 const SizedBox(height: 24),
-
-                // 🔥 POPULAR GAMES SECTION
+                //POPULAR GAME
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
@@ -143,36 +146,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 const SizedBox(height: 12),
 
-                // POPULAR CARD
+                // POPULAR CARD - Diganti menjadi ListView horizontal dengan PageScrollPhysics untuk scroll per 1 gambar
                 Container(
-                  height: 160,
+                  height: 220,
                   decoration: BoxDecoration(
                     color: const Color(0xFF1A1C3A),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          margin: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: Colors.white10,
-                            borderRadius: BorderRadius.circular(16),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: const PageScrollPhysics(),
+                    itemCount: popularGames.length,
+                    itemBuilder: (context, index) {
+                      final game = popularGames[index];
+                      return Container(
+                        width: 250,
+                        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            game.imageAssets,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: double.infinity,
                           ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          margin: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: Colors.white10,
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
 
@@ -210,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 const SizedBox(height: 16),
 
-                // NEW RELEASE LIST
+                // NEW RELEASE LIST - Dimodifikasi untuk menampilkan gambar game
                 Column(
                   children: _filteredGames.map((game) {
                     return Container(
@@ -222,32 +225,37 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Row(
                         children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white24,
-                              borderRadius: BorderRadius.circular(12),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              game.imageAssets,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           const SizedBox(width: 12),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                game.title,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  game.title,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                game.description,
-                                style: const TextStyle(
-                                    color: Colors.white54, fontSize: 12),
-                              ),
-                            ],
+                                Text(
+                                  game.description,
+                                  style: const TextStyle(
+                                      color: Colors.white54, fontSize: 12),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
