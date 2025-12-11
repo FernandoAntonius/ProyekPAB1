@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
@@ -40,15 +41,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    Container(
-      color: Colors.black,
-      child: const Center(
-        child: Text(
-          'Home',
-          style: TextStyle(color: Colors.white, fontSize: 24),
-        ),
-      ),
-    ),
+    HomeScreen(),
     SearchScreen(),
     ProfileScreen(),
   ];
