@@ -12,9 +12,21 @@ class _AddGameScreen extends State<AddGameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.black,
-    body: Container(
-      child: Text('Add Game',
-      ),
+    
+    body: SingleChildScrollView(
+        child: Column(
+          
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+             Text('Add Game', style: TextStyle(fontFamily: 'Quicksand', fontSize: 20, color: Colors.white)),
+             SizedBox(height: 12,),
+             
+
+          ],),
+        
+        
+       
+      
     ),);
   }
 }
