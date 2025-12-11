@@ -13,9 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Game> _filteredGames = gameList;
   String _searchQuery = '';
 
-  // Asumsi: Buat list untuk popular games (ambil beberapa dari gameList atau hardcoded)
-  // Jika Anda punya data spesifik, ganti ini dengan list yang sesuai
-  final List<Game> popularGames = gameList.take(5).toList(); // Contoh: ambil 5 game pertama sebagai popular
+  final List<Game> popularGames = gameList.take(5).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 const SizedBox(height: 12),
 
-                // POPULAR CARD - Diganti menjadi ListView horizontal dengan PageScrollPhysics untuk scroll per 1 gambar
+                // POPULAR CARD
                 Container(
                   height: 220,
                   decoration: BoxDecoration(
@@ -213,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 const SizedBox(height: 16),
 
-                // NEW RELEASE LIST - Dimodifikasi untuk menampilkan gambar game
+                // NEW RELEASE LIST
                 Column(
                   children: _filteredGames.map((game) {
                     return Container(
