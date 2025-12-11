@@ -2,12 +2,13 @@ class Game {
   final String title;
   final String developer;
   final DateTime releaseDate;
-  final int price;
-  final String avaible;
-  final String genre;
+  final double price;
+  final List<String> avaible;
+  final List<String> genre;
   final String description;
   final String imageAssets;
   final List<String> screenShots;
+  final Map<String, Map<String, String>> systemRequirements;
   bool isFavorite;
 
   Game({
@@ -19,6 +20,7 @@ class Game {
     required this.genre,
     required this.description,
     required this.screenShots,
+    required this.systemRequirements,
     this.isFavorite = false,
     required this.imageAssets,
   });

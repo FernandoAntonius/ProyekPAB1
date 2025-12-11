@@ -4,10 +4,10 @@ var gameList = [
   Game(
     title: 'Valorant',
     developer: 'Riot Games',
-    releaseDate: DateTime(2020,06,02) ,
+    releaseDate: DateTime(2020, 06, 02),
     price: 1,
-    avaible: 'PC',
-    genre: 'FPS',
+    avaible: ['PC'],
+    genre: ['FPS'],
     description: 'game rusak',
     imageAssets: 'blabla',
     screenShots: [
@@ -16,6 +16,22 @@ var gameList = [
       'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/4d/c7/borobudur-and-the-sky.jpg',
       'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/47/0e/borobudur-sunset-moment.jpg',
     ],
+    systemRequirements: {
+      "minimum": {
+        "os": "Windows 7",
+        "processor": "Intel i3",
+        "memory": "4 GB RAM",
+        "graphics": "Intel HD Graphics",
+        "storage": "10 GB",
+      },
+      "maximum": {
+        "os": "Windows 10",
+        "processor": "Intel i5",
+        "memory": "8 GB RAM",
+        "graphics": "GTX 1050",
+        "storage": "20 GB",
+      },
+    },
     isFavorite: false,
   ),
 ];
