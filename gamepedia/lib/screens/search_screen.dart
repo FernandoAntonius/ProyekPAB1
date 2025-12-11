@@ -18,6 +18,20 @@ class _SearchScreenState extends State<SearchScreen> {
     "Role-Playing",
     "Shooter",
     "Platformer",
+    "Puzzle",
+    "Role-Playing",
+    "Strategy",
+    "Hack and Slash",
+    "Real-Time Strategy",
+    "Turn-Based Strategy",
+    "Point-and-click",
+    "Indie",
+    "Racing",
+    "Sport",
+    "Fighting",
+    "Arcade",
+    "Simulator",
+
   ];
 
   int selectedCategory = 1;
