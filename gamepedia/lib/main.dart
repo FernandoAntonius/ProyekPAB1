@@ -3,6 +3,7 @@ import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
 import 'package:gamepedia/screens/profile_screen.dart';
+import 'package:gamepedia/screens/terms_of_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,30 +16,67 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GamePedia',
       debugShowCheckedModeBanner: false,
-      // TODO: utk themedata blm jd ap ap
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProfileScreen(),
-      // home: RegisterScreen(),
-      // home: LoginScreen(),
+      home: const MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/register': (context) => RegisterScreen(),
+        '/terms': (context) => TermsOfServiceScreen(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StatefulWidget> createState() => _MainScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainScreenState extends State<MainScreen> {
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    Container(
+      color: Colors.black,
+      child: const Center(
+        child: Text(
+          'Home',
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
+      ),
+    ),
+    SearchScreen(),
+    ProfileScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: _children[_currentIndex],
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(canvasColor: Colors.black),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          selectedItemColor: Color(0xFF6A5AF9),
+          unselectedItemColor: Colors.grey,
+          showSelectedLabels: true,
+        ),
+      ),
+    );
   }
 }

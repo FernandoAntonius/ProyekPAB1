@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/widgets/profile_item.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -9,176 +10,284 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  // TODO: 1. Deklarasikan variabel yang dibutuhkan
   bool isSignedIn = false;
-  String fullname = '';
-  String userName = '';
-  int favoriteCandiCount = 0;
+  String username = '';
+  int favoriteGameCount = 0;
   late Color iconColor;
 
-  // TODO: 5. Implementasi fungsi Sign In
-  void SignIn() {
+  @override
+  void initState() {
+    super.initState();
+    _loadSignedInStatus();
+  }
+
+  void _loadSignedInStatus() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool signedIn = prefs.getBool('isSignedIn') ?? false;
+    final String savedUsername = prefs.getString('username') ?? '';
+
+    setState(() {
+      isSignedIn = signedIn;
+      username = savedUsername;
+    });
+  }
+
+  void login() {
     setState(() {
       isSignedIn = !isSignedIn;
     });
   }
 
-  // TODO: 6. Implementasi fungsi Sign Out
-  void SignOut() {
+  void logout() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isSignedIn', false);
     setState(() {
-      isSignedIn = false; // Pastikan state diupdate
+      isSignedIn = false;
     });
-    Navigator.pushNamed(context, '/signin');
+    Navigator.pushNamed(context, '/login');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0C0F22),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 60),
-
-            /// --- HEADER ---
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Row(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    "GamePedia",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
+                  ShaderMask(
+                    shaderCallback: (bounds) =>
+                        const LinearGradient(
+                          colors: [
+                            Color(0xFF3A3FF2),
+                            Color(0xFF7754F4),
+                            Color(0xFF965FF5),
+                          ],
+                        ).createShader(
+                          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                        ),
+                    child: Text(
+                      "GamePedia",
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Quicksand',
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  Icon(
-                    Icons.sports_esports,
-                    color: Colors.blueAccent[100],
-                    size: 32,
-                  )
+                  Image.asset('images/console.png', height: 50),
                 ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  // TODO: 2. Buat bagian ProfileHeader yang berisi gambar
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20), // Sesuaikan padding agar lebih rapi
-                      child: Stack(
-                        alignment: Alignment.bottomRight,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.deepPurple, width: 2),
-                              shape: BoxShape.circle,
+              SizedBox(height: 28),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.deepPurple,
+                              width: 2,
                             ),
-                            child: CircleAvatar(
-                              radius: 50,
-                              backgroundImage: AssetImage('images/placeholder_image.png'),
+                            shape: BoxShape.circle,
+                          ),
+                          child: CircleAvatar(
+                            radius: 40,
+                            backgroundImage: AssetImage('images/console.png'),
+                          ),
+                        ),
+                        if (isSignedIn)
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.camera_alt,
+                              color: Colors.deepPurple[50],
                             ),
                           ),
-                          if (isSignedIn)
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.camera_alt, color: Colors.deepPurple[50]),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  // TODO: 3. Buat bagian ProfileInfo yang berisi info profile
-                  const SizedBox(height: 30),
-                  Container(
-                    width: double.infinity, // Gunakan double.infinity untuk responsive, bukan fixed 500
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20), // Tambah padding vertikal
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12), // Tambah border radius untuk lebih rapi
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.indigo.shade900,
-                          Colors.deepPurple.shade900
-                        ],
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ProfileInfoItem(
-                          icon: Icons.person,
-                          label: 'Name', // Sesuaikan label agar lebih jelas
-                          value: fullname.isNotEmpty ? fullname : 'Not set', // Gunakan fullname untuk name
-                          showEditIcon: isSignedIn,
-                          onEditPressed: () {
-                            debugPrint('Icon Edit Ditekan ...');
-                          },
-                          iconColor: Colors.white,
-                        ),
-                        Divider(color: Colors.deepPurple[100]),
-                        const SizedBox(height: 15),
-                        ProfileInfoItem(
-                          icon: Icons.favorite_border_rounded,
-                          label: 'Wishlist', // Perbaiki typo 'Whislist' menjadi 'Wishlist'
-                          value: favoriteCandiCount > 0 ? '$favoriteCandiCount items' : 'No items', // Sesuaikan value untuk wishlist
-                          showEditIcon: false, // Tidak perlu edit icon di sini
-                          iconColor: Colors.blue,
-                        ),
-                        Divider(color: Colors.deepPurple[100]),
-                        const SizedBox(height: 15),
-                        ProfileInfoItem(
-                          icon: Icons.settings,
-                          label: 'Terms Of Service', // Label ini mungkin salah, tapi biarkan jika sesuai requirement
-                          value: '', // Kosongkan value jika tidak relevan, atau sesuaikan
-                          iconColor: Colors.red,
-                        ),
                       ],
                     ),
-                  ),
-
-                  // TODO: 4. Buat ProfileActions yang berisi TextButton sign in/out
-                  const SizedBox(height: 200),
-                  isSignedIn
-                      ? OutlinedButton.icon( // Gunakan OutlinedButton.icon untuk tombol transparan dengan outline merah dan ikon
-                          onPressed: SignOut,
-                          icon: const Icon(Icons.logout, color: Colors.redAccent), // Ikon pintu keluar (logout)
-                          label: const Text(
-                            'Log Out',
-                            style: TextStyle(color: Colors.redAccent, fontSize: 16),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: Colors.redAccent, width: 2), // Line merah
-                            padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 12),
-                            shape: RoundedRectangleBorder( // Bentuk kotak tumpul
-                              borderRadius: BorderRadius.circular(8),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            isSignedIn
+                                ? (username.isNotEmpty ? username : 'User')
+                                : 'Guest',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Quicksand',
+                              color: Colors.white,
                             ),
                           ),
-                        )
-                      : ElevatedButton(
-                          onPressed: SignIn,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
-                            padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 12),
-                            shape: RoundedRectangleBorder( // Bentuk kotak tumpul
-                              borderRadius: BorderRadius.circular(8),
-                            ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: OutlinedButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/register');
+                                  },
+                                  style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                      color: Colors.white30,
+                                      width: 1,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 6,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Register',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: 'Quicksand',
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: OutlinedButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/login');
+                                  },
+                                  style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                      color: Colors.white30,
+                                      width: 1,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 6,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: 'Quicksand',
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          child: const Text(
-                            'Sign In',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
-                        ),
-                ],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 30),
+              Container(
+                padding: const EdgeInsets.all(30),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF190D84), Color(0xFF20143D)],
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ProfileInfoItem(
+                      icon: Icons.person,
+                      label: 'Edit Profile',
+                      value: '',
+                      showEditIcon: false,
+                      iconColor: Colors.white,
+                      isSignedIn: isSignedIn,
+                    ),
+                    const SizedBox(height: 20),
+                    Divider(color: Colors.deepPurple[100]),
+                    const SizedBox(height: 20),
+                    ProfileInfoItem(
+                      icon: Icons.favorite_border_rounded,
+                      label: 'Wishlist',
+                      value: '',
+                      showEditIcon: false,
+                      iconColor: Colors.red,
+                      isSignedIn: isSignedIn,
+                    ),
+                    const SizedBox(height: 20),
+                    Divider(color: Colors.deepPurple[100]),
+                    const SizedBox(height: 20),
+                    ProfileInfoItem(
+                      icon: Icons.settings,
+                      label: 'Terms of Service',
+                      value: '',
+                      iconColor: Colors.white,
+                      navigateTo: '/terms',
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              if (isSignedIn)
+                OutlinedButton.icon(
+                  onPressed: logout,
+                  icon: const Icon(Icons.logout, color: Colors.red),
+                  label: const Text(
+                    'Logout',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 16,
+                      fontFamily: 'Quicksand',
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(color: Colors.red, width: 1.5),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 12,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              SizedBox(height: 20),
+              Text(
+                '© GamePedia 2025',
+                style: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontSize: 12,
+                  color: Colors.white54,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

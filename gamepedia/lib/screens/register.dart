@@ -1,5 +1,7 @@
+import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -17,10 +19,63 @@ class _SignInScreenState extends State<RegisterScreen> {
   bool isSignedIn = false;
   bool _obscurePassword = true;
 
+  void _register() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String username = _usernameController.text.trim();
+    final String email = _emailController.text.trim();
+    final String password = _passwordController.text.trim();
+
+    if (username.isEmpty || email.isEmpty || password.isEmpty) {
+      setState(() {
+        _errorText = 'All fields must be filled';
+      });
+      return;
+    }
+
+    if (password.length < 8 ||
+        !password.contains(RegExp(r'[A-Z]')) ||
+        !password.contains(RegExp(r'[a-z]')) ||
+        !password.contains(RegExp(r'[0-9]'))) {
+      setState(() {
+        _errorText =
+            'Password must be at least 8 characters with uppercase, lowercase, and numbers';
+      });
+      return;
+    }
+    if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
+      final encrypt.Key key = encrypt.Key.fromLength(32);
+      final iv = encrypt.IV.fromLength(16);
+
+      final encrpyer = encrypt.Encrypter(encrypt.AES(key));
+      final encryptedUsername = encrpyer.encrypt(username, iv: iv);
+      final encryptedEmail = encrpyer.encrypt(email, iv: iv);
+      final encryptedPassword = encrpyer.encrypt(password, iv: iv);
+
+      await prefs.setString('username', encryptedUsername.base64);
+      await prefs.setString('email', encryptedEmail.base64);
+      await prefs.setString('password', encryptedPassword.base64);
+      await prefs.setString('key', key.base64);
+      await prefs.setString('iv', iv.base64);
+
+      print('*** Registration attempt');
+      print('*** Username: $username');
+      print('*** Email: $email');
+      print('*** Password: $password');
+    }
+    Navigator.pushReplacementNamed(context, '/login');
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
@@ -31,9 +86,7 @@ class _SignInScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Logo
                   Image.asset('images/console.png', height: 100),
-
                   ShaderMask(
                     shaderCallback: (bounds) =>
                         const LinearGradient(
@@ -55,7 +108,6 @@ class _SignInScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 28),
                   Container(
                     padding: const EdgeInsets.all(30),
@@ -67,7 +119,6 @@ class _SignInScreenState extends State<RegisterScreen> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-
                       children: [
                         const Center(
                           child: Text(
@@ -81,8 +132,11 @@ class _SignInScreenState extends State<RegisterScreen> {
                           ),
                         ),
                         SizedBox(height: 30),
-
                         TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Quicksand',
+                          ),
                           controller: _usernameController,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
@@ -102,6 +156,10 @@ class _SignInScreenState extends State<RegisterScreen> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Quicksand',
+                          ),
                           controller: _emailController,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
@@ -121,6 +179,10 @@ class _SignInScreenState extends State<RegisterScreen> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Quicksand',
+                          ),
                           controller: _passwordController,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
@@ -154,10 +216,11 @@ class _SignInScreenState extends State<RegisterScreen> {
                           ),
                           obscureText: _obscurePassword,
                         ),
-                        //Elevated Button REgister
                         SizedBox(height: 40),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _register();
+                          },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.zero,
                             shape: RoundedRectangleBorder(
@@ -191,8 +254,33 @@ class _SignInScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-
                         SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  RichText(
+                    text: TextSpan(
+                      text: 'Already have an account? ',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontFamily: 'Quicksand',
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Login here',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                            fontFamily: 'Quicksand',
+                            fontSize: 16,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.pushNamed(context, '/login');
+                            },
+                        ),
                       ],
                     ),
                   ),
