@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gamepedia/screens/edit_game.dart';
 import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/register.dart';
+import 'package:gamepedia/screens/add_game.dart';
 import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
 import 'package:gamepedia/screens/profile_screen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        
       ),
       home: const EditGameScreen(),
       initialRoute: '/',
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
       },
+      home: AddGameScreen(),
     );
   }
 }
