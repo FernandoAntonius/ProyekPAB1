@@ -2,6 +2,7 @@ class Game {
   final String title;
   final String developer;
   final DateTime releaseDate;
+  final String rating;
   final double price;
   final List<String> avaible;
   final List<String> genre;
@@ -23,5 +24,6 @@ class Game {
     required this.systemRequirements,
     this.isFavorite = false,
     required this.imageAssets,
+    required this.rating,
   });
 }

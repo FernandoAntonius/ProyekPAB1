@@ -24,14 +24,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         
       ),
-      home: const EditGameScreen(),
+      home: const MainScreen(),
       initialRoute: '/',
       routes: {
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
       },
-      home: AddGameScreen(),
     );
   }
 }
