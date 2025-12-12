@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_data.dart';
 import 'package:gamepedia/models/game.dart';
+import 'package:gamepedia/screens/game_detail_screen.dart';
 import 'package:gamepedia/screens/profile_screen.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -208,7 +209,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProfileScreen(),
+                            builder: (context) => GameDetailScreen(game: gameList[0],),
                           ),
                         );
                       },
