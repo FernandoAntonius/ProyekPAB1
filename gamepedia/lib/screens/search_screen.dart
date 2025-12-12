@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_data.dart';
 import 'package:gamepedia/models/game.dart';
+import 'package:gamepedia/screens/profile_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -14,12 +15,12 @@ class _SearchScreenState extends State<SearchScreen> {
   String _searchQuery = '';
 
   final List<String> categories = [
+    "All",
     "Adventure",
     "Role-Playing",
     "Shooter",
     "Platformer",
     "Puzzle",
-    "Role-Playing",
     "Strategy",
     "Hack and Slash",
     "Real-Time Strategy",
@@ -33,7 +34,23 @@ class _SearchScreenState extends State<SearchScreen> {
     "Simulator",
   ];
 
-  int selectedCategory = 1;
+  int selectedCategory = 0; 
+
+  @override
+  void initState() {
+    super.initState();
+    _filterGames();
+  }
+
+  void _filterGames() {
+    setState(() {
+      _filteredGames = gameList.where((game) {
+        bool titleGame = game.title.toLowerCase().contains(_searchQuery.toLowerCase());
+        bool filterGenre = selectedCategory == 0 || game.genre.contains(categories[selectedCategory]); 
+        return titleGame && filterGenre;
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +64,15 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               const SizedBox(height: 16),
 
-              // --- TITLE SECTION ---
+              //TITLE
               Row(
                 children: [
                   ShaderMask(
                     shaderCallback: (bounds) => const LinearGradient(
                       colors: [
-                          Color(0xFF3A3FF2),
-                          Color(0xFF7754F4),
-                          Color(0xFF965FF5),
+                        Color(0xFF3A3FF2),
+                        Color(0xFF7754F4),
+                        Color(0xFF965FF5),
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -80,7 +97,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: const Text(
                       "GamePedia",
                       style: TextStyle(
-                        color: Colors.white, // ShaderMask akan override ini
+                        color: Colors.white,
                         fontSize: 30,
                         fontFamily: 'Quicksand',
                         fontWeight: FontWeight.w600,
@@ -95,13 +112,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 style: TextStyle(
                   color: Colors.white70, 
                   fontSize: 14,
-                  fontFamily: 'Quicsand',
-                  ),
+                  fontFamily: 'Quicksand',
+                ),
               ),
 
               const SizedBox(height: 16),
 
-              // --- SEARCH BAR ---
+              //SEARCH BAR
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -109,14 +126,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 child: TextField(
                   onChanged: (value) {
-                    setState(() {
-                      _searchQuery = value;
-                      _filteredGames = gameList
-                          .where((g) => g.title.toLowerCase().contains(
-                                _searchQuery.toLowerCase(),
-                              ))
-                          .toList();
-                    });
+                    _searchQuery = value;
+                    _filterGames();
                   },
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
@@ -132,7 +143,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
               const SizedBox(height: 12),
 
-              // --- CATEGORY CHIPS ---
+              //CATEGORY NAV
               SizedBox(
                 height: 36,
                 child: ListView.builder(
@@ -144,7 +155,10 @@ class _SearchScreenState extends State<SearchScreen> {
                       padding: const EdgeInsets.only(right: 8),
                       child: GestureDetector(
                         onTap: () {
-                          setState(() => selectedCategory = index);
+                          setState(() {
+                            selectedCategory = index;
+                            _filterGames();
+                          });
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -152,9 +166,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             gradient: isSelected
                                 ? const LinearGradient(
                                     colors: [
-                                     Color(0xFF1124A5), 
-                                     Color(0xFFB923FF)
-                                      ],
+                                      Color(0xFF1124A5), 
+                                      Color(0xFFB923FF)
+                                    ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                   )
@@ -177,7 +191,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
               const SizedBox(height: 16),
 
-              // --- GRID GAME LIST ---
+              //GRID GAME LIST
               Expanded(
                 child: GridView.builder(
                   itemCount: _filteredGames.length,
@@ -189,46 +203,56 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   itemBuilder: (context, index) {
                     final game = _filteredGames[index];
-                    return Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white10,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        children: [
-                          // IMAGE
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.asset(
-                              game.imageAssets,
-                              height: 80,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileScreen(),
                           ),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white10,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          children: [
+                            // IMAGE
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                game.imageAssets,
+                                height: 80,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
 
-                          const SizedBox(height: 6),
-                          // TITLE
-                          Text(
-                            game.title,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(height: 6),
+                            // TITLE
+                            Text(
+                              game.title,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 2),
-                          const Text(
-                            "Updated today",
-                            style: TextStyle(
-                              color: Colors.white54,
-                              fontSize: 10,
-                            ),
-                          )
-                        ],
+                            const SizedBox(height: 2),
+                            const Text(
+                              "Updated today",
+                              style: TextStyle(
+                                color: Colors.white54,
+                                fontSize: 10,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },

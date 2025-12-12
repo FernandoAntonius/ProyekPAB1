@@ -7,7 +7,9 @@ var gameList = [
     releaseDate: DateTime(2020, 06, 02),
     price: 1,
     avaible: ['PC'],
-    genre: ['FPS'],
+    genre: [
+      'Shooter',
+      ],
     description: 'Padukan gaya dan pengalamanmu di panggung kompetitif global. Kamu memiliki 13 ronde untuk menyerang dan mempertahankan sisimu dengan keahlian tembak-menembak sengit serta kemampuan taktis. Dengan satu nyawa per ronde, kamu harus berpikir lebih cepat daripada lawan jika ingin tetap hidup. Habisi musuh baik di mode Competitive maupun Unranked serta Deathmatch dan Spike Rush.',
     imageAssets: 'images/valorant.png',
     screenShots: [
