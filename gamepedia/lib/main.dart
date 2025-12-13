@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
-        '/wishlist': (context) => const WishlistScreen(),
+        '/wishlist': (context) =>  WishlistScreen(wishlist: [],),
       },
     );
   }

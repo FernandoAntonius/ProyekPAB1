@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-
+import 'package:gamepedia/models/game.dart';
 
 class EmptyWishlist extends StatelessWidget {
   const EmptyWishlist({super.key});
@@ -14,7 +14,6 @@ class EmptyWishlist extends StatelessWidget {
           children: [
             Image.asset('images/wishlist.png', width: 90),
             const SizedBox(height: 8),
-
             ShaderMask(
               shaderCallback: (bounds) => const LinearGradient(
                 colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
@@ -31,9 +30,7 @@ class EmptyWishlist extends StatelessWidget {
                 ),
               ),
             ),
-
             const SizedBox(height: 6),
-
             Text(
               "0 games saved.",
               style: TextStyle(
@@ -74,7 +71,6 @@ class EmptyWishlist extends StatelessWidget {
   }
 }
 
-
 class WishlistHeader extends StatelessWidget {
   const WishlistHeader({super.key});
 
@@ -83,11 +79,8 @@ class WishlistHeader extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 130),
-
         Image.asset('images/wishlist.png', width: 90),
-
         const SizedBox(height: 6),
-
         ShaderMask(
           shaderCallback: (bounds) => const LinearGradient(
             colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
@@ -104,7 +97,6 @@ class WishlistHeader extends StatelessWidget {
             ),
           ),
         ),
-
         SizedBox(height: 30),
       ],
     );
@@ -112,7 +104,8 @@ class WishlistHeader extends StatelessWidget {
 }
 
 class WishlistScreen extends StatelessWidget {
-  const WishlistScreen({super.key});
+  final List<Game> wishlist;
+  const WishlistScreen({super.key, required this.wishlist});
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +114,6 @@ class WishlistScreen extends StatelessWidget {
       body: Column(
         children: [
           const WishlistHeader(),
-
           Expanded(
             child: wishlist.isEmpty
                 ? const EmptyWishlist()
@@ -134,8 +126,7 @@ class WishlistScreen extends StatelessWidget {
 }
 
 class WishlistList extends StatelessWidget {
-
-
+  final List<Game> wishlist;
   const WishlistList({super.key, required this.wishlist});
 
   @override
@@ -145,7 +136,6 @@ class WishlistList extends StatelessWidget {
       itemCount: wishlist.length,
       itemBuilder: (context, index) {
         final game = wishlist[index];
-
         return Container(
           margin: const EdgeInsets.only(bottom: 16),
           padding: const EdgeInsets.all(16),
@@ -159,7 +149,6 @@ class WishlistList extends StatelessWidget {
           ),
           child: Row(
             children: [
-              // COVER + RATING
               Stack(
                 children: [
                   Container(
@@ -177,7 +166,10 @@ class WishlistList extends StatelessWidget {
                     top: 6,
                     left: 6,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.7),
                         borderRadius: BorderRadius.circular(10),
@@ -200,9 +192,7 @@ class WishlistList extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(width: 16),
-
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,9 +206,7 @@ class WishlistList extends StatelessWidget {
                         fontFamily: 'Quicksand',
                       ),
                     ),
-
                     const SizedBox(height: 6),
-
                     // GENRE
                     SizedBox(
                       height: 25,
@@ -231,10 +219,7 @@ class WishlistList extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 12),
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
-                                colors: [
-                                  Color(0xFF2C3C8B),
-                                  Color(0xFF8366ED),
-                                ],
+                                colors: [Color(0xFF2C3C8B), Color(0xFF8366ED)],
                               ),
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -251,9 +236,7 @@ class WishlistList extends StatelessWidget {
                         },
                       ),
                     ),
-
                     const SizedBox(height: 8),
-
                     // DEVICES
                     SizedBox(
                       height: 22,
@@ -282,13 +265,14 @@ class WishlistList extends StatelessWidget {
                         },
                       ),
                     ),
-
                     const SizedBox(height: 12),
-
                     Row(
                       children: [
-                        const Icon(Icons.calendar_month,
-                            size: 14, color: Colors.white70),
+                        const Icon(
+                          Icons.calendar_month,
+                          size: 14,
+                          color: Colors.white70,
+                        ),
                         const SizedBox(width: 6),
                         Text(
                           game.releaseDate.toString().split(' ')[0],

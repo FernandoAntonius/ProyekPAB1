@@ -1,14 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/widgets/info_card.dart';
-import 'package:gamepedia/widgets/wishlist_provider.dart';
 
-class GameDetailScreen extends StatelessWidget {
+
+class GameDetailScreen extends StatefulWidget {
   final Game game;
   const GameDetailScreen({super.key, required this.game});
+
+  @override
+  State<GameDetailScreen> createState() => _GameDetailScreenState();
+}
+
+class _GameDetailScreenState extends State<GameDetailScreen> {
+bool isFavorite = false;
+
+  bool isSignedIn = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkSignInStatus();
+    _loadFavoriteStatus();
+  }
+
+  void _checkSignInStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool signedIn = prefs.getBool('isSignedIn') ?? false;
+    setState(() {
+      isSignedIn = signedIn;
+    });
+  }
+
+  void _loadFavoriteStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool favorite = prefs.getBool('favorite_${widget.game.title}') ?? false;
+    setState(() {
+      isFavorite = favorite;
+    });
+  }
+
+Future<void> _toggleFavorite() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+   
+    if (!isSignedIn) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacementNamed(context, '/login');
+      });
+      return;
+    }
+    bool favoriteStatus = !isFavorite;
+    prefs.setBool('favorite_${widget.game.title}', favoriteStatus);
+    setState(() {
+      isFavorite = favoriteStatus;
+    });
+  }
 
   Widget buildSectionTitle(String title) {
     return Padding(
@@ -29,8 +77,6 @@ class GameDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final wishlist = context.watch<WishlistProvider>();
-    final isFav = wishlist.isFavorite(game);
 
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
@@ -73,7 +119,7 @@ class GameDetailScreen extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                  game.imageAssets,
+                  widget.game.imageAssets,
                   height: 230,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -95,7 +141,7 @@ class GameDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          game.title,
+                          widget.game.title,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -103,7 +149,7 @@ class GameDetailScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          game.developer,
+                          widget.game.developer,
                           style: const TextStyle(
                             color: Colors.white70,
                             fontSize: 13,
@@ -119,7 +165,7 @@ class GameDetailScreen extends StatelessWidget {
                       const Icon(Icons.star, color: Colors.amber, size: 20),
                       const SizedBox(width: 4),
                       Text(
-                        game.rating.toString(),
+                        widget.game.rating.toString(),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -128,11 +174,11 @@ class GameDetailScreen extends StatelessWidget {
                       const SizedBox(width: 8),
                       IconButton(
                         onPressed: () {
-                          wishlist.toggleFavorite(game);
+                          _toggleFavorite();
                         },
                         icon: Icon(
-                          isFav ? Icons.favorite : Icons.favorite_border,
-                          color: isFav ? Colors.red : Colors.white,
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: isFavorite ? Colors.red : Colors.white,
                           size: 28,
                         ),
                       ),
@@ -152,13 +198,13 @@ class GameDetailScreen extends StatelessWidget {
                   buildInfoCard(
                     icon: Icons.calendar_month,
                     title: "Release Date",
-                    value: game.releaseDate.toString().split(' ')[0],
+                    value: widget.game.releaseDate.toString().split(' ')[0],
                   ),
                   const SizedBox(width: 10),
                   buildInfoCard(
                     icon: Icons.attach_money,
                     title: "Price",
-                    value: "\$${game.price}",
+                    value: "\$${widget.game.price}",
                   ),
                 ],
               ),
@@ -173,7 +219,7 @@ class GameDetailScreen extends StatelessWidget {
               child: Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: game.avaible.map((e) => buildTag(e)).toList(),
+                children: widget.game.avaible.map((e) => buildTag(e)).toList(),
               ),
             ),
 
@@ -186,7 +232,7 @@ class GameDetailScreen extends StatelessWidget {
               child: Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: game.genre.map((e) => buildTag(e)).toList(),
+                children: widget.game.genre.map((e) => buildTag(e)).toList(),
               ),
             ),
 
@@ -197,7 +243,7 @@ class GameDetailScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                game.description,
+                widget.game.description,
                 style: const TextStyle(color: Colors.white70, height: 1.4),
                 textAlign: TextAlign.justify,
               ),
@@ -211,14 +257,14 @@ class GameDetailScreen extends StatelessWidget {
               height: 120,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: game.screenShots.length,
+                itemCount: widget.game.screenShots.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.only(left: 16),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: CachedNetworkImage(
-                        imageUrl: game.screenShots[index],
+                        imageUrl: widget.game.screenShots[index],
                         width: 160,
                         height: 120,
                         fit: BoxFit.cover,
