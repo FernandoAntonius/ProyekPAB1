@@ -8,63 +8,28 @@ class EmptyWishlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const SizedBox(height: 130),
-        Column(
-          children: [
-            Image.asset('images/wishlist.png', width: 90),
-            const SizedBox(height: 8),
-            ShaderMask(
-              shaderCallback: (bounds) => const LinearGradient(
-                colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ).createShader(bounds),
-              child: const Text(
-                "Wishlist",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontFamily: 'Quicksand',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              "0 games saved.",
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.6),
-                fontSize: 16,
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        SizedBox(height: 10),
+        Text(
+          "Your wishlist is empty :(",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: 'Quicksand',
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        SizedBox(height: 150),
-        Column(
-          children: const [
-            Text(
-              "Your wishlist is empty :(",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              "Start adding games you're interested in!",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
+        SizedBox(height: 8),
+        Text(
+          "Start adding games you're interested in!",
+          style: TextStyle(
+            color: Colors.white70,
+            fontSize: 14,
+            fontFamily: 'Quicksand',
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ],
     );
@@ -77,10 +42,20 @@ class WishlistHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const SizedBox(height: 130),
+        const SizedBox(height: 24),
         Image.asset('images/wishlist.png', width: 90),
-        const SizedBox(height: 6),
+        const SizedBox(height: 8),
+        ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(bounds),
+        ),
+        const SizedBox(height: 8),
         ShaderMask(
           shaderCallback: (bounds) => const LinearGradient(
             colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
@@ -97,7 +72,16 @@ class WishlistHeader extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 6),
+        Text(
+          "0 games saved.",
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.6),
+            fontSize: 13,
+            fontFamily: 'Quicksand',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }
@@ -111,16 +95,28 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          const WishlistHeader(),
-          Expanded(
-            child: wishlist.isEmpty
-                ? const EmptyWishlist()
-                : WishlistList(wishlist: wishlist),
-          ),
-        ],
-      ),
+      
+
+      body: wishlist.isEmpty
+          ? SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  WishlistHeader(),
+                  SizedBox(height: 24), 
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.0),
+                    child: EmptyWishlist(),
+                  ),
+                ],
+              ),
+            )
+          : Column(
+              children: [
+                const WishlistHeader(),
+                Expanded(child: WishlistList(wishlist: wishlist)),
+              ],
+            ),
     );
   }
 }

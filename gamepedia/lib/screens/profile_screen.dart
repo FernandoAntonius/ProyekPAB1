@@ -239,6 +239,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       showEditIcon: false,
                       iconColor: Colors.red,
                       isSignedIn: isSignedIn,
+                      navigateTo: '/wishlist',
                     ),
                     const SizedBox(height: 20),
                     Divider(color: Colors.deepPurple[100]),
