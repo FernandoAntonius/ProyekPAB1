@@ -228,6 +228,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       showEditIcon: false,
                       iconColor: Colors.white,
                       isSignedIn: isSignedIn,
+                        navigateTo: '/edit_profile',
                     ),
                     const SizedBox(height: 20),
                     Divider(color: Colors.deepPurple[100]),
