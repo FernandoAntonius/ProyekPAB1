@@ -7,6 +7,8 @@ import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
 import 'package:gamepedia/screens/profile_screen.dart';
 import 'package:gamepedia/screens/terms_of_service.dart';
+import 'package:gamepedia/screens/wishlist.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +25,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        
       ),
       home: const MainScreen(),
       initialRoute: '/',
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
+        '/wishlist': (context) => const WishlistScreen(),
       },
     );
   }
