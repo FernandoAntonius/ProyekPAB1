@@ -24,6 +24,7 @@ class ProfileInfoItem extends StatelessWidget {
     this.navigateTo,
   });
 
+    
   @override
   Widget build(BuildContext context) {
     return InkWell(

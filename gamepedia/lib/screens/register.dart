@@ -50,6 +50,7 @@ class _SignInScreenState extends State<RegisterScreen> {
       final encryptedEmail = encrpyer.encrypt(email, iv: iv);
       final encryptedPassword = encrpyer.encrypt(password, iv: iv);
 
+      await prefs.setString('username', username);
       await prefs.setString('email', encryptedEmail.base64);
       await prefs.setString('password', encryptedPassword.base64);
       await prefs.setString('key', key.base64);

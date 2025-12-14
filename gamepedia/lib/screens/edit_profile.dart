@@ -1,3 +1,4 @@
+import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,18 +10,17 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreen extends State<EditProfileScreen> {
-  late TextEditingController _nameController;
+  late TextEditingController _usernameController;
   late TextEditingController _bioController;
   late TextEditingController _birthDateController;
   late TextEditingController _locationController;
-
   String _username = "User123749";
   String _email = "user@gmail.com";
 
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController();
+    _usernameController = TextEditingController();
     _bioController = TextEditingController();
     _birthDateController = TextEditingController();
     _locationController = TextEditingController();
@@ -29,19 +29,29 @@ class _EditProfileScreen extends State<EditProfileScreen> {
 
   void _loadProfileData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String savedEncryptedEmail = prefs.getString('email') ?? '';
+    final String savedKey = prefs.getString('key') ?? '';
+    final String savedIV = prefs.getString('iv') ?? '';
+
+    final encrypt.Key key = encrypt.Key.fromBase64(savedKey);
+    final encrypt.IV iv = encrypt.IV.fromBase64(savedIV);
+    final decrypter = encrypt.Encrypter(encrypt.AES(key));
+
+    final decryptedEmail = decrypter.decrypt64(savedEncryptedEmail, iv: iv);
+
     setState(() {
-      _nameController.text = prefs.getString('profile_name') ?? '';
+      _usernameController.text = prefs.getString('username') ?? '';
       _bioController.text = prefs.getString('profile_bio') ?? '';
       _birthDateController.text = prefs.getString('profile_birthDate') ?? '';
       _locationController.text = prefs.getString('profile_location') ?? '';
       _username = prefs.getString('username') ?? 'User123749';
-      _email = prefs.getString('email') ?? 'user@gmail.com';
+      _email = decryptedEmail;
     });
   }
 
   Future<void> _saveProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('profile_name', _nameController.text);
+    await prefs.setString('username', _usernameController.text);
     await prefs.setString('profile_bio', _bioController.text);
     await prefs.setString('profile_birthDate', _birthDateController.text);
     await prefs.setString('profile_location', _locationController.text);
@@ -61,7 +71,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _usernameController.dispose();
     _bioController.dispose();
     _birthDateController.dispose();
     _locationController.dispose();
@@ -71,38 +81,29 @@ class _EditProfileScreen extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0E1126),
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0E1126),
+        backgroundColor: Colors.black,
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+          color: Color(0xFF6A5AF9),
+        ),
         title: const Text(
-          'GamePedia',
+          'Edit Profile',
           style: TextStyle(
-            color: Color(0xFF6366FF),
-            fontSize: 24,
+            color: Color(0xFF6A5AF9),
+            fontSize: 20,
             fontWeight: FontWeight.bold,
+            fontFamily: 'Quicksand',
           ),
         ),
+        centerTitle: false,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: ShaderMask(
-              shaderCallback: (bounds) => const LinearGradient(
-                colors: [
-                  Color(0xFF3A3FF2),
-                  Color(0xFF7754F4),
-                  Color(0xFF965FF5),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ).createShader(bounds),
-              child: Image.asset(
-                'images/console.png',
-                height: 40,
-                width: 40,
-                color: Colors.white,
-              ),
-            ),
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset('images/console.png', height: 30),
           ),
         ],
       ),
@@ -144,9 +145,9 @@ class _EditProfileScreen extends State<EditProfileScreen> {
 
               // FORM FIELDS
               TextField(
-                controller: _nameController,
+                controller: _usernameController,
                 decoration: InputDecoration(
-                  hintText: 'Name',
+                  hintText: _username,
                   hintStyle: const TextStyle(color: Colors.white54),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),

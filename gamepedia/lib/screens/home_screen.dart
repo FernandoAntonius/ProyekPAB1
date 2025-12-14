@@ -27,8 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-
-                // --- TITLE SECTION ---
                 Row(
                   children: [
                     ShaderMask(
@@ -79,9 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontFamily: 'Quicksand',
                   ),
                 ),
-
                 const SizedBox(height: 16),
-
                 // --- SEARCH BAR ---
                 Container(
                   decoration: BoxDecoration(
