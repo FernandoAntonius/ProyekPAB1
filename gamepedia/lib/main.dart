@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gamepedia/screens/edit_game.dart';
 import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/register.dart';
-import 'package:gamepedia/screens/add_game.dart';
 import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
 import 'package:gamepedia/screens/profile_screen.dart';

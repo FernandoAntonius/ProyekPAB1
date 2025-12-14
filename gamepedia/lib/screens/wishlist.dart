@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:gamepedia/models/game.dart';
 
 class EmptyWishlist extends StatelessWidget {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_data.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
-import 'package:gamepedia/screens/profile_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
