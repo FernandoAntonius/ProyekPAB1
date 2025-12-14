@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/widgets/profile_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gamepedia/data/game_data.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -26,9 +27,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final bool signedIn = prefs.getBool('isSignedIn') ?? false;
     final String savedUsername = prefs.getString('username') ?? '';
 
+    int count = 0;
+    for (var game in gameList) {
+      bool isFav = prefs.getBool('favorite_${game.title}') ?? false;
+      if (isFav) {
+        count++;
+      }
+    }
+
     setState(() {
       isSignedIn = signedIn;
       username = savedUsername;
+      favoriteGameCount = count;
     });
   }
 

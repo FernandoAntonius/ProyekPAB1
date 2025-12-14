@@ -47,20 +47,13 @@ class _SignInScreenState extends State<RegisterScreen> {
       final iv = encrypt.IV.fromLength(16);
 
       final encrpyer = encrypt.Encrypter(encrypt.AES(key));
-      final encryptedUsername = encrpyer.encrypt(username, iv: iv);
       final encryptedEmail = encrpyer.encrypt(email, iv: iv);
       final encryptedPassword = encrpyer.encrypt(password, iv: iv);
 
-      await prefs.setString('username', encryptedUsername.base64);
       await prefs.setString('email', encryptedEmail.base64);
       await prefs.setString('password', encryptedPassword.base64);
       await prefs.setString('key', key.base64);
       await prefs.setString('iv', iv.base64);
-
-      print('*** Registration attempt');
-      print('*** Username: $username');
-      print('*** Email: $email');
-      print('*** Password: $password');
     }
     Navigator.pushReplacementNamed(context, '/login');
   }

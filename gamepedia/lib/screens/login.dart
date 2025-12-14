@@ -20,7 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _login() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String savedEncryptedUsername = prefs.getString('username') ?? '';
     final String savedEncryptedEmail = prefs.getString('email') ?? '';
     final String savedEncryptedPassword = prefs.getString('password') ?? '';
     final String savedKey = prefs.getString('key') ?? '';
@@ -49,10 +48,6 @@ class _LoginScreenState extends State<LoginScreen> {
     final encrypt.IV iv = encrypt.IV.fromBase64(savedIV);
     final decrypter = encrypt.Encrypter(encrypt.AES(key));
 
-    final decryptedUsername = decrypter.decrypt64(
-      savedEncryptedUsername,
-      iv: iv,
-    );
     final decryptedEmail = decrypter.decrypt64(savedEncryptedEmail, iv: iv);
     final decryptedPassword = decrypter.decrypt64(
       savedEncryptedPassword,
