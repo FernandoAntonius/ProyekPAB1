@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/screens/edit_game.dart';
+import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/add_game.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
         '/wishlist': (context) =>  WishlistScreen(wishlist: [],),
+        '/edit_profile' : (context) => EditProfileScreen(),
       },
     );
   }
