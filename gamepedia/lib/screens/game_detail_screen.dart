@@ -32,7 +32,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   void _loadFavoritesStatus() async {
     final prefs = await SharedPreferences.getInstance();
     bool saved = prefs.getBool("favorite_${widget.game.title}") ?? false;
-
     setState(() {
       isFavorite = saved;
     });
@@ -40,12 +39,10 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
 
   Future<void> _toggleFavorite() async {
     final prefs = await SharedPreferences.getInstance();
-
     if (!isSignedIn) {
       Navigator.pushNamed(context, "/signin");
       return;
     }
-
     bool newStatus = !isFavorite;
     prefs.setBool("favorite_${widget.game.title}", newStatus);
 
@@ -121,9 +118,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 ),
               ),
             ),
-
             const SizedBox(height: 16),
-
             //TITLE, DEVELOPER, FAVORITE, RATING
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -153,7 +148,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                       ],
                     ),
                   ),
-
                   // RATING DAN FAVORITE
                   Row(
                     children: [
@@ -172,9 +166,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                           ),
                         ],
                       ),
-
                       const SizedBox(width: 8),
-
                       // FAVORITE BUTTON
                       IconButton(
                         onPressed: _toggleFavorite,
@@ -189,9 +181,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
-
             // RELEASE DATE & PRICE CARDS
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -211,9 +201,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 ],
               ),
             ),
-
             const SizedBox(height: 24),
-
             // AVAILABLE ON
             buildSectionTitle("Available On"),
             Padding(
@@ -227,9 +215,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 }),
               ),
             ),
-
             const SizedBox(height: 10),
-
             // GENRE
             buildSectionTitle("Genre"),
             Padding(
@@ -243,9 +229,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 }),
               ),
             ),
-
             const SizedBox(height: 20),
-
             // ABOUT THIS GAME
             buildSectionTitle("About this game"),
             Padding(
@@ -256,9 +240,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 textAlign: TextAlign.justify,
               ),
             ),
-
             const SizedBox(height: 20),
-
             // SCREENSHOTS
             buildSectionTitle("Screenshots"),
             SizedBox(
