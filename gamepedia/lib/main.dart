@@ -8,7 +8,6 @@ import 'package:gamepedia/screens/profile_screen.dart';
 import 'package:gamepedia/screens/terms_of_service.dart';
 import 'package:gamepedia/screens/wishlist.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -24,6 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        fontFamily: 'Quicksand',
       ),
       home: const MainScreen(),
       initialRoute: '/',
@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
-        '/wishlist': (context) =>  WishlistScreen(wishlist: [],),
-        '/edit_profile' : (context) => EditProfileScreen(),
+        '/wishlist': (context) => WishlistScreen(wishlist: []),
+        '/edit_profile': (context) => EditProfileScreen(),
       },
     );
   }
