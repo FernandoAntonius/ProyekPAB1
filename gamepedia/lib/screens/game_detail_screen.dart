@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/widgets/info_card.dart';
 
-
 class GameDetailScreen extends StatefulWidget {
   final Game game;
   const GameDetailScreen({super.key, required this.game});
@@ -14,7 +13,7 @@ class GameDetailScreen extends StatefulWidget {
 }
 
 class _GameDetailScreenState extends State<GameDetailScreen> {
-bool isFavorite = false;
+  bool isFavorite = false;
 
   bool isSignedIn = false;
 
@@ -41,10 +40,8 @@ bool isFavorite = false;
     });
   }
 
-Future<void> _toggleFavorite() async {
+  Future<void> _toggleFavorite() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
-   
     if (!isSignedIn) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushReplacementNamed(context, '/login');
@@ -77,7 +74,6 @@ Future<void> _toggleFavorite() async {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       appBar: AppBar(
@@ -162,14 +158,20 @@ Future<void> _toggleFavorite() async {
                   // RATING & FAVORITE
                   Row(
                     children: [
-                      const Icon(Icons.star, color: Colors.amber, size: 20),
-                      const SizedBox(width: 4),
-                      Text(
-                        widget.game.rating.toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
+                      // RATING
+                      Row(
+                        children: [
+                          const Icon(Icons.star, color: Colors.amber, size: 20),
+                          const SizedBox(width: 4),
+                          Text(
+                            widget.game.rating.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(width: 8),
                       IconButton(
@@ -187,9 +189,7 @@ Future<void> _toggleFavorite() async {
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
-
             // RELEASE DATE & PRICE
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -209,35 +209,35 @@ Future<void> _toggleFavorite() async {
                 ],
               ),
             ),
-
             const SizedBox(height: 24),
-
             // AVAILABLE ON
             buildSectionTitle("Available On"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Wrap(
+                alignment: WrapAlignment.start,
                 spacing: 8,
                 runSpacing: 8,
-                children: widget.game.avaible.map((e) => buildTag(e)).toList(),
+                children: List.generate(widget.game.avaible.length, (index) {
+                  return buildTag(widget.game.avaible[index]);
+                }),
               ),
             ),
-
             const SizedBox(height: 10),
-
             // GENRE
             buildSectionTitle("Genre"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Wrap(
+                alignment: WrapAlignment.start,
                 spacing: 8,
                 runSpacing: 8,
-                children: widget.game.genre.map((e) => buildTag(e)).toList(),
+                children: List.generate(widget.game.genre.length, (index) {
+                  return buildTag(widget.game.genre[index]);
+                }),
               ),
             ),
-
             const SizedBox(height: 20),
-
             // ABOUT
             buildSectionTitle("About this game"),
             Padding(
@@ -248,9 +248,7 @@ Future<void> _toggleFavorite() async {
                 textAlign: TextAlign.justify,
               ),
             ),
-
             const SizedBox(height: 20),
-
             // SCREENSHOTS
             buildSectionTitle("Screenshots"),
             SizedBox(
@@ -281,7 +279,6 @@ Future<void> _toggleFavorite() async {
                 },
               ),
             ),
-
             const SizedBox(height: 10),
           ],
         ),
