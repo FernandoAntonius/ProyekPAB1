@@ -9,13 +9,12 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-  
+
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   String _errorText = '';
-  bool _isSignedIn = false;
   bool _obscurePassword = true;
 
   void _login() async {
@@ -59,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
       await prefs.setBool('isSignedIn', true);
       setState(() {
         _errorText = '';
-        _isSignedIn = true;
       });
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.of(context).popUntil((route) => route.isFirst);
