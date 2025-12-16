@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/widgets/info_card.dart';
 
-
 class GameDetailScreen extends StatefulWidget {
   final Game game;
   const GameDetailScreen({super.key, required this.game});
@@ -14,47 +13,44 @@ class GameDetailScreen extends StatefulWidget {
 }
 
 class _GameDetailScreenState extends State<GameDetailScreen> {
-bool isFavorite = false;
-
+  bool isFavorite = false;
   bool isSignedIn = false;
 
   @override
   void initState() {
     super.initState();
     _checkSignInStatus();
-    _loadFavoriteStatus();
+    _loadFavoritesStatus();
   }
 
   void _checkSignInStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool signedIn = prefs.getBool('isSignedIn') ?? false;
+    final prefs = await SharedPreferences.getInstance();
+    isSignedIn = prefs.getBool("isSignedIn") ?? false;
+    setState(() {});
+  }
+
+  void _loadFavoritesStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool saved = prefs.getBool("favorite_${widget.game.title}") ?? false;
+
     setState(() {
-      isSignedIn = signedIn;
+      isFavorite = saved;
     });
   }
 
-  void _loadFavoriteStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool favorite = prefs.getBool('favorite_${widget.game.title}') ?? false;
-    setState(() {
-      isFavorite = favorite;
-    });
-  }
+  Future<void> _toggleFavorite() async {
+    final prefs = await SharedPreferences.getInstance();
 
-Future<void> _toggleFavorite() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-   
     if (!isSignedIn) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.pushReplacementNamed(context, '/login');
-      });
+      Navigator.pushNamed(context, "/signin");
       return;
     }
-    bool favoriteStatus = !isFavorite;
-    prefs.setBool('favorite_${widget.game.title}', favoriteStatus);
+
+    bool newStatus = !isFavorite;
+    prefs.setBool("favorite_${widget.game.title}", newStatus);
+
     setState(() {
-      isFavorite = favoriteStatus;
+      isFavorite = newStatus;
     });
   }
 
@@ -77,7 +73,6 @@ Future<void> _toggleFavorite() async {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       appBar: AppBar(
@@ -129,13 +124,13 @@ Future<void> _toggleFavorite() async {
 
             const SizedBox(height: 16),
 
-            // TITLE, DEVELOPER, RATING, FAVORITE
+            //TITLE, DEVELOPER, FAVORITE, RATING
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // TITLE & DEVELOPER
+                  // TITLE DAN DEVELOPER DI KIRI
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,23 +154,30 @@ Future<void> _toggleFavorite() async {
                     ),
                   ),
 
-                  // RATING & FAVORITE
+                  // RATING DAN FAVORITE
                   Row(
                     children: [
-                      const Icon(Icons.star, color: Colors.amber, size: 20),
-                      const SizedBox(width: 4),
-                      Text(
-                        widget.game.rating.toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
+                      // RATING
+                      Row(
+                        children: [
+                          const Icon(Icons.star, color: Colors.amber, size: 20),
+                          const SizedBox(width: 4),
+                          Text(
+                            widget.game.rating.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
+
                       const SizedBox(width: 8),
+
+                      // FAVORITE BUTTON
                       IconButton(
-                        onPressed: () {
-                          _toggleFavorite();
-                        },
+                        onPressed: _toggleFavorite,
                         icon: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_border,
                           color: isFavorite ? Colors.red : Colors.white,
@@ -190,7 +192,7 @@ Future<void> _toggleFavorite() async {
 
             const SizedBox(height: 20),
 
-            // RELEASE DATE & PRICE
+            // RELEASE DATE & PRICE CARDS
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -217,9 +219,12 @@ Future<void> _toggleFavorite() async {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Wrap(
+                alignment: WrapAlignment.start,
                 spacing: 8,
                 runSpacing: 8,
-                children: widget.game.avaible.map((e) => buildTag(e)).toList(),
+                children: List.generate(widget.game.avaible.length, (index) {
+                  return buildTag(widget.game.avaible[index]);
+                }),
               ),
             ),
 
@@ -229,16 +234,21 @@ Future<void> _toggleFavorite() async {
             buildSectionTitle("Genre"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: widget.game.genre.map((e) => buildTag(e)).toList(),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: List.generate(widget.game.genre.length, (index) {
+                    return buildTag(widget.game.genre[index]);
+                  }),
+                ),
               ),
             ),
 
             const SizedBox(height: 20),
 
-            // ABOUT
+            // ABOUT THIS GAME
             buildSectionTitle("About this game"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -49,10 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(width: 8),
                     ShaderMask(
                       shaderCallback: (bounds) => const LinearGradient(
-                        colors: [
-                          Color(0xFF1124A5),
-                          Color(0xFFB923FF),
-                        ],
+                        colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ).createShader(bounds),
@@ -89,20 +86,42 @@ class _HomeScreenState extends State<HomeScreen> {
                       setState(() {
                         _searchQuery = value;
                         _filteredGames = gameList
-                            .where((g) => g.title
-                                .toLowerCase()
-                                .contains(_searchQuery.toLowerCase()))
+                            .where(
+                              (g) => g.title.toLowerCase().contains(
+                                _searchQuery.toLowerCase(),
+                              ),
+                            )
                             .toList();
                       });
                     },
                     style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "Search games...",
-                      hintStyle: TextStyle(color: Colors.white38),
-                      prefixIcon: Icon(Icons.search, color: Colors.white54),
+                      hintStyle: const TextStyle(color: Color(0xFFDCA7FF)),
+                      prefixIcon: ShaderMask(
+                        shaderCallback: (bounds) => const LinearGradient(
+                          colors: [
+                            Color(0xFF748AFA),
+                            Color(0xFF617BFF),
+                            Color(0xFFF47EFF),
+                            Color(0xFFFFFFFF),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ).createShader(bounds),
+                        child: const Icon(Icons.search, color: Colors.white),
+                      ),
+                      prefixIconConstraints: const BoxConstraints(
+                        minWidth: 40,
+                        minHeight: 40,
+                      ),
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 14),
+                      contentPadding: const EdgeInsets.only(
+                        left: 16,
+                        right: 20,
+                        top: 14,
+                        bottom: 14,
+                      ),
                     ),
                   ),
                 ),
@@ -115,8 +134,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     // LEFT TITLE
                     Row(
                       children: [
-                        Icon(Icons.bar_chart_rounded,
-                            color: Colors.orangeAccent, size: 22),
+                        Icon(
+                          Icons.bar_chart_rounded,
+                          color: Colors.orangeAccent,
+                          size: 22,
+                        ),
                         SizedBox(width: 6),
                         Text(
                           "Popular Games",
@@ -130,10 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Text(
                       "Show all",
-                      style: TextStyle(
-                        color: Colors.white54,
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: Colors.white54, fontSize: 14),
                     ),
                   ],
                 ),
@@ -155,7 +174,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       final game = popularGames[index];
                       return Container(
                         width: 250,
-                        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 8,
+                        ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -178,10 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: const [
-                    Text(
-                      "More Games",
-                      style: TextStyle(color: Colors.white70),
-                    ),
+                    Text("More Games", style: TextStyle(color: Colors.white70)),
                     SizedBox(width: 4),
                     Icon(Icons.arrow_right_alt, color: Colors.blueAccent),
                   ],
@@ -244,13 +263,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   game.description,
                                   style: const TextStyle(
-                                      color: Colors.white54, fontSize: 12),
+                                    color: Colors.white54,
+                                    fontSize: 12,
+                                  ),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     );

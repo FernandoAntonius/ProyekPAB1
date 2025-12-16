@@ -133,17 +133,35 @@ class _SearchScreenState extends State<SearchScreen> {
                     _filterGames();
                   },
                   style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Search games...",
-                    hintStyle: TextStyle(
-                      color: Colors.white38,
+                    hintStyle: const TextStyle(
+                      color: Color(0xFFDCA7FF),
                       fontFamily: 'Quicksand',
                     ),
-                    prefixIcon: Icon(Icons.search, color: Colors.white54),
+                    prefixIcon: ShaderMask(
+                      shaderCallback: (bounds) => const LinearGradient(
+                        colors: [
+                          Color(0xFF748AFA),
+                          Color(0xFF617BFF),
+                          Color(0xFFF47EFF),
+                          Color(0xFFFFFFFF),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ).createShader(bounds),
+                      child: const Icon(Icons.search, color: Colors.white),
+                    ),
+                    prefixIconConstraints: const BoxConstraints(
+                      minWidth: 40,
+                      minHeight: 40,
+                    ),
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 14,
+                    contentPadding: const EdgeInsets.only(
+                      left: 16,
+                      right: 20,
+                      top: 14,
+                      bottom: 14,
                     ),
                   ),
                 ),
