@@ -132,7 +132,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
                     hintText: "Search games...",
-                    hintStyle: TextStyle(color: Colors.white38),
+                    hintStyle: TextStyle(color: Colors.white38, fontFamily: "Quicksand"),
                     prefixIcon: Icon(Icons.search, color: Colors.white54),
                     border: InputBorder.none,
                     contentPadding:

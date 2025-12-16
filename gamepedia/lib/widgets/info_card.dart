@@ -1,5 +1,52 @@
 import 'package:flutter/material.dart';
 
+Widget buildGenreCard({
+  required IconData icon,
+  required String title,
+}) {
+  return GestureDetector(
+    onTap: () {
+    },
+    child: Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1A1C3A),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 36,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Quicksand',
+            ),
+          ),
+          const SizedBox(height: 4),
+          const Text(
+            "games",
+            style: TextStyle(
+              color: Colors.white54,
+              fontSize: 12,
+              fontFamily: 'Quicksand',
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+
 Widget buildInfoCard({required IconData icon, required String title, required String value}) {
   return Expanded(
     child: Container(
@@ -9,9 +56,16 @@ Widget buildInfoCard({required IconData icon, required String title, required St
           colors: [
             Color(0xFF131A3C), 
             Color(0xFF282044)
-            ],
+          ],
         ),
         borderRadius: BorderRadius.circular(14),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,14 +94,21 @@ Widget buildTag(String text) {
     decoration: BoxDecoration(
       gradient: const LinearGradient(
         colors: [
-            Color(0xFF131A3C), 
-            Color(0xFF282044)
+          Color(0xFF131A3C), 
+          Color(0xFF282044)
         ],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
       borderRadius: BorderRadius.circular(10),
       border: Border.all(color: Colors.white24),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.3),
+          blurRadius: 8,
+          offset: const Offset(0, 4),
+        ),
+      ],
     ),
     child: Text(
       text,
@@ -63,6 +124,7 @@ Widget buildSectionTitle(String title) {
       title,
       style: const TextStyle(
         color: Colors.white,
+        fontFamily: "Quicksand",
         fontSize: 16,
         fontWeight: FontWeight.bold,
       ),

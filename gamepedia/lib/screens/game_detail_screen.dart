@@ -14,7 +14,6 @@ class GameDetailScreen extends StatefulWidget {
 
 class _GameDetailScreenState extends State<GameDetailScreen> {
   bool isFavorite = false;
-
   bool isSignedIn = false;
 
   @override
@@ -221,7 +220,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 children: List.generate(widget.game.avaible.length, (index) {
                   return buildTag(widget.game.avaible[index]);
                 }),
-              ),
             ),
             const SizedBox(height: 10),
             // GENRE
@@ -279,9 +277,83 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 },
               ),
             ),
+            const SizedBox(height: 20),
+            _buildSystemRequirements(widget.game),
             const SizedBox(height: 10),
           ],
         ),
+      ),
+    );
+  }
+
+  //SYSTEM REQUIRENMENTS
+  Widget _buildSystemRequirements(Game game) {
+    final sysReq = game.systemRequirements;
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF1E2150), Color(0xFF15183C)],
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "System Requirements",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: "Quicksand",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
+          // Minimum Requirements
+          const Text(
+            "Minimum",
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Quicksand",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 6),
+          if (sysReq.containsKey('minimum'))
+            ...sysReq['minimum']!.entries.map(
+              (entry) => Text(
+                "• ${entry.key}: ${entry.value}",
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontFamily: "Quicksand"
+                ),
+              ),
+            ),
+          //Maximum Requirenments
+          const SizedBox(height: 12),
+          const Text(
+            "Recommended",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Quicksand"
+            ),
+          ),
+          const SizedBox(height: 6),
+          if (sysReq.containsKey('maximum'))
+            ...sysReq['maximum']!.entries.map(
+              (entry) => Text(
+                "• ${entry.key}: ${entry.value}",
+                style: const TextStyle(color: Colors.white70),
+              ),
+            ),
+        ],
       ),
     );
   }
