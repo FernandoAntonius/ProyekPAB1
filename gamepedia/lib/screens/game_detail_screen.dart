@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/widgets/info_card.dart';
 
-
 class GameDetailScreen extends StatefulWidget {
   final Game game;
   const GameDetailScreen({super.key, required this.game});
@@ -14,8 +13,7 @@ class GameDetailScreen extends StatefulWidget {
 }
 
 class _GameDetailScreenState extends State<GameDetailScreen> {
-bool isFavorite = false;
-
+  bool isFavorite = false;
   bool isSignedIn = false;
 
   @override
@@ -41,10 +39,9 @@ bool isFavorite = false;
     });
   }
 
-Future<void> _toggleFavorite() async {
+  Future<void> _toggleFavorite() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-   
     if (!isSignedIn) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushReplacementNamed(context, '/login');
@@ -77,7 +74,6 @@ Future<void> _toggleFavorite() async {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       appBar: AppBar(
@@ -216,10 +212,13 @@ Future<void> _toggleFavorite() async {
             buildSectionTitle("Available On"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: widget.game.avaible.map((e) => buildTag(e)).toList(),
+              child: Align(
+                alignment: Alignment.centerLeft, // Pastikan align ke kiri
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: widget.game.avaible.map((e) => buildTag(e)).toList(),
+                ),
               ),
             ),
 
@@ -229,10 +228,13 @@ Future<void> _toggleFavorite() async {
             buildSectionTitle("Genre"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: widget.game.genre.map((e) => buildTag(e)).toList(),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: widget.game.genre.map((e) => buildTag(e)).toList(),
+                ),
               ),
             ),
 
@@ -282,9 +284,84 @@ Future<void> _toggleFavorite() async {
               ),
             ),
 
+            const SizedBox(height: 20),
+
+            _buildSystemRequirements(widget.game),
             const SizedBox(height: 10),
           ],
         ),
+      ),
+    );
+  }
+
+  //SYSTEM REQUIRENMENTS
+  Widget _buildSystemRequirements(Game game) {
+    final sysReq = game.systemRequirements;
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF1E2150), Color(0xFF15183C)],
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "System Requirements",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: "Quicksand",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
+          // Minimum Requirements
+          const Text(
+            "Minimum",
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Quicksand",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 6),
+          if (sysReq.containsKey('minimum'))
+            ...sysReq['minimum']!.entries.map(
+              (entry) => Text(
+                "• ${entry.key}: ${entry.value}",
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontFamily: "Quicksand"
+                ),
+              ),
+            ),
+          //Maximum Requirenments
+          const SizedBox(height: 12),
+          const Text(
+            "Recommended",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Quicksand"
+            ),
+          ),
+          const SizedBox(height: 6),
+          if (sysReq.containsKey('maximum'))
+            ...sysReq['maximum']!.entries.map(
+              (entry) => Text(
+                "• ${entry.key}: ${entry.value}",
+                style: const TextStyle(color: Colors.white70),
+              ),
+            ),
+        ],
       ),
     );
   }

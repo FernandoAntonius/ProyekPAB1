@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_data.dart';
 import 'package:gamepedia/models/game.dart';
+import 'package:gamepedia/screens/game_detail_screen.dart';
+import 'package:gamepedia/widgets/info_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -75,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                // --- SEARCH BAR ---
+                //SEARCH BAR
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
@@ -162,22 +164,32 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: popularGames.length,
                     itemBuilder: (context, index) {
                       final game = popularGames[index];
-                      return Container(
-                        width: 250,
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 8,
-                          horizontal: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
-                            game.imageAssets,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            height: double.infinity,
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GameDetailScreen(game: game),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 250,
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 8,
+                            horizontal: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              game.imageAssets,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
                           ),
                         ),
                       );
@@ -187,9 +199,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 const SizedBox(height: 24),
 
-                // ⭐ NEW RELEASES TITLE
+                //NEW RELEASES TITLE
                 Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: const [
@@ -204,10 +216,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontFamily: 'Quicksand',
                           ),
                         ),
-                       
                       ],
                     ),
-                     Text(
+                    Text(
                       "Show all",
                       style: TextStyle(
                         color: Colors.white54,
@@ -223,54 +234,126 @@ class _HomeScreenState extends State<HomeScreen> {
                 // NEW RELEASE LIST
                 Column(
                   children: _filteredGames.map((game) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 14),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF1A1C3A),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-                              game.imageAssets,
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.cover,
-                            ),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GameDetailScreen(game: game),
                           ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  game.title,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  game.description,
-                                  style: const TextStyle(
-                                    color: Colors.white54,
-                                    fontSize: 12,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 14),
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(
+                                game.imageAssets,
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    game.title,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    game.description,
+                                    style: const TextStyle(
+                                      color: Colors.white54,
+                                      fontSize: 12,
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
                 ),
+                const SizedBox(height: 24),
+
+                  //BROWSE BY GENRE TITLE
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.grid_view_rounded,
+                        color: Colors.cyanAccent,
+                        size: 22,
+                      ),
+                      SizedBox(width: 6),
+                      Text(
+                        "Browse by Genre",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Quicksand',
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  //GENRE GRID
+                  GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      buildGenreCard(
+                        icon: Icons.explore_rounded,
+                        title: "Adventure",
+                      ),
+                      buildGenreCard(
+                        icon: Icons.auto_stories_rounded,
+                        title: "Role-playing",
+                      ),
+                      buildGenreCard(
+                        icon: Icons.gps_fixed_rounded,
+                        title: "Shooter",
+                      ),
+                      buildGenreCard(
+                        icon: Icons.videogame_asset_rounded,
+                        title: "Platform",
+                      ),
+                      buildGenreCard(
+                        icon: Icons.extension_rounded,
+                        title: "Puzzle",
+                      ),
+                      buildGenreCard(
+                        icon: Icons.account_tree_rounded,
+                        title: "Strategy",
+                      ),
+                    ],
+                  ),
+
+                const SizedBox(height: 32),
+
               ],
             ),
           ),
