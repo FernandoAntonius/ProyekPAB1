@@ -41,7 +41,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   Future<void> _toggleFavorite() async {
     final prefs = await SharedPreferences.getInstance();
 
-    // WAJIB SIGN-IN
     if (!isSignedIn) {
       Navigator.pushNamed(context, "/signin");
       return;
@@ -55,12 +54,11 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     });
   }
 
-  // Tambahkan fungsi buildSectionTitle dengan alignment center left
   Widget buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Align(
-        alignment: Alignment.centerLeft, // Alignment center left
+        alignment: Alignment.centerLeft,
         child: Text(
           title,
           style: const TextStyle(
@@ -169,6 +167,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -219,15 +218,13 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             buildSectionTitle("Available On"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: List.generate(widget.game.avaible.length, (index) {
-                    return buildTag(widget.game.avaible[index]);
-                  }),
-                ),
+              child: Wrap(
+                alignment: WrapAlignment.start,
+                spacing: 8,
+                runSpacing: 8,
+                children: List.generate(widget.game.avaible.length, (index) {
+                  return buildTag(widget.game.avaible[index]);
+                }),
               ),
             ),
 
@@ -237,15 +234,13 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             buildSectionTitle("Genre"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: List.generate(widget.game.genre.length, (index) {
-                    return buildTag(widget.game.genre[index]);
-                  }),
-                ),
+              child: Wrap(
+                alignment: WrapAlignment.start,
+                spacing: 8,
+                runSpacing: 8,
+                children: List.generate(widget.game.genre.length, (index) {
+                  return buildTag(widget.game.genre[index]);
+                }),
               ),
             ),
 
@@ -257,10 +252,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 widget.game.description,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  height: 1.4,
-                ),
+                style: const TextStyle(color: Colors.white70, height: 1.4),
                 textAlign: TextAlign.justify,
               ),
             ),
