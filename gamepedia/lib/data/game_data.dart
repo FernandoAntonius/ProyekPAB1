@@ -2,22 +2,22 @@ import 'package:gamepedia/models/game.dart';
 
 var gameList = [
   Game(
-    title: 'Valorant',
-    developer: 'Riot Games',
-    releaseDate: DateTime(2020, 06, 02),
-    rating: '8,7',
-    price: 1,
-    avaible: ['PC'],
+    title: 'Baldurs Gate 3: Digital Deluxe Edition',
+    developer: 'Larian Studios',
+    releaseDate: DateTime(2023, 08, 03),
+    rating: '10,0',
+    price: 7.49,
+    avaible: ['Windows, MacOS, XBOX, Playstation 5'],
     genre: [
-      'Shooter',
+      'Role-Playing, Strategy, Turn-Based Strategy, Tactical, Adventure',
       ],
-    description: 'Padukan gaya dan pengalamanmu di panggung kompetitif global. Kamu memiliki 13 ronde untuk menyerang dan mempertahankan sisimu dengan keahlian tembak-menembak sengit serta kemampuan taktis. Dengan satu nyawa per ronde, kamu harus berpikir lebih cepat daripada lawan jika ingin tetap hidup. Habisi musuh baik di mode Competitive maupun Unranked serta Deathmatch dan Spike Rush.',
-    imageAssets: 'images/valorant.png',
+    description: 'The Digital Deluxe Edition upgrade content includes in-game cosmetics, such as a unique custom dice skin to show off to your friends, as well as practical in-game items such as the Mask of the Shapeshifter from Divinity: Original Sin 2.',
+    imageAssets: 'images/baldur.png',
     screenShots: [
-      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/4f/71/borobudur-and-the-sky.jpg',
-      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/5d/36/borobudur-airial-view.jpg',
-      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/4d/c7/borobudur-and-the-sky.jpg',
-      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/47/0e/borobudur-sunset-moment.jpg',
+      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_3250c1e6aeae1968dfa085eac1cd33da2b00b253.jpg',
+      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_5c6df47fd4137af659bd8bf962a3f75a2d2362cd.jpg',
+      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_3ac12b9b101f75921af73784abad91bea9ccbf6a.jpg',
+      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_5d48a7a5eee94c5f941bed03e17c7c340a7bfd3f.jpg',
     ],
     systemRequirements: {
       "minimum": {
