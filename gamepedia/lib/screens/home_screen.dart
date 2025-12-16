@@ -97,17 +97,32 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     },
                     style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "Search games...",
-                      hintStyle: TextStyle(
-                        color: Colors.white38,
-                        fontFamily: 'Quicksand',
+                      hintStyle: const TextStyle(color: Color(0xFFDCA7FF)),
+                      prefixIcon: ShaderMask(
+                        shaderCallback: (bounds) => const LinearGradient(
+                          colors: [
+                            Color(0xFF748AFA),
+                            Color(0xFF617BFF),
+                            Color(0xFFF47EFF),
+                            Color(0xFFFFFFFF),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ).createShader(bounds),
+                        child: const Icon(Icons.search, color: Colors.white),
                       ),
-                      prefixIcon: Icon(Icons.search, color: Colors.white54),
+                      prefixIconConstraints: const BoxConstraints(
+                        minWidth: 40,
+                        minHeight: 40,
+                      ),
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 14,
+                      contentPadding: const EdgeInsets.only(
+                        left: 16,
+                        right: 20,
+                        top: 14,
+                        bottom: 14,
                       ),
                     ),
                   ),
@@ -169,7 +184,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => GameDetailScreen(game: game),
+                              builder: (context) =>
+                                  GameDetailScreen(game: game),
                             ),
                           );
                         },
@@ -196,7 +212,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
+                const SizedBox(height: 12),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text("More Games", style: TextStyle(color: Colors.white70)),
+                    SizedBox(width: 4),
+                    Icon(Icons.arrow_right_alt, color: Colors.blueAccent),
+                  ],
+                ),
                 const SizedBox(height: 24),
 
                 //NEW RELEASES TITLE
@@ -294,66 +319,65 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                  //BROWSE BY GENRE TITLE
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.grid_view_rounded,
-                        color: Colors.cyanAccent,
-                        size: 22,
+                //BROWSE BY GENRE TITLE
+                Row(
+                  children: const [
+                    Icon(
+                      Icons.grid_view_rounded,
+                      color: Colors.cyanAccent,
+                      size: 22,
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      "Browse by Genre",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Quicksand',
                       ),
-                      SizedBox(width: 6),
-                      Text(
-                        "Browse by Genre",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Quicksand',
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
 
-                  const SizedBox(height: 16),
+                const SizedBox(height: 16),
 
-                  //GENRE GRID
-                  GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: [
-                      buildGenreCard(
-                        icon: Icons.explore_rounded,
-                        title: "Adventure",
-                      ),
-                      buildGenreCard(
-                        icon: Icons.auto_stories_rounded,
-                        title: "Role-playing",
-                      ),
-                      buildGenreCard(
-                        icon: Icons.gps_fixed_rounded,
-                        title: "Shooter",
-                      ),
-                      buildGenreCard(
-                        icon: Icons.videogame_asset_rounded,
-                        title: "Platform",
-                      ),
-                      buildGenreCard(
-                        icon: Icons.extension_rounded,
-                        title: "Puzzle",
-                      ),
-                      buildGenreCard(
-                        icon: Icons.account_tree_rounded,
-                        title: "Strategy",
-                      ),
-                    ],
-                  ),
+                //GENRE GRID
+                GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    buildGenreCard(
+                      icon: Icons.explore_rounded,
+                      title: "Adventure",
+                    ),
+                    buildGenreCard(
+                      icon: Icons.auto_stories_rounded,
+                      title: "Role-playing",
+                    ),
+                    buildGenreCard(
+                      icon: Icons.gps_fixed_rounded,
+                      title: "Shooter",
+                    ),
+                    buildGenreCard(
+                      icon: Icons.videogame_asset_rounded,
+                      title: "Platform",
+                    ),
+                    buildGenreCard(
+                      icon: Icons.extension_rounded,
+                      title: "Puzzle",
+                    ),
+                    buildGenreCard(
+                      icon: Icons.account_tree_rounded,
+                      title: "Strategy",
+                    ),
+                  ],
+                ),
 
                 const SizedBox(height: 32),
-
               ],
             ),
           ),

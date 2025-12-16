@@ -20,37 +20,38 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   void initState() {
     super.initState();
     _checkSignInStatus();
-    _loadFavoriteStatus();
+    _loadFavoritesStatus();
   }
 
   void _checkSignInStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool signedIn = prefs.getBool('isSignedIn') ?? false;
-    setState(() {
-      isSignedIn = signedIn;
-    });
+    final prefs = await SharedPreferences.getInstance();
+    isSignedIn = prefs.getBool("isSignedIn") ?? false;
+    setState(() {});
   }
 
-  void _loadFavoriteStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool favorite = prefs.getBool('favorite_${widget.game.title}') ?? false;
+  void _loadFavoritesStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool saved = prefs.getBool("favorite_${widget.game.title}") ?? false;
+
     setState(() {
-      isFavorite = favorite;
+      isFavorite = saved;
     });
   }
 
   Future<void> _toggleFavorite() async {
+    final prefs = await SharedPreferences.getInstance();
+  Future<void> _toggleFavorite() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (!isSignedIn) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.pushReplacementNamed(context, '/login');
-      });
+      Navigator.pushNamed(context, "/signin");
       return;
     }
-    bool favoriteStatus = !isFavorite;
-    prefs.setBool('favorite_${widget.game.title}', favoriteStatus);
+
+    bool newStatus = !isFavorite;
+    prefs.setBool("favorite_${widget.game.title}", newStatus);
+
     setState(() {
-      isFavorite = favoriteStatus;
+      isFavorite = newStatus;
     });
   }
 
@@ -121,16 +122,14 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 ),
               ),
             ),
-
             const SizedBox(height: 16),
-
-            // TITLE, DEVELOPER, RATING, FAVORITE
+            //TITLE, DEVELOPER, FAVORITE, RATING
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // TITLE & DEVELOPER
+                  // TITLE DAN DEVELOPER DI KIRI
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,8 +152,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                       ],
                     ),
                   ),
-
-                  // RATING & FAVORITE
+                  // RATING DAN FAVORITE
                   Row(
                     children: [
                       // RATING
@@ -173,10 +171,9 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                         ],
                       ),
                       const SizedBox(width: 8),
+                      // FAVORITE BUTTON
                       IconButton(
-                        onPressed: () {
-                          _toggleFavorite();
-                        },
+                        onPressed: _toggleFavorite,
                         icon: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_border,
                           color: isFavorite ? Colors.red : Colors.white,
@@ -189,7 +186,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            // RELEASE DATE & PRICE
+            // RELEASE DATE & PRICE CARDS
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -220,19 +217,22 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 children: List.generate(widget.game.avaible.length, (index) {
                   return buildTag(widget.game.avaible[index]);
                 }),
+              ),
             ),
             const SizedBox(height: 10),
             // GENRE
             buildSectionTitle("Genre"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Wrap(
-                alignment: WrapAlignment.start,
-                spacing: 8,
-                runSpacing: 8,
-                children: List.generate(widget.game.genre.length, (index) {
-                  return buildTag(widget.game.genre[index]);
-                }),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: List.generate(widget.game.genre.length, (index) {
+                    return buildTag(widget.game.genre[index]);
+                  }),
+                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -285,11 +285,9 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
       ),
     );
   }
-
   //SYSTEM REQUIRENMENTS
   Widget _buildSystemRequirements(Game game) {
     final sysReq = game.systemRequirements;
-
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -312,9 +310,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-
           const SizedBox(height: 12),
-
           // Minimum Requirements
           const Text(
             "Minimum",

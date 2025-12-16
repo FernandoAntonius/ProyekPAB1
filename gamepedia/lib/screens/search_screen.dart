@@ -34,7 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
     "Simulator",
   ];
 
-  int selectedCategory = 0; 
+  Set<int> selectedCategories = {0};
 
   @override
   void initState() {
@@ -45,8 +45,14 @@ class _SearchScreenState extends State<SearchScreen> {
   void _filterGames() {
     setState(() {
       _filteredGames = gameList.where((game) {
-        bool titleGame = game.title.toLowerCase().contains(_searchQuery.toLowerCase());
-        bool filterGenre = selectedCategory == 0 || game.genre.contains(categories[selectedCategory]); 
+        bool titleGame = game.title.toLowerCase().contains(
+          _searchQuery.toLowerCase(),
+        );
+        bool filterGenre =
+            selectedCategories.contains(0) ||
+            selectedCategories.any(
+              (index) => game.genre.contains(categories[index]),
+            );
         return titleGame && filterGenre;
       }).toList();
     });
@@ -87,10 +93,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   const SizedBox(width: 8),
                   ShaderMask(
                     shaderCallback: (bounds) => const LinearGradient(
-                      colors: [
-                        Color(0xFF1124A5), 
-                        Color(0xFFB923FF),
-                      ],
+                      colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ).createShader(bounds),
@@ -110,7 +113,7 @@ class _SearchScreenState extends State<SearchScreen> {
               const Text(
                 "Discover Amazing Games",
                 style: TextStyle(
-                  color: Colors.white70, 
+                  color: Colors.white70,
                   fontSize: 14,
                   fontFamily: 'Quicksand',
                 ),
@@ -130,13 +133,36 @@ class _SearchScreenState extends State<SearchScreen> {
                     _filterGames();
                   },
                   style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Search games...",
-                    hintStyle: TextStyle(color: Colors.white38, fontFamily: "Quicksand"),
-                    prefixIcon: Icon(Icons.search, color: Colors.white54),
+                    hintStyle: const TextStyle(
+                      color: Color(0xFFDCA7FF),
+                      fontFamily: 'Quicksand',
+                    ),
+                    prefixIcon: ShaderMask(
+                      shaderCallback: (bounds) => const LinearGradient(
+                        colors: [
+                          Color(0xFF748AFA),
+                          Color(0xFF617BFF),
+                          Color(0xFFF47EFF),
+                          Color(0xFFFFFFFF),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ).createShader(bounds),
+                      child: const Icon(Icons.search, color: Colors.white),
+                    ),
+                    prefixIconConstraints: const BoxConstraints(
+                      minWidth: 40,
+                      minHeight: 40,
+                    ),
                     border: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                    contentPadding: const EdgeInsets.only(
+                      left: 16,
+                      right: 20,
+                      top: 14,
+                      bottom: 14,
+                    ),
                   ),
                 ),
               ),
@@ -150,24 +176,41 @@ class _SearchScreenState extends State<SearchScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
-                    final bool isSelected = selectedCategory == index;
+                    final bool isSelected = selectedCategories.contains(index);
                     return Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            selectedCategory = index;
+                            if (index == 0) {
+                              selectedCategories = {0};
+                            } else {
+                              if (selectedCategories.contains(0)) {
+                                selectedCategories.remove(0);
+                              }
+                              if (isSelected) {
+                                selectedCategories.remove(index);
+                                if (selectedCategories.isEmpty) {
+                                  selectedCategories = {0};
+                                }
+                              } else {
+                                selectedCategories.add(index);
+                              }
+                            }
                             _filterGames();
                           });
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
                             gradient: isSelected
                                 ? const LinearGradient(
                                     colors: [
-                                      Color(0xFF1124A5), 
-                                      Color(0xFFB923FF)
+                                      Color(0xFF1124A5),
+                                      Color(0xFFB923FF),
                                     ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
@@ -176,11 +219,27 @@ class _SearchScreenState extends State<SearchScreen> {
                             color: isSelected ? null : Colors.white10,
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: Text(
-                            categories[index],
-                            style: TextStyle(
-                              color: isSelected ? Colors.white : Colors.white70,
-                            ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                categories[index],
+                                style: TextStyle(
+                                  color: isSelected
+                                      ? Colors.white
+                                      : Colors.white70,
+                                ),
+                              ),
+                              if (isSelected)
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 6),
+                                  child: Icon(
+                                    Icons.check,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                            ],
                           ),
                         ),
                       ),
@@ -208,7 +267,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GameDetailScreen(game: gameList[0],),
+                            builder: (context) =>
+                                GameDetailScreen(game: gameList[0]),
                           ),
                         );
                       },
@@ -250,7 +310,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 color: Colors.white54,
                                 fontSize: 10,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
