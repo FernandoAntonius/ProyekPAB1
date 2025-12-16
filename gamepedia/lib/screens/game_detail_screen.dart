@@ -275,30 +275,48 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             const SizedBox(height: 24),
             // AVAILABLE ON
             buildSectionTitle("Available On"),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Wrap(
-                alignment: WrapAlignment.start,
-                spacing: 8,
-                runSpacing: 8,
-                children: List.generate(widget.game.avaible.length, (index) {
-                  return buildTag(widget.game.avaible[index]);
-                }),
+            SizedBox(
+              height: 50,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 16),
+                    ...widget.game.avaible
+                        .expand((item) => item.split(',').map((s) => s.trim()))
+                        .map((platform) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: buildTag(platform),
+                          );
+                        })
+                        .toList(),
+                    const SizedBox(width: 4),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 10),
             // GENRE
             buildSectionTitle("Genre"),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: List.generate(widget.game.genre.length, (index) {
-                    return buildTag(widget.game.genre[index]);
-                  }),
+            SizedBox(
+              height: 50,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 16),
+                    ...widget.game.genre
+                        .expand((item) => item.split(',').map((s) => s.trim()))
+                        .map((genre) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: buildTag(genre),
+                          );
+                        })
+                        .toList(),
+                    const SizedBox(width: 4),
+                  ],
                 ),
               ),
             ),
