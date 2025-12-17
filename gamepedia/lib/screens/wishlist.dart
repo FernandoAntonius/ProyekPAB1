@@ -34,6 +34,21 @@ class _WishlistScreenState extends State<WishlistScreen> {
     });
   }
 
+  void _toggleFavorite(Game game) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool currentStatus = prefs.getBool('favorite_${game.title}') ?? false;
+
+    await prefs.setBool('favorite_${game.title}', !currentStatus);
+
+    setState(() {
+      if (currentStatus) {
+        favoriteGames.removeWhere((g) => g.title == game.title);
+      } else {
+        favoriteGames.add(game);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,17 +84,30 @@ class _WishlistScreenState extends State<WishlistScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 24),
-              Image.asset('images/wishlist.png', width: 90),
-              const SizedBox(height: 8),
-              ShaderMask(
-                shaderCallback: (bounds) => const LinearGradient(
-                  colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ).createShader(bounds),
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFFFF3737).withOpacity(0.3),
+                      blurRadius: 20,
+                      spreadRadius: 5,
+                    ),
+                  ],
+                ),
+                child: const Icon(
+                  Icons.favorite,
+                  size: 50,
+                  color: Colors.white,
+                ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
               ShaderMask(
                 shaderCallback: (bounds) => const LinearGradient(
                   colors: [Color(0xFFFF3737), Color(0xFFFF7BC4)],
@@ -96,7 +124,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 8),
               Text(
                 "${favoriteGames.length} games saved.",
                 style: TextStyle(
@@ -106,12 +134,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 24),
               favoriteGames.isEmpty
                   ? Column(
                       children: const [
+                        SizedBox(height: 40),
                         Text(
                           "Your wishlist is empty :(",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -122,6 +152,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         SizedBox(height: 8),
                         Text(
                           "Start adding games you're interested in!",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 14,
@@ -141,12 +172,23 @@ class _WishlistScreenState extends State<WishlistScreen> {
                           margin: const EdgeInsets.only(bottom: 16),
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(16),
                             gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFF8E2082), Color(0xFF342860)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [Color(0xFF1A1D3A), Color(0xFF2D1B3D)],
                             ),
+                            border: Border.all(
+                              color: const Color(0xFFFF3737).withOpacity(0.3),
+                              width: 1.5,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFFFF3737).withOpacity(0.1),
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
                           ),
                           child: Row(
                             children: [
@@ -206,13 +248,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                       game.title,
                                       style: const TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Quicksand',
                                       ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    const SizedBox(height: 6),
-                                    // GENRE
+                                    const SizedBox(height: 8),
                                     SizedBox(
                                       height: 25,
                                       child: ListView.builder(
@@ -229,8 +272,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                             decoration: BoxDecoration(
                                               gradient: const LinearGradient(
                                                 colors: [
-                                                  Color(0xFF2C3C8B),
-                                                  Color(0xFF8366ED),
+                                                  Color(0xFF3A3FF2),
+                                                  Color(0xFF7754F4),
                                                 ],
                                               ),
                                               borderRadius:
@@ -241,8 +284,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                               game.genre[index],
                                               style: const TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 12,
+                                                fontSize: 11,
                                                 height: 1.0,
+                                                fontWeight: FontWeight.w600,
                                               ),
                                             ),
                                           );
@@ -250,7 +294,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                       ),
                                     ),
                                     const SizedBox(height: 8),
-                                    // DEVICES
                                     SizedBox(
                                       height: 22,
                                       child: ListView.builder(
@@ -265,8 +308,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                               horizontal: 10,
                                             ),
                                             decoration: BoxDecoration(
-                                              color: Colors.black.withOpacity(
-                                                0.35,
+                                              color: Colors.white.withOpacity(
+                                                0.1,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(14),
@@ -279,7 +322,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                               game.device[index],
                                               style: const TextStyle(
                                                 color: Colors.white70,
-                                                fontSize: 11,
+                                                fontSize: 10,
                                                 height: 1.0,
                                               ),
                                             ),
@@ -302,12 +345,17 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                           )[0],
                                           style: const TextStyle(
                                             color: Colors.white70,
+                                            fontSize: 12,
                                           ),
                                         ),
                                         const Spacer(),
-                                        const Icon(
-                                          Icons.favorite,
-                                          color: Colors.pink,
+                                        GestureDetector(
+                                          onTap: () => _toggleFavorite(game),
+                                          child: const Icon(
+                                            Icons.favorite,
+                                            color: Color(0xFFFF3737),
+                                            size: 24,
+                                          ),
                                         ),
                                       ],
                                     ),
