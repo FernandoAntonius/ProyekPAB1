@@ -43,11 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
     "Mobile",
   ];
 
-  final List<String> priceSort = [
-    "Default",
-    "Low to High",
-    "High to Low",
-  ];
+  final List<String> priceSort = ["Default", "Low to High", "High to Low"];
 
   Set<int> selectedGenres = {0};
   Set<int> selectedDevices = {0};
@@ -67,12 +63,12 @@ class _SearchScreenState extends State<SearchScreen> {
           _searchQuery.toLowerCase(),
         );
 
-        bool genreMatch = selectedGenres.contains(0) ||
-            selectedGenres.any(
-              (index) => game.genre.contains(genres[index]),
-            );
+        bool genreMatch =
+            selectedGenres.contains(0) ||
+            selectedGenres.any((index) => game.genre.contains(genres[index]));
 
-        bool deviceMatch = selectedDevices.contains(0) ||
+        bool deviceMatch =
+            selectedDevices.contains(0) ||
             selectedDevices.any(
               (index) => game.avaible.contains(devices[index]),
             );
@@ -82,7 +78,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
       if (selectedPriceSort == 1) {
         _filteredGames.sort((a, b) => a.price.compareTo(b.price));
-      } else if (selectedPriceSort == 2) {     
+      } else if (selectedPriceSort == 2) {
         _filteredGames.sort((a, b) => b.price.compareTo(a.price));
       }
     });
@@ -94,17 +90,11 @@ class _SearchScreenState extends State<SearchScreen> {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             gradient: isSelected
                 ? const LinearGradient(
-                    colors: [
-                      Color(0xFF1124A5),
-                      Color(0xFFB923FF),
-                    ],
+                    colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   )
@@ -125,11 +115,7 @@ class _SearchScreenState extends State<SearchScreen> {
               if (isSelected)
                 const Padding(
                   padding: EdgeInsets.only(left: 6),
-                  child: Icon(
-                    Icons.check,
-                    size: 16,
-                    color: Colors.white,
-                  ),
+                  child: Icon(Icons.check, size: 16, color: Colors.white),
                 ),
             ],
           ),
@@ -372,8 +358,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         scrollDirection: Axis.horizontal,
                         itemCount: genres.length,
                         itemBuilder: (context, index) {
-                          final bool isSelected =
-                              selectedGenres.contains(index);
+                          final bool isSelected = selectedGenres.contains(
+                            index,
+                          );
                           return _buildFilterChip(
                             genres[index],
                             isSelected,
@@ -401,55 +388,56 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                       )
                     : activeFilterTab == 1
-                        ? ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: devices.length,
-                            itemBuilder: (context, index) {
-                              final bool isSelected =
-                                  selectedDevices.contains(index);
-                              return _buildFilterChip(
-                                devices[index],
-                                isSelected,
-                                () {
-                                  setState(() {
-                                    if (index == 0) {
+                    ? ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: devices.length,
+                        itemBuilder: (context, index) {
+                          final bool isSelected = selectedDevices.contains(
+                            index,
+                          );
+                          return _buildFilterChip(
+                            devices[index],
+                            isSelected,
+                            () {
+                              setState(() {
+                                if (index == 0) {
+                                  selectedDevices = {0};
+                                } else {
+                                  if (selectedDevices.contains(0)) {
+                                    selectedDevices.remove(0);
+                                  }
+                                  if (isSelected) {
+                                    selectedDevices.remove(index);
+                                    if (selectedDevices.isEmpty) {
                                       selectedDevices = {0};
-                                    } else {
-                                      if (selectedDevices.contains(0)) {
-                                        selectedDevices.remove(0);
-                                      }
-                                      if (isSelected) {
-                                        selectedDevices.remove(index);
-                                        if (selectedDevices.isEmpty) {
-                                          selectedDevices = {0};
-                                        }
-                                      } else {
-                                        selectedDevices.add(index);
-                                      }
                                     }
-                                    _filterGames();
-                                  });
-                                },
-                              );
+                                  } else {
+                                    selectedDevices.add(index);
+                                  }
+                                }
+                                _filterGames();
+                              });
                             },
-                          )
-                        : ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: priceSort.length,
-                            itemBuilder: (context, index) {
-                              final bool isSelected = selectedPriceSort == index;
-                              return _buildFilterChip(
-                                priceSort[index],
-                                isSelected,
-                                () {
-                                  setState(() {
-                                    selectedPriceSort = index;
-                                    _filterGames();
-                                  });
-                                },
-                              );
+                          );
+                        },
+                      )
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: priceSort.length,
+                        itemBuilder: (context, index) {
+                          final bool isSelected = selectedPriceSort == index;
+                          return _buildFilterChip(
+                            priceSort[index],
+                            isSelected,
+                            () {
+                              setState(() {
+                                selectedPriceSort = index;
+                                _filterGames();
+                              });
                             },
-                          ),
+                          );
+                        },
+                      ),
               ),
 
               const SizedBox(height: 16),
@@ -521,7 +509,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                             const SizedBox(height: 2),
                             Text(
-                              "\$${game.price}",
+                              game.price > 0 ? "\$${game.price}" : "FREE",
                               style: const TextStyle(
                                 color: Color(0xFF00FF88),
                                 fontSize: 11,

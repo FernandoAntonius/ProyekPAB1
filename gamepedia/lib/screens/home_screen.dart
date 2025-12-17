@@ -351,33 +351,123 @@ class _HomeScreenState extends State<HomeScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     buildGenreCard(
+                      context: context,
                       icon: Icons.explore_rounded,
                       title: "Adventure",
+                      navigateTo: '/adventure',
                     ),
                     buildGenreCard(
+                      context: context,
                       icon: Icons.auto_stories_rounded,
                       title: "Role-playing",
+                      navigateTo: '/role-playing',
                     ),
                     buildGenreCard(
+                      context: context,
                       icon: Icons.gps_fixed_rounded,
                       title: "Shooter",
+                      navigateTo: '/shooter',
                     ),
                     buildGenreCard(
+                      context: context,
                       icon: Icons.videogame_asset_rounded,
                       title: "Platform",
+                      navigateTo: '/platform',
                     ),
                     buildGenreCard(
+                      context: context,
                       icon: Icons.extension_rounded,
                       title: "Puzzle",
+                      navigateTo: '/puzzle',
                     ),
                     buildGenreCard(
+                      context: context,
                       icon: Icons.account_tree_rounded,
                       title: "Strategy",
+                      navigateTo: '/strategy',
                     ),
                   ],
                 ),
 
                 const SizedBox(height: 32),
+
+                //BROWSE BY DEVICE TITLE
+                Row(
+                  children: const [
+                    Icon(Icons.device_hub, color: Colors.cyanAccent, size: 22),
+                    SizedBox(width: 6),
+                    Text(
+                      "Browse by Device",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Quicksand',
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 16),
+
+                //DEVICE GRID
+                GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.window_sharp,
+                      title: "Windows",
+                      navigateTo: '/windows',
+                    ),
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.laptop,
+                      title: "MacOS",
+                      navigateTo: '/macos',
+                    ),
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.android,
+                      title: "Android",
+                      navigateTo: '/android',
+                    ),
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.apple,
+                      title: "iOS",
+                      navigateTo: '/ios',
+                    ),
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.gamepad,
+                      title: "Playstation 5",
+                      navigateTo: '/ps5',
+                    ),
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.gamepad_outlined,
+                      title: "Playstation 4",
+                      navigateTo: '/ps4',
+                    ),
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.screenshot_monitor_outlined,
+                      title: "Xbox",
+                      navigateTo: '/xbpx',
+                    ),
+                    buildDeviceCard(
+                      context: context,
+                      icon: Icons.stay_current_landscape,
+                      title: "Nintendo Switch",
+                      navigateTo: '/switch',
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
