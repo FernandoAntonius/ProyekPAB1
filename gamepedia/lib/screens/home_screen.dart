@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_data.dart';
 import 'package:gamepedia/models/game.dart';
+import 'package:gamepedia/screens/by_device.dart/android.dart';
+import 'package:gamepedia/screens/by_device.dart/ios.dart';
+import 'package:gamepedia/screens/by_device.dart/linux.dart';
+import 'package:gamepedia/screens/by_device.dart/macos.dart';
+import 'package:gamepedia/screens/by_device.dart/nintendo_switch.dart';
+import 'package:gamepedia/screens/by_device.dart/playstation.dart';
+import 'package:gamepedia/screens/by_device.dart/windows.dart';
+import 'package:gamepedia/screens/by_device.dart/xbox.dart';
+import 'package:gamepedia/screens/by_genre.dart/adventure.dart';
+import 'package:gamepedia/screens/by_genre.dart/platformer.dart';
+import 'package:gamepedia/screens/by_genre.dart/puzzle.dart';
+import 'package:gamepedia/screens/by_genre.dart/role_playing.dart';
+import 'package:gamepedia/screens/by_genre.dart/shooter.dart';
+import 'package:gamepedia/screens/by_genre.dart/strategy.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
-import 'package:gamepedia/widgets/info_card.dart';
 import 'package:gamepedia/screens/new_release.dart';
 import 'package:gamepedia/screens/popular_game.dart';
 
@@ -384,41 +397,197 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    buildGenreCard(
-                      context: context,
-                      icon: Icons.explore_rounded,
-                      title: "Adventure",
-                      navigateTo: '/adventure',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AdventureScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.explore_rounded, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Adventure",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildGenreCard(
-                      context: context,
-                      icon: Icons.auto_stories_rounded,
-                      title: "Role-playing",
-                      navigateTo: '/role-playing',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RolePlayingScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.auto_stories_rounded, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Role-playing",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildGenreCard(
-                      context: context,
-                      icon: Icons.gps_fixed_rounded,
-                      title: "Shooter",
-                      navigateTo: '/shooter',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ShooterScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.gps_fixed_rounded, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Shooter",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildGenreCard(
-                      context: context,
-                      icon: Icons.videogame_asset_rounded,
-                      title: "Platform",
-                      navigateTo: '/platform',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PlatformerScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.videogame_asset_rounded, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Platformer",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildGenreCard(
-                      context: context,
-                      icon: Icons.extension_rounded,
-                      title: "Puzzle",
-                      navigateTo: '/puzzle',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PuzzleScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.extension_rounded, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Puzzle",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildGenreCard(
-                      context: context,
-                      icon: Icons.account_tree_rounded,
-                      title: "Strategy",
-                      navigateTo: '/strategy',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => StrategyScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.account_tree_rounded, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Strategy",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -452,53 +621,261 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.window_sharp,
-                      title: "Windows",
-                      navigateTo: '/windows',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WindowsScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.window_sharp, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Windows",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.laptop,
-                      title: "MacOS",
-                      navigateTo: '/macos',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MacOSSCreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.laptop, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "MacOS",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.android,
-                      title: "Android",
-                      navigateTo: '/android',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AndroidScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.android, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Android",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.apple,
-                      title: "iOS",
-                      navigateTo: '/ios',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => IOSScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.apple, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "iOS",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.gamepad,
-                      title: "Playstation 5",
-                      navigateTo: '/ps5',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => XboxScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.screenshot_monitor_outlined, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Xbox",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.gamepad_outlined,
-                      title: "Playstation 4",
-                      navigateTo: '/ps4',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NintendoSwitchScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.stay_current_landscape, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Nintendo Switch",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.screenshot_monitor_outlined,
-                      title: "Xbox",
-                      navigateTo: '/xbox',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LinuxScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.laptop, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Linux",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    buildDeviceCard(
-                      context: context,
-                      icon: Icons.stay_current_landscape,
-                      title: "Nintendo Switch",
-                      navigateTo: '/switch',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PlayStationScreen(),
+                          ),
+                        );;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A1C3A),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.gamepad, color: Colors.cyanAccent, size: 40),
+                            const SizedBox(height: 8),
+                            Text(
+                              "PlayStation",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quicksand',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),

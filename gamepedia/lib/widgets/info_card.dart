@@ -1,95 +1,5 @@
 import 'package:flutter/material.dart';
 
-Widget buildGenreCard({
-  required BuildContext context,
-  required IconData icon,
-  required String title,
-  required String navigateTo,
-}) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.pushNamed(context, navigateTo);
-    },
-    child: Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A1C3A),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: Colors.white, size: 36),
-          const SizedBox(height: 12),
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Quicksand',
-            ),
-          ),
-          const SizedBox(height: 4),
-          const Text(
-            "games",
-            style: TextStyle(
-              color: Colors.white54,
-              fontSize: 12,
-              fontFamily: 'Quicksand',
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-Widget buildDeviceCard({
-  required BuildContext context,
-  required IconData icon,
-  required String title,
-  required navigateTo,
-}) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.pushNamed(context, navigateTo);
-    },
-    child: Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A1C3A),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: Colors.white, size: 36),
-          const SizedBox(height: 12),
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Quicksand',
-            ),
-          ),
-          const SizedBox(height: 4),
-          const Text(
-            "games",
-            style: TextStyle(
-              color: Colors.white54,
-              fontSize: 12,
-              fontFamily: 'Quicksand',
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
 Widget buildInfoCard({
   required IconData icon,
   required String title,
@@ -135,8 +45,8 @@ Widget buildInfoCard({
   );
 }
 
-Widget buildTag(String text) {
-  return Container(
+Widget buildTag(String text, {void Function()? onTap}) {
+  final tag = Container(
     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
     decoration: BoxDecoration(
       gradient: const LinearGradient(
@@ -159,6 +69,11 @@ Widget buildTag(String text) {
       style: const TextStyle(color: Colors.white, fontSize: 12),
     ),
   );
+
+  if (onTap != null) {
+    return GestureDetector(onTap: onTap, child: tag);
+  }
+  return tag;
 }
 
 Widget buildSectionTitle(String title) {
