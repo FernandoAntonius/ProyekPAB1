@@ -86,38 +86,6 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
-  Widget _buildFilterChip(String label, bool isSelected, VoidCallback onTap) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: BoxDecoration(
-            gradient: isSelected
-                ? const LinearGradient(
-                    colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  )
-                : null,
-            color: isSelected ? null : Colors.white10,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                label,
-                style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.white70,
-                  fontFamily: 'Quicksand',
-                ),
-              ),
-              if (isSelected)
-                const Padding(
-                  padding: EdgeInsets.only(left: 6),
-                  child: Icon(Icons.check, size: 16, color: Colors.white),
   void _showFilterBottomSheet() {
     showModalBottomSheet(
       context: context,
@@ -179,7 +147,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     ],
                   ),
                 ),
-
                 Expanded(
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -323,7 +290,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             );
                           }),
                         ),
-                        const SizedBox(height: 24),                 
+                        const SizedBox(height: 24),
                         const Text(
                           "Sort by Price",
                           style: TextStyle(
@@ -376,7 +343,6 @@ class _SearchScreenState extends State<SearchScreen> {
                             );
                           }),
                         ),
-
                         const SizedBox(height: 24),
                       ],
                     ),
@@ -506,7 +472,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   fontFamily: 'Quicksand',
                 ),
               ),
-
               const SizedBox(height: 16),
               Row(
                 children: [
@@ -608,96 +573,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ),
                 ],
-              ),
-              const SizedBox(height: 12),
-              // FILTER OPTIONS
-              SizedBox(
-                height: 36,
-                child: activeFilterTab == 0
-                    ? ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: genres.length,
-                        itemBuilder: (context, index) {
-                          final bool isSelected = selectedGenres.contains(
-                            index,
-                          );
-                          return _buildFilterChip(
-                            genres[index],
-                            isSelected,
-                            () {
-                              setState(() {
-                                if (index == 0) {
-                                  selectedGenres = {0};
-                                } else {
-                                  if (selectedGenres.contains(0)) {
-                                    selectedGenres.remove(0);
-                                  }
-                                  if (isSelected) {
-                                    selectedGenres.remove(index);
-                                    if (selectedGenres.isEmpty) {
-                                      selectedGenres = {0};
-                                    }
-                                  } else {
-                                    selectedGenres.add(index);
-                                  }
-                                }
-                                _filterGames();
-                              });
-                            },
-                          );
-                        },
-                      )
-                    : activeFilterTab == 1
-                    ? ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: devices.length,
-                        itemBuilder: (context, index) {
-                          final bool isSelected = selectedDevices.contains(
-                            index,
-                          );
-                          return _buildFilterChip(
-                            devices[index],
-                            isSelected,
-                            () {
-                              setState(() {
-                                if (index == 0) {
-                                  selectedDevices = {0};
-                                } else {
-                                  if (selectedDevices.contains(0)) {
-                                    selectedDevices.remove(0);
-                                  }
-                                  if (isSelected) {
-                                    selectedDevices.remove(index);
-                                    if (selectedDevices.isEmpty) {
-                                      selectedDevices = {0};
-                                    }
-                                  } else {
-                                    selectedDevices.add(index);
-                                  }
-                                }
-                                _filterGames();
-                              });
-                            },
-                          );
-                        },
-                      )
-                    : ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: priceSort.length,
-                        itemBuilder: (context, index) {
-                          final bool isSelected = selectedPriceSort == index;
-                          return _buildFilterChip(
-                            priceSort[index],
-                            isSelected,
-                            () {
-                              setState(() {
-                                selectedPriceSort = index;
-                                _filterGames();
-                              });
-                            },
-                          );
-                        },
-                      ),
               ),
               const SizedBox(height: 16),
               Text(
