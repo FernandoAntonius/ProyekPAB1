@@ -2,7 +2,7 @@ class Game {
   final String title;
   final String developer;
   final DateTime releaseDate;
-  final String rating;
+  final double rating;
   final double price;
   final List<String> avaible;
   final List<String> genre;
