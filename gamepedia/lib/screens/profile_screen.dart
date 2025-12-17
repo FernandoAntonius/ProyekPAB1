@@ -359,6 +359,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         iconBackgroundHoverColor: Colors.white.withOpacity(
                           0.15,
                         ),
+                        isSignedIn: isSignedIn,
                         navigateTo: '/terms',
                       ),
                     ],
