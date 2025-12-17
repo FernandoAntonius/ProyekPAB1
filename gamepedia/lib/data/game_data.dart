@@ -1771,7 +1771,7 @@ var gameList = [
     genre: ['Arcade', 'Indie'],
     description:
         "Hajar gelombang musuh tanpa akhir dan jadi absurdly OP! Ambil loot, level up character, unlock karakter baru, upgrade senjata dan bikin build unik serta gokil sambil nahan hordes makhluk!",
-    imageAssets: 'images/skull.jpg',
+    imageAssets: 'images/megabonk.jpg',
     screenShots: [
       'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/ce4d8d24a3731a91490ab92b8687f07314c600b9/ss_ce4d8d24a3731a91490ab92b8687f07314c600b9.jpg',
       'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/9ecc4f12f9031e38e546e80416c98eab310dea8b/ss_9ecc4f12f9031e38e546e80416c98eab310dea8b.jpg',
