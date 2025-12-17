@@ -7,7 +7,7 @@ var gameList = [
     releaseDate: DateTime(2023, 08, 03),
     rating: 10.0,
     price: 7.49,
-    device: ['Windows', 'MacOS', 'XBOX', 'Playstation 5'],
+    device: ['Windows', 'Mac', 'Xbox', 'PlayStation'],
     genre: [
       'Role-Playing',
       'Strategy',
@@ -48,7 +48,7 @@ var gameList = [
     releaseDate: DateTime(2025, 04, 24),
     rating: 9.5,
     price: 39.99,
-    device: ['Windows', 'Playstation 5', 'XBOX'],
+    device: ['Windows', 'PlayStation', 'Xbox'],
     genre: ['Role-Playing'],
     description:
         'Lead the members of Expedition 33 on their quest to destroy the Paintress so that she can never paint death again. Explore a world of wonders inspired by Belle Époque France and battle unique enemies in this turn-based RPG with real-time mechanics.',
@@ -85,7 +85,7 @@ var gameList = [
     releaseDate: DateTime(2024, 12, 27),
     rating: 8.75,
     price: 0,
-    device: ['Windows', 'Android', 'iOS', 'Playstation 5'],
+    device: ['Windows', 'Android', 'iOS', 'PlayStation'],
     genre: ['Adventure', 'Role-Playing'],
     description:
         'Where Winds Meet is an epic open-world action-adventure RPG rooted in the rich legacy of Wuxia. Set during the turbulent era of tenth-century China, you take on the role of a young sword master, uncovering forgotten truths and the mysteries of your own identity. As the wind stirs across mountains and rivers, so too will your legend rise.',
@@ -155,7 +155,7 @@ var gameList = [
     releaseDate: DateTime(2022, 12, 06),
     rating: 6.8,
     price: 5.99,
-    device: ['Windows', 'XBOX', 'Playstation 5'],
+    device: ['Windows', 'Xbox', 'PlayStation'],
     genre: ['Adventure', 'RPG'],
     description:
         'Become Eivor, a mighty Viking raider, and lead your clan. Advanced RPG mechanics allow you to influence the world around you. With every choice you make, from political alliances and combat strategy, to dialogue and gear progression, carve your path to glory!',
@@ -225,7 +225,7 @@ var gameList = [
     releaseDate: DateTime(2021, 03, 26),
     rating: 9.4,
     price: 39.99,
-    device: ['Windows', 'XBOX', 'Nintendo Switch', 'Playstation 5'],
+    device: ['Windows', 'Xbox', 'Nintendo Switch', 'PlayStation'],
     genre: ['Adventure'],
     description:
         'Embark on the craziest journey of your life in It Takes Two, a genre-bending platform adventure created purely for co-op. Invite a friend to join for free with Friend’s Pass and work together across a huge variety of gleefully disruptive gameplay challenges. Play as the clashing couple Cody and May, two humans turned into dolls by a magic spell. Together, trapped in a fantastical world where the unpredictable hides around every corner, they are reluctantly challenged with saving their fractured relationship.',
@@ -295,7 +295,7 @@ var gameList = [
     releaseDate: DateTime(2024, 07, 09),
     rating: 7.6,
     price: 0,
-    device: ['Windows', 'Android', 'IOS'],
+    device: ['Windows', 'Android', 'iOS'],
     genre: ['Adventure', 'Role-Playing', 'Strategy', 'Simulation'],
     description:
         'You wake up in the middle of nowhere. You ll have to brace yourself for the cruelty of nature (from monsters to lack of food); however, Stardust influence does not restrict to living things, it also affects the soil and water. Eating polluted food and drinking dirty water will reduce your Sanity. When your Sanity drops, your max HP would drop accordingly. To eat or not to eat, its a question.',
@@ -330,7 +330,7 @@ var gameList = [
     releaseDate: DateTime(2011, 04, 19),
     rating: 9.7,
     price: 9.99,
-    device: ['Windows', 'XBOX', 'Nintendo Switch', 'Playstation 3'],
+    device: ['Windows', 'Xbox', 'Nintendo Switch', 'PlayStation 3'],
     genre: ['Adventure'],
     description:
         'Portal 2 draws from the award-winning formula of innovative gameplay, story, and music that earned the original Portal over 70 industry accolades and created a cult following.',
@@ -401,7 +401,7 @@ var gameList = [
     releaseDate: DateTime(2016, 07, 22),
     rating: 9.3,
     price: 5.99,
-    device: ['Windows', 'Nintendo Switch', 'XBOX', 'Playstation 5'],
+    device: ['Windows', 'Nintendo Switch', 'Xbox', 'PlayStation'],
     genre: ['Indie', 'Adventure'],
     description:
         'Party Animals’ Nemo & Otta join the mayhem in the very first crossover collaboration for Human Fall Flat! The pair make their cameo in SteamPunk Party, the game’s 31st official level that’s packed with perilous steam vents, broken pipes and dizzying high-wire physics-based platforming.',
@@ -436,7 +436,7 @@ var gameList = [
     releaseDate: DateTime(2018, 08, 07),
     rating: 8.9,
     price: 6.24,
-    device: ['Windows', 'Playstation 4', 'XBOX', 'Nintendo Switch'],
+    device: ['Windows', 'PlayStation', 'Xbox', 'Nintendo Switch'],
     genre: ['Indie'],
     description:
         'Overcooked returns with a brand-new helping of chaotic cooking action! Journey back to the Onion Kingdom and assemble your team of chefs in classic couch co-op or online play for up to four players. Hold onto your aprons … it’s time to save the world (again!)',
@@ -471,7 +471,7 @@ var gameList = [
     releaseDate: DateTime(2013, 09, 04),
     rating: 9.5,
     price: 3.74,
-    device: ['Windows', 'Playstation 4', 'Nintendo Switch'],
+    device: ['Windows', 'PlayStation', 'Nintendo Switch'],
     genre: ['Indie', 'Adventure'],
     description:
         'Hell is an experiment you cant survive in Outlast, a first-person survival horror game developed by veterans of some of the biggest game franchises in history. As investigative journalist Miles Upshur, explore Mount Massive Asylum and try to survive long enough to discover its terrible secret... if you dare.',
@@ -506,7 +506,7 @@ var gameList = [
     releaseDate: DateTime(2019, 09, 10),
     rating: 8.8,
     price: 2.49,
-    device: ['Windows', 'XBOX', 'Nintendo Switch', 'Playstation 5'],
+    device: ['Windows', 'Xbox', 'Nintendo Switch', 'PlayStation'],
     genre: ['Indie', 'Adventure'],
     description:
         'Explore this nightmarish world of twisted religion and discover its many secrets hidden deep inside. Use devastating combos and brutal executions to smite the hordes of grotesque monsters and titanic bosses, all ready to rip you limb from limb. Locate and equip relics, rosary beads and prayers that call on the powers of the heavens to aid you in your quest to break your eternal damnation.',
@@ -578,7 +578,7 @@ var gameList = [
     releaseDate: DateTime(2023, 05, 02),
     rating: 7.9,
     price: 49.99,
-    device: ['Windows', 'Playstation 5', 'XBOX'],
+    device: ['Windows', 'PlayStation', 'Xbox'],
     genre: ['Strategy', 'Role-Playing'],
     description:
         'Rule a fantasy realm of your own design in Age of Wonders 4! Explore new magical realms in Age of Wonders’ signature blend of 4X strategy and turn-based tactical combat. Control a faction that grows and changes as you expand your empire with each turn.',
@@ -613,7 +613,7 @@ var gameList = [
     releaseDate: DateTime(2025, 10, 21),
     rating: 8.9,
     price: 47.99,
-    device: ['Windows', 'Playstation 5', 'XBOX'],
+    device: ['Windows', 'PlayStation', 'Xbox'],
     genre: ['Strategy'],
     description:
         'The next entry in the award-winning series, Jurassic World Evolution 3 puts you in control of building and running your very own Jurassic World.',
@@ -648,7 +648,7 @@ var gameList = [
     releaseDate: DateTime(2025, 11, 12),
     rating: 7.0,
     price: 59.99,
-    device: ['Windows', 'Playstation 5', 'XBOX'],
+    device: ['Windows', 'PlayStation', 'Xbox'],
     genre: ['Strategy'],
     description:
         'As governor, how you build and govern will shape your story, your citizens’ destiny, and your provinces’ future. Will you cooperate with other governors or prove your military prowess by challenging your rivals? The cost of peace is yours to decide.',
@@ -718,7 +718,7 @@ var gameList = [
     releaseDate: DateTime(2012, 10, 18),
     rating: 9.6,
     price: 19.99,
-    device: ['Windows', 'Playstation 5', 'XBOX'],
+    device: ['Windows', 'PlayStation', 'Xbox'],
     genre: ['Simulator', 'Indie'],
     description:
         'Travel across Europe as king of the road, a trucker who delivers important cargo across impressive distances! With dozens of cities to explore from the UK, Belgium, Germany, Italy, the Netherlands, Poland, and many more, your endurance, skill and speed will all be pushed to their limits. If you’ve got what it takes to be part of an elite trucking force, get behind the wheel and prove it!',
@@ -753,7 +753,7 @@ var gameList = [
     releaseDate: DateTime(2025, 11, 06),
     rating: 7.9,
     price: 0,
-    device: ['Android', 'IOS'],
+    device: ['Android', 'iOS'],
     genre: ['Simulator', 'Indie', 'Role-Playing'],
     description:
         'The management RPG where your heroes keep fighting even when youre gone! Spend their loot on upgrades, unlock classes from Elemental Wizard to Cannon Pirate, and level up 19 unique skills like Farming, Sailing, and even Construction!',
@@ -788,7 +788,7 @@ var gameList = [
     releaseDate: DateTime(2025, 06, 19),
     rating: 9.2,
     price: 19.99,
-    device: ['Windows', 'XBOX'],
+    device: ['Windows', 'Xbox'],
     genre: ['Simulator', 'Indie'],
     description:
         'Run your own supermarket! Stock shelves, set your prices, take payments, hire staff, expand your store, handle shoplifters, and design your layout. Purchase goods from online or local markets around town, and personally deliver online orders to your customers.',
@@ -823,7 +823,7 @@ var gameList = [
     releaseDate: DateTime(2024, 11, 12),
     rating: 8.4,
     price: 29.99,
-    device: ['Windows', 'Mac', 'XBOX', 'Playstation 5'],
+    device: ['Windows', 'Mac', 'Xbox', 'PlayStation'],
     genre: ['Simulator'],
     description:
         'Farming Simulator 25 invites you to join the rewarding farm life. Whether you build your legacy single-handedly or cooperatively in multiplayer - it’s your farm, you decide! ',
@@ -860,7 +860,7 @@ var gameList = [
     releaseDate: DateTime(2016, 02, 26),
     rating: 9.7,
     price: 14.99,
-    device: ['Windows', 'Linux', 'XBOX', 'Nintendo Switch', 'iOS', 'Android'],
+    device: ['Windows', 'Linux', 'Xbox', 'Nintendo Switch', 'iOS', 'Android'],
     genre: ['Simulator', 'Indie', 'Role-Playing'],
     description:
         'Youve inherited your grandfathers old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? It wont be easy. Ever since Joja Corporation came to town, the old ways of life have all but disappeared. The community center, once the towns most vibrant hub of activity, now lies in shambles. But the valley seems full of opportunity. With a little dedication, you might just be the one to restore Stardew Valley to greatness!',
@@ -897,8 +897,8 @@ var gameList = [
     price: 0,
     device: [
       'Windows',
-      'Playstation 4',
-      'XBOX',
+      'PlayStation',
+      'Xbox',
       'Nintendo Switch',
       'Android',
       'iOS',
@@ -937,7 +937,7 @@ var gameList = [
     releaseDate: DateTime(2024, 01, 25),
     rating: 5.5,
     price: 23.99,
-    device: ['Windows', 'Playstation 5', 'XBOX'],
+    device: ['Windows', 'PlayStation', 'Xbox'],
     genre: ['Fighting', 'Arcade'],
     description:
         'The game features a rich roster of over 32 characters with meticulously detailed high-resolution models that push modern hardware to its limits. Experience exciting battles with new battle features like Heat, or get yourself out of tough situations with powerful ultimate moves known as Rage Arts. With the new control system, Special Style, you can perform powerful combos with just a simple button, making the game even more accessible to newcomers.',
@@ -972,7 +972,7 @@ var gameList = [
     releaseDate: DateTime(2023, 06, 02),
     rating: 8.2,
     price: 19.99,
-    device: ['Windows', 'XBOX', 'Nintendo Switch', 'Playstation 5'],
+    device: ['Windows', 'Xbox', 'Nintendo Switch', 'PlayStation'],
     genre: ['Fighting', 'Adventure', 'Arcade'],
     description:
         'Here comes Capcom’s newest challenger! Street Fighter™ 6 launches worldwide on June 2nd, 2023 and represents the next evolution of the series. ',
@@ -1009,7 +1009,7 @@ var gameList = [
     releaseDate: DateTime(2023, 09, 19),
     rating: 7.0,
     price: 49.99,
-    device: ['Windows', 'Playstation 5', 'XBOX'],
+    device: ['Windows', 'PlayStation', 'Xbox'],
     genre: ['Fighting'],
     description:
         'Discover a reborn Mortal Kombat™ Universe created by the Fire God Liu Kang. Mortal Kombat™ 1 ushers in a new era of the iconic franchise with a new fighting system, game modes, and fatalities! ',
@@ -1149,7 +1149,7 @@ var gameList = [
     releaseDate: DateTime(2020, 06, 16),
     rating: 9.3,
     price: 9.99,
-    device: ['Windows', 'Linux', 'Mac', 'Playstation 4', 'XBOX'],
+    device: ['Windows', 'Linux', 'Mac', 'PlayStation', 'Xbox'],
     genre: ['Real-Time Strategy'],
     description:
         'Desperados III is a story-driven, hardcore tactical stealth game, set in a ruthless Wild West scenario.',

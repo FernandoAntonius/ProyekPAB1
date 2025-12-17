@@ -36,11 +36,13 @@ class _SearchScreenState extends State<SearchScreen> {
 
   final List<String> devices = [
     "All Devices",
-    "PC",
+    "Windows",
     "PlayStation",
     "Xbox",
     "Nintendo Switch",
-    "Mobile",
+    "Android",
+    "iOS",
+    "Mac"
   ];
 
   final List<String> priceSort = ["Default", "Low to High", "High to Low"];
