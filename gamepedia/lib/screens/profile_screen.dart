@@ -141,109 +141,155 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             child: CircleAvatar(
                               radius: 40,
-                              backgroundImage: AssetImage('images/console.png'),
-                            ),
-                          ),
-                          if (isSignedIn)
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.camera_alt,
-                                color: Colors.deepPurple[50],
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF1A2847),
+                                ),
+                                child: const Icon(
+                                  Icons.person,
+                                  size: 60,
+                                  color: Colors.white54,
+                                ),
                               ),
                             ),
+                          ),
                         ],
                       ),
                       const SizedBox(width: 20),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              isSignedIn
-                                  ? (username.isNotEmpty ? username : 'User')
-                                  : 'Guest',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Quicksand',
-                                color: Colors.white,
-                              ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0xFF6D5DF6),
+                                Color(0xFF9F7BFF),
+                                Color(0xFF1B1F4A),
+                              ],
                             ),
-                            const SizedBox(height: 8),
-                            !isSignedIn
-                                ? Row(
-                                    children: [
-                                      Expanded(
-                                        child: OutlinedButton(
-                                          onPressed: () {
-                                            Navigator.pushNamed(
-                                              context,
-                                              '/register',
-                                            );
-                                          },
-                                          style: OutlinedButton.styleFrom(
-                                            side: const BorderSide(
-                                              color: Colors.white30,
-                                              width: 1,
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 12,
-                                              vertical: 6,
-                                            ),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          padding: const EdgeInsets.all(1.5),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 14,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF0F122A),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  isSignedIn
+                                      ? (username.isNotEmpty
+                                            ? username
+                                            : 'User')
+                                      : 'Guest',
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Quicksand',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                !isSignedIn
+                                    ? Row(
+                                        children: [
+                                          Expanded(
+                                            child: OutlinedButton(
+                                              onPressed: () {
+                                                Navigator.pushNamed(
+                                                  context,
+                                                  '/register',
+                                                );
+                                              },
+                                              style: OutlinedButton.styleFrom(
+                                                side: const BorderSide(
+                                                  color: Colors.white30,
+                                                  width: 1,
+                                                ),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 12,
+                                                      vertical: 6,
+                                                    ),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(6),
+                                                ),
+                                              ),
+                                              child: const Text(
+                                                'Register',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontFamily: 'Quicksand',
+                                                  color: Colors.white,
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                          child: const Text(
-                                            'Register',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              fontFamily: 'Quicksand',
-                                              color: Colors.white,
+                                          const SizedBox(width: 8),
+                                          Expanded(
+                                            child: OutlinedButton(
+                                              onPressed: () {
+                                                Navigator.pushNamed(
+                                                  context,
+                                                  '/login',
+                                                );
+                                              },
+                                              style: OutlinedButton.styleFrom(
+                                                side: const BorderSide(
+                                                  color: Colors.white30,
+                                                  width: 1,
+                                                ),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 12,
+                                                      vertical: 6,
+                                                    ),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(6),
+                                                ),
+                                              ),
+                                              child: const Text(
+                                                'Login',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontFamily: 'Quicksand',
+                                                  color: Colors.white,
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                        ],
+                                      )
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: const Text(
+                                              'Welcome to GamePedia',
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'Quicksand',
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 8),
-                                      Expanded(
-                                        child: OutlinedButton(
-                                          onPressed: () {
-                                            Navigator.pushNamed(
-                                              context,
-                                              '/login',
-                                            );
-                                          },
-                                          style: OutlinedButton.styleFrom(
-                                            side: const BorderSide(
-                                              color: Colors.white30,
-                                              width: 1,
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 12,
-                                              vertical: 6,
-                                            ),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(6),
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            'Login',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              fontFamily: 'Quicksand',
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                : SizedBox(height: 0),
-                          ],
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],

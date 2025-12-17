@@ -39,10 +39,12 @@ class _ProfileInfoItemState extends State<ProfileInfoItem> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        if (!widget.isSignedIn) {
+          Navigator.pushNamed(context, '/login');
+          return;
+        }
         if (widget.navigateTo != null) {
           Navigator.pushNamed(context, widget.navigateTo!);
-        } else if (!widget.isSignedIn) {
-          Navigator.pushNamed(context, '/login');
         }
       },
       onHover: (hovering) {
