@@ -16,65 +16,9 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   bool isFavorite = false;
   bool isSignedIn = false;
 
-  @override
-  void initState() {
-    super.initState();
-    _checkSignInStatus();
-    _loadFavoritesStatus();
-  }
-
-  // ================= AUTH =================
-  void _checkSignInStatus() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isSignedIn = prefs.getBool("isSignedIn") ?? false;
-    });
-  }
-
-  void _loadFavoritesStatus() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isFavorite =
-          prefs.getBool("favorite_${widget.game.title}") ?? false;
-    });
-  }
-
-  Future<void> _toggleFavorite() async {
-    final prefs = await SharedPreferences.getInstance();
-
-    if (!isSignedIn) {
-      Navigator.pushNamed(context, "/signin");
-      return;
-    }
-
-    setState(() {
-      isFavorite = !isFavorite;
-    });
-
-    prefs.setBool("favorite_${widget.game.title}", isFavorite);
-  }
-
-  // ================= UI HELPERS =================
-  Widget buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-
+  //SYSTEM REQUIRENMENTS
   Widget _buildSystemRequirements(Game game) {
     final sysReq = game.systemRequirements;
-
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -98,39 +42,41 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
           ),
           const SizedBox(height: 12),
-
-          // MINIMUM
+          // Minimum Requirements
           const Text(
             "Minimum",
             style: TextStyle(
               color: Colors.white,
+              fontFamily: "Quicksand",
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 6),
           if (sysReq.containsKey('minimum'))
             ...sysReq['minimum']!.entries.map(
-              (e) => Text(
-                "• ${e.key}: ${e.value}",
-                style: const TextStyle(color: Colors.white70),
+              (entry) => Text(
+                "• ${entry.key}: ${entry.value}",
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontFamily: "Quicksand",
+                ),
               ),
             ),
-
+          //Maximum Requirenments
           const SizedBox(height: 12),
-
-          // RECOMMENDED
           const Text(
             "Recommended",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
+              fontFamily: "Quicksand",
             ),
           ),
           const SizedBox(height: 6),
           if (sysReq.containsKey('maximum'))
             ...sysReq['maximum']!.entries.map(
-              (e) => Text(
-                "• ${e.key}: ${e.value}",
+              (entry) => Text(
+                "• ${entry.key}: ${entry.value}",
                 style: const TextStyle(color: Colors.white70),
               ),
             ),
@@ -139,9 +85,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     );
   }
 
-  // ================= BUILD =================
   @override
-<<<<<<< Updated upstream
   void initState() {
     super.initState();
     _checkSignInStatus();
@@ -196,8 +140,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   }
 
   @override
-=======
->>>>>>> Stashed changes
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
@@ -208,7 +150,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back, color: Colors.white),
         ),
-<<<<<<< Updated upstream
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
@@ -231,21 +172,13 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
           ),
         ],
-=======
->>>>>>> Stashed changes
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-<<<<<<< Updated upstream
             // MAIN IMAGE
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 8),
-=======
-            // IMAGE
-            Padding(
-              padding: const EdgeInsets.all(8),
->>>>>>> Stashed changes
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
@@ -256,22 +189,14 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 ),
               ),
             ),
-<<<<<<< Updated upstream
             const SizedBox(height: 16),
             //TITLE, DEVELOPER, FAVORITE, RATING
-=======
-
-            // TITLE + RATING + FAVORITE
->>>>>>> Stashed changes
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-<<<<<<< Updated upstream
                   // TITLE DAN DEVELOPER DI KIRI
-=======
->>>>>>> Stashed changes
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,7 +219,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                       ],
                     ),
                   ),
-<<<<<<< Updated upstream
                   // RATING DAN FAVORITE
                   Row(
                     children: [
@@ -429,23 +353,10 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                           width: 160,
                           height: 120,
                           color: Colors.white12,
-=======
-                  Row(
-                    children: [
-                      const Icon(Icons.star, color: Colors.amber, size: 20),
-                      const SizedBox(width: 4),
-                      Text(
-                        widget.game.rating.toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
->>>>>>> Stashed changes
                         ),
                         errorWidget: (context, url, err) =>
                             const Icon(Icons.error, color: Colors.red),
                       ),
-<<<<<<< Updated upstream
                     ),
                   );
                 },
@@ -454,26 +365,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             const SizedBox(height: 20),
             _buildSystemRequirements(widget.game),
             const SizedBox(height: 10),
-=======
-                      IconButton(
-                        onPressed: _toggleFavorite,
-                        icon: Icon(
-                          isFavorite
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: isFavorite ? Colors.red : Colors.white,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 20),
-            _buildSystemRequirements(widget.game),
-            const SizedBox(height: 20),
->>>>>>> Stashed changes
           ],
         ),
       ),
