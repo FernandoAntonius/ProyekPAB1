@@ -10,7 +10,6 @@ class Game {
   final String imageAssets;
   final List<String> screenShots;
   final Map<String, Map<String, String>> systemRequirements;
-  bool newRelease;
   bool isFavorite;
 
   Game({
@@ -25,7 +24,7 @@ class Game {
     required this.systemRequirements,
     this.isFavorite = false,
     required this.imageAssets,
-    this.newRelease = false,
     required this.rating,
+  
   });
 }

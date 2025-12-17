@@ -113,6 +113,7 @@ var gameList = [
       },
     },
     isFavorite: false,
+  
   ),
   Game(
     title: 'Dark and Darker',
@@ -183,6 +184,7 @@ var gameList = [
       },
     },
     isFavorite: false,
+    
   ),
   Game(
     title: 'PEAK',
@@ -253,6 +255,7 @@ var gameList = [
       },
     },
     isFavorite: false,
+    
   ),
   Game(
     title: 'Chained Together',
@@ -288,6 +291,7 @@ var gameList = [
       },
     },
     isFavorite: false,
+    
   ),
   Game(
     title: 'Once Human',
