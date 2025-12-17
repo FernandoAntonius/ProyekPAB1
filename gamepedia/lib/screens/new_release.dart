@@ -16,21 +16,29 @@ class NewReleasesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0E1126),
+        backgroundColor: const Color.fromARGB(255, 6, 2, 26),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+          color: Color(0xFF6A5AF9),
         ),
         title: const Text(
-          "New Releases",
+          'New Releases',
           style: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Quicksand',
+            color: Color(0xFF6A5AF9),
             fontSize: 20,
             fontWeight: FontWeight.bold,
+            fontFamily: 'Quicksand',
           ),
         ),
+        centerTitle: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset('images/console.png', height: 30),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
