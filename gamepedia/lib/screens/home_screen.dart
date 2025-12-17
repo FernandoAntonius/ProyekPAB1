@@ -5,6 +5,7 @@ import 'package:gamepedia/screens/game_detail_screen.dart';
 import 'package:gamepedia/widgets/info_card.dart';
 import 'package:gamepedia/screens/new_release.dart';
 import 'package:gamepedia/screens/popular_game.dart';
+import 'package:gamepedia/screens/loading.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,21 +24,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    popularGames = (gameList
-        .where((game) => game.rating > 8)
-        .toList()
-      ..sort((a, b) => b.rating.compareTo(a.rating)))
-      .take(5)
-      .toList();
-    
+    popularGames =
+        (gameList.where((game) => game.rating > 8).toList()
+              ..sort((a, b) => b.rating.compareTo(a.rating)))
+            .take(5)
+            .toList();
+
     DateTime sixMonthAgo = DateTime.now().subtract(const Duration(days: 182));
-    newReleases = (gameList
-        .where((game) => game.releaseDate.isAfter(sixMonthAgo))
-        .toList()
-      ..sort((a, b) => b.releaseDate.compareTo(a.releaseDate)))
-      .take(5)
-      .toList();
-    
+    newReleases =
+        (gameList
+                .where((game) => game.releaseDate.isAfter(sixMonthAgo))
+                .toList()
+              ..sort((a, b) => b.releaseDate.compareTo(a.releaseDate)))
+            .take(5)
+            .toList();
+
     _filteredGames = newReleases;
   }
 
@@ -182,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PopularGamesScreen(), 
+                            builder: (context) => PopularGamesScreen(),
                           ),
                         );
                       },
@@ -272,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => NewReleasesScreen(), 
+                            builder: (context) => NewReleasesScreen(),
                           ),
                         );
                       },

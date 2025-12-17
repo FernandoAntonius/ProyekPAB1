@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
+import 'package:gamepedia/screens/loading.dart';
+import 'package:gamepedia/screens/splash.dart';
 import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/login.dart';
 import 'package:gamepedia/screens/search_screen.dart';
@@ -25,9 +27,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Quicksand',
       ),
-      home: const MainScreen(),
+      home: const SplashScreen(),
       initialRoute: '/',
       routes: {
+        '/main': (context) =>
+            const MainScreen(), 
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
@@ -58,7 +62,9 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Colors.black,
       body: _children[_currentIndex],
       bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(canvasColor: const Color.fromARGB(255, 6, 2, 26)),
+        data: Theme.of(
+          context,
+        ).copyWith(canvasColor: const Color.fromARGB(255, 6, 2, 26)),
         child: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
