@@ -251,45 +251,71 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 SizedBox(height: 30),
                 Container(
-                  padding: const EdgeInsets.all(30),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFF190D84), Color(0xFF20143D)],
+                    borderRadius: BorderRadius.circular(12),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFF1a1a3e),
+                        Color(0xFF0f0f2a),
+                      ],
+                    ),
+                    border: Border.all(
+                      color: const Color.fromARGB(255, 39, 0, 82),
+                      width: 2,
                     ),
                   ),
+                  padding: const EdgeInsets.all(2),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ProfileInfoItem(
-                        icon: Icons.person,
+                        icon: Icons.person_outline,
                         label: 'Edit Profile',
                         value: '',
                         showEditIcon: false,
-                        iconColor: Colors.white,
+                        iconColor: Color(0xFF6366f1),
+                        iconBackgroundColor: Color(0xFF6366f1).withOpacity(0.1),
+                        iconBackgroundHoverColor: Color(
+                          0xFF6366f1,
+                        ).withOpacity(0.2),
                         isSignedIn: isSignedIn,
                         navigateTo: '/edit_profile',
                       ),
-                      const SizedBox(height: 20),
-                      Divider(color: Colors.deepPurple[100]),
-                      const SizedBox(height: 20),
+                      Container(
+                        height: 1,
+                        margin: EdgeInsets.symmetric(horizontal: 12),
+                        color: Colors.white.withOpacity(0.05),
+                      ),
                       ProfileInfoItem(
-                        icon: Icons.favorite_border_rounded,
+                        icon: Icons.favorite_outline,
                         label: 'Wishlist',
                         value: '',
                         showEditIcon: false,
-                        iconColor: Colors.red,
+                        iconColor: Color(0xFFec4899),
+                        iconBackgroundColor: Color(0xFFec4899).withOpacity(0.1),
+                        iconBackgroundHoverColor: Color(
+                          0xFFec4899,
+                        ).withOpacity(0.2),
                         isSignedIn: isSignedIn,
                         navigateTo: '/wishlist',
                       ),
-                      const SizedBox(height: 20),
-                      Divider(color: Colors.deepPurple[100]),
-                      const SizedBox(height: 20),
+                      Container(
+                        height: 1,
+                        margin: EdgeInsets.symmetric(horizontal: 12),
+                        color: Colors.white.withOpacity(0.05),
+                      ),
                       ProfileInfoItem(
-                        icon: Icons.settings,
+                        icon: Icons.settings_outlined,
                         label: 'Terms of Service',
                         value: '',
-                        iconColor: Colors.white,
+                        showEditIcon: false,
+                        iconColor: Color(0xFFd1d5db),
+                        iconBackgroundColor: Colors.white.withOpacity(0.1),
+                        iconBackgroundHoverColor: Colors.white.withOpacity(
+                          0.15,
+                        ),
                         navigateTo: '/terms',
                       ),
                     ],
