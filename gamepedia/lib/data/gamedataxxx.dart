@@ -81,7 +81,7 @@ var gameList = [
     avaible: ['Windows'],
     genre: ['Shooter', 'Arcade'],
     description:
-        'Padukan gaya dan pengalamanmu di panggung kompetitif global. Kamu memiliki 13 ronde untuk menyerang dan mempertahankan sisimu dengan keahlian tembak-menembak sengit serta kemampuan taktis. Dengan satu nyawa per ronde, kamu harus berpikir lebih cepat daripada lawan jika ingin tetap hidup. Habisi musuh baik di mode Competitive maupun Unranked serta Deathmatch dan Spike Rush.',
+        'Become an ace pilot and soar through photorealistic skies with full 360 degree movement; down enemy aircraft and experience the thrill of engaging in realistic sorties! Aerial combat has never looked or felt better!',
     imageAssets: 'images/acecombat7.jpg',
     screenShots: [
       'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/502500/ss_2240172f5e842938e1c32adc6ad1451d3ddad747.jpg',
@@ -692,41 +692,6 @@ var gameList = [
     isFavorite: false,
   ),
 
-  Game(
-    title: 'Black Desert',
-    developer: 'Pearl Abyss',
-    releaseDate: DateTime(2017, 05, 24),
-    rating: 7.3,
-    price: 9.99,
-    avaible: ['Windows'],
-    genre: ['Sports', 'Adventure', 'Role-playing', 'Strategy'],
-    description:
-        "Played by over 20 million Adventurers - Black Desert Online is an open-world, action MMORPG. Experience intense, action-packed combat, battle massive world bosses, fight alongside friends to siege and conquer castles, and train in professions such as fishing, trading, crafting, cooking, and more!",
-    imageAssets: 'images/blackdesert.jpg',
-    screenShots: [
-      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/b784aa30aea23768ef2b793b9a064347d3609b6d/ss_b784aa30aea23768ef2b793b9a064347d3609b6d.jpg',
-      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/ss_e8cf6710f8ab86f933d0e212e2d2b0e620cb70c9.jpg',
-      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/ss_8cd369deed11b84f64e37d08ea8e835be888d3f5.jpg',
-      'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/ss_e2cfd7db29677295dc76311d151d795ea818ced2.jpg',
-    ],
-    systemRequirements: {
-      "minimum": {
-        "OS": "Windows 10 (64-bit)",
-        "Processor": "Intel Core i3 (4th Generation)",
-        "Memory": "8 GB RAM",
-        "Graphics": "GeForce GTX 970, Radeon RX 480",
-        "Storage": "80 GB",
-      },
-      "maximum": {
-        "OS": "Windows 10 (64-bit)",
-        "Processor": "Intel Core i3 (4th Generation)",
-        "Memory": "8 GB RAM",
-        "Graphics": "GeForce GTX 970, Radeon RX 480",
-        "Storage": "80 GB",
-      },
-    },
-    isFavorite: false,
-  ),
   Game(
     title: 'Black Desert',
     developer: 'Pearl Abyss',
