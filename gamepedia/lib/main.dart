@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Colors.black,
       body: _children[_currentIndex],
       bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(canvasColor: Colors.black),
+        data: Theme.of(context).copyWith(canvasColor: const Color.fromARGB(255, 6, 2, 26)),
         child: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
