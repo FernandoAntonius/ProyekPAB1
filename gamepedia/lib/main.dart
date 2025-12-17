@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gamepedia/screens/add_game.dart';
+import 'package:gamepedia/screens/edit_game.dart';
 import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/loading.dart';
@@ -30,8 +32,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       initialRoute: '/',
       routes: {
-        '/main': (context) =>
-            const MainScreen(), 
+        '/main': (context) => const MainScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
