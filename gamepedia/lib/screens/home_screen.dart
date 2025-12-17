@@ -212,16 +212,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
-                const SizedBox(height: 12),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text("More Games", style: TextStyle(color: Colors.white70)),
-                    SizedBox(width: 4),
-                    Icon(Icons.arrow_right_alt, color: Colors.blueAccent),
-                  ],
-                ),
                 const SizedBox(height: 24),
 
                 //NEW RELEASES TITLE
@@ -458,7 +448,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context: context,
                       icon: Icons.screenshot_monitor_outlined,
                       title: "Xbox",
-                      navigateTo: '/xbpx',
+                      navigateTo: '/xbox',
                     ),
                     buildDeviceCard(
                       context: context,

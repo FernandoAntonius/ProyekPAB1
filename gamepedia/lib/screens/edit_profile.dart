@@ -81,9 +81,9 @@ class _EditProfileScreen extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 6, 2, 26),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 6, 2, 26),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
