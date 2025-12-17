@@ -358,11 +358,9 @@ var gameList = [
       },
       "maximum": {
         "OS": "WINDOWS® 10 (64-bit required)",
-        "Processor":
-            "Intel® Core™ i7 3770 or Core™ i3 8350 or Core™ i3 9350F / AMD Ryzen™ 5 1500X or Ryzen™ 5 3400G",
+        "Processor": "Intel® Core™ i7 3770 or Core™ i3 8350 or Core™ i3 9350F / AMD Ryzen™ 5 1500X or Ryzen™ 5 3400G",
         "Memory": "8 GB RAM",
-        "Graphics":
-            "NVIDIA® GeForce® GTX 1060 (VRAM 3GB) or GTX 1650 / AMD Radeon™ RX 480 or RX 570",
+        "Graphics":"NVIDIA® GeForce® GTX 1060 (VRAM 3GB) or GTX 1650 / AMD Radeon™ RX 480 or RX 570",
         "Storage": "20 GB",
       },
     },
@@ -375,7 +373,7 @@ var gameList = [
     rating: 8.6,
     price: 17.49,
     avaible: ['Windows', 'macOS', 'Linux'],
-    genre: ['Hack and Slash','Platformer'],
+    genre: ['Hack and Slash', 'Platformer'],
     description:
         "Dead Cells is a roguelite, metroidvania inspired, action-platformer. You'll explore a sprawling, ever-changing castle... assuming you’re able to fight your way past its keepers in 2D souls-lite combat. No checkpoints. Kill, die, learn, repeat.'",
     imageAssets: 'images/deadcells.jpg',
@@ -480,7 +478,7 @@ var gameList = [
     rating: 9.1,
     price: 9.99,
     avaible: ['Windows', 'macOS', 'Linux'],
-    genre: ['Hack and Slash', 'Indie','Platformer'],
+    genre: ['Hack and Slash', 'Indie', 'Platformer'],
     description:
         "Guide 'Skul' on his quest to single-handedly take on the Imperial Army and rescue his King from captivity, in an action-packed rogue-lite 2D platformer for the ages.",
     imageAssets: 'images/skull.jpg',
@@ -633,20 +631,16 @@ var gameList = [
     systemRequirements: {
       "minimum": {
         "OS": "Windows 7+",
-        "Processor":
-            "Intel Core i5-2400s @ 2.5 GHz or AMD FX-6100 @ 3.3 GHz or equivalent",
+        "Processor":"Intel Core i5-2400s @ 2.5 GHz or AMD FX-6100 @ 3.3 GHz or equivalent",
         "Memory": "8 GB RAM",
-        "Graphics":
-            "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
         "Storage": "4 GB",
       },
       "maximum": {
         "OS": "Windows 7+",
-        "Processor":
-            "Intel Core i5-2400s @ 2.5 GHz or AMD FX-6100 @ 3.3 GHz or equivalent",
+        "Processor":"Intel Core i5-2400s @ 2.5 GHz or AMD FX-6100 @ 3.3 GHz or equivalent",
         "Memory": "8 GB RAM",
-        "Graphics":
-            "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Graphics":"NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
         "Storage": "4 GB",
       },
     },
@@ -659,7 +653,7 @@ var gameList = [
     rating: 8.9,
     price: 13.99,
     avaible: ['Windows'],
-    genre: ['Racing', 'Adventure', 'Indie','Platformer'],
+    genre: ['Racing', 'Adventure', 'Indie', 'Platformer'],
     description:
         "Run fast, soar through the air, and master your landings as you speed through procedural worlds to outrun the end of the universe, by yourself and with friends!",
     imageAssets: 'images/haste.jpg',
@@ -672,20 +666,16 @@ var gameList = [
     systemRequirements: {
       "minimum": {
         "OS": "Win 10",
-        "Processor":
-            "Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
+        "Processor":"Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
         "Memory": "8 GB RAM",
-        "Graphics":
-            "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
         "Storage": "4 GB",
       },
       "maximum": {
         "OS": "Win 10",
-        "Processor":
-            "ntel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
+        "Processor": "Intel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
         "Memory": "8 GB RAM",
-        "Graphics":
-            "NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
+        "Graphics":"NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
         "Storage": "4 GB",
       },
     },
@@ -749,16 +739,14 @@ var gameList = [
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
         "Memory": "12 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Graphics":"AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
         "Storage": "45 GB",
       },
       "maximum": {
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
         "Memory": "16 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Graphics":"AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
         "Storage": "45 GB",
       },
     },
@@ -786,16 +774,14 @@ var gameList = [
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
         "Memory": "12 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Graphics":"AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
         "Storage": "45 GB",
       },
       "maximum": {
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
         "Memory": "16 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Graphics":"AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
         "Storage": "45 GB",
       },
     },
@@ -821,20 +807,16 @@ var gameList = [
     systemRequirements: {
       "minimum": {
         "OS": "Win 10",
-        "Processor":
-            "Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
+        "Processor":"Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
         "Memory": "8 GB RAM",
-        "Graphics":
-            "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Graphics":"NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
         "Storage": "4 GB",
       },
       "maximum": {
         "OS": "Win 10",
-        "Processor":
-            "ntel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
+        "Processor": "Intel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
         "Memory": "8 GB RAM",
-        "Graphics":
-            "NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
+        "Graphics":"NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
         "Storage": "4 GB",
       },
     },
@@ -863,16 +845,14 @@ var gameList = [
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
         "Memory": "12 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Graphics":"AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
         "Storage": "45 GB",
       },
       "maximum": {
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
         "Memory": "16 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Graphics":"AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
         "Storage": "45 GB",
       },
     },
@@ -901,16 +881,14 @@ var gameList = [
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
         "Memory": "12 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Graphics":"AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
         "Storage": "45 GB",
       },
       "maximum": {
         "OS": "Windows 11 64bit",
         "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
         "Memory": "16 GB RAM",
-        "Graphics":
-            "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Graphics":"AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
         "Storage": "45 GB",
       },
     },
