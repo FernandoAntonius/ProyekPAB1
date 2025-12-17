@@ -101,7 +101,6 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             child: Column(
               children: [
-                // Handle bar
                 Container(
                   margin: const EdgeInsets.only(top: 12),
                   width: 40,
@@ -111,8 +110,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
-
-                // Header
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: Row(
@@ -154,7 +151,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Genre Section
                         const Text(
                           "Genre",
                           style: TextStyle(
@@ -223,10 +219,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             );
                           }),
                         ),
-
                         const SizedBox(height: 24),
-
-                        // Device Section
                         const Text(
                           "Device",
                           style: TextStyle(
@@ -295,10 +288,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             );
                           }),
                         ),
-
-                        const SizedBox(height: 24),
-
-                        // Price Section
+                        const SizedBox(height: 24),                 
                         const Text(
                           "Sort by Price",
                           style: TextStyle(
@@ -357,8 +347,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ),
                 ),
-
-                // Apply Button
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SizedBox(
@@ -436,8 +424,6 @@ class _SearchScreenState extends State<SearchScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
-
-              //TITLE
               Row(
                 children: [
                   ShaderMask(
@@ -487,8 +473,6 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
 
               const SizedBox(height: 16),
-
-              //SEARCH BAR & FILTER BUTTON
               Row(
                 children: [
                   Expanded(
@@ -590,10 +574,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ],
               ),
-
               const SizedBox(height: 16),
-
-              // RESULT COUNT
               Text(
                 "${_filteredGames.length} games found",
                 style: const TextStyle(
@@ -602,10 +583,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   fontFamily: 'Quicksand',
                 ),
               ),
-
               const SizedBox(height: 8),
-
-              //GRID GAME LIST
               Expanded(
                 child: GridView.builder(
                   itemCount: _filteredGames.length,
@@ -634,7 +612,6 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                         child: Column(
                           children: [
-                            // IMAGE
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
@@ -644,9 +621,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-
                             const SizedBox(height: 6),
-                            // TITLE
                             Text(
                               game.title,
                               style: const TextStyle(
