@@ -255,7 +255,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                       height: 22,
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
-                                        itemCount: game.avaible.length,
+                                        itemCount: game.device.length,
                                         itemBuilder: (context, index) {
                                           return Container(
                                             margin: const EdgeInsets.only(
@@ -276,7 +276,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                             ),
                                             alignment: Alignment.center,
                                             child: Text(
-                                              game.avaible[index],
+                                              game.device[index],
                                               style: const TextStyle(
                                                 color: Colors.white70,
                                                 fontSize: 11,

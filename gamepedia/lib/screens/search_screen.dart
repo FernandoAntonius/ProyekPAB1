@@ -70,7 +70,7 @@ class _SearchScreenState extends State<SearchScreen> {
         bool deviceMatch =
             selectedDevices.contains(0) ||
             selectedDevices.any(
-              (index) => game.avaible.contains(devices[index]),
+              (index) => game.device.contains(devices[index]),
             );
 
         return titleMatch && genreMatch && deviceMatch;

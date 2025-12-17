@@ -282,7 +282,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 child: Row(
                   children: [
                     const SizedBox(width: 16),
-                    ...widget.game.avaible
+                    ...widget.game.device
                         .expand((item) => item.split(',').map((s) => s.trim()))
                         .map((platform) {
                           return Padding(

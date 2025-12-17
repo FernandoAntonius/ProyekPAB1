@@ -4,7 +4,7 @@ class Game {
   final DateTime releaseDate;
   final double rating;
   final double price;
-  final List<String> avaible;
+  final List<String> device;
   final List<String> genre;
   final String description;
   final String imageAssets;
@@ -18,7 +18,7 @@ class Game {
     required this.developer,
     required this.releaseDate,
     required this.price,
-    required this.avaible,
+    required this.device,
     required this.genre,
     required this.description,
     required this.screenShots,
