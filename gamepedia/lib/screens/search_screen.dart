@@ -42,7 +42,7 @@ class _SearchScreenState extends State<SearchScreen> {
     "Nintendo Switch",
     "Android",
     "iOS",
-    "Mac"
+    "Mac",
   ];
 
   final List<String> priceSort = ["Default", "Low to High", "High to Low"];

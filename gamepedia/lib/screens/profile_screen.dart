@@ -256,10 +256,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xFF1a1a3e),
-                        Color(0xFF0f0f2a),
-                      ],
+                      colors: [Color(0xFF1a1a3e), Color(0xFF0f0f2a)],
                     ),
                     border: Border.all(
                       color: const Color.fromARGB(255, 39, 0, 82),
