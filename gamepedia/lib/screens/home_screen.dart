@@ -138,22 +138,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: InputDecoration(
                       hintText: "Search games...",
                       hintStyle: const TextStyle(color: Color(0xFFDCA7FF)),
-                      prefixIcon: ShaderMask(
-                        shaderCallback: (bounds) => const LinearGradient(
-                          colors: [
-                            Color(0xFF748AFA),
-                            Color(0xFF617BFF),
-                            Color(0xFFF47EFF),
-                            Color(0xFFFFFFFF),
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ).createShader(bounds),
-                        child: const Icon(Icons.search, color: Colors.white),
-                      ),
-                      prefixIconConstraints: const BoxConstraints(
-                        minWidth: 40,
-                        minHeight: 40,
+                      prefixIcon: Container(
+                        width: 60,
+                        padding: const EdgeInsets.only(left: 16, right: 8),
+                        child: ShaderMask(
+                          shaderCallback: (bounds) => const LinearGradient(
+                            colors: [
+                              Color(0xFF748AFA),
+                              Color(0xFF617BFF),
+                              Color(0xFFF47EFF),
+                              Color(0xFFFFFFFF),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ).createShader(bounds),
+                          child: const Icon(Icons.search, color: Colors.white),
+                        ),
                       ),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.only(
@@ -405,7 +405,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => AdventureScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -415,7 +416,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.explore_rounded, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.explore_rounded,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Adventure",
@@ -437,7 +442,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => RolePlayingScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -447,7 +453,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.auto_stories_rounded, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.auto_stories_rounded,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Role-playing",
@@ -469,7 +479,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => ShooterScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -479,7 +490,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.gps_fixed_rounded, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.gps_fixed_rounded,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Shooter",
@@ -501,7 +516,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => PlatformerScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -511,7 +527,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.videogame_asset_rounded, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.videogame_asset_rounded,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Platformer",
@@ -533,7 +553,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => PuzzleScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -543,7 +564,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.extension_rounded, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.extension_rounded,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Puzzle",
@@ -565,7 +590,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => StrategyScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -575,7 +601,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.account_tree_rounded, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.account_tree_rounded,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Strategy",
@@ -629,7 +659,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => WindowsScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -639,7 +670,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.window_sharp, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.window_sharp,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Windows",
@@ -661,7 +696,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => MacOSSCreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -671,7 +707,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.laptop, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.laptop,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "MacOS",
@@ -693,7 +733,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => AndroidScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -703,7 +744,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.android, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.android,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Android",
@@ -722,10 +767,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => IOSScreen(),
-                          ),
-                        );;
+                          MaterialPageRoute(builder: (context) => IOSScreen()),
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -735,7 +779,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.apple, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.apple,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "iOS",
@@ -754,10 +802,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => XboxScreen(),
-                          ),
-                        );;
+                          MaterialPageRoute(builder: (context) => XboxScreen()),
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -767,7 +814,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.screenshot_monitor_outlined, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.screenshot_monitor_outlined,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Xbox",
@@ -789,7 +840,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => NintendoSwitchScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -799,7 +851,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.stay_current_landscape, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.stay_current_landscape,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Nintendo Switch",
@@ -821,7 +877,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => LinuxScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -831,7 +888,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.laptop, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.laptop,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "Linux",
@@ -853,7 +914,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => PlayStationScreen(),
                           ),
-                        );;
+                        );
+                        ;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -863,7 +925,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.gamepad, color: Colors.cyanAccent, size: 40),
+                            Icon(
+                              Icons.gamepad,
+                              color: Colors.cyanAccent,
+                              size: 40,
+                            ),
                             const SizedBox(height: 8),
                             Text(
                               "PlayStation",

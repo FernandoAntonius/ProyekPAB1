@@ -493,25 +493,25 @@ class _SearchScreenState extends State<SearchScreen> {
                             color: Color(0xFFDCA7FF),
                             fontFamily: 'Quicksand',
                           ),
-                          prefixIcon: ShaderMask(
-                            shaderCallback: (bounds) => const LinearGradient(
-                              colors: [
-                                Color(0xFF748AFA),
-                                Color(0xFF617BFF),
-                                Color(0xFFF47EFF),
-                                Color(0xFFFFFFFF),
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ).createShader(bounds),
-                            child: const Icon(
-                              Icons.search,
-                              color: Colors.white,
+                          prefixIcon: Container(
+                            width: 60,
+                            padding: const EdgeInsets.only(left: 16, right: 8),
+                            child: ShaderMask(
+                              shaderCallback: (bounds) => const LinearGradient(
+                                colors: [
+                                  Color(0xFF748AFA),
+                                  Color(0xFF617BFF),
+                                  Color(0xFFF47EFF),
+                                  Color(0xFFFFFFFF),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds),
+                              child: const Icon(
+                                Icons.search,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                          prefixIconConstraints: const BoxConstraints(
-                            minWidth: 40,
-                            minHeight: 40,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.only(
