@@ -3,6 +3,20 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/widgets/info_card.dart';
+import 'package:gamepedia/screens/by_device.dart/windows.dart';
+import 'package:gamepedia/screens/by_device.dart/android.dart';
+import 'package:gamepedia/screens/by_device.dart/ios.dart';
+import 'package:gamepedia/screens/by_device.dart/playstation.dart';
+import 'package:gamepedia/screens/by_device.dart/xbox.dart';
+import 'package:gamepedia/screens/by_device.dart/nintendo_switch.dart';
+import 'package:gamepedia/screens/by_device.dart/linux.dart';
+import 'package:gamepedia/screens/by_device.dart/macos.dart';
+import 'package:gamepedia/screens/by_genre.dart/platformer.dart';
+import 'package:gamepedia/screens/by_genre.dart/shooter.dart';
+import 'package:gamepedia/screens/by_genre.dart/strategy.dart';
+import 'package:gamepedia/screens/by_genre.dart/role_playing.dart';
+import 'package:gamepedia/screens/by_genre.dart/puzzle.dart';
+import 'package:gamepedia/screens/by_genre.dart/adventure.dart';
 
 class GameDetailScreen extends StatefulWidget {
   final Game game;
@@ -122,6 +136,92 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     });
   }
 
+  void _navigateToDevice(String platform) {
+    final p = platform.toLowerCase();
+    if (p.contains('windows')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const WindowsScreen()),
+      );
+    } else if (p.contains('android')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const AndroidScreen()),
+      );
+    } else if (p.contains('ios') ||
+        p.contains('iphone') ||
+        p.contains('ipad')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const IOSScreen()),
+      );
+    } else if (p.contains('playstation')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const PlayStationScreen()),
+      );
+    } else if (p.contains('xbox')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const XboxScreen()),
+      );
+    } else if (p.contains('nintendo') || p.contains('switch')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const NintendoSwitchScreen()),
+      );
+    } else if (p.contains('linux')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const LinuxScreen()),
+      );
+    } else if (p.contains('mac') ||
+        p.contains('macos') ||
+        p.contains('mac os')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const MacOSSCreen()),
+      );
+    }
+  }
+
+  void _navigateToGenre(String genre) {
+    final g = genre.toLowerCase();
+    if (g.contains('platform')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const PlatformerScreen()),
+      );
+    } else if (g.contains('shooter')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const ShooterScreen()),
+      );
+    } else if (g.contains('strategy')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const StrategyScreen()),
+      );
+    } else if (g.contains('role') ||
+        g.contains('rpg') ||
+        g.contains('role-playing')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const RolePlayingScreen()),
+      );
+    } else if (g.contains('puzzle')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const PuzzleScreen()),
+      );
+    } else if (g.contains('adventure')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const AdventureScreen()),
+      );
+    }
+  }
+
   Widget buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -175,6 +275,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // MAIN IMAGE
             Container(
@@ -280,6 +381,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const SizedBox(width: 16),
                     ...widget.game.device
@@ -287,7 +389,10 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                         .map((platform) {
                           return Padding(
                             padding: const EdgeInsets.only(right: 12),
-                            child: buildTag(platform),
+                            child: buildTag(
+                              platform,
+                              onTap: () => _navigateToDevice(platform),
+                            ),
                           );
                         })
                         .toList(),
@@ -311,7 +416,10 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                         .map((genre) {
                           return Padding(
                             padding: const EdgeInsets.only(right: 12),
-                            child: buildTag(genre),
+                            child: buildTag(
+                              genre,
+                              onTap: () => _navigateToGenre(genre),
+                            ),
                           );
                         })
                         .toList(),
