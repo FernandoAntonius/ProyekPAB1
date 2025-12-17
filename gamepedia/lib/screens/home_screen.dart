@@ -3,6 +3,8 @@ import 'package:gamepedia/data/game_data.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
 import 'package:gamepedia/widgets/info_card.dart';
+import 'package:gamepedia/screens/new_release.dart';
+import 'package:gamepedia/screens/popular_game.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,10 +14,32 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Game> _filteredGames = gameList;
+  List<Game> _filteredGames = [];
   String _searchQuery = '';
 
-  final List<Game> popularGames = gameList.take(5).toList();
+  late final List<Game> popularGames;
+  late final List<Game> newReleases;
+
+  @override
+  void initState() {
+    super.initState();
+    popularGames = (gameList
+        .where((game) => game.rating > 8)
+        .toList()
+      ..sort((a, b) => b.rating.compareTo(a.rating)))
+      .take(5)
+      .toList();
+    
+    DateTime sixMonthAgo = DateTime.now().subtract(const Duration(days: 182));
+    newReleases = (gameList
+        .where((game) => game.releaseDate.isAfter(sixMonthAgo))
+        .toList()
+      ..sort((a, b) => b.releaseDate.compareTo(a.releaseDate)))
+      .take(5)
+      .toList();
+    
+    _filteredGames = newReleases;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onChanged: (value) {
                       setState(() {
                         _searchQuery = value;
-                        _filteredGames = gameList
+                        _filteredGames = newReleases
                             .where(
                               (g) => g.title.toLowerCase().contains(
                                 _searchQuery.toLowerCase(),
@@ -132,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 //POPULAR GAME
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     // LEFT TITLE
                     Row(
                       children: [
@@ -153,12 +177,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    Text(
-                      "Show all",
-                      style: TextStyle(
-                        color: Colors.white54,
-                        fontFamily: 'Quicksand',
-                        fontSize: 14,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PopularGamesScreen(), 
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Show all",
+                        style: TextStyle(
+                          color: Colors.white54,
+                          fontFamily: 'Quicksand',
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ],
@@ -233,12 +267,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    Text(
-                      "Show all",
-                      style: TextStyle(
-                        color: Colors.white54,
-                        fontFamily: 'Quicksand',
-                        fontSize: 14,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NewReleasesScreen(), 
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Show all",
+                        style: TextStyle(
+                          color: Colors.white54,
+                          fontFamily: 'Quicksand',
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ],
