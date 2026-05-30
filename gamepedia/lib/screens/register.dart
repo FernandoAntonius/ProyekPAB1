@@ -1,4 +1,5 @@
-import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,21 +43,49 @@ class _SignInScreenState extends State<RegisterScreen> {
       });
       return;
     }
-    if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
-      final encrypt.Key key = encrypt.Key.fromLength(32);
-      final iv = encrypt.IV.fromLength(16);
 
-      final encrpyer = encrypt.Encrypter(encrypt.AES(key));
-      final encryptedEmail = encrpyer.encrypt(email, iv: iv);
-      final encryptedPassword = encrpyer.encrypt(password, iv: iv);
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
 
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+            'username': username,
+            'email': email,
+            'createdAt': Timestamp.now(),
+          });
+
+      await prefs.setBool('isSignedIn', true);
       await prefs.setString('username', username);
-      await prefs.setString('email', encryptedEmail.base64);
-      await prefs.setString('password', encryptedPassword.base64);
-      await prefs.setString('key', key.base64);
-      await prefs.setString('iv', iv.base64);
+
+      setState(() {
+        _errorText = '';
+      });
+      Navigator.pushReplacementNamed(context, '/login');
+    } on FirebaseAuthException catch (error) {
+      setState(() {
+        _errorText = _getAuthErrorMessage(error.code);
+      });
+    } catch (_) {
+      setState(() {
+        _errorText = 'An error occurred. Please try again.';
+      });
     }
-    Navigator.pushReplacementNamed(context, '/login');
+  }
+
+  String _getAuthErrorMessage(String code) {
+    switch (code) {
+      case 'weak-password':
+        return 'The password provided is too weak.';
+      case 'email-already-in-use':
+        return 'The account already exists for that email.';
+      case 'invalid-email':
+        return 'The email address is not valid.';
+      default:
+        return 'An error occurred. Please try again.';
+    }
   }
 
   @override

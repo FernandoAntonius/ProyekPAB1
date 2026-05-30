@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'gamepedia-projek.firebasestorage.app',
     measurementId: 'G-0X4SN7DGWB',
   );
+
 }

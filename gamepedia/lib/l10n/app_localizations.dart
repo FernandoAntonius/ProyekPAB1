@@ -63,8 +63,7 @@ import 'app_localizations_ko.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -72,8 +71,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -85,19 +83,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
     Locale('id'),
-    Locale('ko'),
+    Locale('ko')
   ];
 
   /// No description provided for @signIn.
@@ -532,56 +529,242 @@ abstract class AppLocalizations {
   /// **'Korean'**
   String get korean;
 
-  // Add Game screen
-  String get addGameTitle;
-  String get addButton;
-  String get systemRequirements;
-  String get minimum;
-  String get recommended;
+  /// No description provided for @titleDeviceGenreRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Title, device, and genre are required.'**
   String get titleDeviceGenreRequired;
+
+  /// No description provided for @gameAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Game added successfully!'**
   String get gameAdded;
+
+  /// No description provided for @failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to upload the game: {error}'**
   String failed(Object error);
 
-  // Form fields
+  /// No description provided for @addGameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Game'**
+  String get addGameTitle;
+
+  /// No description provided for @titleField.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
   String get titleField;
+
+  /// No description provided for @studioField.
+  ///
+  /// In en, this message translates to:
+  /// **'Studio'**
   String get studioField;
+
+  /// No description provided for @ratingExample.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating (e.g. 4.5)'**
   String get ratingExample;
+
+  /// No description provided for @releaseDateField.
+  ///
+  /// In en, this message translates to:
+  /// **'Release Date'**
   String get releaseDateField;
+
+  /// No description provided for @priceExample.
+  ///
+  /// In en, this message translates to:
+  /// **'Price (e.g. 9.99)'**
   String get priceExample;
+
+  /// No description provided for @deviceField.
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
   String get deviceField;
+
+  /// No description provided for @genreField.
+  ///
+  /// In en, this message translates to:
+  /// **'Genre'**
   String get genreField;
+
+  /// No description provided for @descriptionField.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
   String get descriptionField;
+
+  /// No description provided for @screenshotImageUrlField.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshot Image URL'**
   String get screenshotImageUrlField;
+
+  /// No description provided for @systemRequirements.
+  ///
+  /// In en, this message translates to:
+  /// **'System Requirements'**
+  String get systemRequirements;
+
+  /// No description provided for @minimum.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum'**
+  String get minimum;
+
+  /// No description provided for @osField.
+  ///
+  /// In en, this message translates to:
+  /// **'OS'**
   String get osField;
+
+  /// No description provided for @processorField.
+  ///
+  /// In en, this message translates to:
+  /// **'Processor'**
   String get processorField;
+
+  /// No description provided for @memoryField.
+  ///
+  /// In en, this message translates to:
+  /// **'Memory'**
   String get memoryField;
+
+  /// No description provided for @graphicsField.
+  ///
+  /// In en, this message translates to:
+  /// **'Graphics'**
   String get graphicsField;
+
+  /// No description provided for @storageField.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage'**
   String get storageField;
 
-  // Navigation
+  /// No description provided for @recommended.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended'**
+  String get recommended;
+
+  /// No description provided for @addButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get addButton;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
   String get home;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
   String get search;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
   String get profile;
 
-  // Misc
-  String get favoritesMigrated;
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'GamePedia'**
   String get appName;
+
+  /// No description provided for @discoverTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover, save, and share your favorite games.'**
   String get discoverTagline;
+
+  /// No description provided for @userLabelUser.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
   String get userLabelUser;
+
+  /// No description provided for @userLabelGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest'**
   String get userLabelGuest;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
   String get register;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
   String get login;
+
+  /// No description provided for @welcomeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back!'**
   String get welcomeMessage;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
   String get editProfile;
+
+  /// No description provided for @wishlist.
+  ///
+  /// In en, this message translates to:
+  /// **'Wishlist'**
   String get wishlist;
+
+  /// No description provided for @termsOfServiceShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms'**
   String get termsOfServiceShort;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
   String get logout;
+
+  /// No description provided for @favoritesMigrated.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites migrated successfully.'**
+  String get favoritesMigrated;
+
+  /// No description provided for @migrateFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Migrate Favorites'**
   String get migrateFavorites;
+
+  /// No description provided for @copyright.
+  ///
+  /// In en, this message translates to:
+  /// **'© 2026 GamePedia. All rights reserved.'**
   String get copyright;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -590,28 +773,26 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'id', 'ko'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'id', 'ko'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'id':
-      return AppLocalizationsId();
-    case 'ko':
-      return AppLocalizationsKo();
+    case 'en': return AppLocalizationsEn();
+    case 'id': return AppLocalizationsId();
+    case 'ko': return AppLocalizationsKo();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

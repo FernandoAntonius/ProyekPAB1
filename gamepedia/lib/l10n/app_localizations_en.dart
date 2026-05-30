@@ -173,8 +173,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
-  String get pleaseAddImageAndDescription =>
-      'Please add an image and description.';
+  String get pleaseAddImageAndDescription => 'Please add an image and description.';
 
   @override
   String get userNotFoundPleaseSignIn => 'User not found. Please sign in.';
@@ -243,51 +242,122 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get korean => 'Korean';
 
-  // Add Game screen
-  String get addGameTitle => 'Add Game';
-  String get addButton => 'Add';
-  String get systemRequirements => 'System Requirements';
-  String get minimum => 'Minimum';
-  String get recommended => 'Recommended';
-  String get titleDeviceGenreRequired =>
-      'Title, Device, and Genre are required!';
-  String get gameAdded => 'Game successfully added!';
-  String failed(Object error) => 'Failed: $error';
+  @override
+  String get titleDeviceGenreRequired => 'Title, device, and genre are required.';
 
-  // Form fields
+  @override
+  String get gameAdded => 'Game added successfully!';
+
+  @override
+  String failed(Object error) {
+    return 'Failed to upload the game: $error';
+  }
+
+  @override
+  String get addGameTitle => 'Add Game';
+
+  @override
   String get titleField => 'Title';
+
+  @override
   String get studioField => 'Studio';
-  String get ratingExample => 'Rating (ex: 8.5)';
+
+  @override
+  String get ratingExample => 'Rating (e.g. 4.5)';
+
+  @override
   String get releaseDateField => 'Release Date';
-  String get priceExample => 'Price (ex: 59.99)';
+
+  @override
+  String get priceExample => 'Price (e.g. 9.99)';
+
+  @override
   String get deviceField => 'Device';
+
+  @override
   String get genreField => 'Genre';
+
+  @override
   String get descriptionField => 'Description';
+
+  @override
   String get screenshotImageUrlField => 'Screenshot Image URL';
+
+  @override
+  String get systemRequirements => 'System Requirements';
+
+  @override
+  String get minimum => 'Minimum';
+
+  @override
   String get osField => 'OS';
+
+  @override
   String get processorField => 'Processor';
+
+  @override
   String get memoryField => 'Memory';
+
+  @override
   String get graphicsField => 'Graphics';
+
+  @override
   String get storageField => 'Storage';
 
-  // Navigation
+  @override
+  String get recommended => 'Recommended';
+
+  @override
+  String get addButton => 'Add';
+
+  @override
   String get home => 'Home';
+
+  @override
   String get search => 'Search';
+
+  @override
   String get profile => 'Profile';
 
-  // Misc
-  String get favoritesMigrated => 'Favorites migrated to Firestore';
+  @override
   String get appName => 'GamePedia';
-  String get discoverTagline => 'Discover Amazing Games';
+
+  @override
+  String get discoverTagline => 'Discover, save, and share your favorite games.';
+
+  @override
   String get userLabelUser => 'User';
+
+  @override
   String get userLabelGuest => 'Guest';
+
+  @override
   String get register => 'Register';
+
+  @override
   String get login => 'Login';
-  String get welcomeMessage => 'Welcome to GamePedia';
+
+  @override
+  String get welcomeMessage => 'Welcome back!';
+
+  @override
   String get editProfile => 'Edit Profile';
+
+  @override
   String get wishlist => 'Wishlist';
-  String get termsOfServiceShort => 'Terms of Service';
+
+  @override
+  String get termsOfServiceShort => 'Terms';
+
+  @override
   String get logout => 'Logout';
-  String get migrateFavorites => 'Migrate favorites to Firestore';
-  String get copyright => '© GamePedia 2025';
+
+  @override
+  String get favoritesMigrated => 'Favorites migrated successfully.';
+
+  @override
+  String get migrateFavorites => 'Migrate Favorites';
+
+  @override
+  String get copyright => '© 2026 GamePedia. All rights reserved.';
 }

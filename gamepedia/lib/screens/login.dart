@@ -1,4 +1,5 @@
-import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,10 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _login() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String savedEncryptedEmail = prefs.getString('email') ?? '';
-    final String savedEncryptedPassword = prefs.getString('password') ?? '';
-    final String savedKey = prefs.getString('key') ?? '';
-    final String savedIV = prefs.getString('iv') ?? '';
     final String enteredEmail = _emailController.text.trim();
     final String enteredPassword = _passwordController.text.trim();
 
@@ -33,29 +30,22 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    if (savedEncryptedEmail.isEmpty ||
-        savedEncryptedPassword.isEmpty ||
-        savedKey.isEmpty ||
-        savedIV.isEmpty) {
-      setState(() {
-        _errorText = 'No account found.';
-      });
-      return;
-    }
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: enteredEmail,
+            password: enteredPassword,
+          );
 
-    final encrypt.Key key = encrypt.Key.fromBase64(savedKey);
-    final encrypt.IV iv = encrypt.IV.fromBase64(savedIV);
-    final decrypter = encrypt.Encrypter(encrypt.AES(key));
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
 
-    final decryptedEmail = decrypter.decrypt64(savedEncryptedEmail, iv: iv);
-    final decryptedPassword = decrypter.decrypt64(
-      savedEncryptedPassword,
-      iv: iv,
-    );
-
-    if (enteredEmail == decryptedEmail &&
-        enteredPassword == decryptedPassword) {
+      final username = userDoc.data()?['username'] as String? ?? '';
       await prefs.setBool('isSignedIn', true);
+      await prefs.setString('username', username);
+
       setState(() {
         _errorText = '';
       });
@@ -65,10 +55,29 @@ class _LoginScreenState extends State<LoginScreen> {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushReplacementNamed(context, '/');
       });
-    } else {
+    } on FirebaseAuthException catch (error) {
       setState(() {
-        _errorText = 'Email or password is incorrect';
+        _errorText = _getAuthErrorMessage(error.code);
       });
+    } catch (_) {
+      setState(() {
+        _errorText = 'An error occurred. Please try again.';
+      });
+    }
+  }
+
+  String _getAuthErrorMessage(String code) {
+    switch (code) {
+      case 'user-not-found':
+        return 'No account found with that email.';
+      case 'wrong-password':
+        return 'Email or password is incorrect.';
+      case 'invalid-email':
+        return 'The email address is not valid.';
+      case 'user-disabled':
+        return 'This user account has been disabled.';
+      default:
+        return 'An error occurred. Please try again.';
     }
   }
 

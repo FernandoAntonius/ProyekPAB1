@@ -242,50 +242,122 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get korean => '한국인';
 
-  // Add Game screen
-  String get addGameTitle => '게임 추가';
-  String get addButton => '추가';
-  String get systemRequirements => '시스템 요구사항';
-  String get minimum => '최소';
-  String get recommended => '권장';
-  String get titleDeviceGenreRequired => '제목, 장치 및 장르는 필수입니다!';
+  @override
+  String get titleDeviceGenreRequired => '제목, 기기 및 장르는 필수입니다.';
+
+  @override
   String get gameAdded => '게임이 성공적으로 추가되었습니다!';
-  String failed(Object error) => '실패: $error';
 
-  // Form fields
+  @override
+  String failed(Object error) {
+    return '게임 업로드에 실패했습니다: $error';
+  }
+
+  @override
+  String get addGameTitle => '게임 추가';
+
+  @override
   String get titleField => '제목';
-  String get studioField => '스튜디오';
-  String get ratingExample => '평점 (예: 8.5)';
-  String get releaseDateField => '출시일';
-  String get priceExample => '가격 (예: 59.99)';
-  String get deviceField => '장치';
-  String get genreField => '장르';
-  String get descriptionField => '설명';
-  String get screenshotImageUrlField => '스크린샷 이미지 URL';
-  String get osField => '운영체제';
-  String get processorField => '프로세서';
-  String get memoryField => '메모리';
-  String get graphicsField => '그래픽';
-  String get storageField => '저장소';
 
-  // Navigation
+  @override
+  String get studioField => '스튜디오';
+
+  @override
+  String get ratingExample => '평점 (예: 4.5)';
+
+  @override
+  String get releaseDateField => '출시일';
+
+  @override
+  String get priceExample => '가격 (예: 9.99)';
+
+  @override
+  String get deviceField => '기기';
+
+  @override
+  String get genreField => '장르';
+
+  @override
+  String get descriptionField => '설명';
+
+  @override
+  String get screenshotImageUrlField => '스크린샷 이미지 URL';
+
+  @override
+  String get systemRequirements => '시스템 요구 사항';
+
+  @override
+  String get minimum => '최소';
+
+  @override
+  String get osField => '운영체제';
+
+  @override
+  String get processorField => '프로세서';
+
+  @override
+  String get memoryField => '메모리';
+
+  @override
+  String get graphicsField => '그래픽';
+
+  @override
+  String get storageField => '저장 공간';
+
+  @override
+  String get recommended => '권장';
+
+  @override
+  String get addButton => '추가';
+
+  @override
   String get home => '홈';
+
+  @override
   String get search => '검색';
+
+  @override
   String get profile => '프로필';
 
-  // Misc
-  String get favoritesMigrated => '즐겨찾기가 Firestore로 마이그레이션되었습니다';
+  @override
   String get appName => 'GamePedia';
-  String get discoverTagline => 'Discover Amazing Games';
-  String get userLabelUser => 'User';
-  String get userLabelGuest => 'Guest';
-  String get register => 'Register';
-  String get login => 'Login';
-  String get welcomeMessage => 'Welcome to GamePedia';
-  String get editProfile => 'Edit Profile';
-  String get wishlist => 'Wishlist';
-  String get termsOfServiceShort => 'Terms of Service';
-  String get logout => 'Logout';
-  String get migrateFavorites => 'Migrate favorites to Firestore';
-  String get copyright => '© GamePedia 2025';
+
+  @override
+  String get discoverTagline => '좋아하는 게임을 발견하고 저장하고 공유하세요.';
+
+  @override
+  String get userLabelUser => '사용자';
+
+  @override
+  String get userLabelGuest => '게스트';
+
+  @override
+  String get register => '가입';
+
+  @override
+  String get login => '로그인';
+
+  @override
+  String get welcomeMessage => '다시 오신 것을 환영합니다!';
+
+  @override
+  String get editProfile => '프로필 수정';
+
+  @override
+  String get wishlist => '위시리스트';
+
+  @override
+  String get termsOfServiceShort => '약관';
+
+  @override
+  String get logout => '로그아웃';
+
+  @override
+  String get favoritesMigrated => '즐겨찾기가 성공적으로 이전되었습니다.';
+
+  @override
+  String get migrateFavorites => '즐겨찾기 이전';
+
+  @override
+  String get copyright => '© 2026 GamePedia. 모든 권리 보유.';
 }

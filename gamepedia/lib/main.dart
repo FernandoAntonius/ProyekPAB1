@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Quicksand',
       ),
-      home: const SettingsScreen(),
+      home: const SplashScreen(),
       initialRoute: '/',
       routes: {
         '/main': (context) => const MainScreen(),
