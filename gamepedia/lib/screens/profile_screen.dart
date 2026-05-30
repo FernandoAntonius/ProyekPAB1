@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/widgets/profile_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:gamepedia/data/game_data.dart';
+import 'package:gamepedia/data/favorites_service.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -28,11 +28,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final String savedUsername = prefs.getString('username') ?? '';
 
     int count = 0;
-    for (var game in gameList) {
-      bool isFav = prefs.getBool('favorite_${game.title}') ?? false;
-      if (isFav) {
-        count++;
+    if (signedIn && savedUsername.isNotEmpty) {
+      try {
+        final favs = await FavoritesService.getFavoritesOnce(savedUsername);
+        count = favs.length;
+      } catch (_) {
+        count = prefs.getKeys().where((key) {
+          return key.startsWith('favorite_') && prefs.getBool(key) == true;
+        }).length;
       }
+    } else {
+      count = prefs.getKeys().where((key) {
+        return key.startsWith('favorite_') && prefs.getBool(key) == true;
+      }).length;
     }
 
     setState(() {
@@ -387,6 +395,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ),
+                if (isSignedIn)
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 12.0),
+                      child: TextButton(
+                        onPressed: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          final uname = prefs.getString('username') ?? 'guest';
+                          await FavoritesService.migrateLocalFavoritesFromPrefs(
+                            uname,
+                          );
+                          final favs = await FavoritesService.getFavoritesOnce(
+                            uname,
+                          );
+                          setState(() {
+                            favoriteGameCount = favs.length;
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Favorites migrated to Firestore'),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Migrate favorites to Firestore',
+                          style: TextStyle(color: Colors.white70),
                         ),
                       ),
                     ),

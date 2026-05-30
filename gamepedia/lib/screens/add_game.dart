@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart'; 
 
 class AddGameScreen extends StatefulWidget {
   const AddGameScreen({super.key});
@@ -7,23 +9,28 @@ class AddGameScreen extends StatefulWidget {
   State<AddGameScreen> createState() => _AddGameScreen();
 }
 
+// Widget helper untuk TextFormField biasa
 Widget buildAddGame(
   String label, {
-  TextEditingController? controller,
+  required TextEditingController controller,
   int maxLines = 1,
+  bool readOnly = false,
+  VoidCallback? onTap,
 }) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 16),
     child: TextFormField(
       controller: controller,
       maxLines: maxLines,
-      style: TextStyle(
+      readOnly: readOnly,
+      onTap: onTap,
+      style: const TextStyle(
         color: Colors.white,
         fontFamily: 'Quicksand',
         fontSize: 14,
       ),
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+        contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         labelText: label,
         labelStyle: TextStyle(
           fontFamily: 'Quicksand',
@@ -34,42 +41,61 @@ Widget buildAddGame(
         fillColor: Colors.black,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7),
-          borderSide: BorderSide(color: Colors.white, width: 3),
+          borderSide: const BorderSide(color: Colors.white, width: 3),
         ),
       ),
     ),
   );
 }
 
-// class buildDropDown extends StatelessWidget {
-//   final String? value;
-//   final List<String> items;
-//   final String hint;
-//   final Function(String?) onChanged;
+Widget buildDropDown({
+  required String? value,
+  required List<String> items,
+  required String label,
+  required ValueChanged<String?> onChanged,
+}) {
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 16),
+    child: DropdownButtonFormField<String>(
+      value: value,
+      dropdownColor: const Color(0xFF1A1C3A),
+      style: const TextStyle(
+        color: Colors.white,
+        fontFamily: 'Quicksand',
+        fontSize: 14,
+      ),
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+        labelText: label,
+        labelStyle: TextStyle(
+          fontFamily: 'Quicksand',
+          fontSize: 14,
+          color: Colors.white.withOpacity(0.6),
+        ),
+        filled: true,
+        fillColor: Colors.black,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(7),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+      ),
+      hint: Text(
+        'Select $label',
+        style: TextStyle(color: Colors.white.withOpacity(0.4)),
+      ),
+      items: items.map((item) {
+        return DropdownMenuItem(
+          value: item,
+          child: Text(item, style: const TextStyle(color: Colors.white)),
+        );
+      }).toList(),
+      onChanged: onChanged,
+    ),
+  );
+}
 
-//   const buildDropDown({
-//     super.key,
-//     required this.value,
-//     required this.items,
-//     required this.hint,
-//     required this.onChanged,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return DropdownButtonFormField<String>(
-//       value: value,
-//       decoration: InputDecoration(border: OutlineInputBorder()),
-//       hint: Text(hint),
-//       items: items.map((item) {
-//         return DropdownMenuItem(value: item, child: Text(item));
-//       }).toList(),
-//       onChanged: onChanged,
-//     );
-//   }
-// }
-
-Widget buildSystemReq(String label) {
+// Widget helper untuk System Requirements
+Widget buildSystemReq(String label, TextEditingController controller) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 12),
     child: Row(
@@ -78,7 +104,7 @@ Widget buildSystemReq(String label) {
           width: 100,
           child: Text(
             label,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white70,
               fontFamily: 'Quicksand',
               fontSize: 14,
@@ -87,23 +113,23 @@ Widget buildSystemReq(String label) {
         ),
         Expanded(
           child: TextFormField(
-            style: TextStyle(
+            controller: controller,
+            style: const TextStyle(
               color: Colors.white,
               fontFamily: 'Quicksand',
               fontSize: 14,
             ),
             decoration: InputDecoration(
               isDense: true,
-              contentPadding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 4,
+                vertical: 4,
+              ),
               filled: true,
               fillColor: Colors.black,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7),
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(7),
-                borderSide: BorderSide(color: Colors.white, width: 0.3),
+                borderSide: const BorderSide(color: Colors.white),
               ),
             ),
           ),
@@ -116,13 +142,157 @@ Widget buildSystemReq(String label) {
 class _AddGameScreen extends State<AddGameScreen> {
   String? selectedDevice;
   String? selectedGenre;
+
+  final List<String> _devices = [
+    'Windows',
+    'MacOS',
+    'Android',
+    'iOS',
+    'Xbox',
+    'Nintendo Switch',
+    'PlayStation',
+    'Linux',
+  ];
+  final List<String> _genres = [
+    'Adventure',
+    'Role-playing',
+    'Shooter',
+    'Platformer',
+    'Puzzle',
+    'Strategy',
+  ];
+
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _studioController = TextEditingController();
+  final TextEditingController _ratingController = TextEditingController();
+  final TextEditingController _releaseDateController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
+  final TextEditingController _screenshotsController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+
+  final TextEditingController _minOsController = TextEditingController();
+  final TextEditingController _minProcessorController = TextEditingController();
+  final TextEditingController _minMemoryController = TextEditingController();
+  final TextEditingController _minGraphicsController = TextEditingController();
+  final TextEditingController _minStorageController = TextEditingController();
+
+  final TextEditingController _recOsController = TextEditingController();
+  final TextEditingController _recProcessorController = TextEditingController();
+  final TextEditingController _recMemoryController = TextEditingController();
+  final TextEditingController _recGraphicsController = TextEditingController();
+  final TextEditingController _recStorageController = TextEditingController();
+
+  bool _isLoading = false;
+
+  Future<void> _selectDate() async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1990),
+      lastDate: DateTime(2030),
+    );
+    if (picked != null) {
+      setState(() {
+        _releaseDateController.text = DateFormat('yyyy-MM-dd').format(picked);
+      });
+    }
+  }
+
+  Future<void> _uploadGameData() async {
+    if (_titleController.text.trim().isEmpty ||
+        selectedDevice == null ||
+        selectedGenre == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Title, Device, dan Genre wajib diisi!')),
+      );
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      List<String> screenshotList =
+          _screenshotsController.text.trim().isNotEmpty
+          ? [_screenshotsController.text.trim()]
+          : [];
+
+      await FirebaseFirestore.instance.collection('games').add({
+        'title': _titleController.text.trim(),
+        'studio': _studioController.text.trim(),
+        'rating': double.tryParse(_ratingController.text.trim()) ?? 0.0,
+        'releaseDate': _releaseDateController.text.trim(),
+        'price': double.tryParse(_priceController.text.trim()) ?? 0.0,
+        'device': [selectedDevice],
+        'genre': [selectedGenre],
+        'description': _descriptionController.text.trim(),
+        'screenshots': screenshotList,
+        'imageAssets': 'images/gamepedia.png',
+        'createdAt': FieldValue.serverTimestamp(),
+        'systemRequirements': {
+          'minimum': {
+            'os': _minOsController.text.trim(),
+            'processor': _minProcessorController.text.trim(),
+            'memory': _minMemoryController.text.trim(),
+            'graphics': _minGraphicsController.text.trim(),
+            'storage': _minStorageController.text.trim(),
+          },
+          'recommended': {
+            'os': _recOsController.text.trim(),
+            'processor': _recProcessorController.text.trim(),
+            'memory': _recMemoryController.text.trim(),
+            'graphics': _recGraphicsController.text.trim(),
+            'storage': _recStorageController.text.trim(),
+          },
+        },
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Game Berhasil Ditambahkan!')),
+      );
+      _clearForm();
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Gagal: $e')));
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  void _clearForm() {
+    _titleController.clear();
+    _studioController.clear();
+    _ratingController.clear();
+    _releaseDateController.clear();
+    _priceController.clear();
+    _screenshotsController.clear();
+    _descriptionController.clear();
+    _minOsController.clear();
+    _minProcessorController.clear();
+    _minMemoryController.clear();
+    _minGraphicsController.clear();
+    _minStorageController.clear();
+    _recOsController.clear();
+    _recProcessorController.clear();
+    _recMemoryController.clear();
+    _recGraphicsController.clear();
+    _recStorageController.clear();
+    setState(() {
+      selectedDevice = null;
+      selectedGenre = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: Colors.black,
         toolbarHeight: 110,
         actions: [
           Padding(
@@ -135,13 +305,12 @@ class _AddGameScreen extends State<AddGameScreen> {
           ),
         ],
       ),
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Add Game',
               style: TextStyle(
                 fontFamily: 'Quicksand',
@@ -150,68 +319,55 @@ class _AddGameScreen extends State<AddGameScreen> {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 25),
-            buildAddGame('Title'),
-            buildAddGame('Studio'),
-            buildAddGame('Rating'),
-            buildAddGame('Release Date'),
-            buildAddGame('Price'),
-            buildAddGame('Device'),
-            buildAddGame('Genre'),
+            const SizedBox(height: 25),
+            buildAddGame('Title', controller: _titleController),
+            buildAddGame('Studio', controller: _studioController),
+            buildAddGame('Rating (ex: 8.5)', controller: _ratingController),
+            buildAddGame(
+              'Release Date',
+              controller: _releaseDateController,
+              readOnly: true,
+              onTap: _selectDate,
+            ),
+            buildAddGame('Price (ex: 59.99)', controller: _priceController),
 
-            // buildDropDown(
-            //   value: selectedDevice,
-            //   hint: '',
-            //   items: [
-            //     'Adventure',
-            //     'Role-playing',
-            //     'Shooter',
-            //     'Platform',
-            //     'Puzzle',
-            //     'Strategy',
-            //     'Sport',
-            //   ],
-            //   onChanged: (value) {
-            //     setState(() {
-            //       selectedDevice = value;
-            //     });
-            //   },
-            // ),
+            buildDropDown(
+              value: selectedDevice,
+              items: _devices,
+              label: 'Device',
+              onChanged: (val) => setState(() => selectedDevice = val),
+            ),
+            buildDropDown(
+              value: selectedGenre,
+              items: _genres,
+              label: 'Genre',
+              onChanged: (val) => setState(() => selectedGenre = val),
+            ),
 
-            // SizedBox(height: 16),
+            const SizedBox(height: 16),
+            buildAddGame(
+              'Description',
+              controller: _descriptionController,
+              maxLines: 5,
+            ),
+            buildAddGame(
+              'Screenshot Image URL',
+              controller: _screenshotsController,
+              maxLines: 2,
+            ),
+            const SizedBox(height: 16),
 
-            // buildDropDown(
-            //   value: selectedDevice,
-            //   hint: '',
-            //   items: ['PC', 'Console'],
-            //   onChanged: (value) {
-            //     setState(() {
-            //       selectedDevice = value;
-            //     });
-            //   },
-            // ),
-            SizedBox(height: 16),
-
-            buildAddGame('Description', maxLines: 10),
-            buildAddGame('Screenshots', maxLines: 8),
-            SizedBox(height: 16),
-
-            //SystReq
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(7),
-                border: Border.all(
-                  color: Colors.white.withOpacity(0.3),
-                  width: 1,
-                ),
+                border: Border.all(color: Colors.white.withOpacity(0.3)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'System Requirements',
                     style: TextStyle(
                       fontFamily: 'Quicksand',
@@ -220,92 +376,77 @@ class _AddGameScreen extends State<AddGameScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 30),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Minimum',
-                        style: TextStyle(
-                          fontFamily: 'Quicksand',
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Minimum',
+                    style: TextStyle(
+                      fontFamily: 'Quicksand',
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
                   ),
-
-                  SizedBox(height: 14),
-
-                  buildSystemReq('OS'),
-                  buildSystemReq('Processor'),
-                  buildSystemReq('Memory'),
-                  buildSystemReq('Graphics'),
-                  buildSystemReq('Storage'),
-
-                  SizedBox(height: 25),
-
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Recommended',
-                        style: TextStyle(
-                          fontFamily: 'Quicksand',
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                  const SizedBox(height: 10),
+                  buildSystemReq('OS', _minOsController),
+                  buildSystemReq('Processor', _minProcessorController),
+                  buildSystemReq('Memory', _minMemoryController),
+                  buildSystemReq('Graphics', _minGraphicsController),
+                  buildSystemReq('Storage', _minStorageController),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Recommended',
+                    style: TextStyle(
+                      fontFamily: 'Quicksand',
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
                   ),
-                  SizedBox(height: 14),
-                  buildSystemReq('OS'),
-                  buildSystemReq('Processor'),
-                  buildSystemReq('Memory'),
-                  buildSystemReq('Graphics'),
-                  buildSystemReq('Storage'),
+                  const SizedBox(height: 10),
+                  buildSystemReq('OS', _recOsController),
+                  buildSystemReq('Processor', _recProcessorController),
+                  buildSystemReq('Memory', _recMemoryController),
+                  buildSystemReq('Graphics', _recGraphicsController),
+                  buildSystemReq('Storage', _recStorageController),
                 ],
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [Color(0xFF2C30FF), Color(0xFFC540F5)],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
                     ),
                     borderRadius: BorderRadius.circular(7),
                   ),
                   child: SizedBox(
                     height: 35,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: _isLoading ? null : _uploadGameData,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 6,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7),
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
                       ),
-                      child: Text(
-                        'Add',
-                        style: TextStyle(
-                          fontFamily: 'Quicksand',
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: _isLoading
+                          ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : const Text(
+                              'Add',
+                              style: TextStyle(
+                                fontFamily: 'Quicksand',
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
                     ),
                   ),
                 ),

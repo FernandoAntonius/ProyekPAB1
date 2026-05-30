@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gamepedia/data/favorites_service.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/widgets/info_card.dart';
 import 'package:gamepedia/screens/by_device.dart/windows.dart';
@@ -114,11 +115,20 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
 
   void _loadFavoritesStatus() async {
     final prefs = await SharedPreferences.getInstance();
-    bool saved = prefs.getBool("favorite_${widget.game.title}") ?? false;
+    isSignedIn = prefs.getBool("isSignedIn") ?? false;
 
-    setState(() {
-      isFavorite = saved;
-    });
+    if (isSignedIn) {
+      final username = prefs.getString('username') ?? 'guest';
+      final favs = await FavoritesService.getFavoritesOnce(username);
+      setState(() {
+        isFavorite = favs.contains(widget.game.title);
+      });
+    } else {
+      final saved = prefs.getBool("favorite_${widget.game.title}") ?? false;
+      setState(() {
+        isFavorite = saved;
+      });
+    }
   }
 
   Future<void> _toggleFavorite() async {
@@ -128,12 +138,20 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
       return;
     }
 
-    bool newStatus = !isFavorite;
-    prefs.setBool("favorite_${widget.game.title}", newStatus);
-
-    setState(() {
-      isFavorite = newStatus;
-    });
+    final username = prefs.getString('username') ?? 'guest';
+    if (isFavorite) {
+      await FavoritesService.removeFavorite(username, widget.game.title);
+      await prefs.setBool("favorite_${widget.game.title}", false);
+      setState(() {
+        isFavorite = false;
+      });
+    } else {
+      await FavoritesService.addFavorite(username, widget.game.title);
+      await prefs.setBool("favorite_${widget.game.title}", true);
+      setState(() {
+        isFavorite = true;
+      });
+    }
   }
 
   void _navigateToDevice(String platform) {
