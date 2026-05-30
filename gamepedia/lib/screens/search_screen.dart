@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gamepedia/data/game_data.dart';
+import 'package:gamepedia/data/game_repository.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
 
@@ -11,7 +11,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<Game> _filteredGames = gameList;
   String _searchQuery = '';
 
   final List<String> genres = [
@@ -52,38 +51,30 @@ class _SearchScreenState extends State<SearchScreen> {
   Set<int> selectedDevices = {0};
   int selectedPriceSort = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    _filterGames();
-  }
+  List<Game> _filterGames(List<Game> games) {
+    final filtered = games.where((game) {
+      final titleMatch = game.title.toLowerCase().contains(
+        _searchQuery.toLowerCase(),
+      );
 
-  void _filterGames() {
-    setState(() {
-      _filteredGames = gameList.where((game) {
-        bool titleMatch = game.title.toLowerCase().contains(
-          _searchQuery.toLowerCase(),
-        );
+      final genreMatch =
+          selectedGenres.contains(0) ||
+          selectedGenres.any((index) => game.genre.contains(genres[index]));
 
-        bool genreMatch =
-            selectedGenres.contains(0) ||
-            selectedGenres.any((index) => game.genre.contains(genres[index]));
+      final deviceMatch =
+          selectedDevices.contains(0) ||
+          selectedDevices.any((index) => game.device.contains(devices[index]));
 
-        bool deviceMatch =
-            selectedDevices.contains(0) ||
-            selectedDevices.any(
-              (index) => game.device.contains(devices[index]),
-            );
+      return titleMatch && genreMatch && deviceMatch;
+    }).toList();
 
-        return titleMatch && genreMatch && deviceMatch;
-      }).toList();
+    if (selectedPriceSort == 1) {
+      filtered.sort((a, b) => a.price.compareTo(b.price));
+    } else if (selectedPriceSort == 2) {
+      filtered.sort((a, b) => b.price.compareTo(a.price));
+    }
 
-      if (selectedPriceSort == 1) {
-        _filteredGames.sort((a, b) => a.price.compareTo(b.price));
-      } else if (selectedPriceSort == 2) {
-        _filteredGames.sort((a, b) => b.price.compareTo(a.price));
-      }
-    });
+    return filtered;
   }
 
   void _showFilterBottomSheet() {
@@ -354,9 +345,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        setState(() {
-                          _filterGames();
-                        });
+                        setState(() {});
                         Navigator.pop(context);
                       },
                       style:
@@ -483,8 +472,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       child: TextField(
                         onChanged: (value) {
-                          _searchQuery = value;
-                          _filterGames();
+                          setState(() {
+                            _searchQuery = value;
+                          });
                         },
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
@@ -575,80 +565,143 @@ class _SearchScreenState extends State<SearchScreen> {
                 ],
               ),
               const SizedBox(height: 16),
-              Text(
-                "${_filteredGames.length} games found",
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 12,
-                  fontFamily: 'Quicksand',
-                ),
-              ),
-              const SizedBox(height: 8),
-              Expanded(
-                child: GridView.builder(
-                  itemCount: _filteredGames.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
-                    childAspectRatio: 0.72,
-                  ),
-                  itemBuilder: (context, index) {
-                    final game = _filteredGames[index];
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GameDetailScreen(game: game),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.white10,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                game.imageAssets,
-                                height: 80,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              game.title,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Quicksand',
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              game.price > 0 ? "\$${game.price}" : "FREE",
-                              style: const TextStyle(
-                                color: Color(0xFF00FF88),
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Quicksand',
-                              ),
-                            ),
-                          ],
+              StreamBuilder<List<Game>>(
+                stream: GameRepository.streamAllGames(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Padding(
+                      padding: EdgeInsets.only(bottom: 16),
+                      child: Text(
+                        'Unable to load games.',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 12,
+                          fontFamily: 'Quicksand',
                         ),
                       ),
                     );
-                  },
-                ),
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Padding(
+                      padding: EdgeInsets.only(bottom: 16),
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+
+                  final filteredGames = _filterGames(snapshot.data ?? []);
+
+                  return Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${filteredGames.length} games found",
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 12,
+                            fontFamily: 'Quicksand',
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Expanded(
+                          child: filteredGames.isEmpty
+                              ? const Center(
+                                  child: Text(
+                                    'No games match the selected filters.',
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 14,
+                                      fontFamily: 'Quicksand',
+                                    ),
+                                  ),
+                                )
+                              : GridView.builder(
+                                  itemCount: filteredGames.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        mainAxisSpacing: 12,
+                                        crossAxisSpacing: 12,
+                                        childAspectRatio: 0.72,
+                                      ),
+                                  itemBuilder: (context, index) {
+                                    final game = filteredGames[index];
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                GameDetailScreen(game: game),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white10,
+                                          borderRadius: BorderRadius.circular(
+                                            16,
+                                          ),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child:
+                                                  game.imageAssets.startsWith(
+                                                    'http',
+                                                  )
+                                                  ? Image.network(
+                                                      game.imageAssets,
+                                                      height: 80,
+                                                      width: double.infinity,
+                                                      fit: BoxFit.cover,
+                                                    )
+                                                  : Image.asset(
+                                                      game.imageAssets,
+                                                      height: 80,
+                                                      width: double.infinity,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                            ),
+                                            const SizedBox(height: 6),
+                                            Text(
+                                              game.title,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Quicksand',
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            const SizedBox(height: 2),
+                                            Text(
+                                              game.price > 0
+                                                  ? "\$${game.price}"
+                                                  : "FREE",
+                                              style: const TextStyle(
+                                                color: Color(0xFF00FF88),
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Quicksand',
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ],
           ),
