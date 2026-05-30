@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 
 class AddGameScreen extends StatefulWidget {
   const AddGameScreen({super.key});
@@ -203,7 +204,9 @@ class _AddGameScreen extends State<AddGameScreen> {
         selectedDevice == null ||
         selectedGenre == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Title, Device, dan Genre wajib diisi!')),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.titleDeviceGenreRequired),
+        ),
       );
       return;
     }
@@ -249,13 +252,13 @@ class _AddGameScreen extends State<AddGameScreen> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Game Berhasil Ditambahkan!')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.gameAdded)),
       );
       _clearForm();
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Gagal: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.failed(e))),
+      );
     } finally {
       setState(() {
         _isLoading = false;
@@ -310,9 +313,9 @@ class _AddGameScreen extends State<AddGameScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Add Game',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.addGameTitle,
+              style: const TextStyle(
                 fontFamily: 'Quicksand',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -320,38 +323,50 @@ class _AddGameScreen extends State<AddGameScreen> {
               ),
             ),
             const SizedBox(height: 25),
-            buildAddGame('Title', controller: _titleController),
-            buildAddGame('Studio', controller: _studioController),
-            buildAddGame('Rating (ex: 8.5)', controller: _ratingController),
             buildAddGame(
-              'Release Date',
+              AppLocalizations.of(context)!.titleField,
+              controller: _titleController,
+            ),
+            buildAddGame(
+              AppLocalizations.of(context)!.studioField,
+              controller: _studioController,
+            ),
+            buildAddGame(
+              AppLocalizations.of(context)!.ratingExample,
+              controller: _ratingController,
+            ),
+            buildAddGame(
+              AppLocalizations.of(context)!.releaseDateField,
               controller: _releaseDateController,
               readOnly: true,
               onTap: _selectDate,
             ),
-            buildAddGame('Price (ex: 59.99)', controller: _priceController),
+            buildAddGame(
+              AppLocalizations.of(context)!.priceExample,
+              controller: _priceController,
+            ),
 
             buildDropDown(
               value: selectedDevice,
               items: _devices,
-              label: 'Device',
+              label: AppLocalizations.of(context)!.deviceField,
               onChanged: (val) => setState(() => selectedDevice = val),
             ),
             buildDropDown(
               value: selectedGenre,
               items: _genres,
-              label: 'Genre',
+              label: AppLocalizations.of(context)!.genreField,
               onChanged: (val) => setState(() => selectedGenre = val),
             ),
 
             const SizedBox(height: 16),
             buildAddGame(
-              'Description',
+              AppLocalizations.of(context)!.descriptionField,
               controller: _descriptionController,
               maxLines: 5,
             ),
             buildAddGame(
-              'Screenshot Image URL',
+              AppLocalizations.of(context)!.screenshotImageUrlField,
               controller: _screenshotsController,
               maxLines: 2,
             ),
@@ -367,9 +382,9 @@ class _AddGameScreen extends State<AddGameScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'System Requirements',
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.systemRequirements,
+                    style: const TextStyle(
                       fontFamily: 'Quicksand',
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -377,35 +392,65 @@ class _AddGameScreen extends State<AddGameScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const Text(
-                    'Minimum',
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.minimum,
+                    style: const TextStyle(
                       fontFamily: 'Quicksand',
                       fontSize: 16,
                       color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 10),
-                  buildSystemReq('OS', _minOsController),
-                  buildSystemReq('Processor', _minProcessorController),
-                  buildSystemReq('Memory', _minMemoryController),
-                  buildSystemReq('Graphics', _minGraphicsController),
-                  buildSystemReq('Storage', _minStorageController),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.osField,
+                    _minOsController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.processorField,
+                    _minProcessorController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.memoryField,
+                    _minMemoryController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.graphicsField,
+                    _minGraphicsController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.storageField,
+                    _minStorageController,
+                  ),
                   const SizedBox(height: 20),
-                  const Text(
-                    'Recommended',
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.recommended,
+                    style: const TextStyle(
                       fontFamily: 'Quicksand',
                       fontSize: 16,
                       color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 10),
-                  buildSystemReq('OS', _recOsController),
-                  buildSystemReq('Processor', _recProcessorController),
-                  buildSystemReq('Memory', _recMemoryController),
-                  buildSystemReq('Graphics', _recGraphicsController),
-                  buildSystemReq('Storage', _recStorageController),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.osField,
+                    _recOsController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.processorField,
+                    _recProcessorController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.memoryField,
+                    _recMemoryController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.graphicsField,
+                    _recGraphicsController,
+                  ),
+                  buildSystemReq(
+                    AppLocalizations.of(context)!.storageField,
+                    _recStorageController,
+                  ),
                 ],
               ),
             ),
@@ -438,9 +483,9 @@ class _AddGameScreen extends State<AddGameScreen> {
                                 strokeWidth: 2,
                               ),
                             )
-                          : const Text(
-                              'Add',
-                              style: TextStyle(
+                          : Text(
+                              AppLocalizations.of(context)!.addButton,
+                              style: const TextStyle(
                                 fontFamily: 'Quicksand',
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,

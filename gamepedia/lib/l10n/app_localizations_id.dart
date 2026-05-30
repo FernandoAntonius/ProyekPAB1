@@ -30,7 +30,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get pleaseEnterPassword => 'Silakan masukkan kata sandi Anda';
 
   @override
-  String get passwordTooShort => 'Kata sandi harus terdiri dari minimal 6 karakter';
+  String get passwordTooShort =>
+      'Kata sandi harus terdiri dari minimal 6 karakter';
 
   @override
   String get confirmPassword => 'Konfirmasi Kata Sandi';
@@ -173,10 +174,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get cancel => 'Batal';
 
   @override
-  String get pleaseAddImageAndDescription => 'Silakan tambahkan gambar dan deskripsi.';
+  String get pleaseAddImageAndDescription =>
+      'Silakan tambahkan gambar dan deskripsi.';
 
   @override
-  String get userNotFoundPleaseSignIn => 'Pengguna tidak ditemukan. Silakan masuk.';
+  String get userNotFoundPleaseSignIn =>
+      'Pengguna tidak ditemukan. Silakan masuk.';
 
   @override
   String get postUploadedSuccessfully => 'Laporan berhasil diunggah!';
@@ -241,4 +244,52 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get korean => 'Korea';
+
+  // Add Game screen
+  String get addGameTitle => 'Tambah Game';
+  String get addButton => 'Tambah';
+  String get systemRequirements => 'Spesifikasi Sistem';
+  String get minimum => 'Minimum';
+  String get recommended => 'Direkomendasikan';
+  String get titleDeviceGenreRequired =>
+      'Title, Device, dan Genre wajib diisi!';
+  String get gameAdded => 'Game Berhasil Ditambahkan!';
+  String failed(Object error) => 'Gagal: $error';
+
+  // Form fields
+  String get titleField => 'Title';
+  String get studioField => 'Studio';
+  String get ratingExample => 'Rating (ex: 8.5)';
+  String get releaseDateField => 'Release Date';
+  String get priceExample => 'Price (ex: 59.99)';
+  String get deviceField => 'Device';
+  String get genreField => 'Genre';
+  String get descriptionField => 'Description';
+  String get screenshotImageUrlField => 'Screenshot Image URL';
+  String get osField => 'OS';
+  String get processorField => 'Processor';
+  String get memoryField => 'Memory';
+  String get graphicsField => 'Graphics';
+  String get storageField => 'Storage';
+
+  // Navigation
+  String get home => 'Home';
+  String get search => 'Search';
+  String get profile => 'Profile';
+
+  // Misc
+  String get favoritesMigrated => 'Favorites migrated to Firestore';
+  String get appName => 'GamePedia';
+  String get discoverTagline => 'Discover Amazing Games';
+  String get userLabelUser => 'User';
+  String get userLabelGuest => 'Guest';
+  String get register => 'Register';
+  String get login => 'Login';
+  String get welcomeMessage => 'Welcome to GamePedia';
+  String get editProfile => 'Edit Profile';
+  String get wishlist => 'Wishlist';
+  String get termsOfServiceShort => 'Terms of Service';
+  String get logout => 'Logout';
+  String get migrateFavorites => 'Migrate favorites to Firestore';
+  String get copyright => '© GamePedia 2025';
 }

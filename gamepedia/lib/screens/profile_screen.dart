@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:gamepedia/widgets/profile_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/data/favorites_service.dart';
@@ -103,9 +104,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ).createShader(bounds),
-                      child: const Text(
-                        "GamePedia",
-                        style: TextStyle(
+                      child: Text(
+                        AppLocalizations.of(context)!.appName,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontFamily: 'Quicksand',
@@ -116,9 +117,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
                 const SizedBox(height: 4),
-                const Text(
-                  "Discover Amazing Games",
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.discoverTagline,
+                  style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 14,
                     fontFamily: 'Quicksand',
@@ -199,8 +200,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   isSignedIn
                                       ? (username.isNotEmpty
                                             ? username
-                                            : 'User')
-                                      : 'Guest',
+                                            : AppLocalizations.of(
+                                                context,
+                                              )!.userLabelUser)
+                                      : AppLocalizations.of(
+                                          context,
+                                        )!.userLabelGuest,
                                   style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -235,9 +240,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       BorderRadius.circular(6),
                                                 ),
                                               ),
-                                              child: const Text(
-                                                'Register',
-                                                style: TextStyle(
+                                              child: Text(
+                                                AppLocalizations.of(
+                                                  context,
+                                                )!.register,
+                                                style: const TextStyle(
                                                   fontSize: 12,
                                                   fontFamily: 'Quicksand',
                                                   color: Colors.white,
@@ -269,9 +276,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       BorderRadius.circular(6),
                                                 ),
                                               ),
-                                              child: const Text(
-                                                'Login',
-                                                style: TextStyle(
+                                              child: Text(
+                                                AppLocalizations.of(
+                                                  context,
+                                                )!.login,
+                                                style: const TextStyle(
                                                   fontSize: 12,
                                                   fontFamily: 'Quicksand',
                                                   color: Colors.white,
@@ -284,9 +293,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     : Row(
                                         children: [
                                           Expanded(
-                                            child: const Text(
-                                              'Welcome to GamePedia',
-                                              style: TextStyle(
+                                            child: Text(
+                                              AppLocalizations.of(
+                                                context,
+                                              )!.welcomeMessage,
+                                              style: const TextStyle(
                                                 fontSize: 12,
                                                 fontFamily: 'Quicksand',
                                                 color: Colors.white,
@@ -323,7 +334,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       ProfileInfoItem(
                         icon: Icons.person_outline,
-                        label: 'Edit Profile',
+                        label: AppLocalizations.of(context)!.editProfile,
                         value: '',
                         showEditIcon: false,
                         iconColor: Color(0xFF6366f1),
@@ -341,7 +352,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       ProfileInfoItem(
                         icon: Icons.favorite_outline,
-                        label: 'Wishlist',
+                        label: AppLocalizations.of(context)!.wishlist,
                         value: '',
                         showEditIcon: false,
                         iconColor: Color(0xFFec4899),
@@ -359,7 +370,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       ProfileInfoItem(
                         icon: Icons.settings_outlined,
-                        label: 'Terms of Service',
+                        label: AppLocalizations.of(
+                          context,
+                        )!.termsOfServiceShort,
                         value: '',
                         showEditIcon: false,
                         iconColor: Color(0xFFd1d5db),
@@ -379,9 +392,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: OutlinedButton.icon(
                       onPressed: logout,
                       icon: const Icon(Icons.logout, color: Colors.red),
-                      label: const Text(
-                        'Logout',
-                        style: TextStyle(
+                      label: Text(
+                        AppLocalizations.of(context)!.logout,
+                        style: const TextStyle(
                           color: Colors.red,
                           fontSize: 16,
                           fontFamily: 'Quicksand',
@@ -417,14 +430,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             favoriteGameCount = favs.length;
                           });
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Favorites migrated to Firestore'),
+                            SnackBar(
+                              content: Text(
+                                AppLocalizations.of(context)!.favoritesMigrated,
+                              ),
                             ),
                           );
                         },
-                        child: const Text(
-                          'Migrate favorites to Firestore',
-                          style: TextStyle(color: Colors.white70),
+                        child: Text(
+                          AppLocalizations.of(context)!.migrateFavorites,
+                          style: const TextStyle(color: Colors.white70),
                         ),
                       ),
                     ),
@@ -432,7 +447,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height: 20),
                 Center(
                   child: Text(
-                    '© GamePedia 2025',
+                    AppLocalizations.of(context)!.copyright,
                     style: TextStyle(
                       fontFamily: 'Quicksand',
                       fontSize: 12,

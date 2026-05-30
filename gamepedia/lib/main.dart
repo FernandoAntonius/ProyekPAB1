@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:gamepedia/firebase_options.dart';
 import 'package:gamepedia/screens/add_game.dart';
 import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
+import 'package:gamepedia/screens/setting_screen.dart';
 import 'package:gamepedia/screens/splash.dart';
 import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/login.dart';
@@ -13,6 +15,8 @@ import 'package:gamepedia/screens/terms_of_service.dart';
 import 'package:gamepedia/screens/wishlist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/data/favorites_service.dart';
+import 'package:provider/provider.dart';
+import 'package:gamepedia/helper/locale_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +35,14 @@ Future<void> main() async {
   } catch (e) {
     // ignore errors; migration is optional and will be retried later.
   }
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LocaleProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -39,17 +50,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+
     return MaterialApp(
       title: 'GamePedia',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: provider.locale,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         fontFamily: 'Quicksand',
       ),
-      home: const AddGameScreen(),
-       initialRoute: '/',
-       routes: {
+      home: const SettingsScreen(),
+      initialRoute: '/',
+      routes: {
         '/main': (context) => const MainScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
@@ -78,6 +94,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: Colors.black,
       body: _children[_currentIndex],
@@ -87,9 +104,9 @@ class _MainScreenState extends State<MainScreen> {
         ).copyWith(canvasColor: const Color.fromARGB(255, 6, 2, 26)),
         child: BottomNavigationBar(
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: loc.home),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: loc.search),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: loc.profile),
           ],
           currentIndex: _currentIndex,
           onTap: (index) {

@@ -241,4 +241,51 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get korean => '한국인';
+
+  // Add Game screen
+  String get addGameTitle => '게임 추가';
+  String get addButton => '추가';
+  String get systemRequirements => '시스템 요구사항';
+  String get minimum => '최소';
+  String get recommended => '권장';
+  String get titleDeviceGenreRequired => '제목, 장치 및 장르는 필수입니다!';
+  String get gameAdded => '게임이 성공적으로 추가되었습니다!';
+  String failed(Object error) => '실패: $error';
+
+  // Form fields
+  String get titleField => '제목';
+  String get studioField => '스튜디오';
+  String get ratingExample => '평점 (예: 8.5)';
+  String get releaseDateField => '출시일';
+  String get priceExample => '가격 (예: 59.99)';
+  String get deviceField => '장치';
+  String get genreField => '장르';
+  String get descriptionField => '설명';
+  String get screenshotImageUrlField => '스크린샷 이미지 URL';
+  String get osField => '운영체제';
+  String get processorField => '프로세서';
+  String get memoryField => '메모리';
+  String get graphicsField => '그래픽';
+  String get storageField => '저장소';
+
+  // Navigation
+  String get home => '홈';
+  String get search => '검색';
+  String get profile => '프로필';
+
+  // Misc
+  String get favoritesMigrated => '즐겨찾기가 Firestore로 마이그레이션되었습니다';
+  String get appName => 'GamePedia';
+  String get discoverTagline => 'Discover Amazing Games';
+  String get userLabelUser => 'User';
+  String get userLabelGuest => 'Guest';
+  String get register => 'Register';
+  String get login => 'Login';
+  String get welcomeMessage => 'Welcome to GamePedia';
+  String get editProfile => 'Edit Profile';
+  String get wishlist => 'Wishlist';
+  String get termsOfServiceShort => 'Terms of Service';
+  String get logout => 'Logout';
+  String get migrateFavorites => 'Migrate favorites to Firestore';
+  String get copyright => '© GamePedia 2025';
 }

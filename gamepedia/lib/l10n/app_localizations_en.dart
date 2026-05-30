@@ -173,7 +173,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
-  String get pleaseAddImageAndDescription => 'Please add an image and description.';
+  String get pleaseAddImageAndDescription =>
+      'Please add an image and description.';
 
   @override
   String get userNotFoundPleaseSignIn => 'User not found. Please sign in.';
@@ -241,4 +242,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get korean => 'Korean';
+
+  // Add Game screen
+  String get addGameTitle => 'Add Game';
+  String get addButton => 'Add';
+  String get systemRequirements => 'System Requirements';
+  String get minimum => 'Minimum';
+  String get recommended => 'Recommended';
+  String get titleDeviceGenreRequired =>
+      'Title, Device, and Genre are required!';
+  String get gameAdded => 'Game successfully added!';
+  String failed(Object error) => 'Failed: $error';
+
+  // Form fields
+  String get titleField => 'Title';
+  String get studioField => 'Studio';
+  String get ratingExample => 'Rating (ex: 8.5)';
+  String get releaseDateField => 'Release Date';
+  String get priceExample => 'Price (ex: 59.99)';
+  String get deviceField => 'Device';
+  String get genreField => 'Genre';
+  String get descriptionField => 'Description';
+  String get screenshotImageUrlField => 'Screenshot Image URL';
+  String get osField => 'OS';
+  String get processorField => 'Processor';
+  String get memoryField => 'Memory';
+  String get graphicsField => 'Graphics';
+  String get storageField => 'Storage';
+
+  // Navigation
+  String get home => 'Home';
+  String get search => 'Search';
+  String get profile => 'Profile';
+
+  // Misc
+  String get favoritesMigrated => 'Favorites migrated to Firestore';
+  String get appName => 'GamePedia';
+  String get discoverTagline => 'Discover Amazing Games';
+  String get userLabelUser => 'User';
+  String get userLabelGuest => 'Guest';
+  String get register => 'Register';
+  String get login => 'Login';
+  String get welcomeMessage => 'Welcome to GamePedia';
+  String get editProfile => 'Edit Profile';
+  String get wishlist => 'Wishlist';
+  String get termsOfServiceShort => 'Terms of Service';
+  String get logout => 'Logout';
+  String get migrateFavorites => 'Migrate favorites to Firestore';
+  String get copyright => '© GamePedia 2025';
 }
