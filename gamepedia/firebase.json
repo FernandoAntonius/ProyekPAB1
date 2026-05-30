@@ -1,0 +1,25 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "gamepedia-projek",
+          "appId": "1:94110626693:android:e6c60d7d42c389d1aa8aec",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "gamepedia-projek",
+          "configurations": {
+            "android": "1:94110626693:android:e6c60d7d42c389d1aa8aec",
+            "ios": "1:94110626693:ios:5d9acc2ae3a286e4aa8aec",
+            "macos": "1:94110626693:ios:5d9acc2ae3a286e4aa8aec",
+            "web": "1:94110626693:web:7642c5256b4b375faa8aec",
+            "windows": "1:94110626693:web:960fe11745c608a7aa8aec"
+          }
+        }
+      }
+    }
+  }
+}

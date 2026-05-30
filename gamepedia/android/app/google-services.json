@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "94110626693",
+    "project_id": "gamepedia-projek",
+    "storage_bucket": "gamepedia-projek.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94110626693:android:e6c60d7d42c389d1aa8aec",
+        "android_client_info": {
+          "package_name": "com.example.gamepedia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwYIvhqTScWy8HfnZiinAGr-UBi7tckAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
