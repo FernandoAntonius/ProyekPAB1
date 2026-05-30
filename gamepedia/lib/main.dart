@@ -4,7 +4,7 @@ import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:gamepedia/firebase_options.dart';
 import 'package:gamepedia/screens/add_game.dart';
 import 'package:gamepedia/screens/add_review_screen.dart';
-import 'package:gamepedia/screens/all_riview_screen.dart';
+import 'package:gamepedia/screens/all_review_screen.dart';
 import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/setting_screen.dart';
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Quicksand',
       ),
-      home: const AllReviewScreen(),
+      home: const AddReviewScreen(),
       initialRoute: '/',
       routes: {
         '/main': (context) => const MainScreen(),
@@ -77,6 +77,7 @@ class MyApp extends StatelessWidget {
         '/wishlist': (context) => const WishlistScreen(),
         '/edit_profile': (context) => EditProfileScreen(),
         '/add_game': (context) => AddGameScreen(),
+        '/add_review': (context) => AddReviewScreen(),
       },
     );
   }

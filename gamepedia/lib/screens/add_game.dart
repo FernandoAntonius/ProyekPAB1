@@ -10,7 +10,6 @@ class AddGameScreen extends StatefulWidget {
   State<AddGameScreen> createState() => _AddGameScreen();
 }
 
-// Widget helper untuk TextFormField biasa
 Widget buildAddGame(
   String label, {
   required TextEditingController controller,
@@ -141,8 +140,8 @@ Widget buildSystemReq(String label, TextEditingController controller) {
 }
 
 class _AddGameScreen extends State<AddGameScreen> {
-  String? selectedDevice;
-  String? selectedGenre;
+  List<String> selectedDevices = [];
+  List<String> selectedGenres = [];
 
   final List<String> _devices = [
     'Windows',
@@ -170,13 +169,13 @@ class _AddGameScreen extends State<AddGameScreen> {
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _screenshotsController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-
+  final TextEditingController _deviceController = TextEditingController();
+  final TextEditingController _genreController = TextEditingController();
   final TextEditingController _minOsController = TextEditingController();
   final TextEditingController _minProcessorController = TextEditingController();
   final TextEditingController _minMemoryController = TextEditingController();
   final TextEditingController _minGraphicsController = TextEditingController();
   final TextEditingController _minStorageController = TextEditingController();
-
   final TextEditingController _recOsController = TextEditingController();
   final TextEditingController _recProcessorController = TextEditingController();
   final TextEditingController _recMemoryController = TextEditingController();
@@ -199,10 +198,81 @@ class _AddGameScreen extends State<AddGameScreen> {
     }
   }
 
+  Future<void> _showMultiSelectDialog({
+    required String title,
+    required List<String> options,
+    required List<String> selectedList,
+    required TextEditingController controller,
+  }) async {
+    final tempSelected = List<String>.from(selectedList);
+    await showDialog<void>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.black,
+          title: Text(title, style: const TextStyle(color: Colors.white)),
+          content: StatefulBuilder(
+            builder: (context, setState) {
+              return SizedBox(
+                width: double.maxFinite,
+                child: ListView(
+                  shrinkWrap: true,
+                  children: options.map((option) {
+                    final isSelected = tempSelected.contains(option);
+                    return CheckboxListTile(
+                      value: isSelected,
+                      activeColor: Colors.blue,
+                      checkColor: Colors.white,
+                      tileColor: Colors.transparent,
+                      title: Text(
+                        option,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          if (val == true) {
+                            tempSelected.add(option);
+                          } else {
+                            tempSelected.remove(option);
+                          }
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
+              );
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  selectedList
+                    ..clear()
+                    ..addAll(tempSelected);
+                  controller.text = selectedList.join(', ');
+                });
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> _uploadGameData() async {
     if (_titleController.text.trim().isEmpty ||
-        selectedDevice == null ||
-        selectedGenre == null) {
+        selectedDevices.isEmpty ||
+        selectedGenres.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.titleDeviceGenreRequired),
@@ -210,25 +280,26 @@ class _AddGameScreen extends State<AddGameScreen> {
       );
       return;
     }
-
     setState(() {
       _isLoading = true;
     });
-
     try {
       List<String> screenshotList =
           _screenshotsController.text.trim().isNotEmpty
-          ? [_screenshotsController.text.trim()]
+          ? _screenshotsController.text
+                .split(RegExp(r'[\n,]'))
+                .map((s) => s.trim())
+                .where((s) => s.isNotEmpty)
+                .toList()
           : [];
-
       await FirebaseFirestore.instance.collection('games').add({
         'title': _titleController.text.trim(),
         'studio': _studioController.text.trim(),
         'rating': double.tryParse(_ratingController.text.trim()) ?? 0.0,
         'releaseDate': _releaseDateController.text.trim(),
         'price': double.tryParse(_priceController.text.trim()) ?? 0.0,
-        'device': [selectedDevice],
-        'genre': [selectedGenre],
+        'device': selectedDevices,
+        'genre': selectedGenres,
         'description': _descriptionController.text.trim(),
         'screenshots': screenshotList,
         'imageAssets': 'images/gamepedia.png',
@@ -250,7 +321,6 @@ class _AddGameScreen extends State<AddGameScreen> {
           },
         },
       });
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context)!.gameAdded)),
       );
@@ -284,9 +354,11 @@ class _AddGameScreen extends State<AddGameScreen> {
     _recMemoryController.clear();
     _recGraphicsController.clear();
     _recStorageController.clear();
+    _deviceController.clear();
+    _genreController.clear();
     setState(() {
-      selectedDevice = null;
-      selectedGenre = null;
+      selectedDevices = [];
+      selectedGenres = [];
     });
   }
 
@@ -345,20 +417,28 @@ class _AddGameScreen extends State<AddGameScreen> {
               AppLocalizations.of(context)!.priceExample,
               controller: _priceController,
             ),
-
-            buildDropDown(
-              value: selectedDevice,
-              items: _devices,
-              label: AppLocalizations.of(context)!.deviceField,
-              onChanged: (val) => setState(() => selectedDevice = val),
+            buildAddGame(
+              AppLocalizations.of(context)!.deviceField,
+              controller: _deviceController,
+              readOnly: true,
+              onTap: () => _showMultiSelectDialog(
+                title: AppLocalizations.of(context)!.deviceField,
+                options: _devices,
+                selectedList: selectedDevices,
+                controller: _deviceController,
+              ),
             ),
-            buildDropDown(
-              value: selectedGenre,
-              items: _genres,
-              label: AppLocalizations.of(context)!.genreField,
-              onChanged: (val) => setState(() => selectedGenre = val),
+            buildAddGame(
+              AppLocalizations.of(context)!.genreField,
+              controller: _genreController,
+              readOnly: true,
+              onTap: () => _showMultiSelectDialog(
+                title: AppLocalizations.of(context)!.genreField,
+                options: _genres,
+                selectedList: selectedGenres,
+                controller: _genreController,
+              ),
             ),
-
             const SizedBox(height: 16),
             buildAddGame(
               AppLocalizations.of(context)!.descriptionField,
@@ -371,7 +451,6 @@ class _AddGameScreen extends State<AddGameScreen> {
               maxLines: 2,
             ),
             const SizedBox(height: 16),
-
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(

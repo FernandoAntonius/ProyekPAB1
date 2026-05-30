@@ -54,6 +54,7 @@ class _SignInScreenState extends State<RegisterScreen> {
           .set({
             'username': username,
             'email': email,
+            'password': password,
             'createdAt': Timestamp.now(),
           });
 
