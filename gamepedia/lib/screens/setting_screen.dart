@@ -8,10 +8,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(
-      context,
-    )!;
-    final provider = Provider.of<LocaleProvider>(context);
+    final loc = AppLocalizations.of(context)!;
+    final provider = Provider.of<LocaleProvider>(context, listen: true);
     final currentLocale = provider.locale;
 
     final supportedLanguages = {
@@ -20,13 +18,16 @@ class SettingsScreen extends StatelessWidget {
       'ko': const Locale('ko'),
     };
 
-    final languageNames = {'en': loc.english, 'id': loc.indonesian, 'ko': loc.korean};
+    final languageNames = {
+      'en': loc.english,
+      'id': loc.indonesian,
+      'ko': loc.korean,
+    };
 
     return Scaffold(
       appBar: AppBar(title: Text(loc.settings)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        key: null, // Opsional
         child: ListTile(
           title: Text(loc.language),
           subtitle: Text(
