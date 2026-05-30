@@ -1,51 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:gamepedia/data/game_repository.dart';
+import 'package:gamepedia/data/favorites_service.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:gamepedia/data/game_data.dart';
 
 class WishlistScreen extends StatefulWidget {
-  final List<Game> wishlist;
-  WishlistScreen({super.key, required this.wishlist});
+  const WishlistScreen({super.key});
 
   @override
   State<WishlistScreen> createState() => _WishlistScreenState();
 }
 
 class _WishlistScreenState extends State<WishlistScreen> {
-  List<Game> favoriteGames = [];
+  Set<String> favoriteTitles = {};
+  bool favoritesLoaded = false;
+  bool isSignedIn = false;
+  String username = 'guest';
 
   @override
   void initState() {
     super.initState();
-    _loadFavoriteGames();
+    _loadFavoriteTitles();
   }
 
-  void _loadFavoriteGames() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<Game> favorites = [];
-    for (var game in gameList) {
-      bool isFav = prefs.getBool('favorite_${game.title}') ?? false;
-      if (isFav) {
-        favorites.add(game);
-      }
+  void _loadFavoriteTitles() async {
+    final prefs = await SharedPreferences.getInstance();
+    isSignedIn = prefs.getBool('isSignedIn') ?? false;
+    username = prefs.getString('username') ?? 'guest';
+
+    if (!isSignedIn) {
+      final titles = prefs
+          .getKeys()
+          .where((key) {
+            return key.startsWith('favorite_') && prefs.getBool(key) == true;
+          })
+          .map((key) => key.substring('favorite_'.length))
+          .toSet();
+      setState(() {
+        favoriteTitles = titles;
+        favoritesLoaded = true;
+      });
+    } else {
+      // we'll rely on Firestore stream for favorites when building
+      setState(() {
+        favoritesLoaded = true;
+      });
     }
-    setState(() {
-      favoriteGames = favorites;
-    });
   }
 
   void _toggleFavorite(Game game) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool currentStatus = prefs.getBool('favorite_${game.title}') ?? false;
-
+    final prefs = await SharedPreferences.getInstance();
+    final currentStatus = prefs.getBool('favorite_${game.title}') ?? false;
     await prefs.setBool('favorite_${game.title}', !currentStatus);
 
     setState(() {
       if (currentStatus) {
-        favoriteGames.removeWhere((g) => g.title == game.title);
+        favoriteTitles.remove(game.title);
       } else {
-        favoriteGames.add(game);
+        favoriteTitles.add(game.title);
       }
     });
   }
@@ -60,7 +73,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
-          color: Color(0xFF6A5AF9),
+          color: const Color(0xFF6A5AF9),
         ),
         title: const Text(
           'Wishlist',
@@ -116,7 +129,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   end: Alignment.bottomCenter,
                 ).createShader(bounds),
                 child: const Text(
-                  "Wishlist",
+                  'Wishlist',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -127,7 +140,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                "${favoriteGames.length} games saved.",
+                '${favoriteTitles.length} games saved.',
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.6),
                   fontSize: 13,
@@ -136,259 +149,691 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              favoriteGames.isEmpty
-                  ? Column(
-                      children: const [
-                        SizedBox(height: 40),
-                        Text(
-                          "Your wishlist is empty :(",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.bold,
-                          ),
+              if (!favoritesLoaded)
+                const Center(child: CircularProgressIndicator())
+              else if (favoriteTitles.isEmpty)
+                Column(
+                  children: const [
+                    SizedBox(height: 40),
+                    Text(
+                      'Your wishlist is empty :(',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Quicksand',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "Start adding games you're interested in!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                        fontFamily: 'Quicksand',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                )
+              else
+                Builder(
+                  builder: (context) {
+                    if (isSignedIn) {
+                      // For signed-in users, stream favorites from Firestore and combine with games
+                      return StreamBuilder<List<String>>(
+                        stream: FavoritesService.streamFavoritesForUser(
+                          username,
                         ),
-                        SizedBox(height: 8),
-                        Text(
-                          "Start adding games you're interested in!",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 14,
-                            fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    )
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: favoriteGames.length,
-                      itemBuilder: (context, index) {
-                        final game = favoriteGames[index];
+                        builder: (context, favSnap) {
+                          if (favSnap.hasError) {
+                            return const Text(
+                              'Unable to load wishlist games.',
+                              style: TextStyle(color: Colors.white70),
+                            );
+                          }
+                          if (favSnap.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          final favTitles = favSnap.data ?? <String>[];
 
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    GameDetailScreen(game: game),
-                              ),
-                            ).then((_) {
-                              _loadFavoriteGames();
-                            });
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.only(bottom: 16),
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              gradient: const LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [Color(0xFF1A1D3A), Color(0xFF2D1B3D)],
-                              ),
-                              border: Border.all(
-                                color: const Color(0xFFFF3737).withOpacity(0.3),
-                                width: 1.5,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color(
-                                    0xFFFF3737,
-                                  ).withOpacity(0.1),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: 80,
-                                      height: 120,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        image: DecorationImage(
-                                          image: AssetImage(game.imageAssets),
-                                          fit: BoxFit.cover,
-                                        ),
+                          return StreamBuilder<List<Game>>(
+                            stream: GameRepository.streamAllGames(),
+                            builder: (context, snap) {
+                              if (snap.hasError) {
+                                return const Text(
+                                  'Unable to load wishlist games.',
+                                  style: TextStyle(color: Colors.white70),
+                                );
+                              }
+                              if (snap.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                              final games = snap.data ?? [];
+                              final favorites = games
+                                  .where((g) => favTitles.contains(g.title))
+                                  .toList();
+                              if (favorites.isEmpty) {
+                                return Column(
+                                  children: const [
+                                    SizedBox(height: 40),
+                                    Text(
+                                      'Your wishlist is empty :(',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontFamily: 'Quicksand',
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    Positioned(
-                                      top: 6,
-                                      left: 6,
-                                      child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 6,
-                                          vertical: 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Colors.black.withOpacity(0.7),
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            const Icon(
-                                              Icons.star,
-                                              size: 10,
-                                              color: Colors.amber,
-                                            ),
-                                            const SizedBox(width: 2),
-                                            Text(
-                                              game.rating.toString(),
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                    SizedBox(height: 8),
+                                    Text(
+                                      "Start adding games you're interested in!",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 14,
+                                        fontFamily: 'Quicksand',
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ],
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        game.title,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Quicksand',
+                                );
+                              }
+
+                              return ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: favorites.length,
+                                itemBuilder: (context, index) {
+                                  final game = favorites[index];
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              GameDetailScreen(game: game),
                                         ),
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(bottom: 16),
+                                      padding: const EdgeInsets.all(16),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(16),
+                                        gradient: const LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: [
+                                            Color(0xFF1A1D3A),
+                                            Color(0xFF2D1B3D),
+                                          ],
+                                        ),
+                                        border: Border.all(
+                                          color: const Color(
+                                            0xFFFF3737,
+                                          ).withOpacity(0.3),
+                                          width: 1.5,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: const Color(
+                                              0xFFFF3737,
+                                            ).withOpacity(0.1),
+                                            blurRadius: 10,
+                                            offset: const Offset(0, 4),
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        height: 25,
-                                        child: ListView.builder(
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: game.genre.length,
-                                          itemBuilder: (context, index) {
-                                            return Container(
-                                              margin: const EdgeInsets.only(
-                                                right: 6,
-                                              ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    horizontal: 12,
+                                      child: Row(
+                                        children: [
+                                          Stack(
+                                            children: [
+                                              Container(
+                                                width: 80,
+                                                height: 120,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                  image: DecorationImage(
+                                                    image:
+                                                        game.imageAssets
+                                                            .startsWith('http')
+                                                        ? NetworkImage(
+                                                            game.imageAssets,
+                                                          )
+                                                        : AssetImage(
+                                                                game.imageAssets,
+                                                              )
+                                                              as ImageProvider,
+                                                    fit: BoxFit.cover,
                                                   ),
-                                              decoration: BoxDecoration(
-                                                gradient: const LinearGradient(
-                                                  colors: [
-                                                    Color(0xFF3A3FF2),
-                                                    Color(0xFF7754F4),
+                                                ),
+                                              ),
+                                              Positioned(
+                                                top: 6,
+                                                left: 6,
+                                                child: Container(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                        horizontal: 6,
+                                                        vertical: 2,
+                                                      ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.black
+                                                        .withOpacity(0.7),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          10,
+                                                        ),
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.star,
+                                                        size: 10,
+                                                        color: Colors.amber,
+                                                      ),
+                                                      const SizedBox(width: 2),
+                                                      Text(
+                                                        game.rating.toString(),
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(width: 16),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  game.title,
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Quicksand',
+                                                  ),
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                                const SizedBox(height: 8),
+                                                SizedBox(
+                                                  height: 25,
+                                                  child: ListView.builder(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount:
+                                                        game.genre.length,
+                                                    itemBuilder: (context, index) {
+                                                      return Container(
+                                                        margin:
+                                                            const EdgeInsets.only(
+                                                              right: 6,
+                                                            ),
+                                                        padding:
+                                                            const EdgeInsets.symmetric(
+                                                              horizontal: 12,
+                                                            ),
+                                                        decoration: BoxDecoration(
+                                                          gradient:
+                                                              const LinearGradient(
+                                                                colors: [
+                                                                  Color(
+                                                                    0xFF3A3FF2,
+                                                                  ),
+                                                                  Color(
+                                                                    0xFF7754F4,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                20,
+                                                              ),
+                                                        ),
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          game.genre[index],
+                                                          style:
+                                                              const TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 11,
+                                                                height: 1.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 8),
+                                                SizedBox(
+                                                  height: 22,
+                                                  child: ListView.builder(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount:
+                                                        game.device.length,
+                                                    itemBuilder: (context, index) {
+                                                      return Container(
+                                                        margin:
+                                                            const EdgeInsets.only(
+                                                              right: 6,
+                                                            ),
+                                                        padding:
+                                                            const EdgeInsets.symmetric(
+                                                              horizontal: 10,
+                                                            ),
+                                                        decoration: BoxDecoration(
+                                                          color: Colors.white
+                                                              .withOpacity(0.1),
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                14,
+                                                              ),
+                                                          border: Border.all(
+                                                            color:
+                                                                Colors.white30,
+                                                          ),
+                                                        ),
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          game.device[index],
+                                                          style:
+                                                              const TextStyle(
+                                                                color: Colors
+                                                                    .white70,
+                                                                fontSize: 10,
+                                                                height: 1.0,
+                                                              ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 12),
+                                                Row(
+                                                  children: [
+                                                    const Icon(
+                                                      Icons.calendar_month,
+                                                      size: 14,
+                                                      color: Colors.white70,
+                                                    ),
+                                                    const SizedBox(width: 6),
+                                                    Text(
+                                                      game.releaseDate
+                                                          .toString()
+                                                          .split(' ')[0],
+                                                      style: const TextStyle(
+                                                        color: Colors.white70,
+                                                        fontSize: 12,
+                                                      ),
+                                                    ),
+                                                    const Spacer(),
+                                                    GestureDetector(
+                                                      onTap: () =>
+                                                          _toggleFavorite(game),
+                                                      child: const Icon(
+                                                        Icons.favorite,
+                                                        color: Color(
+                                                          0xFFFF3737,
+                                                        ),
+                                                        size: 24,
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                game.genre[index],
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 11,
-                                                  height: 1.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        height: 22,
-                                        child: ListView.builder(
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: game.device.length,
-                                          itemBuilder: (context, index) {
-                                            return Container(
-                                              margin: const EdgeInsets.only(
-                                                right: 6,
-                                              ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    horizontal: 10,
-                                                  ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white.withOpacity(
-                                                  0.1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(14),
-                                                border: Border.all(
-                                                  color: Colors.white30,
-                                                ),
-                                              ),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                game.device[index],
-                                                style: const TextStyle(
-                                                  color: Colors.white70,
-                                                  fontSize: 10,
-                                                  height: 1.0,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(height: 12),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.calendar_month,
-                                            size: 14,
-                                            color: Colors.white70,
-                                          ),
-                                          const SizedBox(width: 6),
-                                          Text(
-                                            game.releaseDate.toString().split(
-                                              ' ',
-                                            )[0],
-                                            style: const TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                          const Spacer(),
-                                          GestureDetector(
-                                            onTap: () => _toggleFavorite(game),
-                                            child: const Icon(
-                                              Icons.favorite,
-                                              color: Color(0xFFFF3737),
-                                              size: 24,
+                                              ],
                                             ),
                                           ),
                                         ],
                                       ),
-                                    ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
+                      );
+                    } else {
+                      // not signed in: use local favorites (already loaded)
+                      return StreamBuilder<List<Game>>(
+                        stream: GameRepository.streamAllGames(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) {
+                            return const Text(
+                              'Unable to load wishlist games.',
+                              style: TextStyle(color: Colors.white70),
+                            );
+                          }
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          final games = snapshot.data ?? [];
+                          final favorites = games
+                              .where(
+                                (game) => favoriteTitles.contains(game.title),
+                              )
+                              .toList();
+                          if (favorites.isEmpty) {
+                            return Column(
+                              children: const [
+                                SizedBox(height: 40),
+                                Text(
+                                  'Your wishlist is empty :(',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontFamily: 'Quicksand',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  "Start adding games you're interested in!",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 14,
+                                    fontFamily: 'Quicksand',
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                            );
+                          }
+
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: favorites.length,
+                            itemBuilder: (context, index) {
+                              final game = favorites[index];
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          GameDetailScreen(game: game),
+                                    ),
+                                  ).then((_) {
+                                    _loadFavoriteTitles();
+                                  });
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(bottom: 16),
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    gradient: const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xFF1A1D3A),
+                                        Color(0xFF2D1B3D),
+                                      ],
+                                    ),
+                                    border: Border.all(
+                                      color: const Color(
+                                        0xFFFF3737,
+                                      ).withOpacity(0.3),
+                                      width: 1.5,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(
+                                          0xFFFF3737,
+                                        ).withOpacity(0.1),
+                                        blurRadius: 10,
+                                        offset: const Offset(0, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Container(
+                                            width: 80,
+                                            height: 120,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              image: DecorationImage(
+                                                image:
+                                                    game.imageAssets.startsWith(
+                                                      'http',
+                                                    )
+                                                    ? NetworkImage(
+                                                        game.imageAssets,
+                                                      )
+                                                    : AssetImage(
+                                                            game.imageAssets,
+                                                          )
+                                                          as ImageProvider,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 6,
+                                            left: 6,
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 6,
+                                                    vertical: 2,
+                                                  ),
+                                              decoration: BoxDecoration(
+                                                color: Colors.black.withOpacity(
+                                                  0.7,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.star,
+                                                    size: 10,
+                                                    color: Colors.amber,
+                                                  ),
+                                                  const SizedBox(width: 2),
+                                                  Text(
+                                                    game.rating.toString(),
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(width: 16),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              game.title,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Quicksand',
+                                              ),
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            const SizedBox(height: 8),
+                                            SizedBox(
+                                              height: 25,
+                                              child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: game.genre.length,
+                                                itemBuilder: (context, index) {
+                                                  return Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                          right: 6,
+                                                        ),
+                                                    padding:
+                                                        const EdgeInsets.symmetric(
+                                                          horizontal: 12,
+                                                        ),
+                                                    decoration: BoxDecoration(
+                                                      gradient:
+                                                          const LinearGradient(
+                                                            colors: [
+                                                              Color(0xFF3A3FF2),
+                                                              Color(0xFF7754F4),
+                                                            ],
+                                                          ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            20,
+                                                          ),
+                                                    ),
+                                                    alignment: Alignment.center,
+                                                    child: Text(
+                                                      game.genre[index],
+                                                      style: const TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 11,
+                                                        height: 1.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            SizedBox(
+                                              height: 22,
+                                              child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: game.device.length,
+                                                itemBuilder: (context, index) {
+                                                  return Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                          right: 6,
+                                                        ),
+                                                    padding:
+                                                        const EdgeInsets.symmetric(
+                                                          horizontal: 10,
+                                                        ),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white
+                                                          .withOpacity(0.1),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            14,
+                                                          ),
+                                                      border: Border.all(
+                                                        color: Colors.white30,
+                                                      ),
+                                                    ),
+                                                    alignment: Alignment.center,
+                                                    child: Text(
+                                                      game.device[index],
+                                                      style: const TextStyle(
+                                                        color: Colors.white70,
+                                                        fontSize: 10,
+                                                        height: 1.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                            const SizedBox(height: 12),
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.calendar_month,
+                                                  size: 14,
+                                                  color: Colors.white70,
+                                                ),
+                                                const SizedBox(width: 6),
+                                                Text(
+                                                  game.releaseDate
+                                                      .toString()
+                                                      .split(' ')[0],
+                                                  style: const TextStyle(
+                                                    color: Colors.white70,
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                GestureDetector(
+                                                  onTap: () =>
+                                                      _toggleFavorite(game),
+                                                  child: const Icon(
+                                                    Icons.favorite,
+                                                    color: Color(0xFFFF3737),
+                                                    size: 24,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    }
+                  },
+                ),
             ],
           ),
         ),

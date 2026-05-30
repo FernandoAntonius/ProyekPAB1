@@ -1,9 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gamepedia/firebase_options.dart';
 import 'package:gamepedia/screens/add_game.dart';
-import 'package:gamepedia/screens/edit_game.dart';
 import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
-import 'package:gamepedia/screens/loading.dart';
 import 'package:gamepedia/screens/splash.dart';
 import 'package:gamepedia/screens/register.dart';
 import 'package:gamepedia/screens/login.dart';
@@ -11,8 +11,26 @@ import 'package:gamepedia/screens/search_screen.dart';
 import 'package:gamepedia/screens/profile_screen.dart';
 import 'package:gamepedia/screens/terms_of_service.dart';
 import 'package:gamepedia/screens/wishlist.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gamepedia/data/favorites_service.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // One-time migration: if user is signed in and local favorites haven't been migrated,
+  // copy SharedPreferences favorites into Firestore.
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    final migrated = prefs.getBool('favorites_migrated') ?? false;
+    final signedIn = prefs.getBool('isSignedIn') ?? false;
+    final username = prefs.getString('username') ?? '';
+    if (!migrated && signedIn && username.isNotEmpty) {
+      await FavoritesService.migrateLocalFavoritesFromPrefs(username);
+      await prefs.setBool('favorites_migrated', true);
+    }
+  } catch (e) {
+    // ignore errors; migration is optional and will be retried later.
+  }
   runApp(const MyApp());
 }
 
@@ -29,15 +47,16 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Quicksand',
       ),
-      home: const SplashScreen(),
-      initialRoute: '/',
-      routes: {
+      home: const AddGameScreen(),
+       initialRoute: '/',
+       routes: {
         '/main': (context) => const MainScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/terms': (context) => TermsOfServiceScreen(),
-        '/wishlist': (context) => WishlistScreen(wishlist: []),
+        '/wishlist': (context) => const WishlistScreen(),
         '/edit_profile': (context) => EditProfileScreen(),
+        '/add_game': (context) => AddGameScreen(),
       },
     );
   }
