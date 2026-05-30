@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:gamepedia/firebase_options.dart';
 import 'package:gamepedia/screens/add_game.dart';
+import 'package:gamepedia/screens/add_review_screen.dart';
+import 'package:gamepedia/screens/all_riview_screen.dart';
 import 'package:gamepedia/screens/edit_profile.dart';
 import 'package:gamepedia/screens/home_screen.dart';
 import 'package:gamepedia/screens/setting_screen.dart';
@@ -17,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/data/favorites_service.dart';
 import 'package:provider/provider.dart';
 import 'package:gamepedia/helper/locale_provider.dart';
+import 'package:gamepedia/data/review_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +42,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
+        ChangeNotifierProvider(create: (_) => ReviewProvider()),
       ],
       child: const MyApp(),
     ),
@@ -63,7 +67,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Quicksand',
       ),
-      home: const SplashScreen(),
+      home: const AllReviewScreen(),
       initialRoute: '/',
       routes: {
         '/main': (context) => const MainScreen(),
@@ -105,8 +109,14 @@ class _MainScreenState extends State<MainScreen> {
         child: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: loc.home),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: loc.search),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: loc.profile),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: loc.search,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: loc.profile,
+            ),
           ],
           currentIndex: _currentIndex,
           onTap: (index) {

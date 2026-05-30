@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_repository.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/by_device.dart/android.dart';
@@ -17,8 +16,8 @@ import 'package:gamepedia/screens/by_genre.dart/role_playing.dart';
 import 'package:gamepedia/screens/by_genre.dart/shooter.dart';
 import 'package:gamepedia/screens/by_genre.dart/strategy.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
-import 'package:gamepedia/screens/new_release.dart';
 import 'package:gamepedia/screens/popular_game.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -64,9 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       shaderCallback: (bounds) => const LinearGradient(
                         colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
                       ).createShader(bounds),
-                      child: const Text(
-                        "GamePedia",
-                        style: TextStyle(
+                      child: Text(
+                        AppLocalizations.of(context)!.appName,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontFamily: 'Quicksand',
@@ -76,9 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                const Text(
-                  "Discover Amazing Games",
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.discoverTagline,
+                  style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 14,
                     fontFamily: 'Quicksand',
@@ -99,10 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     },
                     style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
-                      hintText: "Search games...",
-                      hintStyle: TextStyle(color: Color(0xFFDCA7FF)),
-                      prefixIcon: Icon(Icons.search, color: Colors.white),
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)!.searchHint,
+                      hintStyle: const TextStyle(color: Color(0xFFDCA7FF)),
+                      prefixIcon: const Icon(Icons.search, color: Colors.white),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(
                         vertical: 14,
@@ -117,16 +116,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Row(
+                    Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.bar_chart_rounded,
                           color: Colors.orangeAccent,
                         ),
-                        SizedBox(width: 6),
+                        const SizedBox(width: 6),
                         Text(
-                          "Popular Games",
-                          style: TextStyle(
+                          AppLocalizations.of(context)!.popularGames,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -141,9 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (_) => const PopularGamesScreen(),
                         ),
                       ),
-                      child: const Text(
-                        "Show all",
-                        style: TextStyle(color: Colors.white54),
+                      child: Text(
+                        AppLocalizations.of(context)!.showAll,
+                        style: const TextStyle(color: Colors.white54),
                       ),
                     ),
                   ],
@@ -159,10 +158,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     stream: GameRepository.streamPopularGames(),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
-                        return const Center(
+                        return Center(
                           child: Text(
-                            'Unable to load popular games.',
-                            style: TextStyle(color: Colors.white),
+                            AppLocalizations.of(context)!.genericError,
+                            style: const TextStyle(color: Colors.white),
                           ),
                         );
                       }
@@ -172,10 +171,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       final popularGames = snapshot.data ?? [];
                       if (popularGames.isEmpty) {
-                        return const Center(
+                        return Center(
                           child: Text(
-                            'No popular games available.',
-                            style: TextStyle(color: Colors.white70),
+                            AppLocalizations.of(context)!.noGamesFound,
+                            style: const TextStyle(color: Colors.white70),
                           ),
                         );
                       }
@@ -222,10 +221,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   stream: GameRepository.streamAllGames(),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
-                      return const Center(
+                      return Center(
                         child: Text(
-                          'Error loading games.',
-                          style: TextStyle(color: Colors.white),
+                          AppLocalizations.of(context)!.genericError,
+                          style: const TextStyle(color: Colors.white),
                         ),
                       );
                     }
@@ -243,12 +242,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         .toList();
 
                     if (filteredGames.isEmpty) {
-                      return const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 40),
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 40),
                         child: Center(
                           child: Text(
-                            'No games found.',
-                            style: TextStyle(color: Colors.white70),
+                            AppLocalizations.of(context)!.noGamesFound,
+                            style: const TextStyle(color: Colors.white70),
                           ),
                         ),
                       );
@@ -330,13 +329,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 24),
 
                 // BROWSE BY GENRE
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.grid_view_rounded, color: Colors.cyanAccent),
-                    SizedBox(width: 6),
+                    const Icon(
+                      Icons.grid_view_rounded,
+                      color: Colors.cyanAccent,
+                    ),
+                    const SizedBox(width: 6),
                     Text(
-                      "Browse by Genre",
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.browseByGenre,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -354,37 +356,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     _buildGenreCard(
                       context,
-                      "Adventure",
+                      AppLocalizations.of(context)!.genreAdventure,
                       Icons.explore_rounded,
                       const AdventureScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Role-playing",
+                      AppLocalizations.of(context)!.genreRolePlay,
                       Icons.auto_stories_rounded,
                       const RolePlayingScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Shooter",
+                      AppLocalizations.of(context)!.genreShooting,
                       Icons.gps_fixed_rounded,
                       const ShooterScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Platformer",
+                      AppLocalizations.of(context)!.genrePlatformer,
                       Icons.videogame_asset_rounded,
                       const PlatformerScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Puzzle",
+                      AppLocalizations.of(context)!.genrePuzzle,
                       Icons.extension_rounded,
                       const PuzzleScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Strategy",
+                      AppLocalizations.of(context)!.genreRealTimeStrategy,
                       Icons.account_tree_rounded,
                       const StrategyScreen(),
                     ),
@@ -393,13 +395,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 32),
 
                 // BROWSE BY DEVICE
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.device_hub, color: Colors.cyanAccent),
-                    SizedBox(width: 6),
+                    const Icon(Icons.device_hub, color: Colors.cyanAccent),
+                    const SizedBox(width: 6),
                     Text(
-                      "Browse by Device",
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.browseByDevice,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -417,49 +419,49 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     _buildGenreCard(
                       context,
-                      "Windows",
+                      AppLocalizations.of(context)!.deviceWindows,
                       Icons.window_sharp,
                       const WindowsScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "MacOS",
+                      AppLocalizations.of(context)!.deviceMac,
                       Icons.laptop,
                       const MacOSSCreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Android",
+                      AppLocalizations.of(context)!.deviceAndroid,
                       Icons.android,
                       const AndroidScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "iOS",
+                      AppLocalizations.of(context)!.deviceiOS,
                       Icons.apple,
                       const IOSScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Xbox",
+                      AppLocalizations.of(context)!.deviceXbox,
                       Icons.screenshot_monitor_outlined,
                       const XboxScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Nintendo Switch",
+                      AppLocalizations.of(context)!.deviceNintendoSwitch,
                       Icons.stay_current_landscape,
                       const NintendoSwitchScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "Linux",
+                      AppLocalizations.of(context)!.deviceLinux,
                       Icons.laptop,
                       const LinuxScreen(),
                     ),
                     _buildGenreCard(
                       context,
-                      "PlayStation",
+                      AppLocalizations.of(context)!.devicePlayStation,
                       Icons.gamepad,
                       const PlayStationScreen(),
                     ),

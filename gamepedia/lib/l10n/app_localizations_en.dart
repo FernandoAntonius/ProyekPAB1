@@ -173,7 +173,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
-  String get pleaseAddImageAndDescription => 'Please add an image and description.';
+  String get pleaseAddImageAndDescription =>
+      'Please add an image and description.';
 
   @override
   String get userNotFoundPleaseSignIn => 'User not found. Please sign in.';
@@ -243,7 +244,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get korean => 'Korean';
 
   @override
-  String get titleDeviceGenreRequired => 'Title, device, and genre are required.';
+  String get titleDeviceGenreRequired =>
+      'Title, device, and genre are required.';
 
   @override
   String get gameAdded => 'Game added successfully!';
@@ -323,7 +325,88 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'GamePedia';
 
   @override
-  String get discoverTagline => 'Discover, save, and share your favorite games.';
+  String get discoverTagline =>
+      'Discover, save, and share your favorite games.';
+
+  @override
+  String get searchHint => 'Search games...';
+
+  @override
+  String get filterGamesTitle => 'Filter Games';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get genreLabel => 'Genre';
+
+  @override
+  String get deviceLabel => 'Device';
+
+  @override
+  String get sortByPrice => 'Sort by Price';
+
+  @override
+  String get applyFilters => 'Apply Filters';
+
+  @override
+  String get noGamesMatchFilters => 'No games match the selected filters.';
+
+  @override
+  String get noGamesFound => 'No games found.';
+
+  @override
+  String get popularGames => 'Popular Games';
+
+  @override
+  String get showAll => 'Show all';
+
+  @override
+  String get browseByGenre => 'Browse by Genre';
+
+  @override
+  String get browseByDevice => 'Browse by Device';
+
+  @override
+  String get deviceAll => 'All Devices';
+
+  @override
+  String get deviceWindows => 'Windows';
+
+  @override
+  String get devicePlayStation => 'PlayStation';
+
+  @override
+  String get deviceXbox => 'Xbox';
+
+  @override
+  String get deviceNintendoSwitch => 'Nintendo Switch';
+
+  @override
+  String get deviceAndroid => 'Android';
+
+  @override
+  String get deviceiOS => 'iOS';
+
+  @override
+  String get deviceMac => 'Mac';
+
+  @override
+  String get deviceLinux => 'Linux';
+
+  @override
+  String get priceSortDefault => 'Default';
+
+  @override
+  String get priceSortLowToHigh => 'Low to High';
+
+  @override
+  String get priceSortHighToLow => 'High to Low';
+
+  @override
+  String gamesFound(Object count) {
+    return '$count games found';
+  }
 
   @override
   String get userLabelUser => 'User';

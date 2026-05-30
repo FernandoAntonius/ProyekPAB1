@@ -30,7 +30,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get pleaseEnterPassword => 'Silakan masukkan kata sandi Anda';
 
   @override
-  String get passwordTooShort => 'Kata sandi harus terdiri dari minimal 6 karakter';
+  String get passwordTooShort =>
+      'Kata sandi harus terdiri dari minimal 6 karakter';
 
   @override
   String get confirmPassword => 'Konfirmasi Kata Sandi';
@@ -173,10 +174,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get cancel => 'Batal';
 
   @override
-  String get pleaseAddImageAndDescription => 'Silakan tambahkan gambar dan deskripsi.';
+  String get pleaseAddImageAndDescription =>
+      'Silakan tambahkan gambar dan deskripsi.';
 
   @override
-  String get userNotFoundPleaseSignIn => 'Pengguna tidak ditemukan. Silakan masuk.';
+  String get userNotFoundPleaseSignIn =>
+      'Pengguna tidak ditemukan. Silakan masuk.';
 
   @override
   String get postUploadedSuccessfully => 'Laporan berhasil diunggah!';
@@ -243,7 +246,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get korean => 'Korea';
 
   @override
-  String get titleDeviceGenreRequired => 'Judul, perangkat, dan genre wajib diisi.';
+  String get titleDeviceGenreRequired =>
+      'Judul, perangkat, dan genre wajib diisi.';
 
   @override
   String get gameAdded => 'Game berhasil ditambahkan!';
@@ -323,7 +327,89 @@ class AppLocalizationsId extends AppLocalizations {
   String get appName => 'GamePedia';
 
   @override
-  String get discoverTagline => 'Temukan, simpan, dan bagikan game favorit Anda.';
+  String get discoverTagline =>
+      'Temukan, simpan, dan bagikan game favorit Anda.';
+
+  @override
+  String get searchHint => 'Cari game...';
+
+  @override
+  String get filterGamesTitle => 'Filter Game';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get genreLabel => 'Genre';
+
+  @override
+  String get deviceLabel => 'Perangkat';
+
+  @override
+  String get sortByPrice => 'Urutkan berdasarkan Harga';
+
+  @override
+  String get applyFilters => 'Terapkan Filter';
+
+  @override
+  String get noGamesMatchFilters =>
+      'Tidak ada game yang cocok dengan filter yang dipilih.';
+
+  @override
+  String get noGamesFound => 'Tidak ada game ditemukan.';
+
+  @override
+  String get popularGames => 'Game Populer';
+
+  @override
+  String get showAll => 'Tampilkan semua';
+
+  @override
+  String get browseByGenre => 'Jelajahi berdasarkan Genre';
+
+  @override
+  String get browseByDevice => 'Jelajahi berdasarkan Perangkat';
+
+  @override
+  String get deviceAll => 'Semua Perangkat';
+
+  @override
+  String get deviceWindows => 'Windows';
+
+  @override
+  String get devicePlayStation => 'PlayStation';
+
+  @override
+  String get deviceXbox => 'Xbox';
+
+  @override
+  String get deviceNintendoSwitch => 'Nintendo Switch';
+
+  @override
+  String get deviceAndroid => 'Android';
+
+  @override
+  String get deviceiOS => 'iOS';
+
+  @override
+  String get deviceMac => 'Mac';
+
+  @override
+  String get deviceLinux => 'Linux';
+
+  @override
+  String get priceSortDefault => 'Default';
+
+  @override
+  String get priceSortLowToHigh => 'Harga Rendah ke Tinggi';
+
+  @override
+  String get priceSortHighToLow => 'Harga Tinggi ke Rendah';
+
+  @override
+  String gamesFound(Object count) {
+    return '$count game ditemukan';
+  }
 
   @override
   String get userLabelUser => 'Pengguna';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_repository.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -13,45 +14,60 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   String _searchQuery = '';
 
-  final List<String> genres = [
-    "All",
-    "Adventure",
-    "Role-Playing",
-    "Shooter",
-    "Platformer",
-    "Puzzle",
-    "Strategy",
-    "Hack and Slash",
-    "Real-Time Strategy",
-    "Turn-Based Strategy",
-    "Point-and-click",
-    "Indie",
-    "Racing",
-    "Sport",
-    "Fighting",
-    "Arcade",
-    "Simulator",
-  ];
+  List<String> _genres(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    return [
+      loc.genreAll,
+      loc.genreAdventure,
+      loc.genreRolePlay,
+      loc.genreShooting,
+      loc.genrePlatformer,
+      loc.genrePuzzle,
+      loc.genreRealTimeStrategy,
+      loc.genreHackAndSlash,
+      loc.genreTurnBaseStrategy,
+      loc.genrePointAndClick,
+      loc.genreIndie,
+      loc.genreRacing,
+      loc.genreSport,
+      loc.genreFighting,
+      loc.genreArcade,
+      loc.genreSimulator,
+    ];
+  }
 
-  final List<String> devices = [
-    "All Devices",
-    "Windows",
-    "PlayStation",
-    "Xbox",
-    "Nintendo Switch",
-    "Android",
-    "iOS",
-    "Mac",
-    "Linux",
-  ];
+  List<String> _devices(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    return [
+      loc.deviceAll,
+      loc.deviceWindows,
+      loc.devicePlayStation,
+      loc.deviceXbox,
+      loc.deviceNintendoSwitch,
+      loc.deviceAndroid,
+      loc.deviceiOS,
+      loc.deviceMac,
+      loc.deviceLinux,
+    ];
+  }
 
-  final List<String> priceSort = ["Default", "Low to High", "High to Low"];
+  List<String> _priceSort(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    return [
+      loc.priceSortDefault,
+      loc.priceSortLowToHigh,
+      loc.priceSortHighToLow,
+    ];
+  }
 
   Set<int> selectedGenres = {0};
   Set<int> selectedDevices = {0};
   int selectedPriceSort = 0;
 
   List<Game> _filterGames(List<Game> games) {
+    final genres = _genres(context);
+    final devices = _devices(context);
+
     final filtered = games.where((game) {
       final titleMatch = game.title.toLowerCase().contains(
         _searchQuery.toLowerCase(),
@@ -84,6 +100,11 @@ class _SearchScreenState extends State<SearchScreen> {
       isScrollControlled: true,
       builder: (context) => StatefulBuilder(
         builder: (context, setModalState) {
+          final loc = AppLocalizations.of(context)!;
+          final genres = _genres(context);
+          final devices = _devices(context);
+          final priceSort = _priceSort(context);
+
           return Container(
             height: MediaQuery.of(context).size.height * 0.7,
             decoration: const BoxDecoration(
@@ -109,9 +130,9 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Filter Games",
-                        style: TextStyle(
+                      Text(
+                        loc.filterGamesTitle,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -126,9 +147,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             selectedPriceSort = 0;
                           });
                         },
-                        child: const Text(
-                          "Reset",
-                          style: TextStyle(
+                        child: Text(
+                          loc.reset,
+                          style: const TextStyle(
                             color: Color(0xFFB923FF),
                             fontFamily: 'Quicksand',
                             fontWeight: FontWeight.w600,
@@ -144,9 +165,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "Genre",
-                          style: TextStyle(
+                        Text(
+                          loc.genreLabel,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -213,9 +234,9 @@ class _SearchScreenState extends State<SearchScreen> {
                           }),
                         ),
                         const SizedBox(height: 24),
-                        const Text(
-                          "Device",
-                          style: TextStyle(
+                        Text(
+                          loc.deviceLabel,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -282,9 +303,9 @@ class _SearchScreenState extends State<SearchScreen> {
                           }),
                         ),
                         const SizedBox(height: 24),
-                        const Text(
-                          "Sort by Price",
-                          style: TextStyle(
+                        Text(
+                          loc.sortByPrice,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -371,9 +392,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: Container(
                           alignment: Alignment.center,
                           padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: const Text(
-                            "Apply Filters",
-                            style: TextStyle(
+                          child: Text(
+                            loc.applyFilters,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -440,9 +461,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ).createShader(bounds),
-                    child: const Text(
-                      "GamePedia",
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.appName,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 30,
                         fontFamily: 'Quicksand',
@@ -453,9 +474,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 ],
               ),
               const SizedBox(height: 4),
-              const Text(
-                "Discover Amazing Games",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.discoverTagline,
+                style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 14,
                   fontFamily: 'Quicksand',
@@ -478,7 +499,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
-                          hintText: "Search games...",
+                          hintText: AppLocalizations.of(context)!.searchHint,
                           hintStyle: const TextStyle(
                             color: Color(0xFFDCA7FF),
                             fontFamily: 'Quicksand',
@@ -596,7 +617,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${filteredGames.length} games found",
+                          AppLocalizations.of(
+                            context,
+                          )!.gamesFound(filteredGames.length),
                           style: const TextStyle(
                             color: Colors.white70,
                             fontSize: 12,

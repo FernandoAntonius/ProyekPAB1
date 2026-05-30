@@ -234,10 +234,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get unknownLanguage => '알 수 없는 언어';
 
   @override
-  String get english => '영어';
+  String get english => 'English';
 
   @override
-  String get indonesian => '인도네시아';
+  String get indonesian => 'Indonesia';
 
   @override
   String get korean => '한국인';
@@ -324,6 +324,86 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get discoverTagline => '좋아하는 게임을 발견하고 저장하고 공유하세요.';
+
+  @override
+  String get searchHint => '게임 검색...';
+
+  @override
+  String get filterGamesTitle => '게임 필터';
+
+  @override
+  String get reset => '재설정';
+
+  @override
+  String get genreLabel => '장르';
+
+  @override
+  String get deviceLabel => '기기';
+
+  @override
+  String get sortByPrice => '가격순 정렬';
+
+  @override
+  String get applyFilters => '필터 적용';
+
+  @override
+  String get noGamesMatchFilters => '선택한 필터에 일치하는 게임이 없습니다.';
+
+  @override
+  String get noGamesFound => '게임을 찾을 수 없습니다.';
+
+  @override
+  String get popularGames => '인기 게임';
+
+  @override
+  String get showAll => '모두 보기';
+
+  @override
+  String get browseByGenre => '장르별 탐색';
+
+  @override
+  String get browseByDevice => '기기별 탐색';
+
+  @override
+  String get deviceAll => '모든 기기';
+
+  @override
+  String get deviceWindows => 'Windows';
+
+  @override
+  String get devicePlayStation => 'PlayStation';
+
+  @override
+  String get deviceXbox => 'Xbox';
+
+  @override
+  String get deviceNintendoSwitch => 'Nintendo Switch';
+
+  @override
+  String get deviceAndroid => 'Android';
+
+  @override
+  String get deviceiOS => 'iOS';
+
+  @override
+  String get deviceMac => 'Mac';
+
+  @override
+  String get deviceLinux => 'Linux';
+
+  @override
+  String get priceSortDefault => '기본';
+
+  @override
+  String get priceSortLowToHigh => '낮은 가격 순';
+
+  @override
+  String get priceSortHighToLow => '높은 가격 순';
+
+  @override
+  String gamesFound(Object count) {
+    return '$count개의 게임이 검색됨';
+  }
 
   @override
   String get userLabelUser => '사용자';

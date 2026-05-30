@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/l10n/app_localizations.dart';
+import 'package:gamepedia/screens/setting_screen.dart';
 import 'package:gamepedia/widgets/profile_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/data/favorites_service.dart';
@@ -79,40 +80,60 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 const SizedBox(height: 16),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [
-                          Color(0xFF3A3FF2),
-                          Color(0xFF7754F4),
-                          Color(0xFF965FF5),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ).createShader(bounds),
-                      child: Image.asset(
-                        'images/console.png',
-                        height: 40,
-                        width: 40,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ).createShader(bounds),
-                      child: Text(
-                        AppLocalizations.of(context)!.appName,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontFamily: 'Quicksand',
-                          fontWeight: FontWeight.w600,
+                    Row(
+                      children: [
+                        ShaderMask(
+                          shaderCallback: (bounds) => const LinearGradient(
+                            colors: [
+                              Color(0xFF3A3FF2),
+                              Color(0xFF7754F4),
+                              Color(0xFF965FF5),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ).createShader(bounds),
+                          child: Image.asset(
+                            'images/console.png',
+                            height: 40,
+                            width: 40,
+                            color: Colors.white,
+                          ),
                         ),
+                        const SizedBox(width: 8),
+                        ShaderMask(
+                          shaderCallback: (bounds) => const LinearGradient(
+                            colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ).createShader(bounds),
+                          child: Text(
+                            AppLocalizations.of(context)!.appName,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontFamily: 'Quicksand',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: (context) => const SettingsScreen())
+                          );
+                      },
+                      icon: const Icon(
+                        Icons.settings_outlined,
+                        color: Colors.white,
+                        size: 26,
                       ),
+                      tooltip: AppLocalizations.of(context)!.settings,
                     ),
                   ],
                 ),
