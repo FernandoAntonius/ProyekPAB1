@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gamepedia/models/review.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
+import 'package:geolocator/geolocator.dart';
 
 class AddReviewScreen extends StatefulWidget {
   final String? fixedGameName;
@@ -14,19 +16,27 @@ class AddReviewScreen extends StatefulWidget {
 class _AddReviewScreenState extends State<AddReviewScreen> {
   int rating = 0;
   bool isLoading = false;
+  double? _latitude;
+  double? _longitude;
   String? selectedGameName;
   List<String> gameNames = [];
   final TextEditingController reviewController = TextEditingController();
   final TextEditingController authorController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    selectedGameName = widget.fixedGameName;
-    if (widget.fixedGameName == null) {
-      _fetchGames();
-    }
+@override
+void initState() {
+  super.initState();
+
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    _getLocation();
+  });
+
+  selectedGameName = widget.fixedGameName;
+
+  if (widget.fixedGameName == null) {
+    _fetchGames();
   }
+}
 
   Future<void> _fetchGames() async {
     try {
@@ -37,22 +47,66 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
         gameNames = snapshot.docs.map((doc) => doc['title'] as String).toList();
       });
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Failed to load games: $e')));
+      if (mounted) {
+        final loc = AppLocalizations.of(context)!;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(loc.failedToLoadGames(e.toString()))),
+        );
+      }
     }
   }
 
+    Future<void> _getLocation() async {
+    try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Location services are disabled.')),
+        );
+        return;
+      }
+
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.deniedForever ||
+            permission == LocationPermission.denied) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Location permissions are denied.')),
+          );
+          return;
+        }
+      }
+
+      final position = await Geolocator.getCurrentPosition(
+        locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
+      ).timeout(const Duration(seconds: 10));
+
+      setState(() {
+        _latitude = position.latitude;
+        _longitude = position.longitude;
+      });
+    } catch (e) {
+      debugPrint('Failed to retrieve location: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to retrieve location: $e')),
+      );
+      setState(() {
+        _latitude = null;
+        _longitude = null;
+      });
+    }
+  }
+  
   Future<void> _uploadReview() async {
+    final loc = AppLocalizations.of(context)!;
     if (authorController.text.trim().isEmpty ||
         selectedGameName == null ||
         reviewController.text.trim().isEmpty ||
         rating == 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please fill all fields and select a rating'),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(loc.fillAllFields)));
       return;
     }
 
@@ -69,15 +123,15 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
         'createdAt': FieldValue.serverTimestamp(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Review submitted successfully!')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(loc.reviewSubmittedSuccessfully)));
       _clearForm();
       if (mounted) Navigator.pop(context);
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Failed to submit review: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(loc.failedToSubmitReview(e.toString()))),
+      );
     } finally {
       setState(() {
         isLoading = false;
@@ -100,9 +154,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
     reviewController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -114,7 +168,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
           color: const Color(0xFF6A5AF9),
         ),
         title: Text(
-          'Add Review',
+          loc.addReviewTitle,
           style: const TextStyle(
             color: Color(0xFF6A5AF9),
             fontSize: 20,
@@ -151,9 +205,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Write your review",
-                      style: TextStyle(
+                    Text(
+                      loc.writeYourReview,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -164,7 +218,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                       controller: authorController,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        hintText: "Your name",
+                        hintText: loc.yourName,
                         hintStyle: TextStyle(color: Colors.grey.shade500),
                         filled: true,
                         fillColor: Colors.transparent,
@@ -186,7 +240,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                     const SizedBox(height: 12),
                     if (widget.fixedGameName != null) ...[
                       Text(
-                        'Game',
+                        loc.game,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       const SizedBox(height: 6),
@@ -226,7 +280,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                           });
                         },
                         decoration: InputDecoration(
-                          hintText: "Select a game",
+                          hintText: loc.selectGame,
                           hintStyle: TextStyle(color: Colors.grey.shade500),
                           filled: true,
                           fillColor: Colors.transparent,
@@ -250,7 +304,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                     ],
                     const SizedBox(height: 20),
                     Text(
-                      "Your rating",
+                      loc.yourRating,
                       style: TextStyle(
                         color: Colors.grey.shade400,
                         fontSize: 14,
@@ -283,7 +337,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                       maxLines: 4,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        hintText: "Share your experience with this game...",
+                        hintText: loc.shareExperience,
                         hintStyle: TextStyle(color: Colors.grey.shade500),
                         filled: true,
                         fillColor: Colors.transparent,
@@ -328,9 +382,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                                     strokeWidth: 2,
                                   ),
                                 )
-                              : const Text(
-                                  "Submit",
-                                  style: TextStyle(
+                              : Text(
+                                  loc.submit,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),

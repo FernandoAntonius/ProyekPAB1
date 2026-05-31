@@ -173,8 +173,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
-  String get pleaseAddImageAndDescription =>
-      'Please add an image and description.';
+  String get pleaseAddImageAndDescription => 'Please add an image and description.';
 
   @override
   String get userNotFoundPleaseSignIn => 'User not found. Please sign in.';
@@ -244,8 +243,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get korean => 'Korean';
 
   @override
-  String get titleDeviceGenreRequired =>
-      'Title, device, and genre are required.';
+  String get titleDeviceGenreRequired => 'Title, device, and genre are required.';
 
   @override
   String get gameAdded => 'Game added successfully!';
@@ -325,8 +323,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'GamePedia';
 
   @override
-  String get discoverTagline =>
-      'Discover, save, and share your favorite games.';
+  String get discoverTagline => 'Discover, save, and share your favorite games.';
 
   @override
   String get searchHint => 'Search games...';
@@ -404,6 +401,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get priceSortHighToLow => 'High to Low';
 
   @override
+  String get releaseDate => 'Release Date';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get availableOn => 'Available On';
+
+  @override
+  String get aboutThisGame => 'About this game';
+
+  @override
+  String get screenshots => 'Screenshots';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get addReview => 'Add review';
+
+  @override
+  String get viewAll => 'View all';
+
+  @override
+  String get noReviewsYet => 'No reviews yet';
+
+  @override
   String gamesFound(Object count) {
     return '$count games found';
   }
@@ -443,4 +467,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get copyright => '© 2026 GamePedia. All rights reserved.';
+
+  @override
+  String get addReviewTitle => 'Add Review';
+
+  @override
+  String get writeYourReview => 'Write your review';
+
+  @override
+  String get yourName => 'Your name';
+
+  @override
+  String get game => 'Game';
+
+  @override
+  String get selectGame => 'Select a game';
+
+  @override
+  String get yourRating => 'Your rating';
+
+  @override
+  String get shareExperience => 'Share your experience with this game...';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get reviewSubmittedSuccessfully => 'Review submitted successfully!';
+
+  @override
+  String get fillAllFields => 'Please fill all fields and select a rating';
+
+  @override
+  String failedToSubmitReview(Object error) {
+    return 'Failed to submit review: $error';
+  }
+
+  @override
+  String get allReviewsTitle => 'All Reviews';
+
+  @override
+  String reviewsFor(Object gameName) {
+    return 'Reviews for $gameName';
+  }
+
+  @override
+  String get noReviewsYetMsg => 'No reviews yet';
+
+  @override
+  String failedToLoadGames(Object error) {
+    return 'Failed to load games: $error';
+  }
 }

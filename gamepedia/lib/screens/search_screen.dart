@@ -14,40 +14,40 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   String _searchQuery = '';
 
-  List<String> _genres(BuildContext context) {
+  List<Map<String, String>> _genreOptions(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     return [
-      loc.genreAll,
-      loc.genreAdventure,
-      loc.genreRolePlay,
-      loc.genreShooting,
-      loc.genrePlatformer,
-      loc.genrePuzzle,
-      loc.genreRealTimeStrategy,
-      loc.genreHackAndSlash,
-      loc.genreTurnBaseStrategy,
-      loc.genrePointAndClick,
-      loc.genreIndie,
-      loc.genreRacing,
-      loc.genreSport,
-      loc.genreFighting,
-      loc.genreArcade,
-      loc.genreSimulator,
+      {'code': 'all', 'label': loc.genreAll},
+      {'code': 'Adventure', 'label': loc.genreAdventure},
+      {'code': 'Role Play', 'label': loc.genreRolePlay},
+      {'code': 'Shooting', 'label': loc.genreShooting},
+      {'code': 'Platformer', 'label': loc.genrePlatformer},
+      {'code': 'Puzzle', 'label': loc.genrePuzzle},
+      {'code': 'Real Time Strategy', 'label': loc.genreRealTimeStrategy},
+      {'code': 'Hack And Slash', 'label': loc.genreHackAndSlash},
+      {'code': 'Turn Base Strategy', 'label': loc.genreTurnBaseStrategy},
+      {'code': 'Point And Click', 'label': loc.genrePointAndClick},
+      {'code': 'Indie', 'label': loc.genreIndie},
+      {'code': 'Racing', 'label': loc.genreRacing},
+      {'code': 'Sport', 'label': loc.genreSport},
+      {'code': 'Fighting', 'label': loc.genreFighting},
+      {'code': 'Arcade', 'label': loc.genreArcade},
+      {'code': 'Simulator', 'label': loc.genreSimulator},
     ];
   }
 
-  List<String> _devices(BuildContext context) {
+  List<Map<String, String>> _deviceOptions(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     return [
-      loc.deviceAll,
-      loc.deviceWindows,
-      loc.devicePlayStation,
-      loc.deviceXbox,
-      loc.deviceNintendoSwitch,
-      loc.deviceAndroid,
-      loc.deviceiOS,
-      loc.deviceMac,
-      loc.deviceLinux,
+      {'code': 'all', 'label': loc.deviceAll},
+      {'code': 'Windows', 'label': loc.deviceWindows},
+      {'code': 'PlayStation', 'label': loc.devicePlayStation},
+      {'code': 'Xbox', 'label': loc.deviceXbox},
+      {'code': 'Nintendo Switch', 'label': loc.deviceNintendoSwitch},
+      {'code': 'Android', 'label': loc.deviceAndroid},
+      {'code': 'iOS', 'label': loc.deviceiOS},
+      {'code': 'Mac', 'label': loc.deviceMac},
+      {'code': 'Linux', 'label': loc.deviceLinux},
     ];
   }
 
@@ -65,21 +65,34 @@ class _SearchScreenState extends State<SearchScreen> {
   int selectedPriceSort = 0;
 
   List<Game> _filterGames(List<Game> games) {
-    final genres = _genres(context);
-    final devices = _devices(context);
+    final genres = _genreOptions(context);
+    final devices = _deviceOptions(context);
 
     final filtered = games.where((game) {
       final titleMatch = game.title.toLowerCase().contains(
         _searchQuery.toLowerCase(),
       );
 
+      final gameGenreCodes = game.genre
+          .expand((item) => item.split(',').map((s) => s.trim().toLowerCase()))
+          .toList();
+      final gameDeviceCodes = game.device
+          .expand((item) => item.split(',').map((s) => s.trim().toLowerCase()))
+          .toList();
+
       final genreMatch =
           selectedGenres.contains(0) ||
-          selectedGenres.any((index) => game.genre.contains(genres[index]));
+          selectedGenres.any(
+            (index) =>
+                gameGenreCodes.contains(genres[index]['code']!.toLowerCase()),
+          );
 
       final deviceMatch =
           selectedDevices.contains(0) ||
-          selectedDevices.any((index) => game.device.contains(devices[index]));
+          selectedDevices.any(
+            (index) =>
+                gameDeviceCodes.contains(devices[index]['code']!.toLowerCase()),
+          );
 
       return titleMatch && genreMatch && deviceMatch;
     }).toList();
@@ -101,8 +114,8 @@ class _SearchScreenState extends State<SearchScreen> {
       builder: (context) => StatefulBuilder(
         builder: (context, setModalState) {
           final loc = AppLocalizations.of(context)!;
-          final genres = _genres(context);
-          final devices = _devices(context);
+          final genreOptions = _genreOptions(context);
+          final deviceOptions = _deviceOptions(context);
           final priceSort = _priceSort(context);
 
           return Container(
@@ -178,7 +191,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         Wrap(
                           spacing: 8,
                           runSpacing: 8,
-                          children: List.generate(genres.length, (index) {
+                          children: List.generate(genreOptions.length, (index) {
+                            final option = genreOptions[index];
                             final bool isSelected = selectedGenres.contains(
                               index,
                             );
@@ -220,7 +234,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
-                                  genres[index],
+                                  option['label']!,
                                   style: TextStyle(
                                     color: isSelected
                                         ? Colors.white
@@ -247,7 +261,10 @@ class _SearchScreenState extends State<SearchScreen> {
                         Wrap(
                           spacing: 8,
                           runSpacing: 8,
-                          children: List.generate(devices.length, (index) {
+                          children: List.generate(deviceOptions.length, (
+                            index,
+                          ) {
+                            final option = deviceOptions[index];
                             final bool isSelected = selectedDevices.contains(
                               index,
                             );
@@ -289,7 +306,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
-                                  devices[index],
+                                  option['label']!,
                                   style: TextStyle(
                                     color: isSelected
                                         ? Colors.white

@@ -30,8 +30,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get pleaseEnterPassword => 'Silakan masukkan kata sandi Anda';
 
   @override
-  String get passwordTooShort =>
-      'Kata sandi harus terdiri dari minimal 6 karakter';
+  String get passwordTooShort => 'Kata sandi harus terdiri dari minimal 6 karakter';
 
   @override
   String get confirmPassword => 'Konfirmasi Kata Sandi';
@@ -174,12 +173,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get cancel => 'Batal';
 
   @override
-  String get pleaseAddImageAndDescription =>
-      'Silakan tambahkan gambar dan deskripsi.';
+  String get pleaseAddImageAndDescription => 'Silakan tambahkan gambar dan deskripsi.';
 
   @override
-  String get userNotFoundPleaseSignIn =>
-      'Pengguna tidak ditemukan. Silakan masuk.';
+  String get userNotFoundPleaseSignIn => 'Pengguna tidak ditemukan. Silakan masuk.';
 
   @override
   String get postUploadedSuccessfully => 'Laporan berhasil diunggah!';
@@ -246,8 +243,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get korean => 'Korea';
 
   @override
-  String get titleDeviceGenreRequired =>
-      'Judul, perangkat, dan genre wajib diisi.';
+  String get titleDeviceGenreRequired => 'Judul, perangkat, dan genre wajib diisi.';
 
   @override
   String get gameAdded => 'Game berhasil ditambahkan!';
@@ -327,8 +323,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get appName => 'GamePedia';
 
   @override
-  String get discoverTagline =>
-      'Temukan, simpan, dan bagikan game favorit Anda.';
+  String get discoverTagline => 'Temukan, simpan, dan bagikan game favorit Anda.';
 
   @override
   String get searchHint => 'Cari game...';
@@ -352,8 +347,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get applyFilters => 'Terapkan Filter';
 
   @override
-  String get noGamesMatchFilters =>
-      'Tidak ada game yang cocok dengan filter yang dipilih.';
+  String get noGamesMatchFilters => 'Tidak ada game yang cocok dengan filter yang dipilih.';
 
   @override
   String get noGamesFound => 'Tidak ada game ditemukan.';
@@ -407,6 +401,33 @@ class AppLocalizationsId extends AppLocalizations {
   String get priceSortHighToLow => 'Harga Tinggi ke Rendah';
 
   @override
+  String get releaseDate => 'Tanggal Rilis';
+
+  @override
+  String get price => 'Harga';
+
+  @override
+  String get availableOn => 'Tersedia Di';
+
+  @override
+  String get aboutThisGame => 'Tentang game ini';
+
+  @override
+  String get screenshots => 'Cuplikan layar';
+
+  @override
+  String get reviews => 'Ulasan';
+
+  @override
+  String get addReview => 'Tambah ulasan';
+
+  @override
+  String get viewAll => 'Lihat semua';
+
+  @override
+  String get noReviewsYet => 'Belum ada ulasan';
+
+  @override
   String gamesFound(Object count) {
     return '$count game ditemukan';
   }
@@ -446,4 +467,55 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get copyright => '© 2026 GamePedia. Semua hak dilindungi.';
+
+  @override
+  String get addReviewTitle => 'Tambah Ulasan';
+
+  @override
+  String get writeYourReview => 'Tulis ulasan Anda';
+
+  @override
+  String get yourName => 'Nama Anda';
+
+  @override
+  String get game => 'Game';
+
+  @override
+  String get selectGame => 'Pilih game';
+
+  @override
+  String get yourRating => 'Rating Anda';
+
+  @override
+  String get shareExperience => 'Bagikan pengalaman Anda dengan game ini...';
+
+  @override
+  String get submit => 'Kirim';
+
+  @override
+  String get reviewSubmittedSuccessfully => 'Ulasan berhasil dikirim!';
+
+  @override
+  String get fillAllFields => 'Silakan isi semua field dan pilih rating';
+
+  @override
+  String failedToSubmitReview(Object error) {
+    return 'Gagal mengirim ulasan: $error';
+  }
+
+  @override
+  String get allReviewsTitle => 'Semua Ulasan';
+
+  @override
+  String reviewsFor(Object gameName) {
+    return 'Ulasan untuk $gameName';
+  }
+
+  @override
+  String get noReviewsYetMsg => 'Belum ada ulasan';
+
+  @override
+  String failedToLoadGames(Object error) {
+    return 'Gagal memuat game: $error';
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gamepedia/models/review.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 
 class AllReviewScreen extends StatelessWidget {
   final String? gameTitle;
@@ -9,6 +10,7 @@ class AllReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       appBar: AppBar(
@@ -20,7 +22,7 @@ class AllReviewScreen extends StatelessWidget {
           color: const Color(0xFF6A5AF9),
         ),
         title: Text(
-          gameTitle == null ? 'All Reviews' : 'Reviews for $gameTitle',
+          gameTitle == null ? loc.allReviewsTitle : loc.reviewsFor(gameTitle!),
           style: const TextStyle(
             color: Color(0xFF6A5AF9),
             fontSize: 20,
@@ -47,12 +49,10 @@ class AllReviewScreen extends StatelessWidget {
                   stream: (gameTitle == null)
                       ? FirebaseFirestore.instance
                             .collection('reviews')
-                            .orderBy('createdAt', descending: true)
                             .snapshots()
                       : FirebaseFirestore.instance
                             .collection('reviews')
                             .where('gameName', isEqualTo: gameTitle)
-                            .orderBy('createdAt', descending: true)
                             .snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -64,15 +64,17 @@ class AllReviewScreen extends StatelessWidget {
                     if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                       return Center(
                         child: Text(
-                          'No reviews yet',
+                          loc.noReviewsYetMsg,
                           style: TextStyle(color: Colors.grey.shade400),
                         ),
                       );
                     }
 
-                    final reviews = snapshot.data!.docs
-                        .map((doc) => Review.fromFirestore(doc.data()))
-                        .toList();
+                    final reviews =
+                        snapshot.data!.docs
+                            .map((doc) => Review.fromFirestore(doc.data()))
+                            .toList()
+                          ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
                     return ListView.builder(
                       itemCount: reviews.length,

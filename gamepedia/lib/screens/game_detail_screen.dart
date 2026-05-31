@@ -8,6 +8,7 @@ import 'package:gamepedia/models/review.dart';
 import 'package:gamepedia/screens/add_review_screen.dart';
 import 'package:gamepedia/screens/all_review_screen.dart';
 import 'package:gamepedia/widgets/info_card.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:gamepedia/screens/by_device.dart/windows.dart';
 import 'package:gamepedia/screens/by_device.dart/android.dart';
 import 'package:gamepedia/screens/by_device.dart/ios.dart';
@@ -36,7 +37,8 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   bool isSignedIn = false;
 
   //SYSTEM REQUIRENMENTS
-  Widget _buildSystemRequirements(Game game) {
+  Widget _buildSystemRequirements(BuildContext context, Game game) {
+    final loc = AppLocalizations.of(context)!;
     final sysReq = game.systemRequirements;
     return Container(
       width: double.infinity,
@@ -51,9 +53,9 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "System Requirements",
-            style: TextStyle(
+          Text(
+            loc.systemRequirements,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontFamily: "Quicksand",
@@ -62,9 +64,9 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
           ),
           const SizedBox(height: 12),
           // Minimum Requirements
-          const Text(
-            "Minimum",
-            style: TextStyle(
+          Text(
+            loc.minimum,
+            style: const TextStyle(
               color: Colors.white,
               fontFamily: "Quicksand",
               fontWeight: FontWeight.bold,
@@ -83,9 +85,9 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
           //Maximum Requirenments
           const SizedBox(height: 12),
-          const Text(
-            "Recommended",
-            style: TextStyle(
+          Text(
+            loc.recommended,
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontFamily: "Quicksand",
@@ -102,6 +104,53 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
         ],
       ),
     );
+  }
+
+  String _localizedGenre(String genre, BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final value = genre.toLowerCase();
+    if (value.contains('adventure')) return loc.genreAdventure;
+    if (value.contains('role')) return loc.genreRolePlay;
+    if (value.contains('rpg')) return loc.genreRolePlay;
+    if (value.contains('shoot')) return loc.genreShooting;
+    if (value.contains('platform')) return loc.genrePlatformer;
+    if (value.contains('puzzle')) return loc.genrePuzzle;
+    if (value.contains('real time strategy') || value.contains('real time')) {
+      return loc.genreRealTimeStrategy;
+    }
+    if (value.contains('hack') || value.contains('slash'))
+      return loc.genreHackAndSlash;
+    if (value.contains('turn base') || value.contains('turn-based')) {
+      return loc.genreTurnBaseStrategy;
+    }
+    if (value.contains('point') || value.contains('click'))
+      return loc.genrePointAndClick;
+    if (value.contains('indie')) return loc.genreIndie;
+    if (value.contains('race')) return loc.genreRacing;
+    if (value.contains('sport')) return loc.genreSport;
+    if (value.contains('fight')) return loc.genreFighting;
+    if (value.contains('arcade')) return loc.genreArcade;
+    if (value.contains('simu')) return loc.genreSimulator;
+    return genre;
+  }
+
+  String _localizedDevice(String platform, BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final value = platform.toLowerCase();
+    if (value.contains('windows')) return loc.deviceWindows;
+    if (value.contains('playstation')) return loc.devicePlayStation;
+    if (value.contains('xbox')) return loc.deviceXbox;
+    if (value.contains('nintendo') || value.contains('switch')) {
+      return loc.deviceNintendoSwitch;
+    }
+    if (value.contains('android')) return loc.deviceAndroid;
+    if (value.contains('ios') ||
+        value.contains('iphone') ||
+        value.contains('ipad'))
+      return loc.deviceiOS;
+    if (value.contains('mac')) return loc.deviceMac;
+    if (value.contains('linux')) return loc.deviceLinux;
+    return platform;
   }
 
   @override
@@ -316,6 +365,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   }
 
   Widget _buildReviewSection(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -323,10 +373,10 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
         children: [
           Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: Text(
-                  'Reviews',
-                  style: TextStyle(
+                  loc.reviews,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -346,7 +396,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 style: TextButton.styleFrom(
                   foregroundColor: const Color(0xFF6A5AF9),
                 ),
-                child: const Text('Add review'),
+                child: Text(loc.addReview),
               ),
               TextButton(
                 onPressed: () {
@@ -361,7 +411,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 style: TextButton.styleFrom(
                   foregroundColor: const Color(0xFF6A5AF9),
                 ),
-                child: const Text('View all'),
+                child: Text(loc.viewAll),
               ),
             ],
           ),
@@ -380,7 +430,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
 
               if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                 return Text(
-                  'No reviews yet',
+                  loc.noReviewsYet,
                   style: TextStyle(color: Colors.grey.shade400),
                 );
               }
@@ -406,6 +456,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       appBar: AppBar(
@@ -526,13 +577,13 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 children: [
                   buildInfoCard(
                     icon: Icons.calendar_month,
-                    title: "Release Date",
+                    title: loc.releaseDate,
                     value: widget.game.releaseDate.toString().split(' ')[0],
                   ),
                   const SizedBox(width: 10),
                   buildInfoCard(
                     icon: Icons.attach_money,
-                    title: "Price",
+                    title: loc.price,
                     value: "\$${widget.game.price}",
                   ),
                 ],
@@ -540,7 +591,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
             const SizedBox(height: 24),
             // AVAILABLE ON
-            buildSectionTitle("Available On"),
+            buildSectionTitle(loc.availableOn),
             SizedBox(
               height: 50,
               child: SingleChildScrollView(
@@ -555,7 +606,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                           return Padding(
                             padding: const EdgeInsets.only(right: 12),
                             child: buildTag(
-                              platform,
+                              _localizedDevice(platform, context),
                               onTap: () => _navigateToDevice(platform),
                             ),
                           );
@@ -568,7 +619,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
             const SizedBox(height: 10),
             // GENRE
-            buildSectionTitle("Genre"),
+            buildSectionTitle(loc.genreLabel),
             SizedBox(
               height: 50,
               child: SingleChildScrollView(
@@ -582,7 +633,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                           return Padding(
                             padding: const EdgeInsets.only(right: 12),
                             child: buildTag(
-                              genre,
+                              _localizedGenre(genre, context),
                               onTap: () => _navigateToGenre(genre),
                             ),
                           );
@@ -595,7 +646,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
             const SizedBox(height: 20),
             // ABOUT
-            buildSectionTitle("About this game"),
+            buildSectionTitle(loc.aboutThisGame),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
@@ -606,7 +657,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
             const SizedBox(height: 20),
             // SCREENSHOTS
-            buildSectionTitle("Screenshots"),
+            buildSectionTitle(loc.screenshots),
             SizedBox(
               height: 120,
               child: ListView.builder(
@@ -638,7 +689,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             const SizedBox(height: 20),
             _buildReviewSection(context),
             const SizedBox(height: 20),
-            _buildSystemRequirements(widget.game),
+            _buildSystemRequirements(context, widget.game),
             const SizedBox(height: 10),
           ],
         ),

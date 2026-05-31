@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamepedia/data/game_repository.dart';
 import 'package:gamepedia/models/game.dart';
+import 'package:gamepedia/screens/add_game.dart';
 import 'package:gamepedia/screens/by_device.dart/android.dart';
 import 'package:gamepedia/screens/by_device.dart/ios.dart';
 import 'package:gamepedia/screens/by_device.dart/linux.dart';
@@ -42,39 +43,59 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 const SizedBox(height: 16),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [
-                          Color(0xFF3A3FF2),
-                          Color(0xFF7754F4),
-                          Color(0xFF965FF5),
-                        ],
-                      ).createShader(bounds),
-                      child: Image.asset(
-                        'images/console.png',
-                        height: 40,
-                        width: 40,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
-                      ).createShader(bounds),
-                      child: Text(
-                        AppLocalizations.of(context)!.appName,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontFamily: 'Quicksand',
-                          fontWeight: FontWeight.w600,
+                    Row(
+                      children: [
+                        ShaderMask(
+                          shaderCallback: (bounds) => const LinearGradient(
+                            colors: [
+                              Color(0xFF3A3FF2),
+                              Color(0xFF7754F4),
+                              Color(0xFF965FF5),
+                            ],
+                          ).createShader(bounds),
+                          child: Image.asset(
+                            'images/console.png',
+                            height: 40,
+                            width: 40,
+                            color: Colors.white,
+                          ),
                         ),
+                        const SizedBox(width: 8),
+                        ShaderMask(
+                          shaderCallback: (bounds) => const LinearGradient(
+                            colors: [Color(0xFF1124A5), Color(0xFFB923FF)],
+                          ).createShader(bounds),
+                          child: Text(
+                            AppLocalizations.of(context)!.appName,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontFamily: 'Quicksand',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                      IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: (context) => const AddGameScreen())
+                          );
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 26,
                       ),
                     ),
                   ],
                 ),
+                
                 Text(
                   AppLocalizations.of(context)!.discoverTagline,
                   style: const TextStyle(

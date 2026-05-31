@@ -234,10 +234,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get unknownLanguage => '알 수 없는 언어';
 
   @override
-  String get english => 'English';
+  String get english => '영어';
 
   @override
-  String get indonesian => 'Indonesia';
+  String get indonesian => '인도네시아';
 
   @override
   String get korean => '한국인';
@@ -401,6 +401,33 @@ class AppLocalizationsKo extends AppLocalizations {
   String get priceSortHighToLow => '높은 가격 순';
 
   @override
+  String get releaseDate => '출시일';
+
+  @override
+  String get price => '가격';
+
+  @override
+  String get availableOn => '사용 가능한 플랫폼';
+
+  @override
+  String get aboutThisGame => '이 게임에 대해';
+
+  @override
+  String get screenshots => '스크린샷';
+
+  @override
+  String get reviews => '리뷰';
+
+  @override
+  String get addReview => '리뷰 추가';
+
+  @override
+  String get viewAll => '모두 보기';
+
+  @override
+  String get noReviewsYet => '아직 리뷰가 없습니다';
+
+  @override
   String gamesFound(Object count) {
     return '$count개의 게임이 검색됨';
   }
@@ -440,4 +467,55 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get copyright => '© 2026 GamePedia. 모든 권리 보유.';
+
+  @override
+  String get addReviewTitle => '리뷰 추가';
+
+  @override
+  String get writeYourReview => '리뷰 작성';
+
+  @override
+  String get yourName => '이름';
+
+  @override
+  String get game => '게임';
+
+  @override
+  String get selectGame => '게임 선택';
+
+  @override
+  String get yourRating => '평점';
+
+  @override
+  String get shareExperience => '이 게임에 대한 경험을 공유하세요...';
+
+  @override
+  String get submit => '제출';
+
+  @override
+  String get reviewSubmittedSuccessfully => '리뷰가 성공적으로 제출되었습니다!';
+
+  @override
+  String get fillAllFields => '모든 필드를 입력하고 평점을 선택하세요';
+
+  @override
+  String failedToSubmitReview(Object error) {
+    return '리뷰 제출 실패: $error';
+  }
+
+  @override
+  String get allReviewsTitle => '모든 리뷰';
+
+  @override
+  String reviewsFor(Object gameName) {
+    return '$gameName의 리뷰';
+  }
+
+  @override
+  String get noReviewsYetMsg => '아직 리뷰가 없습니다';
+
+  @override
+  String failedToLoadGames(Object error) {
+    return '게임 로드 실패: $error';
+  }
 }

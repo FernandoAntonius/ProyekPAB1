@@ -63,8 +63,7 @@ import 'app_localizations_ko.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -72,8 +71,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -85,19 +83,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
     Locale('id'),
-    Locale('ko'),
+    Locale('ko')
   ];
 
   /// No description provided for @signIn.
@@ -695,61 +692,213 @@ abstract class AppLocalizations {
   String get discoverTagline;
 
   /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search games...'**
   String get searchHint;
 
   /// No description provided for @filterGamesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter Games'**
   String get filterGamesTitle;
 
   /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
   String get reset;
 
   /// No description provided for @genreLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Genre'**
   String get genreLabel;
 
   /// No description provided for @deviceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
   String get deviceLabel;
 
   /// No description provided for @sortByPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by Price'**
   String get sortByPrice;
 
   /// No description provided for @applyFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filters'**
   String get applyFilters;
 
   /// No description provided for @noGamesMatchFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'No games match the selected filters.'**
   String get noGamesMatchFilters;
 
   /// No description provided for @noGamesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No games found.'**
   String get noGamesFound;
 
   /// No description provided for @popularGames.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular Games'**
   String get popularGames;
 
   /// No description provided for @showAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Show all'**
   String get showAll;
 
   /// No description provided for @browseByGenre.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse by Genre'**
   String get browseByGenre;
 
   /// No description provided for @browseByDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse by Device'**
   String get browseByDevice;
 
-  /// Devices
+  /// No description provided for @deviceAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All Devices'**
   String get deviceAll;
+
+  /// No description provided for @deviceWindows.
+  ///
+  /// In en, this message translates to:
+  /// **'Windows'**
   String get deviceWindows;
+
+  /// No description provided for @devicePlayStation.
+  ///
+  /// In en, this message translates to:
+  /// **'PlayStation'**
   String get devicePlayStation;
+
+  /// No description provided for @deviceXbox.
+  ///
+  /// In en, this message translates to:
+  /// **'Xbox'**
   String get deviceXbox;
+
+  /// No description provided for @deviceNintendoSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'Nintendo Switch'**
   String get deviceNintendoSwitch;
+
+  /// No description provided for @deviceAndroid.
+  ///
+  /// In en, this message translates to:
+  /// **'Android'**
   String get deviceAndroid;
+
+  /// No description provided for @deviceiOS.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS'**
   String get deviceiOS;
+
+  /// No description provided for @deviceMac.
+  ///
+  /// In en, this message translates to:
+  /// **'Mac'**
   String get deviceMac;
+
+  /// No description provided for @deviceLinux.
+  ///
+  /// In en, this message translates to:
+  /// **'Linux'**
   String get deviceLinux;
 
-  /// Price sort
+  /// No description provided for @priceSortDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
   String get priceSortDefault;
+
+  /// No description provided for @priceSortLowToHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Low to High'**
   String get priceSortLowToHigh;
+
+  /// No description provided for @priceSortHighToLow.
+  ///
+  /// In en, this message translates to:
+  /// **'High to Low'**
   String get priceSortHighToLow;
 
-  /// Games found with count.
+  /// No description provided for @releaseDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Release Date'**
+  String get releaseDate;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @availableOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Available On'**
+  String get availableOn;
+
+  /// No description provided for @aboutThisGame.
+  ///
+  /// In en, this message translates to:
+  /// **'About this game'**
+  String get aboutThisGame;
+
+  /// No description provided for @screenshots.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshots'**
+  String get screenshots;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @addReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Add review'**
+  String get addReview;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get viewAll;
+
+  /// No description provided for @noReviewsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get noReviewsYet;
+
+  /// No description provided for @gamesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} games found'**
   String gamesFound(Object count);
 
   /// No description provided for @userLabelUser.
@@ -823,10 +972,99 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'© 2026 GamePedia. All rights reserved.'**
   String get copyright;
+
+  /// No description provided for @addReviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Review'**
+  String get addReviewTitle;
+
+  /// No description provided for @writeYourReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Write your review'**
+  String get writeYourReview;
+
+  /// No description provided for @yourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get yourName;
+
+  /// No description provided for @game.
+  ///
+  /// In en, this message translates to:
+  /// **'Game'**
+  String get game;
+
+  /// No description provided for @selectGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a game'**
+  String get selectGame;
+
+  /// No description provided for @yourRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating'**
+  String get yourRating;
+
+  /// No description provided for @shareExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your experience with this game...'**
+  String get shareExperience;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @reviewSubmittedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Review submitted successfully!'**
+  String get reviewSubmittedSuccessfully;
+
+  /// No description provided for @fillAllFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill all fields and select a rating'**
+  String get fillAllFields;
+
+  /// No description provided for @failedToSubmitReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to submit review: {error}'**
+  String failedToSubmitReview(Object error);
+
+  /// No description provided for @allReviewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All Reviews'**
+  String get allReviewsTitle;
+
+  /// No description provided for @reviewsFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews for {gameName}'**
+  String reviewsFor(Object gameName);
+
+  /// No description provided for @noReviewsYetMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get noReviewsYetMsg;
+
+  /// No description provided for @failedToLoadGames.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load games: {error}'**
+  String failedToLoadGames(Object error);
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -835,28 +1073,26 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'id', 'ko'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'id', 'ko'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'id':
-      return AppLocalizationsId();
-    case 'ko':
-      return AppLocalizationsKo();
+    case 'en': return AppLocalizationsEn();
+    case 'id': return AppLocalizationsId();
+    case 'ko': return AppLocalizationsKo();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }
