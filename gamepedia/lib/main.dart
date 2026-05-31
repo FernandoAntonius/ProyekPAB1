@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Quicksand',
       ),
-      home: const AddReviewScreen(),
+      home: const SplashScreen(),
       initialRoute: '/',
       routes: {
         '/main': (context) => const MainScreen(),

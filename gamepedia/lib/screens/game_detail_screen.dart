@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/data/favorites_service.dart';
 import 'package:gamepedia/models/game.dart';
+import 'package:gamepedia/models/review.dart';
+import 'package:gamepedia/screens/add_review_screen.dart';
+import 'package:gamepedia/screens/all_review_screen.dart';
 import 'package:gamepedia/widgets/info_card.dart';
 import 'package:gamepedia/screens/by_device.dart/windows.dart';
 import 'package:gamepedia/screens/by_device.dart/android.dart';
@@ -257,6 +261,149 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     );
   }
 
+  Widget _buildReviewCard(Review review) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: const Color(0xFF161A3A),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: Colors.white12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const CircleAvatar(
+                radius: 16,
+                backgroundColor: Colors.white,
+                child: Icon(Icons.person, color: Colors.blue, size: 18),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  review.author,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: List.generate(
+              5,
+              (index) => Icon(
+                Icons.star,
+                size: 14,
+                color: index < review.rating
+                    ? Colors.amber
+                    : Colors.grey.shade700,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            review.content,
+            style: const TextStyle(color: Colors.white70, height: 1.4),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReviewSection(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Expanded(
+                child: Text(
+                  'Reviews',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          AddReviewScreen(fixedGameName: widget.game.title),
+                    ),
+                  );
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xFF6A5AF9),
+                ),
+                child: const Text('Add review'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          AllReviewScreen(gameTitle: widget.game.title),
+                    ),
+                  );
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xFF6A5AF9),
+                ),
+                child: const Text('View all'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+            stream: FirebaseFirestore.instance
+                .collection('reviews')
+                .where('gameName', isEqualTo: widget.game.title)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(color: Colors.white),
+                );
+              }
+
+              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                return Text(
+                  'No reviews yet',
+                  style: TextStyle(color: Colors.grey.shade400),
+                );
+              }
+
+              final reviews =
+                  snapshot.data!.docs
+                      .map((doc) => Review.fromFirestore(doc.data()))
+                      .toList()
+                    ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
+              return Column(
+                children: reviews
+                    .take(3)
+                    .map((review) => _buildReviewCard(review))
+                    .toList(),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -488,6 +635,8 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 },
               ),
             ),
+            const SizedBox(height: 20),
+            _buildReviewSection(context),
             const SizedBox(height: 20),
             _buildSystemRequirements(widget.game),
             const SizedBox(height: 10),

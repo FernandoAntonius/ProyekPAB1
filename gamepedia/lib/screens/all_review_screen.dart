@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:gamepedia/data/review_provider.dart';
 import 'package:gamepedia/models/review.dart';
 
 class AllReviewScreen extends StatelessWidget {
-  const AllReviewScreen({super.key});
+  final String? gameTitle;
+
+  const AllReviewScreen({super.key, this.gameTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class AllReviewScreen extends StatelessWidget {
           color: const Color(0xFF6A5AF9),
         ),
         title: Text(
-          'All Reviews',
+          gameTitle == null ? 'All Reviews' : 'Reviews for $gameTitle',
           style: const TextStyle(
             color: Color(0xFF6A5AF9),
             fontSize: 20,
@@ -41,27 +42,26 @@ class AllReviewScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 10),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Image.asset('images/console.png', height: 30),
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 20),
-
               Expanded(
-                child: Consumer<ReviewProvider>(
-                  builder: (context, repo, _) {
-                    final reviews = repo.reviews;
-                    if (reviews.isEmpty) {
+                child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  stream: (gameTitle == null)
+                      ? FirebaseFirestore.instance
+                            .collection('reviews')
+                            .orderBy('createdAt', descending: true)
+                            .snapshots()
+                      : FirebaseFirestore.instance
+                            .collection('reviews')
+                            .where('gameName', isEqualTo: gameTitle)
+                            .orderBy('createdAt', descending: true)
+                            .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(color: Colors.white),
+                      );
+                    }
+
+                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                       return Center(
                         child: Text(
                           'No reviews yet',
@@ -69,6 +69,11 @@ class AllReviewScreen extends StatelessWidget {
                         ),
                       );
                     }
+
+                    final reviews = snapshot.data!.docs
+                        .map((doc) => Review.fromFirestore(doc.data()))
+                        .toList();
+
                     return ListView.builder(
                       itemCount: reviews.length,
                       itemBuilder: (context, index) {
@@ -137,7 +142,17 @@ class ReviewCard extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 6),
+                  if (review.gameName.isNotEmpty) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      review.gameName,
+                      style: TextStyle(
+                        color: Colors.grey.shade400,
+                        fontSize: 11,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                  ],
 
                   Row(
                     children: List.generate(

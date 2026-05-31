@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gamepedia/data/review_provider.dart';
 import 'package:gamepedia/models/review.dart';
-import 'package:gamepedia/l10n/app_localizations.dart';
 
 class AddReviewScreen extends StatefulWidget {
-  const AddReviewScreen({super.key});
+  final String? fixedGameName;
+
+  const AddReviewScreen({super.key, this.fixedGameName});
 
   @override
   State<AddReviewScreen> createState() => _AddReviewScreenState();
@@ -23,7 +22,10 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
   @override
   void initState() {
     super.initState();
-    _fetchGames();
+    selectedGameName = widget.fixedGameName;
+    if (widget.fixedGameName == null) {
+      _fetchGames();
+    }
   }
 
   Future<void> _fetchGames() async {
@@ -87,7 +89,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
     authorController.clear();
     reviewController.clear();
     setState(() {
-      selectedGameName = null;
+      selectedGameName = widget.fixedGameName;
       rating = 0;
     });
   }
@@ -112,7 +114,7 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
           color: const Color(0xFF6A5AF9),
         ),
         title: Text(
-          'All Reviews',
+          'Add Review',
           style: const TextStyle(
             color: Color(0xFF6A5AF9),
             fontSize: 20,
@@ -133,21 +135,6 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.sports_esports_outlined,
-                    color: Colors.blue,
-                    size: 35,
-                  ),
-                ],
-              ),
               const SizedBox(height: 25),
               Container(
                 width: double.infinity,
@@ -197,46 +184,70 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    DropdownButtonFormField<String>(
-                      value: selectedGameName,
-                      items: gameNames
-                          .map(
-                            (gameName) => DropdownMenuItem(
-                              value: gameName,
-                              child: Text(
-                                gameName,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          selectedGameName = value;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        hintText: "Select a game",
-                        hintStyle: TextStyle(color: Colors.grey.shade500),
-                        filled: true,
-                        fillColor: Colors.transparent,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade600),
+                    if (widget.fixedGameName != null) ...[
+                      Text(
+                        'Game',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      const SizedBox(height: 6),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 14,
                         ),
-                        enabledBorder: OutlineInputBorder(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF0E1126),
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade600),
+                          border: Border.all(color: Colors.grey.shade600),
                         ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.deepPurpleAccent,
-                          ),
+                        child: Text(
+                          widget.fixedGameName!,
+                          style: const TextStyle(color: Colors.white),
                         ),
                       ),
-                      dropdownColor: const Color(0xFF1A1C3A),
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                    ] else ...[
+                      DropdownButtonFormField<String>(
+                        value: selectedGameName,
+                        items: gameNames
+                            .map(
+                              (gameName) => DropdownMenuItem(
+                                value: gameName,
+                                child: Text(
+                                  gameName,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedGameName = value;
+                          });
+                        },
+                        decoration: InputDecoration(
+                          hintText: "Select a game",
+                          hintStyle: TextStyle(color: Colors.grey.shade500),
+                          filled: true,
+                          fillColor: Colors.transparent,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(color: Colors.grey.shade600),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(color: Colors.grey.shade600),
+                          ),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.deepPurpleAccent,
+                            ),
+                          ),
+                        ),
+                        dropdownColor: const Color(0xFF1A1C3A),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ],
                     const SizedBox(height: 20),
                     Text(
                       "Your rating",
