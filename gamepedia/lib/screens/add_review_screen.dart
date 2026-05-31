@@ -41,8 +41,8 @@ void initState() {
   Future<void> _fetchGames() async {
     try {
       final snapshot = await FirebaseFirestore.instance
-          .collection('games')
-          .get();
+        .collection('games')
+        .get();
       setState(() {
         gameNames = snapshot.docs.map((doc) => doc['title'] as String).toList();
       });
@@ -56,47 +56,47 @@ void initState() {
     }
   }
 
-    Future<void> _getLocation() async {
-    try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Location services are disabled.')),
-        );
-        return;
-      }
+Future<void> _getLocation() async {
+  try {
+    LocationPermission permission =
+        await Geolocator.checkPermission();
 
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.deniedForever ||
-            permission == LocationPermission.denied) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Location permissions are denied.')),
-          );
-          return;
-        }
-      }
-
-      final position = await Geolocator.getCurrentPosition(
-        locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
-      ).timeout(const Duration(seconds: 10));
-
-      setState(() {
-        _latitude = position.latitude;
-        _longitude = position.longitude;
-      });
-    } catch (e) {
-      debugPrint('Failed to retrieve location: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to retrieve location: $e')),
-      );
-      setState(() {
-        _latitude = null;
-        _longitude = null;
-      });
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
     }
+
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      return;
+    }
+
+    bool serviceEnabled =
+        await Geolocator.isLocationServiceEnabled();
+
+    if (!serviceEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Please turn on GPS to get location.',
+          ),
+        ),
+      );
+
+      await Geolocator.openLocationSettings();
+      return;
+    }
+
+    final position =
+        await Geolocator.getCurrentPosition();
+
+    setState(() {
+      _latitude = position.latitude;
+      _longitude = position.longitude;
+    });
+  } catch (e) {
+    debugPrint(e.toString());
   }
+}
   
   Future<void> _uploadReview() async {
     final loc = AppLocalizations.of(context)!;
@@ -120,6 +120,8 @@ void initState() {
         'gameName': selectedGameName,
         'content': reviewController.text.trim(),
         'rating': rating,
+        'latitude': _latitude,
+        'longitude': _longitude,
         'createdAt': FieldValue.serverTimestamp(),
       });
 
