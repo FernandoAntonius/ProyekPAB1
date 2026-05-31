@@ -234,13 +234,34 @@ class AppLocalizationsId extends AppLocalizations {
   String get unknownLanguage => 'Bahasa Tidak Dikenal';
 
   @override
-  String get english => 'Inggris';
+  String get english => 'English';
 
   @override
-  String get indonesian => 'Indonesia';
+  String get indonesian => 'Bahasa Indonesia';
 
   @override
   String get korean => 'Korea';
+
+  @override
+  String get chinese => 'China';
+
+  @override
+  String get thai => 'Thailand';
+
+  @override
+  String get spanish => 'Spanish';
+
+  @override
+  String get filipino => 'Tagalog';
+
+  @override
+  String get russian => 'Russian';
+
+  @override
+  String get japanese => 'Japanese';
+
+  @override
+  String get arabic => 'Arabic';
 
   @override
   String get titleDeviceGenreRequired => 'Judul, perangkat, dan genre wajib diisi.';
@@ -356,7 +377,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get popularGames => 'Game Populer';
 
   @override
-  String get newRelease => 'Rilis Baru';
+  String get newRelease => 'Rilisan Terbaru';
 
   @override
   String get showAll => 'Tampilkan semua';

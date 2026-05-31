@@ -5,9 +5,16 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_ar.dart';
 import 'app_localizations_en.dart';
+import 'app_localizations_es.dart';
+import 'app_localizations_fil.dart';
 import 'app_localizations_id.dart';
+import 'app_localizations_ja.dart';
 import 'app_localizations_ko.dart';
+import 'app_localizations_ru.dart';
+import 'app_localizations_th.dart';
+import 'app_localizations_zh.dart';
 
 // ignore_for_file: type=lint
 
@@ -92,9 +99,16 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
     Locale('en'),
+    Locale('es'),
+    Locale('fil'),
     Locale('id'),
-    Locale('ko')
+    Locale('ja'),
+    Locale('ko'),
+    Locale('ru'),
+    Locale('th'),
+    Locale('zh')
   ];
 
   /// No description provided for @signIn.
@@ -520,7 +534,7 @@ abstract class AppLocalizations {
   /// No description provided for @indonesian.
   ///
   /// In en, this message translates to:
-  /// **'Indonesian'**
+  /// **'Bahasa Indonesia'**
   String get indonesian;
 
   /// No description provided for @korean.
@@ -528,6 +542,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Korean'**
   String get korean;
+
+  /// No description provided for @chinese.
+  ///
+  /// In en, this message translates to:
+  /// **'China'**
+  String get chinese;
+
+  /// No description provided for @thai.
+  ///
+  /// In en, this message translates to:
+  /// **'Thailand'**
+  String get thai;
+
+  /// No description provided for @spanish.
+  ///
+  /// In en, this message translates to:
+  /// **'Spanish'**
+  String get spanish;
+
+  /// No description provided for @filipino.
+  ///
+  /// In en, this message translates to:
+  /// **'Tagalog'**
+  String get filipino;
+
+  /// No description provided for @russian.
+  ///
+  /// In en, this message translates to:
+  /// **'Russian'**
+  String get russian;
+
+  /// No description provided for @japanese.
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese'**
+  String get japanese;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
 
   /// No description provided for @titleDeviceGenreRequired.
   ///
@@ -750,7 +806,11 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Popular Games'**
   String get popularGames;
-  
+
+  /// No description provided for @newRelease.
+  ///
+  /// In en, this message translates to:
+  /// **'New Release'**
   String get newRelease;
 
   /// No description provided for @showAll.
@@ -1075,7 +1135,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'id', 'ko'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'en', 'es', 'fil', 'id', 'ja', 'ko', 'ru', 'th', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -1086,9 +1146,16 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'ar': return AppLocalizationsAr();
     case 'en': return AppLocalizationsEn();
+    case 'es': return AppLocalizationsEs();
+    case 'fil': return AppLocalizationsFil();
     case 'id': return AppLocalizationsId();
+    case 'ja': return AppLocalizationsJa();
     case 'ko': return AppLocalizationsKo();
+    case 'ru': return AppLocalizationsRu();
+    case 'th': return AppLocalizationsTh();
+    case 'zh': return AppLocalizationsZh();
   }
 
   throw FlutterError(

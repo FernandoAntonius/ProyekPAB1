@@ -237,10 +237,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get english => 'English';
 
   @override
-  String get indonesian => 'Indonesian';
+  String get indonesian => 'Bahasa Indonesia';
 
   @override
   String get korean => 'Korean';
+
+  @override
+  String get chinese => 'China';
+
+  @override
+  String get thai => 'Thailand';
+
+  @override
+  String get spanish => 'Spanish';
+
+  @override
+  String get filipino => 'Tagalog';
+
+  @override
+  String get russian => 'Russian';
+
+  @override
+  String get japanese => 'Japanese';
+
+  @override
+  String get arabic => 'Arabic';
 
   @override
   String get titleDeviceGenreRequired => 'Title, device, and genre are required.';

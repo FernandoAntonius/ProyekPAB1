@@ -234,13 +234,34 @@ class AppLocalizationsKo extends AppLocalizations {
   String get unknownLanguage => '알 수 없는 언어';
 
   @override
-  String get english => '영어';
+  String get english => 'English';
 
   @override
-  String get indonesian => '인도네시아';
+  String get indonesian => 'Bahasa Indonesia';
 
   @override
-  String get korean => '한국인';
+  String get korean => 'Korean';
+
+  @override
+  String get chinese => 'China';
+
+  @override
+  String get thai => 'Thailand';
+
+  @override
+  String get spanish => 'Spanish';
+
+  @override
+  String get filipino => 'Tagalog';
+
+  @override
+  String get russian => 'Russian';
+
+  @override
+  String get japanese => 'Japanese';
+
+  @override
+  String get arabic => 'Arabic';
 
   @override
   String get titleDeviceGenreRequired => '제목, 기기 및 장르는 필수입니다.';

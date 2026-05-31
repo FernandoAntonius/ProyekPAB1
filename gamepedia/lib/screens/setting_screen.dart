@@ -16,12 +16,26 @@ class SettingsScreen extends StatelessWidget {
       'en': const Locale('en'),
       'id': const Locale('id'),
       'ko': const Locale('ko'),
+      'zh': const Locale('zh'),
+      'th': const Locale('th'),
+      'es': const Locale('es'),
+      'fil': const Locale('fil'),
+      'ru': const Locale('ru'),
+      'ja': const Locale('ja'),
+      'ar': const Locale('ar'),
     };
 
     final languageNames = {
       'en': loc.english,
       'id': loc.indonesian,
       'ko': loc.korean,
+      'zh': loc.chinese,
+      'th': loc.thai,
+      'es': loc.spanish,
+      'fil': loc.filipino,
+      'ru': loc.russian,
+      'ja': loc.japanese,
+      'ar': loc.arabic,
     };
 
     return Scaffold(
