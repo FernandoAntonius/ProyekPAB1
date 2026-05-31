@@ -356,6 +356,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get popularGames => 'Popular Games';
 
   @override
+  String get newRelease => 'New Release';
+
+  @override
   String get showAll => 'Show all';
 
   @override

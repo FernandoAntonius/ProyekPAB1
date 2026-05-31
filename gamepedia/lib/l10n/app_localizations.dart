@@ -750,6 +750,8 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Popular Games'**
   String get popularGames;
+  
+  String get newRelease;
 
   /// No description provided for @showAll.
   ///

@@ -356,6 +356,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get popularGames => '인기 게임';
 
   @override
+  String get newRelease => '새로운 릴리스';
+
+  @override
   String get showAll => '모두 보기';
 
   @override

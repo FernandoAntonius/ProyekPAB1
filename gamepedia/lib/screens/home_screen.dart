@@ -236,7 +236,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 const SizedBox(height: 24),
-
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      color: Colors.orangeAccent,
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        AppLocalizations.of(context)!.newRelease,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                 // SEARCHED / ALL GAMES LIST
                 StreamBuilder<List<Game>>(
                   stream: GameRepository.streamAllGames(),

@@ -356,6 +356,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get popularGames => 'Game Populer';
 
   @override
+  String get newRelease => 'Rilis Baru';
+
+  @override
   String get showAll => 'Tampilkan semua';
 
   @override
