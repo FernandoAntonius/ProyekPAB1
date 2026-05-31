@@ -39,15 +39,60 @@ class SettingsScreen extends StatelessWidget {
     };
 
     return Scaffold(
-      appBar: AppBar(title: Text(loc.settings)),
+      backgroundColor: const Color(0xFF0E1126),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0E1126),
+        elevation: 0,
+        title: Text(
+          loc.settings,
+          style: const TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Quicksand',
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: ShaderMask(
+              shaderCallback: (bounds) => const LinearGradient(
+                colors: [
+                  Color(0xFF3A3FF2),
+                  Color(0xFF7754F4),
+                  Color(0xFF965FF5),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ).createShader(bounds),
+              child: Image.asset(
+                'images/console.png',
+                height: 40,
+                width: 40,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListTile(
-          title: Text(loc.language),
+          title: Text(
+            loc.language,
+            style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           subtitle: Text(
             languageNames[currentLocale.languageCode] ?? loc.unknownLanguage,
+            style: const TextStyle(color: Colors.white70, fontSize: 14),
           ),
           trailing: DropdownButton<Locale>(
+            dropdownColor: const Color.fromARGB(255, 255, 255, 255),
+            style: const TextStyle(color: Colors.black, fontSize: 14),
             value: currentLocale,
             items: supportedLanguages.entries.map((entry) {
               return DropdownMenuItem<Locale>(
