@@ -178,5 +178,20 @@
   "unableToLoadWishlistGames": "Unable to load wishlist games.",
   "welcomeToGamePedia": "Welcome to GamePedia!",
   "termsOfServiceDescription": "Please read these Terms of Service carefully before using GamePedia.",
-  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "biography": "Biography",
+  "birthDate": "Birth Date",
+  "location": "Location",
+  "save": "Save",
+  "profileSaved": "Profile saved successfully!",
+  "errorSavingProfile": "Failed to save profile: {error}",
+  "locateMe": "Locate Me",
+  "locationPermissionDenied": "Location permission denied",
+  "enableLocationServices": "Please enable location services",
+  "locationUpdatedSuccessfully": "Location updated successfully",
+  "memory": "Memory",
+  "os": "OS",
+  "graphics": "Graphics",
+  "storage": "Storage",
+  "processor": "Processor"
 }

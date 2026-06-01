@@ -443,7 +443,6 @@ class _AddGameScreen extends State<AddGameScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // thumbnail preview
             if (_thumbnailController.text.trim().isNotEmpty)
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),

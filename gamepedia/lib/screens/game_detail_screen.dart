@@ -65,7 +65,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
           ),
           const SizedBox(height: 12),
-          // Minimum Requirements
           Text(
             AppLocalizations.of(context)!.minimum,
             style: const TextStyle(
@@ -78,7 +77,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
           if (sysReq.containsKey('minimum'))
             ...sysReq['minimum']!.entries.map(
               (entry) => Text(
-                "• ${entry.key}: ${entry.value}",
+                "• ${_localizedSystemReqKey(entry.key, context)}: ${entry.value}",
                 style: const TextStyle(
                   color: Colors.white70,
                   fontFamily: "Quicksand",
@@ -98,13 +97,24 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
           if (sysReq.containsKey('recommended'))
             ...sysReq['recommended']!.entries.map(
               (entry) => Text(
-                "• ${entry.key}: ${entry.value}",
+                "• ${_localizedSystemReqKey(entry.key, context)}: ${entry.value}",
                 style: const TextStyle(color: Colors.white70),
               ),
             ),
         ],
       ),
     );
+  }
+
+  String _localizedSystemReqKey(String key, BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final lowerKey = key.toLowerCase();
+    if (lowerKey == 'memory') return loc.memory;
+    if (lowerKey == 'os') return loc.os;
+    if (lowerKey == 'graphics') return loc.graphics;
+    if (lowerKey == 'storage') return loc.storage;
+    if (lowerKey == 'processor') return loc.processor;
+    return key;
   }
 
   String _localizedGenre(String genre, BuildContext context) {
@@ -645,7 +655,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // MAIN IMAGE (force fixed size and support network or asset)
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 8),
               child: ClipRRect(
@@ -808,7 +817,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            // GENRE
             buildSectionTitle(loc.genreLabel),
             SizedBox(
               height: 50,
@@ -835,7 +843,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            // ABOUT
             buildSectionTitle(loc.aboutThisGame),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -846,7 +853,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            // SCREENSHOTS
             buildSectionTitle(loc.screenshots),
             SizedBox(
               height: 120,

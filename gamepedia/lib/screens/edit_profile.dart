@@ -20,6 +20,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
   String _email = "user@gmail.com";
   bool _isLoadingLocation = false;
   DateTime? _selectedBirthDate;
+  bool _isAdmin = false;
 
   @override
   void initState() {
@@ -32,10 +33,19 @@ class _EditProfileScreen extends State<EditProfileScreen> {
 
   void _loadProfileData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    final isAdmin = prefs.getBool('isAdmin') ?? false;
     final String savedEncryptedEmail = prefs.getString('email') ?? '';
     final String savedKey = prefs.getString('key') ?? '';
     final String savedIV = prefs.getString('iv') ?? '';
     final username = prefs.getString('username') ?? '';
+
+    setState(() {
+      _isAdmin = isAdmin;
+      if (_isAdmin) {
+        _email = 'admin@gmail.com';
+      }
+    });
+
     final encrypt.Key key = encrypt.Key.fromBase64(savedKey);
     final encrypt.IV iv = encrypt.IV.fromBase64(savedIV);
     final decrypter = encrypt.Encrypter(encrypt.AES(key));
@@ -53,7 +63,9 @@ class _EditProfileScreen extends State<EditProfileScreen> {
             _bioController.text = data['bio'] ?? '';
             _locationController.text = data['location'] ?? '';
             _username = data['username'] ?? username;
-            _email = data['email'] ?? '';
+            if (!_isAdmin) {
+              _email = data['email'] ?? '';
+            }
             if (data['birthDate'] != null &&
                 data['birthDate'].toString().isNotEmpty) {
               try {
@@ -74,7 +86,9 @@ class _EditProfileScreen extends State<EditProfileScreen> {
       _bioController.text = prefs.getString('profile_bio') ?? '';
       _locationController.text = prefs.getString('profile_location') ?? '';
       _username = prefs.getString('username') ?? 'User123749';
-      _email = decryptedEmail;
+      if (!_isAdmin) {
+        _email = decryptedEmail;
+      }
       final birthDateStr = prefs.getString('profile_birthDate');
       if (birthDateStr != null && birthDateStr.isNotEmpty) {
         try {
@@ -90,6 +104,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
     setState(() {
       _isLoadingLocation = true;
     });
+    final loc = AppLocalizations.of(context)!;
     try {
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
@@ -98,18 +113,18 @@ class _EditProfileScreen extends State<EditProfileScreen> {
       if (permission == LocationPermission.denied ||
           permission == LocationPermission.deniedForever) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Location permission denied')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(loc.locationPermissionDenied)));
         }
         return;
       }
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Please enable location services')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(loc.enableLocationServices)));
         }
         return;
       }
@@ -120,14 +135,14 @@ class _EditProfileScreen extends State<EditProfileScreen> {
       });
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Location updated successfully')),
+          SnackBar(content: Text(loc.locationUpdatedSuccessfully)),
         );
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Error getting location: $e')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(loc.failedToRetrieveLocation(e))),
+        );
       }
     } finally {
       setState(() {
@@ -137,13 +152,14 @@ class _EditProfileScreen extends State<EditProfileScreen> {
   }
 
   Future<void> _saveProfile() async {
+    final loc = AppLocalizations.of(context)!;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final oldUsername = prefs.getString('username') ?? '';
     final newUsername = _usernameController.text;
     if (newUsername.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Username cannot be empty')));
+      ).showSnackBar(SnackBar(content: Text(loc.fillAllFields)));
       return;
     }
     await prefs.setString('username', newUsername);
@@ -184,14 +200,14 @@ class _EditProfileScreen extends State<EditProfileScreen> {
             });
       }
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Profile saved successfully!')),
-      );
-    } catch (e) {
-      if (!mounted) return;
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Error saving profile: $e')));
+      ).showSnackBar(SnackBar(content: Text(loc.profileSaved)));
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(loc.errorSavingProfile(e.toString()))),
+      );
     }
   }
 
@@ -213,6 +229,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 6, 2, 26),
       appBar: AppBar(
@@ -224,7 +241,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
           color: Color(0xFF6A5AF9),
         ),
         title: Text(
-          AppLocalizations.of(context)!.editProfile,
+          loc.editProfile,
           style: const TextStyle(
             color: Color(0xFF6A5AF9),
             fontSize: 20,
@@ -299,7 +316,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
               TextField(
                 controller: _bioController,
                 decoration: InputDecoration(
-                  hintText: 'Bio',
+                  hintText: loc.biography,
                   hintStyle: const TextStyle(color: Colors.white54),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -356,8 +373,8 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                       Expanded(
                         child: Text(
                           _selectedBirthDate == null
-                              ? 'Birth Date'
-                              : 'Birth Date: ${_selectedBirthDate!.toLocal().toString().split(' ')[0]}',
+                              ? loc.birthDate
+                              : '${loc.birthDate}: ${_selectedBirthDate!.toLocal().toString().split(' ')[0]}',
                           style: TextStyle(
                             color: _selectedBirthDate == null
                                 ? Colors.white54
@@ -377,7 +394,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                       controller: _locationController,
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: 'Location',
+                        hintText: loc.location,
                         hintStyle: const TextStyle(color: Colors.white54),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -419,9 +436,9 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                               ),
                             )
                           : const Icon(Icons.location_on, size: 20),
-                      label: const Text(
-                        'Locate',
-                        style: TextStyle(
+                      label: Text(
+                        loc.locateMe,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -448,10 +465,10 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                     child: InkWell(
                       onTap: _saveProfile,
                       borderRadius: BorderRadius.circular(12),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'Save',
-                          style: TextStyle(
+                          loc.save,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -478,12 +495,12 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                       borderRadius: BorderRadius.circular(12),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(Icons.logout, color: Colors.red, size: 20),
-                          SizedBox(width: 8),
+                        children: [
+                          const Icon(Icons.logout, color: Colors.red, size: 20),
+                          const SizedBox(width: 8),
                           Text(
-                            'Log Out',
-                            style: TextStyle(
+                            loc.logout,
+                            style: const TextStyle(
                               color: Colors.red,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,

@@ -402,7 +402,6 @@ class _EditGameScreen extends State<EditGameScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // thumbnail preview
             if (_thumbnailController.text.trim().isNotEmpty)
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),

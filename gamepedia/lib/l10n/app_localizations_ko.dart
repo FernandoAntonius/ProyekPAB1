@@ -570,32 +570,55 @@ class AppLocalizationsKo extends AppLocalizations {
   String get welcomeToGamePedia => 'GamePedia에 오신 것을 환영합니다!';
 
   @override
-  String get termsOfServiceDescription => 'Please read these Terms of Service carefully before using GamePedia.';
+  String get termsOfServiceDescription => 'GamePedia를 사용하기 전에 이 서비스 약관을 주의깊게 읽어주세요.';
 
   @override
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => '운영 제제';
+  String get biography => '프로필';
 
   @override
-  String get sysReqProcessor => '프로세서';
+  String get birthDate => '생년월일';
 
   @override
-  String get sysReqMemory => '메모리(RAM)';
+  String get location => '위치';
 
   @override
-  String get sysReqGraphics => '그래픽 카드';
+  String get save => '저장';
 
   @override
-  String get sysReqStorage => '스토리지 공간';
+  String get profileSaved => '프로필이 성공적으로 저장되었습니다!';
 
   @override
-  String get sysReqDirectX => 'DirectX 버전';
+  String errorSavingProfile(Object error) {
+    return '프로필을 저장하지 못했습니다: $error';
+  }
 
   @override
-  String get sysReqNetwork => '네트워크';
+  String get locateMe => '내 위치 찾기';
 
   @override
-  String get sysReqSoundCard => '사운드 카드';
+  String get locationPermissionDenied => '위치 권한이 거부되었습니다';
+
+  @override
+  String get enableLocationServices => '위치 서비스를 활성화하세요';
+
+  @override
+  String get locationUpdatedSuccessfully => '위치가 성공적으로 업데이트되었습니다';
+
+  @override
+  String get memory => '메모리';
+
+  @override
+  String get os => 'OS';
+
+  @override
+  String get graphics => '그래픽';
+
+  @override
+  String get storage => '저장소';
+
+  @override
+  String get processor => '프로세서';
 }

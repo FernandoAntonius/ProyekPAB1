@@ -576,26 +576,49 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'نظام التشغيل';
+  String get biography => 'السيرة الذاتية';
 
   @override
-  String get sysReqProcessor => 'المعالج';
+  String get birthDate => 'تاريخ الميلاد';
 
   @override
-  String get sysReqMemory => 'الذاكرة (RAM)';
+  String get location => 'الموقع';
 
   @override
-  String get sysReqGraphics => 'بطاقة الرسومات';
+  String get save => 'حفظ';
 
   @override
-  String get sysReqStorage => 'مساحة التخزين';
+  String get profileSaved => 'تم حفظ الملف الشخصي بنجاح!';
 
   @override
-  String get sysReqDirectX => 'إصدار DirectX';
+  String errorSavingProfile(Object error) {
+    return 'فشل حفظ الملف الشخصي: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'الشبكة';
+  String get locateMe => 'حدد موقعي';
 
   @override
-  String get sysReqSoundCard => 'بطاقة الصوت';
+  String get locationPermissionDenied => 'تم رفض إذن الموقع';
+
+  @override
+  String get enableLocationServices => 'يرجى تفعيل خدمات الموقع';
+
+  @override
+  String get locationUpdatedSuccessfully => 'تم تحديث الموقع بنجاح';
+
+  @override
+  String get memory => 'الذاكرة';
+
+  @override
+  String get os => 'نظام التشغيل';
+
+  @override
+  String get graphics => 'الرسومات';
+
+  @override
+  String get storage => 'التخزين';
+
+  @override
+  String get processor => 'المعالج';
 }

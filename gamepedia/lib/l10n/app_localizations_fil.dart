@@ -576,26 +576,49 @@ class AppLocalizationsFil extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'Operating System';
+  String get biography => 'Talambuhay';
 
   @override
-  String get sysReqProcessor => 'Processor';
+  String get birthDate => 'Araw ng Kapanganakan';
 
   @override
-  String get sysReqMemory => 'Memory (RAM)';
+  String get location => 'Lokasyon';
 
   @override
-  String get sysReqGraphics => 'Graphics Card';
+  String get save => 'Iligtas';
 
   @override
-  String get sysReqStorage => 'Storage Space';
+  String get profileSaved => 'Matagumpay na nakatipid ang profile!';
 
   @override
-  String get sysReqDirectX => 'DirectX Version';
+  String errorSavingProfile(Object error) {
+    return 'Nabigo sa pag-save ng profile: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'Network';
+  String get locateMe => 'Hanapin Mo Ako';
 
   @override
-  String get sysReqSoundCard => 'Sound Card';
+  String get locationPermissionDenied => 'Tinanggihan ang pahintulot sa lokasyon';
+
+  @override
+  String get enableLocationServices => 'Mangyaring i-enable ang mga serbisyo ng lokasyon';
+
+  @override
+  String get locationUpdatedSuccessfully => 'Matagumpay na nag-update ang lokasyon';
+
+  @override
+  String get memory => 'Memorya';
+
+  @override
+  String get os => 'Operating System';
+
+  @override
+  String get graphics => 'Graphics';
+
+  @override
+  String get storage => 'Storage';
+
+  @override
+  String get processor => 'Processor';
 }

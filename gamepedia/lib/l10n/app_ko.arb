@@ -178,6 +178,21 @@
   "unableToLoadWishlistGames": "위시리스트 게임을 로드할 수 없습니다.",
   "welcomeToGamePedia": "GamePedia에 오신 것을 환영합니다!",
   "termsOfServiceDescription": "GamePedia를 사용하기 전에 이 서비스 약관을 주의깊게 읽어주세요.",
-  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "biography": "프로필",
+  "birthDate": "생년월일",
+  "location": "위치",
+  "save": "저장",
+  "profileSaved": "프로필이 성공적으로 저장되었습니다!",
+  "errorSavingProfile": "프로필을 저장하지 못했습니다: {error}",
+  "locateMe": "내 위치 찾기",
+  "locationPermissionDenied": "위치 권한이 거부되었습니다",
+  "enableLocationServices": "위치 서비스를 활성화하세요",
+  "locationUpdatedSuccessfully": "위치가 성공적으로 업데이트되었습니다",
+  "memory": "메모리",
+  "os": "OS",
+  "graphics": "그래픽",
+  "storage": "저장소",
+  "processor": "프로세서"
 
 }

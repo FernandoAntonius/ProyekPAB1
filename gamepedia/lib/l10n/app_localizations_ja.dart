@@ -576,26 +576,49 @@ class AppLocalizationsJa extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'オペレーティングシステム';
+  String get biography => 'プロフィール';
 
   @override
-  String get sysReqProcessor => 'プロセッサ';
+  String get birthDate => '生年月日';
 
   @override
-  String get sysReqMemory => 'メモリ (RAM)';
+  String get location => '場所';
 
   @override
-  String get sysReqGraphics => 'グラフィックスカード';
+  String get save => '保存';
 
   @override
-  String get sysReqStorage => 'ストレージスペース';
+  String get profileSaved => 'プロフィールが正常に保存されました!';
 
   @override
-  String get sysReqDirectX => 'DirectXバージョン';
+  String errorSavingProfile(Object error) {
+    return 'プロフィールの保存に失敗しました: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'ネットワーク';
+  String get locateMe => '位置を特定';
 
   @override
-  String get sysReqSoundCard => 'サウンドカード';
+  String get locationPermissionDenied => '位置情報の許可が拒否されました';
+
+  @override
+  String get enableLocationServices => '位置情報サービスを有効にしてください';
+
+  @override
+  String get locationUpdatedSuccessfully => '位置情報が正常に更新されました';
+
+  @override
+  String get memory => 'メモリ';
+
+  @override
+  String get os => 'OS';
+
+  @override
+  String get graphics => 'グラフィックス';
+
+  @override
+  String get storage => 'ストレージ';
+
+  @override
+  String get processor => 'プロセッサ';
 }

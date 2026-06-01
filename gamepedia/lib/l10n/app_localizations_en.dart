@@ -576,26 +576,49 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'Operating System';
+  String get biography => 'Biography';
 
   @override
-  String get sysReqProcessor => 'Processor';
+  String get birthDate => 'Birth Date';
 
   @override
-  String get sysReqMemory => 'Memory (RAM)';
+  String get location => 'Location';
 
   @override
-  String get sysReqGraphics => 'Graphics Card';
+  String get save => 'Save';
 
   @override
-  String get sysReqStorage => 'Storage Space';
+  String get profileSaved => 'Profile saved successfully!';
 
   @override
-  String get sysReqDirectX => 'DirectX Version';
+  String errorSavingProfile(Object error) {
+    return 'Failed to save profile: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'Network';
+  String get locateMe => 'Locate Me';
 
   @override
-  String get sysReqSoundCard => 'Sound Card';
+  String get locationPermissionDenied => 'Location permission denied';
+
+  @override
+  String get enableLocationServices => 'Please enable location services';
+
+  @override
+  String get locationUpdatedSuccessfully => 'Location updated successfully';
+
+  @override
+  String get memory => 'Memory';
+
+  @override
+  String get os => 'OS';
+
+  @override
+  String get graphics => 'Graphics';
+
+  @override
+  String get storage => 'Storage';
+
+  @override
+  String get processor => 'Processor';
 }

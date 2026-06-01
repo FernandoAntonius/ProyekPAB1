@@ -576,26 +576,49 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'Операционная система';
+  String get biography => 'Биография';
 
   @override
-  String get sysReqProcessor => 'Процессор';
+  String get birthDate => 'Дата рождения';
 
   @override
-  String get sysReqMemory => 'Память (ОЗУ)';
+  String get location => 'Местоположение';
 
   @override
-  String get sysReqGraphics => 'Видеокарта';
+  String get save => 'Сохранить';
 
   @override
-  String get sysReqStorage => 'Место на диске';
+  String get profileSaved => 'Профиль успешно сохранен!';
 
   @override
-  String get sysReqDirectX => 'Версия DirectX';
+  String errorSavingProfile(Object error) {
+    return 'Ошибка при сохранении профиля: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'Сеть';
+  String get locateMe => 'Определить мое местоположение';
 
   @override
-  String get sysReqSoundCard => 'Звуковая карта';
+  String get locationPermissionDenied => 'Разрешение на доступ к местоположению отклонено';
+
+  @override
+  String get enableLocationServices => 'Пожалуйста, включите услуги определения местоположения';
+
+  @override
+  String get locationUpdatedSuccessfully => 'Местоположение успешно обновлено';
+
+  @override
+  String get memory => 'Память';
+
+  @override
+  String get os => 'ОС';
+
+  @override
+  String get graphics => 'Графика';
+
+  @override
+  String get storage => 'Хранилище';
+
+  @override
+  String get processor => 'Процессор';
 }

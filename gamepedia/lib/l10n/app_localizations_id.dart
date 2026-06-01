@@ -576,26 +576,49 @@ class AppLocalizationsId extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'Sistem Operasi';
+  String get biography => 'Biografi';
 
   @override
-  String get sysReqProcessor => 'Prosesor';
+  String get birthDate => 'Tanggal Lahir';
 
   @override
-  String get sysReqMemory => 'Memori (RAM)';
+  String get location => 'Lokasi';
 
   @override
-  String get sysReqGraphics => 'Kartu Grafis';
+  String get save => 'Simpan';
 
   @override
-  String get sysReqStorage => 'Ruang Penyimpanan';
+  String get profileSaved => 'Profil berhasil disimpan!';
 
   @override
-  String get sysReqDirectX => 'Versi DirectX';
+  String errorSavingProfile(Object error) {
+    return 'Gagal menyimpan profil: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'Jaringan';
+  String get locateMe => 'Tentukan Lokasi';
 
   @override
-  String get sysReqSoundCard => 'Kartu Suara';
+  String get locationPermissionDenied => 'Izin lokasi ditolak';
+
+  @override
+  String get enableLocationServices => 'Silakan aktifkan layanan lokasi';
+
+  @override
+  String get locationUpdatedSuccessfully => 'Lokasi berhasil diperbarui';
+
+  @override
+  String get memory => 'Memori';
+
+  @override
+  String get os => 'OS';
+
+  @override
+  String get graphics => 'Grafis';
+
+  @override
+  String get storage => 'Penyimpanan';
+
+  @override
+  String get processor => 'Prosesor';
 }

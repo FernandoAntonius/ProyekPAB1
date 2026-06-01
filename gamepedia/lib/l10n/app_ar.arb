@@ -178,5 +178,20 @@
   "unableToLoadWishlistGames": "تعذر تحميل ألعاب قائمة الأمنيات.",
   "welcomeToGamePedia": "أهلا وسهلا بك في GamePedia!",
   "termsOfServiceDescription": "يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام GamePedia.",
-  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "biography": "السيرة الذاتية",
+  "birthDate": "تاريخ الميلاد",
+  "location": "الموقع",
+  "save": "حفظ",
+  "profileSaved": "تم حفظ الملف الشخصي بنجاح!",
+  "errorSavingProfile": "فشل حفظ الملف الشخصي: {error}",
+  "locateMe": "حدد موقعي",
+  "locationPermissionDenied": "تم رفض إذن الموقع",
+  "enableLocationServices": "يرجى تفعيل خدمات الموقع",
+  "locationUpdatedSuccessfully": "تم تحديث الموقع بنجاح",
+  "memory": "الذاكرة",
+  "os": "نظام التشغيل",
+  "graphics": "الرسومات",
+  "storage": "التخزين",
+  "processor": "المعالج"
 }

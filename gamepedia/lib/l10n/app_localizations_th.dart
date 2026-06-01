@@ -576,26 +576,49 @@ class AppLocalizationsTh extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'ระบบปฏิบัติการ';
+  String get biography => 'ชีวประวัติ';
 
   @override
-  String get sysReqProcessor => 'ตัวประมวลผล';
+  String get birthDate => 'วันเกิด';
 
   @override
-  String get sysReqMemory => 'หน่วยความจำ (RAM)';
+  String get location => 'สถานที่';
 
   @override
-  String get sysReqGraphics => 'การ์ดกราฟิกส์';
+  String get save => 'บันทึก';
 
   @override
-  String get sysReqStorage => 'พื้นที่จัดเก็บข้อมูล';
+  String get profileSaved => 'โปรไฟล์บันทึกสำเร็จ!';
 
   @override
-  String get sysReqDirectX => 'เวอร์ชัน DirectX';
+  String errorSavingProfile(Object error) {
+    return 'ล้มเหลวในการบันทึกโปรไฟล์: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'เครือข่าย';
+  String get locateMe => 'ค้นหาตำแหน่งของฉัน';
 
   @override
-  String get sysReqSoundCard => 'การ์ดเสียง';
+  String get locationPermissionDenied => 'ปฏิเสธการอนุญาตสถานที่';
+
+  @override
+  String get enableLocationServices => 'โปรดเปิดใช้งานบริการสถานที่';
+
+  @override
+  String get locationUpdatedSuccessfully => 'อัปเดตตำแหน่งสำเร็จแล้ว';
+
+  @override
+  String get memory => 'หน่วยความจำ';
+
+  @override
+  String get os => 'ระบบปฏิบัติการ';
+
+  @override
+  String get graphics => 'กราฟิกส์';
+
+  @override
+  String get storage => 'พื้นที่จัดเก็บ';
+
+  @override
+  String get processor => 'โปรเซสเซอร์';
 }

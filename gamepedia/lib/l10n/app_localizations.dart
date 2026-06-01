@@ -1185,53 +1185,95 @@ abstract class AppLocalizations {
   /// **'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'**
   String get tosTermsContent;
 
-  /// No description provided for @sysReqOS.
+  /// No description provided for @biography.
   ///
   /// In en, this message translates to:
-  /// **'Operating System'**
-  String get sysReqOS;
+  /// **'Biography'**
+  String get biography;
 
-  /// No description provided for @sysReqProcessor.
+  /// No description provided for @birthDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Birth Date'**
+  String get birthDate;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @profileSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile saved successfully!'**
+  String get profileSaved;
+
+  /// No description provided for @errorSavingProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save profile: {error}'**
+  String errorSavingProfile(Object error);
+
+  /// No description provided for @locateMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Locate Me'**
+  String get locateMe;
+
+  /// No description provided for @locationPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied'**
+  String get locationPermissionDenied;
+
+  /// No description provided for @enableLocationServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enable location services'**
+  String get enableLocationServices;
+
+  /// No description provided for @locationUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Location updated successfully'**
+  String get locationUpdatedSuccessfully;
+
+  /// No description provided for @memory.
+  ///
+  /// In en, this message translates to:
+  /// **'Memory'**
+  String get memory;
+
+  /// No description provided for @os.
+  ///
+  /// In en, this message translates to:
+  /// **'OS'**
+  String get os;
+
+  /// No description provided for @graphics.
+  ///
+  /// In en, this message translates to:
+  /// **'Graphics'**
+  String get graphics;
+
+  /// No description provided for @storage.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage'**
+  String get storage;
+
+  /// No description provided for @processor.
   ///
   /// In en, this message translates to:
   /// **'Processor'**
-  String get sysReqProcessor;
-
-  /// No description provided for @sysReqMemory.
-  ///
-  /// In en, this message translates to:
-  /// **'Memory (RAM)'**
-  String get sysReqMemory;
-
-  /// No description provided for @sysReqGraphics.
-  ///
-  /// In en, this message translates to:
-  /// **'Graphics Card'**
-  String get sysReqGraphics;
-
-  /// No description provided for @sysReqStorage.
-  ///
-  /// In en, this message translates to:
-  /// **'Storage Space'**
-  String get sysReqStorage;
-
-  /// No description provided for @sysReqDirectX.
-  ///
-  /// In en, this message translates to:
-  /// **'DirectX Version'**
-  String get sysReqDirectX;
-
-  /// No description provided for @sysReqNetwork.
-  ///
-  /// In en, this message translates to:
-  /// **'Network'**
-  String get sysReqNetwork;
-
-  /// No description provided for @sysReqSoundCard.
-  ///
-  /// In en, this message translates to:
-  /// **'Sound Card'**
-  String get sysReqSoundCard;
+  String get processor;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

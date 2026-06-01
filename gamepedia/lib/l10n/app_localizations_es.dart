@@ -576,26 +576,49 @@ class AppLocalizationsEs extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => 'Sistema Operativo';
+  String get biography => 'Biografía';
 
   @override
-  String get sysReqProcessor => 'Procesador';
+  String get birthDate => 'Fecha de nacimiento';
 
   @override
-  String get sysReqMemory => 'Memoria (RAM)';
+  String get location => 'Ubicación';
 
   @override
-  String get sysReqGraphics => 'Tarjeta de Gráficos';
+  String get save => 'Guardar';
 
   @override
-  String get sysReqStorage => 'Espacio de Almacenamiento';
+  String get profileSaved => '¡Perfil guardado exitosamente!';
 
   @override
-  String get sysReqDirectX => 'Versión DirectX';
+  String errorSavingProfile(Object error) {
+    return 'Error al guardar el perfil: $error';
+  }
 
   @override
-  String get sysReqNetwork => 'Red';
+  String get locateMe => 'Localizarme';
 
   @override
-  String get sysReqSoundCard => 'Tarjeta de Sonido';
+  String get locationPermissionDenied => 'Permiso de ubicación denegado';
+
+  @override
+  String get enableLocationServices => 'Por favor, habilita los servicios de ubicación';
+
+  @override
+  String get locationUpdatedSuccessfully => 'Ubicación actualizada exitosamente';
+
+  @override
+  String get memory => 'Memoria';
+
+  @override
+  String get os => 'Sistema Operativo';
+
+  @override
+  String get graphics => 'Gráficos';
+
+  @override
+  String get storage => 'Almacenamiento';
+
+  @override
+  String get processor => 'Procesador';
 }

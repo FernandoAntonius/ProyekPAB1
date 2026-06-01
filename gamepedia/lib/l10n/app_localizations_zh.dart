@@ -576,26 +576,49 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   @override
-  String get sysReqOS => '操作系统';
+  String get biography => '个人简介';
 
   @override
-  String get sysReqProcessor => '处理器';
+  String get birthDate => '出生日期';
 
   @override
-  String get sysReqMemory => '内存 (RAM)';
+  String get location => '位置';
 
   @override
-  String get sysReqGraphics => '显卡';
+  String get save => '保存';
 
   @override
-  String get sysReqStorage => '存储空间';
+  String get profileSaved => '个人资料保存成功!';
 
   @override
-  String get sysReqDirectX => 'DirectX 版本';
+  String errorSavingProfile(Object error) {
+    return '保存个人资料失败: $error';
+  }
 
   @override
-  String get sysReqNetwork => '网络';
+  String get locateMe => '定位我';
 
   @override
-  String get sysReqSoundCard => '声卡';
+  String get locationPermissionDenied => '位置权限被拒绝';
+
+  @override
+  String get enableLocationServices => '请启用位置服务';
+
+  @override
+  String get locationUpdatedSuccessfully => '位置已成功更新';
+
+  @override
+  String get memory => '内存';
+
+  @override
+  String get os => '操作系统';
+
+  @override
+  String get graphics => '显卡';
+
+  @override
+  String get storage => '存储空间';
+
+  @override
+  String get processor => '处理器';
 }
