@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gamepedia/models/review.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -23,26 +24,26 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
   final TextEditingController reviewController = TextEditingController();
   final TextEditingController authorController = TextEditingController();
 
-@override
-void initState() {
-  super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    _getLocation();
-  });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _getLocation();
+    });
 
-  selectedGameName = widget.fixedGameName;
+    selectedGameName = widget.fixedGameName;
 
-  if (widget.fixedGameName == null) {
-    _fetchGames();
+    if (widget.fixedGameName == null) {
+      _fetchGames();
+    }
   }
-}
 
   Future<void> _fetchGames() async {
     try {
       final snapshot = await FirebaseFirestore.instance
-        .collection('games')
-        .get();
+          .collection('games')
+          .get();
       setState(() {
         gameNames = snapshot.docs.map((doc) => doc['title'] as String).toList();
       });
@@ -56,48 +57,41 @@ void initState() {
     }
   }
 
-Future<void> _getLocation() async {
-  try {
-    LocationPermission permission =
-        await Geolocator.checkPermission();
+  Future<void> _getLocation() async {
+    try {
+      LocationPermission permission = await Geolocator.checkPermission();
 
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+      }
+
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        return;
+      }
+
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
+      if (!serviceEnabled) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please turn on GPS to get location.')),
+        );
+
+        await Geolocator.openLocationSettings();
+        return;
+      }
+
+      final position = await Geolocator.getCurrentPosition();
+
+      setState(() {
+        _latitude = position.latitude;
+        _longitude = position.longitude;
+      });
+    } catch (e) {
+      debugPrint(e.toString());
     }
-
-    if (permission == LocationPermission.denied ||
-        permission == LocationPermission.deniedForever) {
-      return;
-    }
-
-    bool serviceEnabled =
-        await Geolocator.isLocationServiceEnabled();
-
-    if (!serviceEnabled) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            'Please turn on GPS to get location.',
-          ),
-        ),
-      );
-
-      await Geolocator.openLocationSettings();
-      return;
-    }
-
-    final position =
-        await Geolocator.getCurrentPosition();
-
-    setState(() {
-      _latitude = position.latitude;
-      _longitude = position.longitude;
-    });
-  } catch (e) {
-    debugPrint(e.toString());
   }
-}
-  
+
   Future<void> _uploadReview() async {
     final loc = AppLocalizations.of(context)!;
     if (authorController.text.trim().isEmpty ||
@@ -115,8 +109,11 @@ Future<void> _getLocation() async {
     });
 
     try {
+      final prefs = await SharedPreferences.getInstance();
+      final storedUsername = prefs.getString('username')?.trim();
       await FirebaseFirestore.instance.collection('reviews').add({
         'author': authorController.text.trim(),
+        'username': storedUsername ?? authorController.text.trim(),
         'gameName': selectedGameName,
         'content': reviewController.text.trim(),
         'rating': rating,
@@ -156,6 +153,7 @@ Future<void> _getLocation() async {
     reviewController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
@@ -219,8 +217,28 @@ Future<void> _getLocation() async {
                     TextField(
                       controller: authorController,
                       style: const TextStyle(color: Colors.white),
+                      onChanged: (value) {
+                        if (value.length > 20) {
+                          final trimmed = value.substring(0, 20);
+                          authorController.text = trimmed;
+                          authorController.selection =
+                              TextSelection.fromPosition(
+                                TextPosition(offset: trimmed.length),
+                              );
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Maximum 20 characters allowed for title',
+                                ),
+                                duration: Duration(milliseconds: 900),
+                              ),
+                            );
+                          }
+                        }
+                      },
                       decoration: InputDecoration(
-                        hintText: loc.yourName,
+                        hintText: 'Review title, max 20 characters',
                         hintStyle: TextStyle(color: Colors.grey.shade500),
                         filled: true,
                         fillColor: Colors.transparent,

@@ -14,6 +14,14 @@ class AllReviewScreen extends StatelessWidget {
     return prefs.getBool('isAdmin') ?? false;
   }
 
+  Future<Map<String, dynamic>> _loadAdminAndUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    return {
+      'isAdmin': prefs.getBool('isAdmin') ?? false,
+      'username': prefs.getString('username') ?? '',
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
@@ -44,8 +52,8 @@ class AllReviewScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: FutureBuilder<bool>(
-        future: _loadAdminStatus(),
+      body: FutureBuilder<Map<String, dynamic>>(
+        future: _loadAdminAndUsername(),
         builder: (context, adminSnapshot) {
           if (adminSnapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -53,7 +61,8 @@ class AllReviewScreen extends StatelessWidget {
             );
           }
 
-          final isAdmin = adminSnapshot.data ?? false;
+          final isAdmin = adminSnapshot.data?['isAdmin'] ?? false;
+          final currentUsername = adminSnapshot.data?['username'] ?? '';
           return SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,26 +98,34 @@ class AllReviewScreen extends StatelessWidget {
                           );
                         }
 
-                        final reviewDocs = snapshot.data!.docs
-                          ..sort((a, b) {
-                            final aReview = Review.fromFirestore(a.data());
-                            final bReview = Review.fromFirestore(b.data());
-                            return bReview.createdAt.compareTo(
-                              aReview.createdAt,
-                            );
-                          });
+                        final docs = snapshot.data!.docs;
+                        final reviewEntries =
+                            docs
+                                .map(
+                                  (d) => MapEntry(
+                                    d.id,
+                                    Review.fromFirestore(d.data()),
+                                  ),
+                                )
+                                .toList()
+                              ..sort(
+                                (a, b) => b.value.createdAt.compareTo(
+                                  a.value.createdAt,
+                                ),
+                              );
 
                         return ListView.builder(
-                          itemCount: reviewDocs.length,
+                          itemCount: reviewEntries.length,
                           itemBuilder: (context, index) {
-                            final doc = reviewDocs[index];
-                            final review = Review.fromFirestore(doc.data());
+                            final entry = reviewEntries[index];
+                            final review = entry.value;
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 14),
                               child: ReviewCard(
                                 review: review,
-                                reviewId: doc.id,
+                                reviewId: entry.key,
                                 isAdmin: isAdmin,
+                                currentUsername: currentUsername,
                               ),
                             );
                           },
@@ -130,12 +147,14 @@ class ReviewCard extends StatelessWidget {
   final Review review;
   final String? reviewId;
   final bool isAdmin;
+  final String currentUsername;
 
   const ReviewCard({
     super.key,
     required this.review,
     this.reviewId,
     this.isAdmin = false,
+    this.currentUsername = '',
   });
 
   @override
@@ -171,13 +190,28 @@ class ReviewCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    review.author,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        review.author,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                        ),
+                      ),
+                      if (review.username.isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          '@${review.username}',
+                          style: TextStyle(
+                            color: Colors.grey.shade400,
+                            fontSize: 11,
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
 
                   if (review.gameName.isNotEmpty) ...[
@@ -211,10 +245,23 @@ class ReviewCard extends StatelessWidget {
                     review.content,
                     style: TextStyle(color: Colors.grey.shade300, fontSize: 12),
                   ),
+                  if (review.latitude != null && review.longitude != null) ...[
+                    const SizedBox(height: 6),
+                    Text(
+                      'Location: ${review.latitude!.toStringAsFixed(4)}, ${review.longitude!.toStringAsFixed(4)}',
+                      style: TextStyle(
+                        color: Colors.grey.shade500,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
-            if (isAdmin && reviewId != null)
+            if ((isAdmin ||
+                    (review.username.isNotEmpty &&
+                        review.username == currentUsername)) &&
+                reviewId != null)
               IconButton(
                 onPressed: () async {
                   try {

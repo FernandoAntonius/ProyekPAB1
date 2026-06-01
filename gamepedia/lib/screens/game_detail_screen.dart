@@ -37,6 +37,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   bool isFavorite = false;
   bool isSignedIn = false;
   bool _isAdmin = false;
+  String _currentUsername = '';
 
   //SYSTEM REQUIRENMENTS
   Widget _buildSystemRequirements(BuildContext context, Game game) {
@@ -161,6 +162,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     _checkSignInStatus();
     _loadFavoritesStatus();
     _loadAdminStatus();
+    _loadCurrentUsername();
   }
 
   void _loadAdminStatus() async {
@@ -169,6 +171,64 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     setState(() {
       _isAdmin = isAdmin;
     });
+  }
+
+  void _loadCurrentUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _currentUsername = prefs.getString('username') ?? '';
+    });
+  }
+
+  Future<void> _deleteGame() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFF161A3A),
+        title: const Text('Delete Game', style: TextStyle(color: Colors.white)),
+        content: Text(
+          'Are you sure you want to delete "${widget.game.title}"? This action cannot be undone.',
+          style: const TextStyle(color: Colors.white70),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Delete', style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true) return;
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('games')
+          .where('title', isEqualTo: widget.game.title)
+          .get()
+          .then((snapshot) {
+            for (var doc in snapshot.docs) {
+              doc.reference.delete();
+            }
+          });
+
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Game deleted successfully')),
+        );
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Failed to delete game: $e')));
+      }
+    }
   }
 
   void _checkSignInStatus() async {
@@ -321,7 +381,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     );
   }
 
-  Widget _buildReviewCard(Review review) {
+  Widget _buildReviewCard(Review review, {String? reviewId}) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
@@ -342,14 +402,61 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
               const SizedBox(width: 10),
               Expanded(
-                child: Text(
-                  review.author,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      review.author,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    if (review.username.isNotEmpty)
+                      Text(
+                        '@${review.username}',
+                        style: TextStyle(
+                          color: Colors.grey.shade400,
+                          fontSize: 12,
+                        ),
+                      ),
+                  ],
                 ),
               ),
+              if ((_isAdmin ||
+                      (review.username.isNotEmpty &&
+                          review.username == _currentUsername)) &&
+                  reviewId != null)
+                IconButton(
+                  onPressed: () async {
+                    try {
+                      await FirebaseFirestore.instance
+                          .collection('reviews')
+                          .doc(reviewId)
+                          .delete();
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Review deleted successfully'),
+                          ),
+                        );
+                      }
+                    } catch (e) {
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Failed to delete review: $e'),
+                          ),
+                        );
+                      }
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.redAccent,
+                    size: 20,
+                  ),
+                ),
             ],
           ),
           const SizedBox(height: 8),
@@ -370,6 +477,13 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             review.content,
             style: const TextStyle(color: Colors.white70, height: 1.4),
           ),
+          if (review.latitude != null && review.longitude != null) ...[
+            const SizedBox(height: 8),
+            Text(
+              'Location: ${review.latitude!.toStringAsFixed(4)}, ${review.longitude!.toStringAsFixed(4)}',
+              style: TextStyle(color: Colors.grey.shade400, fontSize: 12),
+            ),
+          ],
         ],
       ),
     );
@@ -396,11 +510,16 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 );
               }
 
+              final docs = snapshot.data?.docs ?? [];
               final reviews =
-                  (snapshot.data?.docs ?? [])
-                      .map((doc) => Review.fromFirestore(doc.data()))
+                  docs
+                      .map(
+                        (d) => MapEntry(d.id, Review.fromFirestore(d.data())),
+                      )
                       .toList()
-                    ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+                    ..sort(
+                      (a, b) => b.value.createdAt.compareTo(a.value.createdAt),
+                    );
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -460,7 +579,12 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                     Column(
                       children: reviews
                           .take(3)
-                          .map((review) => _buildReviewCard(review))
+                          .map(
+                            (entry) => _buildReviewCard(
+                              entry.value,
+                              reviewId: entry.key,
+                            ),
+                          )
                           .toList(),
                     ),
                 ],
@@ -498,6 +622,12 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               icon: const Icon(Icons.edit, color: Color(0xFF6A5AF9)),
               tooltip: 'Edit Game',
             ),
+          if (_isAdmin)
+            IconButton(
+              onPressed: _deleteGame,
+              icon: const Icon(Icons.delete, color: Colors.red),
+              tooltip: 'Delete Game',
+            ),
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: ShaderMask(
@@ -524,16 +654,37 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // MAIN IMAGE
+            // MAIN IMAGE (force fixed size and support network or asset)
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 8),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  widget.game.imageAssets,
+                child: SizedBox(
                   height: 230,
                   width: double.infinity,
-                  fit: BoxFit.cover,
+                  child:
+                      widget.game.imageAssets.toLowerCase().startsWith('http')
+                      ? CachedNetworkImage(
+                          imageUrl: widget.game.imageAssets,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: 230,
+                          placeholder: (context, url) =>
+                              Container(color: Colors.white12),
+                          errorWidget: (context, url, error) => Container(
+                            color: Colors.white12,
+                            child: const Icon(
+                              Icons.broken_image,
+                              color: Colors.red,
+                            ),
+                          ),
+                        )
+                      : Image.asset(
+                          widget.game.imageAssets,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: 230,
+                        ),
                 ),
               ),
             ),

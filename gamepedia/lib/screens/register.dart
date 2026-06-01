@@ -48,15 +48,17 @@ class _SignInScreenState extends State<RegisterScreen> {
       final userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set({
-            'username': username,
-            'email': email,
-            'password': password,
-            'createdAt': Timestamp.now(),
-          });
+      // Create single user document with username as key
+      await FirebaseFirestore.instance.collection('users').doc(username).set({
+        'username': username,
+        'email': email,
+        'password': password,
+        'bio': '',
+        'birthDate': '',
+        'location': '',
+        'createdAt': Timestamp.now(),
+        'updatedAt': Timestamp.now(),
+      });
 
       await prefs.setBool('isSignedIn', true);
       await prefs.setBool('isAdmin', false);
