@@ -30,6 +30,23 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
+    if (enteredEmail == 'admin@gmail.com' && enteredPassword == 'Admin123') {
+      await prefs.setBool('isSignedIn', true);
+      await prefs.setBool('isAdmin', true);
+      await prefs.setString('username', 'Admin');
+
+      setState(() {
+        _errorText = '';
+      });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.of(context).popUntil((route) => route.isFirst);
+      });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacementNamed(context, '/');
+      });
+      return;
+    }
+
     try {
       final userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
@@ -44,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       final username = userDoc.data()?['username'] as String? ?? '';
       await prefs.setBool('isSignedIn', true);
+      await prefs.setBool('isAdmin', false);
       await prefs.setString('username', username);
 
       setState(() {

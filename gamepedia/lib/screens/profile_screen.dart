@@ -61,6 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void logout() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isSignedIn', false);
+    await prefs.setBool('isAdmin', false);
     setState(() {
       isSignedIn = false;
     });
@@ -124,9 +125,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     IconButton(
                       onPressed: () {
                         Navigator.push(
-                          context, 
-                          MaterialPageRoute(builder: (context) => const SettingsScreen())
-                          );
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsScreen(),
+                          ),
+                        );
                       },
                       icon: const Icon(
                         Icons.settings_outlined,

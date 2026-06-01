@@ -51,16 +51,53 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
   void _toggleFavorite(Game game) async {
     final prefs = await SharedPreferences.getInstance();
-    final currentStatus = prefs.getBool('favorite_${game.title}') ?? false;
-    await prefs.setBool('favorite_${game.title}', !currentStatus);
+    isSignedIn = prefs.getBool('isSignedIn') ?? false;
+    username = prefs.getString('username') ?? 'guest';
 
-    setState(() {
-      if (currentStatus) {
-        favoriteTitles.remove(game.title);
-      } else {
-        favoriteTitles.add(game.title);
-      }
-    });
+    if (isSignedIn) {
+      await FavoritesService.removeFavorite(username, game.title);
+    } else {
+      final currentStatus = prefs.getBool('favorite_${game.title}') ?? false;
+      await prefs.setBool('favorite_${game.title}', !currentStatus);
+
+      setState(() {
+        if (currentStatus) {
+          favoriteTitles.remove(game.title);
+        } else {
+          favoriteTitles.add(game.title);
+        }
+      });
+    }
+  }
+
+  Widget _buildSavedCount() {
+    if (isSignedIn) {
+      return StreamBuilder<List<String>>(
+        stream: FavoritesService.streamFavoritesForUser(username),
+        builder: (context, snapshot) {
+          final count = snapshot.data?.length ?? 0;
+          return Text(
+            '$count games saved.',
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.6),
+              fontSize: 13,
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.w600,
+            ),
+          );
+        },
+      );
+    }
+
+    return Text(
+      '${favoriteTitles.length} games saved.',
+      style: TextStyle(
+        color: Colors.white.withOpacity(0.6),
+        fontSize: 13,
+        fontFamily: 'Quicksand',
+        fontWeight: FontWeight.w600,
+      ),
+    );
   }
 
   @override
@@ -139,19 +176,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                '${favoriteTitles.length} games saved.',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
-                  fontSize: 13,
-                  fontFamily: 'Quicksand',
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              _buildSavedCount(),
               const SizedBox(height: 24),
               if (!favoritesLoaded)
                 const Center(child: CircularProgressIndicator())
-              else if (favoriteTitles.isEmpty)
+              else if (!isSignedIn && favoriteTitles.isEmpty)
                 Column(
                   children: const [
                     SizedBox(height: 40),

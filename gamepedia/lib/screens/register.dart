@@ -59,6 +59,7 @@ class _SignInScreenState extends State<RegisterScreen> {
           });
 
       await prefs.setBool('isSignedIn', true);
+      await prefs.setBool('isAdmin', false);
       await prefs.setString('username', username);
 
       setState(() {

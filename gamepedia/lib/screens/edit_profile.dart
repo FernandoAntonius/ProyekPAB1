@@ -65,6 +65,7 @@ class _EditProfileScreen extends State<EditProfileScreen> {
   Future<void> _logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isSignedIn', false);
+    await prefs.setBool('isAdmin', false);
     if (!mounted) return;
     Navigator.pushReplacementNamed(context, '/login');
   }

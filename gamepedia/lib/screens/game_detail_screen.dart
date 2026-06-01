@@ -7,6 +7,7 @@ import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/models/review.dart';
 import 'package:gamepedia/screens/add_review_screen.dart';
 import 'package:gamepedia/screens/all_review_screen.dart';
+import 'package:gamepedia/screens/edit_game.dart';
 import 'package:gamepedia/widgets/info_card.dart';
 import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:gamepedia/screens/by_device.dart/windows.dart';
@@ -35,6 +36,7 @@ class GameDetailScreen extends StatefulWidget {
 class _GameDetailScreenState extends State<GameDetailScreen> {
   bool isFavorite = false;
   bool isSignedIn = false;
+  bool _isAdmin = false;
 
   //SYSTEM REQUIRENMENTS
   Widget _buildSystemRequirements(BuildContext context, Game game) {
@@ -83,7 +85,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 ),
               ),
             ),
-          //Maximum Requirenments
+          // Recommended Requirements
           const SizedBox(height: 12),
           Text(
             loc.recommended,
@@ -94,8 +96,8 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
             ),
           ),
           const SizedBox(height: 6),
-          if (sysReq.containsKey('maximum'))
-            ...sysReq['maximum']!.entries.map(
+          if (sysReq.containsKey('recommended'))
+            ...sysReq['recommended']!.entries.map(
               (entry) => Text(
                 "• ${entry.key}: ${entry.value}",
                 style: const TextStyle(color: Colors.white70),
@@ -158,6 +160,15 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
     super.initState();
     _checkSignInStatus();
     _loadFavoritesStatus();
+    _loadAdminStatus();
+  }
+
+  void _loadAdminStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isAdmin = prefs.getBool('isAdmin') ?? false;
+    setState(() {
+      _isAdmin = isAdmin;
+    });
   }
 
   void _checkSignInStatus() async {
@@ -371,81 +382,88 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  loc.reviews,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) =>
-                          AddReviewScreen(fixedGameName: widget.game.title),
-                    ),
-                  );
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: const Color(0xFF6A5AF9),
-                ),
-                child: Text(loc.addReview),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) =>
-                          AllReviewScreen(gameTitle: widget.game.title),
-                    ),
-                  );
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: const Color(0xFF6A5AF9),
-                ),
-                child: Text(loc.viewAll),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
           StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
             stream: FirebaseFirestore.instance
                 .collection('reviews')
                 .where('gameName', isEqualTo: widget.game.title)
                 .snapshots(),
             builder: (context, snapshot) {
+              final reviewCount = snapshot.data?.docs.length ?? 0;
+
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
                   child: CircularProgressIndicator(color: Colors.white),
                 );
               }
 
-              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                return Text(
-                  loc.noReviewsYet,
-                  style: TextStyle(color: Colors.grey.shade400),
-                );
-              }
-
               final reviews =
-                  snapshot.data!.docs
+                  (snapshot.data?.docs ?? [])
                       .map((doc) => Review.fromFirestore(doc.data()))
                       .toList()
                     ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
               return Column(
-                children: reviews
-                    .take(3)
-                    .map((review) => _buildReviewCard(review))
-                    .toList(),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '${loc.reviews} ($reviewCount)',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => AddReviewScreen(
+                                fixedGameName: widget.game.title,
+                              ),
+                            ),
+                          );
+                        },
+                        style: TextButton.styleFrom(
+                          foregroundColor: const Color(0xFF6A5AF9),
+                        ),
+                        child: Text(loc.addReview),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  AllReviewScreen(gameTitle: widget.game.title),
+                            ),
+                          );
+                        },
+                        style: TextButton.styleFrom(
+                          foregroundColor: const Color(0xFF6A5AF9),
+                        ),
+                        child: Text(loc.viewAll),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  if (reviews.isEmpty)
+                    Text(
+                      loc.noReviewsYet,
+                      style: TextStyle(color: Colors.grey.shade400),
+                    )
+                  else
+                    Column(
+                      children: reviews
+                          .take(3)
+                          .map((review) => _buildReviewCard(review))
+                          .toList(),
+                    ),
+                ],
               );
             },
           ),
@@ -467,6 +485,19 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
         ),
         actions: [
+          if (_isAdmin)
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => EditGameScreen(game: widget.game),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.edit, color: Color(0xFF6A5AF9)),
+              tooltip: 'Edit Game',
+            ),
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: ShaderMask(
@@ -544,13 +575,38 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                         children: [
                           const Icon(Icons.star, color: Colors.amber, size: 20),
                           const SizedBox(width: 4),
-                          Text(
-                            widget.game.rating.toString(),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                            stream: FirebaseFirestore.instance
+                                .collection('reviews')
+                                .where('gameName', isEqualTo: widget.game.title)
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              double averageRating = 0.0;
+                              if (snapshot.hasData &&
+                                  snapshot.data!.docs.isNotEmpty) {
+                                final ratings = snapshot.data!.docs
+                                    .map(
+                                      (doc) => Review.fromFirestore(
+                                        doc.data(),
+                                      ).rating,
+                                    )
+                                    .toList();
+                                final totalRating = ratings.fold<int>(
+                                  0,
+                                  (sum, rating) => sum + rating,
+                                );
+                                averageRating = totalRating / ratings.length;
+                              }
+
+                              return Text(
+                                averageRating.toStringAsFixed(1),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),

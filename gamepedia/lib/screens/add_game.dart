@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:gamepedia/l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AddGameScreen extends StatefulWidget {
   const AddGameScreen({super.key});
@@ -38,7 +40,7 @@ Widget buildAddGame(
           color: Colors.white.withOpacity(0.6),
         ),
         filled: true,
-        fillColor: Colors.black,
+        fillColor: const Color(0xFF0F122A),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7),
           borderSide: const BorderSide(color: Colors.white, width: 3),
@@ -126,7 +128,7 @@ Widget buildSystemReq(String label, TextEditingController controller) {
                 vertical: 4,
               ),
               filled: true,
-              fillColor: Colors.black,
+              fillColor: const Color(0xFF0F122A),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7),
                 borderSide: const BorderSide(color: Colors.white),
@@ -142,6 +144,8 @@ Widget buildSystemReq(String label, TextEditingController controller) {
 class _AddGameScreen extends State<AddGameScreen> {
   List<String> selectedDevices = [];
   List<String> selectedGenres = [];
+  bool _isAdmin = false;
+  bool _adminLoading = true;
 
   final List<String> _devices = [
     'Windows',
@@ -164,7 +168,7 @@ class _AddGameScreen extends State<AddGameScreen> {
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _studioController = TextEditingController();
-  final TextEditingController _ratingController = TextEditingController();
+  final TextEditingController _thumbnailController = TextEditingController();
   final TextEditingController _releaseDateController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _screenshotsController = TextEditingController();
@@ -183,6 +187,21 @@ class _AddGameScreen extends State<AddGameScreen> {
   final TextEditingController _recStorageController = TextEditingController();
 
   bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAdminStatus();
+  }
+
+  Future<void> _loadAdminStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isAdmin = prefs.getBool('isAdmin') ?? false;
+    setState(() {
+      _isAdmin = isAdmin;
+      _adminLoading = false;
+    });
+  }
 
   Future<void> _selectDate() async {
     DateTime? picked = await showDatePicker(
@@ -295,14 +314,16 @@ class _AddGameScreen extends State<AddGameScreen> {
       await FirebaseFirestore.instance.collection('games').add({
         'title': _titleController.text.trim(),
         'studio': _studioController.text.trim(),
-        'rating': double.tryParse(_ratingController.text.trim()) ?? 0.0,
+        'rating': 0.0,
         'releaseDate': _releaseDateController.text.trim(),
         'price': double.tryParse(_priceController.text.trim()) ?? 0.0,
         'device': selectedDevices,
         'genre': selectedGenres,
         'description': _descriptionController.text.trim(),
         'screenshots': screenshotList,
-        'imageAssets': 'images/gamepedia.png',
+        'imageAssets': _thumbnailController.text.trim().isNotEmpty
+            ? _thumbnailController.text.trim()
+            : 'images/gamepedia.png',
         'createdAt': FieldValue.serverTimestamp(),
         'systemRequirements': {
           'minimum': {
@@ -339,7 +360,7 @@ class _AddGameScreen extends State<AddGameScreen> {
   void _clearForm() {
     _titleController.clear();
     _studioController.clear();
-    _ratingController.clear();
+    _thumbnailController.clear();
     _releaseDateController.clear();
     _priceController.clear();
     _screenshotsController.clear();
@@ -364,19 +385,55 @@ class _AddGameScreen extends State<AddGameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_adminLoading) {
+      return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 6, 2, 26),
+        body: const Center(
+          child: CircularProgressIndicator(color: Colors.white),
+        ),
+      );
+    }
+
+    if (!_isAdmin) {
+      return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 6, 2, 26),
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 6, 2, 26),
+          title: const Text('Admin access required'),
+        ),
+        body: const Center(
+          child: Text(
+            'Only admin users can add games.',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 6, 2, 26),
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        toolbarHeight: 110,
+        backgroundColor: const Color.fromARGB(255, 6, 2, 26),
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+          color: const Color(0xFF6A5AF9),
+        ),
+        title: Text(
+          AppLocalizations.of(context)!.addGameTitle,
+          style: const TextStyle(
+            color: Color(0xFF6A5AF9),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Quicksand',
+          ),
+        ),
+        centerTitle: false,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 28, top: 10),
-            child: Image.asset(
-              'images/gamepedia.png',
-              height: 100,
-              fit: BoxFit.contain,
-            ),
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset('images/console.png', height: 30),
           ),
         ],
       ),
@@ -385,16 +442,29 @@ class _AddGameScreen extends State<AddGameScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              AppLocalizations.of(context)!.addGameTitle,
-              style: const TextStyle(
-                fontFamily: 'Quicksand',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            // thumbnail preview
+            if (_thumbnailController.text.trim().isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: CachedNetworkImage(
+                  imageUrl: _thumbnailController.text.trim(),
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Container(
+                    height: 200,
+                    color: Colors.black12,
+                    child: const Center(child: CircularProgressIndicator()),
+                  ),
+                  errorWidget: (context, url, error) => Image.asset(
+                    'images/gamepedia.png',
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 12),
             buildAddGame(
               AppLocalizations.of(context)!.titleField,
               controller: _titleController,
@@ -403,10 +473,7 @@ class _AddGameScreen extends State<AddGameScreen> {
               AppLocalizations.of(context)!.studioField,
               controller: _studioController,
             ),
-            buildAddGame(
-              AppLocalizations.of(context)!.ratingExample,
-              controller: _ratingController,
-            ),
+            buildAddGame('Thumbnail URL', controller: _thumbnailController),
             buildAddGame(
               AppLocalizations.of(context)!.releaseDateField,
               controller: _releaseDateController,
@@ -439,7 +506,6 @@ class _AddGameScreen extends State<AddGameScreen> {
                 controller: _genreController,
               ),
             ),
-            const SizedBox(height: 16),
             buildAddGame(
               AppLocalizations.of(context)!.descriptionField,
               controller: _descriptionController,
@@ -450,11 +516,10 @@ class _AddGameScreen extends State<AddGameScreen> {
               controller: _screenshotsController,
               maxLines: 2,
             ),
-            const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: const Color(0xFF0F122A),
                 borderRadius: BorderRadius.circular(7),
                 border: Border.all(color: Colors.white.withOpacity(0.3)),
               ),

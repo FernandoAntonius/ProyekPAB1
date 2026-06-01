@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/data/game_repository.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/add_game.dart';
@@ -29,6 +30,21 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String _searchQuery = '';
+  bool _isAdmin = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAdminStatus();
+  }
+
+  void _loadAdminStatus() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool isAdmin = prefs.getBool('isAdmin') ?? false;
+    setState(() {
+      _isAdmin = isAdmin;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,22 +96,24 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
+                    if (_isAdmin)
                       IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context, 
-                          MaterialPageRoute(builder: (context) => const AddGameScreen())
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AddGameScreen(),
+                            ),
                           );
-                      },
-                      icon: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 26,
+                        },
+                        icon: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 26,
+                        ),
                       ),
-                    ),
                   ],
                 ),
-                
                 Text(
                   AppLocalizations.of(context)!.discoverTagline,
                   style: const TextStyle(
@@ -238,21 +256,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 24),
                 Row(
                   children: [
-                    const Icon(
-                      Icons.star,
-                      color: Colors.orangeAccent,
+                    const Icon(Icons.star, color: Colors.orangeAccent),
+                    const SizedBox(width: 6),
+                    Text(
+                      AppLocalizations.of(context)!.newRelease,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(width: 6),
-                      Text(
-                        AppLocalizations.of(context)!.newRelease,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
                     ),
+                  ],
+                ),
                 // SEARCHED / ALL GAMES LIST
                 StreamBuilder<List<Game>>(
                   stream: GameRepository.streamAllGames(),
