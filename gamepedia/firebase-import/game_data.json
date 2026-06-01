@@ -1,0 +1,2144 @@
+[
+  {
+    "title": "Baldurs Gate 3: Digital Deluxe Edition",
+    "developer": "Larian Studios",
+    "releaseDate": "2023-08-03",
+    "rating": 10.0,
+    "price": 7.49,
+    "device": ["Windows", "Mac", "Xbox", "PlayStation"],
+    "genre": ["Role-Playing", "Strategy", "Turn-Based Strategy", "Tactical", "Adventure"],
+    "description": "The Digital Deluxe Edition upgrade content includes in-game cosmetics, such as a unique custom dice skin to show off to your friends, as well as practical in-game items such as the Mask of the Shapeshifter from Divinity: Original Sin 2.",
+    "imageAssets": "images/baldur.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_3250c1e6aeae1968dfa085eac1cd33da2b00b253.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_5c6df47fd4137af659bd8bf962a3f75a2d2362cd.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_3ac12b9b101f75921af73784abad91bea9ccbf6a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_5d48a7a5eee94c5f941bed03e17c7c340a7bfd3f.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel I5 4690 / AMD FX 8350",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GTX 970 / RX 480",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel i7 8700K / AMD r5 3600",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia 2060 Super / RX 5700 XT",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Clair Obscur: Expedition 33",
+    "developer": "Sandfall Interactive",
+    "releaseDate": "2025-04-24",
+    "rating": 9.5,
+    "price": 39.99,
+    "device": ["Windows", "PlayStation", "Xbox"],
+    "genre": ["Role-Playing"],
+    "description": "Lead the members of Expedition 33 on their quest to destroy the Paintress so that she can never paint death again. Explore a world of wonders inspired by Belle Époque France and battle unique enemies in this turn-based RPG with real-time mechanics.",
+    "imageAssets": "images/expedition33.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1903340/ss_483a27df5072beb3a4650634a764bda750fbcb82.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1903340/ss_e49800e906e8a0f00707458c836567c933603bac.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1903340/ss_b8089016095e6a16e324a59c45b2f24a439bd0b3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1903340/ss_d3a10809f5cc2a8df7773f41acd1493f4fb900ec.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": " NVIDIA GeForce GTX 1060 6 GB / AMD Radeon RX 5600 XT 6 GB",
+        "Storage": "55 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i7-12700K / AMD Ryzen 7 5800X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060 Ti 8 GB / AMD Radeon RX 6800 XT 16 GB",
+        "Storage": "55 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Where Winds Meet",
+    "developer": "Everstone Studio",
+    "releaseDate": "2024-12-27",
+    "rating": 8.75,
+    "price": 0,
+    "device": ["Windows", "Android", "iOS", "PlayStation"],
+    "genre": ["Adventure", "Role-Playing"],
+    "description": "Where Winds Meet is an epic open-world action-adventure RPG rooted in the rich legacy of Wuxia. Set during the turbulent era of tenth-century China, you take on the role of a young sword master, uncovering forgotten truths and the mysteries of your own identity. As the wind stirs across mountains and rivers, so too will your legend rise.",
+    "imageAssets": "images/wherewinds.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3564740/cb9ab142c8533cd7b1318eaa3847fe9897b4db6b/ss_cb9ab142c8533cd7b1318eaa3847fe9897b4db6b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3564740/c707014226b644e425ade8c1ad8c75a934d79789/ss_c707014226b644e425ade8c1ad8c75a934d79789.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3564740/3af2fd466bbd7b8fb1fecf67669f81f23daf2838/ss_3af2fd466bbd7b8fb1fecf67669f81f23daf2838.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3564740/ca97521036520d2cb194bf85038fd86211b217fb/ss_ca97521036520d2cb194bf85038fd86211b217fb.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Dark and Darker",
+    "developer": "IRONMACE",
+    "releaseDate": "2024-06-07",
+    "rating": 6.9,
+    "price": 0,
+    "device": ["Windows"],
+    "genre": ["Role-Playing"],
+    "description": "Unfathomable fortunes await the brave and the foolish willing to delve into the devastated depths of an ancient citadel. Band together with your friends and use your courage, wits, and cunning to uncover mythical treasures, defeat gruesome monsters, while staying one step ahead of the other devious treasure-hunters. Once you’ve plundered your riches, now comes the hard part, getting out alive. Find the hidden escape routes before the ever-expanding darkness reclaims your riches and your corpse to her irresistible hoard.",
+    "imageAssets": "images/darkndarker.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2016590/ss_c04ed9995586110775b5eaf37ea0a9ba0de37919.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2016590/ss_4e706a25e26920bcae7b683dcfc9be8d79de4320.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2016590/ss_070a3fc3c8e8b189995b04c831c320c7bbbcce12.jpg",
+      "http://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2016590/ss_e682df4200255b6793acc2ef10f31b79fc8df1db.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "3.0 GHz Quad Core CPU",
+        "Memory": "8 GB RAM",
+        "Graphics": "GeForce GTX 1060 with 3GB",
+        "Storage": "15 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "3.6 GHz Quad Core CPU",
+        "Memory": "16 GB RAM",
+        "Graphics": "GeForce RTX / Radeon RX5600",
+        "Storage": "15 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Assassin s Creed Valhalla",
+    "developer": "Ubisoft Montreal",
+    "releaseDate": "2022-12-06",
+    "rating": 6.8,
+    "price": 5.99,
+    "device": ["Windows", "Xbox", "PlayStation"],
+    "genre": ["Adventure", "RPG"],
+    "description": "Become Eivor, a mighty Viking raider, and lead your clan. Advanced RPG mechanics allow you to influence the world around you. With every choice you make, from political alliances and combat strategy, to dialogue and gear progression, carve your path to glory!",
+    "imageAssets": "images/assassincreed.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2208920/ss_103481084a59b34837113daf27c04679caf743f3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2208920/ss_e7310b36689ec722d2ea4643efc15bd8fa720c67.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2208920/ss_c3bff917ead50268eb7708ef3bf30e07b58929e9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2208920/ss_5e527e1e063ef041ca6680f503081274dcc5513a.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "AMD Ryzen 3 1200 3.1 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD R9 380 / NVIDIA GeForce GTX 960",
+        "Storage": "160 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "AMD Ryzen 5 1600 3.2 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD R9 380 / NVIDIA GeForce GTX 960",
+        "Storage": "160 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "PEAK",
+    "developer": "Team PEAK",
+    "releaseDate": "2025-06-16",
+    "rating": 9.4,
+    "price": 7.99,
+    "device": ["Windows"],
+    "genre": ["Adventure"],
+    "description": "PEAK is a co-op climbing game where the slightest mistake can spell your doom. Either solo or as a group of lost nature scouts, your only hope of rescue from a mysterious island is to scale the mountain at its center. Do you have what it takes to reach the PEAK?",
+    "imageAssets": "images/PEAK.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/bac7b90dffb456afecc4517a3e1d69362b95d15b/ss_bac7b90dffb456afecc4517a3e1d69362b95d15b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/9c500124c060f162f111afa679bf5d3a32b3fb40/ss_9c500124c060f162f111afa679bf5d3a32b3fb40.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/84436aac3675c39a9e21a14a4a9a3a8a7d9dea26/ss_84436aac3675c39a9e21a14a4a9a3a8a7d9dea26.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/55365bfa09745df86bed72720a842f64d8724b9d/ss_55365bfa09745df86bed72720a842f64d8724b9d.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5 @ 2.5 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "GTX 1060 or RX 6600 XT",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i5 @ 3.0 GHz",
+        "Memory": "16 GB RAM",
+        "Graphics": "RTX 2060 or RX 7600xt",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "It Takes Two",
+    "developer": "Hazelight Studios",
+    "releaseDate": "2021-03-26",
+    "rating": 9.4,
+    "price": 39.99,
+    "device": ["Windows", "Xbox", "Nintendo Switch", "PlayStation"],
+    "genre": ["Adventure"],
+    "description": "Embark on the craziest journey of your life in It Takes Two, a genre-bending platform adventure created purely for co-op. Invite a friend to join for free with Friend’s Pass and work together across a huge variety of gleefully disruptive gameplay challenges. Play as the clashing couple Cody and May, two humans turned into dolls by a magic spell. Together, trapped in a fantastical world where the unpredictable hides around every corner, they are reluctantly challenged with saving their fractured relationship.",
+    "imageAssets": "images/ittakestwo.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/ss_3e59753eefaba9a7704a18e902b48e8d38e95e0b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/ss_6e987a0678b013bfd0073a9ac4703e1f04ca4dea.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/ss_fdac523e3ea4d2f32a44449bb8c224857563bd7d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/ss_4a62bc8fa398fc5b2094a6225dc5ecff9485f824.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 8/10",
+        "Processor": "Intel Core i3-2100T / AMD FX 6100",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GeForce GTX 660 / AMD R7 260x",
+        "Storage": "50 GB"
+      },
+      "recommended": {
+        "OS": "Windows 8/10",
+        "Processor": " Intel Core i5 3570K / AMD Ryzen 3 1300x",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia GeForce GTX 980 / AMD R9 290X",
+        "Storage": "50 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Chained Together",
+    "developer": "Anegar Games",
+    "releaseDate": "2024-06-19",
+    "rating": 8.8,
+    "price": 4.99,
+    "device": ["Windows"],
+    "genre": ["Adventure", "Indie"],
+    "description": "Begin your journey in the depths of hell, chained to your companions. Your mission is to escape hell by climbing as high as possible. Each jump requires perfect coordination to scale the platforms and escape the scorching heat. Traverse a multitude of worlds, each offering unique challenges.",
+    "imageAssets": "images/chainedtogether.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2567870/ss_b321a9c6a20052b905dba4255680b1cee1f21edc.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2567870/ss_4a3cc896599f535905fda9aae0c964a5fcff4bb3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2567870/ss_4e06bbb5e1ab4cfe7d38d87bbe45af23f6a0e0c7.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2567870/ss_c251b216a011fdb93df75a648d9f264a8b1833c3.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 8/10/11",
+        "Processor": "Intel Core i5-6600 3.1 GHz / AMD R5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1650",
+        "Storage": "8 GB"
+      },
+      "recommended": {
+        "OS": "Windows 8/10/11",
+        "Processor": "Intel Core i5-10400 3.1 GHz / AMD Ryzen 5 2600x",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060",
+        "Storage": "8 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Once Human",
+    "developer": "Starry Studio",
+    "releaseDate": "2024-07-09",
+    "rating": 7.6,
+    "price": 0,
+    "device": ["Windows", "Android", "iOS"],
+    "genre": ["Adventure", "Role-Playing", "Strategy", "Simulation"],
+    "description": "You wake up in the middle of nowhere. You ll have to brace yourself for the cruelty of nature (from monsters to lack of food); however, Stardust influence does not restrict to living things, it also affects the soil and water. Eating polluted food and drinking dirty water will reduce your Sanity. When your Sanity drops, your max HP would drop accordingly. To eat or not to eat, its a question.",
+    "imageAssets": "images/oncehuman.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2139460/ss_626ba55e262fe857b8f0d2810603d2268e2df003.jpg",
+      "http://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2139460/3e2189bc8f677f2ebee62c773af7423ab886293b/ss_3e2189bc8f677f2ebee62c773af7423ab886293b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2139460/ss_ea488d150e5ce0ab51a33ec27787db1befeb7610.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2139460/ss_001526dade6e9f28c6711932250e3734c45bea01.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5-4460",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GTX 750ti 4G / AMD Radeon RX550",
+        "Storage": "90 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-7700",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia GTX 1060 6G / AMD Radeon RX 580 2304SP",
+        "Storage": "90 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Portal 2",
+    "developer": "Valve",
+    "releaseDate": "2011-04-19",
+    "rating": 9.7,
+    "price": 9.99,
+    "device": ["Windows", "Xbox", "Nintendo Switch", "PlayStation 3"],
+    "genre": ["Adventure"],
+    "description": "Portal 2 draws from the award-winning formula of innovative gameplay, story, and music that earned the original Portal over 70 industry accolades and created a cult following.",
+    "imageAssets": "images/portal2.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/620/ss_f3f6787d74739d3b2ec8a484b5c994b3d31ef325.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/620/ss_6a4f5afdaa98402de9cf0b59fed27bab3256a6f4.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/620/ss_0cdd90fafc160b52d08b303d205f9fd4e83cf164.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/620/ss_ec35a739b4b33270eb170d9e561c5b016cba50a6.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 / Vista / XP",
+        "Processor": "3.0 GHz P4, Dual Core 2.0 (or higher) / AMD64X2 (or higher)",
+        "Memory": "2 GB RAM",
+        "Graphics": "NVIDIA GeForce 7600",
+        "Storage": "8 GB"
+      },
+      "recommended": {
+        "OS": "",
+        "Processor": "",
+        "Memory": "",
+        "Graphics": "",
+        "Storage": ""
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "RV There Yet?",
+    "developer": "Nuggets Entertainment",
+    "releaseDate": "2025-10-21",
+    "rating": 9.0,
+    "price": 7.19,
+    "device": ["Windows"],
+    "genre": ["Indie", "Adventure"],
+    "description": "You and your buddies are on your way home from a relaxing vacation but are forced to take an alternate route. Get your RV through the back country and find the exit to Route 65.",
+    "imageAssets": "images/rvthereyet.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3949040/ed2f7080c6622688a72a86ca85af600f2a2bdfb9/ss_ed2f7080c6622688a72a86ca85af600f2a2bdfb9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3949040/7d246f94e4ec2ff4c7be3ded82bcdd558274d7c7/ss_7d246f94e4ec2ff4c7be3ded82bcdd558274d7c7.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3949040/f5663e0220e188d4c9db0789f0cbb4ddefd762d5/ss_f5663e0220e188d4c9db0789f0cbb4ddefd762d5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3949040/9face7033df9bd0274428d6215711c5dec20f245/ss_9face7033df9bd0274428d6215711c5dec20f245.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5 @ 2.5 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "GTX 1060 or RX 6600 XT",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i5 @ 3.0 GHz",
+        "Memory": "16 GB RAM",
+        "Graphics": "RTX 2060 or RX 7600xt",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Human Fall Flat",
+    "developer": "Curve Games",
+    "releaseDate": "2016-07-22",
+    "rating": 9.3,
+    "price": 5.99,
+    "device": ["Windows", "Nintendo Switch", "Xbox", "PlayStation"],
+    "genre": ["Indie", "Adventure"],
+    "description": "Party Animals’ Nemo & Otta join the mayhem in the very first crossover collaboration for Human Fall Flat! The pair make their cameo in SteamPunk Party, the game’s 31st official level that’s packed with perilous steam vents, broken pipes and dizzying high-wire physics-based platforming.",
+    "imageAssets": "images/humanfallflat.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/3fea2bfe67e9d6a91b734a54f4cb85221e75d100/ss_3fea2bfe67e9d6a91b734a54f4cb85221e75d100.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/cee82b41a6b4434d7d2d777d2551e1e88da0bf27/ss_cee82b41a6b4434d7d2d777d2551e1e88da0bf27.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/5cc0c9e4a3a58be072e14469aafcbbf0393e51ec/ss_5cc0c9e4a3a58be072e14469aafcbbf0393e51ec.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/9b241170c07e6455c5f82e87dde9988eb9c3f85c/ss_9b241170c07e6455c5f82e87dde9988eb9c3f85c.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 8/10",
+        "Processor": "Intel Core i3-2100T / AMD FX 6100",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GeForce GTX 660 / AMD R7 260x",
+        "Storage": "50 GB"
+      },
+      "recommended": {
+        "OS": "Windows 8/10",
+        "Processor": " Intel Core i5 3570K / AMD Ryzen 3 1300x",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia GeForce GTX 980 / AMD R9 290X",
+        "Storage": "50 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Overcooked! 2",
+    "developer": "Ghost Town Games Ltd., Team17",
+    "releaseDate": "2018-08-07",
+    "rating": 8.9,
+    "price": 6.24,
+    "device": ["Windows", "PlayStation", "Xbox", "Nintendo Switch"],
+    "genre": ["Indie"],
+    "description": "Overcooked returns with a brand-new helping of chaotic cooking action! Journey back to the Onion Kingdom and assemble your team of chefs in classic couch co-op or online play for up to four players. Hold onto your aprons … it’s time to save the world (again!)",
+    "imageAssets": "images/overcooked.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/728880/ss_2f84a12e1fe82cca37848bf29d4b8b16e83db03b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/728880/ss_652d62549a8a5fdf4f0061e20b16a3cd9a19dc45.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/728880/ss_773917e64738bc879685cff49b8ac6eb4f15ab93.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/728880/ss_3728a182f291231c4713860611dd9292b8b4fd05.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 8/10/11",
+        "Processor": "Intel Core i5-6600 3.1 GHz / AMD R5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1650",
+        "Storage": "8 GB"
+      },
+      "recommended": {
+        "OS": "Windows 8/10/11",
+        "Processor": "Intel Core i5-10400 3.1 GHz / AMD Ryzen 5 2600x",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060",
+        "Storage": "8 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Outlast",
+    "developer": "Red Barrels",
+    "releaseDate": "2013-09-04",
+    "rating": 9.5,
+    "price": 3.74,
+    "device": ["Windows", "PlayStation", "Nintendo Switch"],
+    "genre": ["Indie", "Adventure"],
+    "description": "Hell is an experiment you cant survive in Outlast, a first-person survival horror game developed by veterans of some of the biggest game franchises in history. As investigative journalist Miles Upshur, explore Mount Massive Asylum and try to survive long enough to discover its terrible secret... if you dare.",
+    "imageAssets": "images/outlast.png",
+    "screenshots": [
+      "http://shared.fastly.steamstatic.com/store_item_assets/steam/apps/238320/ss_de19e8b1f41d9594bf64d02424a0ec5046c733f5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/238320/ss_1b4cc24b78f404c69fa18d42e5d5b00873c8852f.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/238320/ss_c629aed2b6d7751222acb9bef1022338f9bc6b03.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/238320/ss_bb9dffa1b9be7b4b4e27ac810f49ea62bf98f907.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "AMD Ryzen 3 1200 3.1 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD R9 380 / NVIDIA GeForce GTX 960",
+        "Storage": "160 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "AMD Ryzen 5 1600 3.2 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD R9 380 / NVIDIA GeForce GTX 960",
+        "Storage": "160 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Blasphemous",
+    "developer": "The Game Kitchen",
+    "releaseDate": "2019-09-10",
+    "rating": 8.8,
+    "price": 2.49,
+    "device": ["Windows", "Xbox", "Nintendo Switch", "PlayStation"],
+    "genre": ["Indie", "Adventure"],
+    "description": "Explore this nightmarish world of twisted religion and discover its many secrets hidden deep inside. Use devastating combos and brutal executions to smite the hordes of grotesque monsters and titanic bosses, all ready to rip you limb from limb. Locate and equip relics, rosary beads and prayers that call on the powers of the heavens to aid you in your quest to break your eternal damnation.",
+    "imageAssets": "images/blasphemous.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_23c70f980432d67b527ed562a42c41f55d9f9fc8.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_a0e79191b0488482e5175ce1c0b4386d817f8c3d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_15c319a19c99c0fec709c92085f50bb2d3c07e44.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_547d75f45fc1a1b368638a849e3aaba624d7b139.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "DOTA 2",
+    "developer": "Valve",
+    "releaseDate": "2013-07-09",
+    "rating": 8.0,
+    "price": 0,
+    "device": ["Windows", "Linux"],
+    "genre": ["Strategy"],
+    "description": "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if its their 10th hour of play or 1,000th, theres always something new to discover. With regular updates that ensure a constant evolution of gameplay, features, and heroes, Dota 2 has truly taken on a life of its own.",
+    "imageAssets": "images/dota2.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/ss_7ab506679d42bfc0c0e40639887176494e0466d9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/ss_c9118375a2400278590f29a3537769c986ef6e39.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/ss_f9ebafedaf2d5cfb80ef1f74baa18eb08cad6494.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": " NVIDIA GeForce GTX 1060 6 GB / AMD Radeon RX 5600 XT 6 GB",
+        "Storage": "55 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i7-12700K / AMD Ryzen 7 5800X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060 Ti 8 GB / AMD Radeon RX 6800 XT 16 GB",
+        "Storage": "55 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Age of Wonders 4",
+    "developer": "Triumph Studios",
+    "releaseDate": "2023-05-02",
+    "rating": 7.9,
+    "price": 49.99,
+    "device": ["Windows", "PlayStation", "Xbox"],
+    "genre": ["Strategy", "Role-Playing"],
+    "description": "Rule a fantasy realm of your own design in Age of Wonders 4! Explore new magical realms in Age of Wonders’ signature blend of 4X strategy and turn-based tactical combat. Control a faction that grows and changes as you expand your empire with each turn.",
+    "imageAssets": "images/ageofwonders.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1669000/5fdcf024343a66fa879c17c6de096bdd79145aa5/ss_5fdcf024343a66fa879c17c6de096bdd79145aa5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1669000/169b45571e6c351e9e28af10e949522fa64e661a/ss_169b45571e6c351e9e28af10e949522fa64e661a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1669000/095080aa7557639425bb21567bab428d9c11bdf7/ss_095080aa7557639425bb21567bab428d9c11bdf7.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1669000/f132031b86990e307338e5276c400fef6ee39739/ss_f132031b86990e307338e5276c400fef6ee39739.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Jurassic World Evolution 3",
+    "developer": "Frontier Developments",
+    "releaseDate": "2025-10-21",
+    "rating": 8.9,
+    "price": 47.99,
+    "device": ["Windows", "PlayStation", "Xbox"],
+    "genre": ["Strategy"],
+    "description": "The next entry in the award-winning series, Jurassic World Evolution 3 puts you in control of building and running your very own Jurassic World.",
+    "imageAssets": "images/jurassic.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2958130/0b20ad87376b89e206f5f32da3ee940b99ff2432/ss_0b20ad87376b89e206f5f32da3ee940b99ff2432.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2958130/6b01d4bbd5bcefdc9f771c7c2ec51cb637dd671d/ss_6b01d4bbd5bcefdc9f771c7c2ec51cb637dd671d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2958130/69a4896780f5a0d08a57e1e731d2d5360e533f0e/ss_69a4896780f5a0d08a57e1e731d2d5360e533f0e.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2958130/252846e06848e8d5c21164cac7def9f1bbe7f3f3/ss_252846e06848e8d5c21164cac7def9f1bbe7f3f3.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel I5 4690 / AMD FX 8350",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GTX 970 / RX 480",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel i7 8700K / AMD r5 3600",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia 2060 Super / RX 5700 XT",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Anno 117: Pax Romana",
+    "developer": "Ubisoft Mainz",
+    "releaseDate": "2025-11-12",
+    "rating": 7.0,
+    "price": 59.99,
+    "device": ["Windows", "PlayStation", "Xbox"],
+    "genre": ["Strategy"],
+    "description": "As governor, how you build and govern will shape your story, your citizens’ destiny, and your provinces’ future. Will you cooperate with other governors or prove your military prowess by challenging your rivals? The cost of peace is yours to decide.",
+    "imageAssets": "images/anno.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3274580/6e939ee9883cee83dace5d690ce94d37d4e85c35/ss_6e939ee9883cee83dace5d690ce94d37d4e85c35.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3274580/568fa9dc0fdc7ecc35e95d84ddb6792e140b7fd2/ss_568fa9dc0fdc7ecc35e95d84ddb6792e140b7fd2.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3274580/cac0447ebb1e54c6763b62bcda43092088744707/ss_cac0447ebb1e54c6763b62bcda43092088744707.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3274580/c89536cd4c61e8aed025ea5987b7fe14f6acb7db/ss_c89536cd4c61e8aed025ea5987b7fe14f6acb7db.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5 @ 2.5 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "GTX 1060 or RX 6600 XT",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i5 @ 3.0 GHz",
+        "Memory": "16 GB RAM",
+        "Graphics": "RTX 2060 or RX 7600xt",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Bellwright",
+    "developer": "Donkey Crew",
+    "releaseDate": "2024-04-23",
+    "rating": 7.9,
+    "price": 19.79,
+    "device": ["Windows"],
+    "genre": ["Strategy", "Role-Playing"],
+    "description": "Establish and expand your own settlements, liberate the land and assist its villagers, and recruit others to your cause while learning more about a life you had to leave behind. Your recruits will help you build up the resources and might needed for a stand against the Crown. Command your forces, prove your valor through combat, and cement yourself as the hero of your people.",
+    "imageAssets": "images/bellwright.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1812450/066cd430d902453ba14802581c25b4def16fd1fc/ss_066cd430d902453ba14802581c25b4def16fd1fc.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1812450/ss_01d5217f3736701fc4a29c7ab208c2959e84407c.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1812450/771dfca2656026a8778f3f75651832c305f9375d/ss_771dfca2656026a8778f3f75651832c305f9375d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1812450/ss_4b6c8943bb1b8810a0b9756553cfa80261cdd0dd.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 8/10",
+        "Processor": "Intel Core i3-2100T / AMD FX 6100",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GeForce GTX 660 / AMD R7 260x",
+        "Storage": "50 GB"
+      },
+      "recommended": {
+        "OS": "Windows 8/10",
+        "Processor": " Intel Core i5 3570K / AMD Ryzen 3 1300x",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia GeForce GTX 980 / AMD R9 290X",
+        "Storage": "50 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Euro Truck Simulator 2",
+    "developer": "SCS Software",
+    "releaseDate": "2012-10-18",
+    "rating": 9.6,
+    "price": 19.99,
+    "device": ["Windows", "PlayStation", "Xbox"],
+    "genre": ["Simulator", "Indie"],
+    "description": "Travel across Europe as king of the road, a trucker who delivers important cargo across impressive distances! With dozens of cities to explore from the UK, Belgium, Germany, Italy, the Netherlands, Poland, and many more, your endurance, skill and speed will all be pushed to their limits. If you’ve got what it takes to be part of an elite trucking force, get behind the wheel and prove it!",
+    "imageAssets": "images/eurotruck.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_54100267623179f54731048c91add16c1c3d3d1e.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_e040f74641ac21f15e3ec7c2415fc8b4de0b6bf9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_fd675feae669c7fb4ca6dcfb738d49fb7b7a238d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227300/ss_edbff61a062a49d1d97269e53b8afbffde05bb24.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 8/10/11",
+        "Processor": "Intel Core i5-6600 3.1 GHz / AMD R5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1650",
+        "Storage": "8 GB"
+      },
+      "recommended": {
+        "OS": "Windows 8/10/11",
+        "Processor": "Intel Core i5-10400 3.1 GHz / AMD Ryzen 5 2600x",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060",
+        "Storage": "8 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "IdleOn",
+    "developer": "Lavaflame2",
+    "releaseDate": "2025-11-06",
+    "rating": 7.9,
+    "price": 0,
+    "device": ["Android", "iOS"],
+    "genre": ["Simulator", "Indie", "Role-Playing"],
+    "description": "The management RPG where your heroes keep fighting even when youre gone! Spend their loot on upgrades, unlock classes from Elemental Wizard to Cannon Pirate, and level up 19 unique skills like Farming, Sailing, and even Construction!",
+    "imageAssets": "images/idleon.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1476970/ss_13e2408eff515d17532699ea083344e5b219b310.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1476970/39db380406a2ba8b2f9706fd9e47e6f690904d06/ss_39db380406a2ba8b2f9706fd9e47e6f690904d06.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1476970/4faa83b7b6a9d6cf5fc4d5518d90e116774bfe32/ss_4faa83b7b6a9d6cf5fc4d5518d90e116774bfe32.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1476970/ss_a90e9e5c68bae23ddaf34b662eeb9b047e2eeb4a.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "AMD Ryzen 3 1200 3.1 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD R9 380 / NVIDIA GeForce GTX 960",
+        "Storage": "160 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "AMD Ryzen 5 1600 3.2 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD R9 380 / NVIDIA GeForce GTX 960",
+        "Storage": "160 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Supermarket Simulator",
+    "developer": "Nokta Games",
+    "releaseDate": "2025-06-19",
+    "rating": 9.2,
+    "price": 19.99,
+    "device": ["Windows", "Xbox"],
+    "genre": ["Simulator", "Indie"],
+    "description": "Run your own supermarket! Stock shelves, set your prices, take payments, hire staff, expand your store, handle shoplifters, and design your layout. Purchase goods from online or local markets around town, and personally deliver online orders to your customers.",
+    "imageAssets": "images/supermarket.png",
+    "screenshots": [
+      "http://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2670630/b40f7ee28a8429e9ad7c6f016cf4e29cfcf6ba8d/ss_b40f7ee28a8429e9ad7c6f016cf4e29cfcf6ba8d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2670630/d7a5a9f57ed36a5552e2892fffda6aa171f9fe95/ss_d7a5a9f57ed36a5552e2892fffda6aa171f9fe95.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2670630/b0a62c37675c711c85c050bc8e5f96c7ff29b1a4/ss_b0a62c37675c711c85c050bc8e5f96c7ff29b1a4.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2670630/3e702a80da12cb9b50816e296f8ebf29757b680d/ss_3e702a80da12cb9b50816e296f8ebf29757b680d.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Farming Simulator 25",
+    "developer": "GIANTS Simulator",
+    "releaseDate": "2024-11-12",
+    "rating": 8.4,
+    "price": 29.99,
+    "device": ["Windows", "Mac", "Xbox", "PlayStation"],
+    "genre": ["Simulator"],
+    "description": "Farming Simulator 25 invites you to join the rewarding farm life. Whether you build your legacy single-handedly or cooperatively in multiplayer - it’s your farm, you decide! ",
+    "imageAssets": "images/farmingsimulator.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2300320/ss_2903905fe895125e20a092c18964e58de981b81f.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2300320/ss_02c19dc812ad26eaa0315d028b962ac0380b826b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2300320/ss_02c19dc812ad26eaa0315d028b962ac0380b826b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2300320/ss_2e1abd0476a2c8dc282dc57088ab80657718c1a5.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": " NVIDIA GeForce GTX 1060 6 GB / AMD Radeon RX 5600 XT 6 GB",
+        "Storage": "55 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i7-12700K / AMD Ryzen 7 5800X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060 Ti 8 GB / AMD Radeon RX 6800 XT 16 GB",
+        "Storage": "55 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Stardew Valley",
+    "developer": "Concerned Ape",
+    "releaseDate": "2016-02-26",
+    "rating": 9.7,
+    "price": 14.99,
+    "device": ["Windows", "Linux", "Xbox", "Nintendo Switch", "iOS", "Android"],
+    "genre": ["Simulator", "Indie", "Role-Playing"],
+    "description": "Youve inherited your grandfathers old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? It wont be easy. Ever since Joja Corporation came to town, the old ways of life have all but disappeared. The community center, once the towns most vibrant hub of activity, now lies in shambles. But the valley seems full of opportunity. With a little dedication, you might just be the one to restore Stardew Valley to greatness!",
+    "imageAssets": "images/stardew.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/ss_b887651a93b0525739049eb4194f633de2df75be.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/ss_4fa0866709ede3753fdf2745349b528d5e8c4054.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/ss_10628b4a811c0a925a1433d4323f78c7017dbbe4.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/ss_6422d297347258086b389e3d5d9c0e0c698312e4.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Brawlhalla",
+    "developer": "Blue Mammoth Games",
+    "releaseDate": "2017-10-17",
+    "rating": 8.0,
+    "price": 0,
+    "device": ["Windows", "PlayStation", "Xbox", "Nintendo Switch", "Android", "iOS"],
+    "genre": ["Fighting", "Indie"],
+    "description": "An epic platform fighter for up to 8 players online or local. Try casual free-for-alls, ranked matches, or invite friends to a private room. And its free! Play cross-platform with millions of players on PlayStation, Xbox, Nintendo Switch, iOS, Android & Steam! Frequent updates. Over sixty Legends",
+    "imageAssets": "images/brawlhalla.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/291550/18561d039e51bd7b3dffd1967daa2f457ae9d202/ss_18561d039e51bd7b3dffd1967daa2f457ae9d202.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/291550/e7ac3d3f2ae1ac0a5c267156ce3276c1687ec414/ss_e7ac3d3f2ae1ac0a5c267156ce3276c1687ec414.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/291550/ss_0c26935bbd6b25fe83feaab0e94a8cc69bbe6f63.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/291550/ss_47472b4542f96ace2cab92f3575b7587b9e7c9f0.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel I5 4690 / AMD FX 8350",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GTX 970 / RX 480",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel i7 8700K / AMD r5 3600",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia 2060 Super / RX 5700 XT",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "TEKKEN 8",
+    "developer": "Bandai Namco Studios Inc.",
+    "releaseDate": "2024-01-25",
+    "rating": 5.5,
+    "price": 23.99,
+    "device": ["Windows", "PlayStation", "Xbox"],
+    "genre": ["Fighting", "Arcade"],
+    "description": "The game features a rich roster of over 32 characters with meticulously detailed high-resolution models that push modern hardware to its limits. Experience exciting battles with new battle features like Heat, or get yourself out of tough situations with powerful ultimate moves known as Rage Arts. With the new control system, Special Style, you can perform powerful combos with just a simple button, making the game even more accessible to newcomers.",
+    "imageAssets": "images/tekken8.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/ss_c1c0d6535d7a610ec655e9b8f3d1cae877375a7e.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/ss_62e6ec252bc1a641e8e42dba07f23631d5da85e6.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/ss_99dabe34abc0f92adc39d7099908c9540be7eb3f.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/ss_7c55021d3ba8e4f14c6d9dbea9f19d9b7665d5f0.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Street Fighter™ 6",
+    "developer": "CAPCOM Co., Ltd.",
+    "releaseDate": "2023-06-02",
+    "rating": 8.2,
+    "price": 19.99,
+    "device": ["Windows", "Xbox", "Nintendo Switch", "PlayStation"],
+    "genre": ["Fighting", "Adventure", "Arcade"],
+    "description": "Here comes Capcom’s newest challenger! Street Fighter™ 6 launches worldwide on June 2nd, 2023 and represents the next evolution of the series. ",
+    "imageAssets": "images/streetfighter.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/ss_201488fc9f1aa5e29e2fc6d96ef2b66e41ddf32e.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/ss_a381f1b3b450c18900d47b991ce8e7456e9cdba5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/ss_f62ce93269a6d8e0027853358af4d6368e2c4b93.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1364780/ss_d186566a92ada8cdb08b04769a8c95cd1e380006.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": " NVIDIA GeForce GTX 1060 6 GB / AMD Radeon RX 5600 XT 6 GB",
+        "Storage": "55 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i7-12700K / AMD Ryzen 7 5800X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060 Ti 8 GB / AMD Radeon RX 6800 XT 16 GB",
+        "Storage": "55 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Mortal Kombat 1",
+    "developer": "NetherRealm Studios, QLOC",
+    "releaseDate": "2023-09-19",
+    "rating": 7.0,
+    "price": 49.99,
+    "device": ["Windows", "PlayStation", "Xbox"],
+    "genre": ["Fighting"],
+    "description": "Discover a reborn Mortal Kombat™ Universe created by the Fire God Liu Kang. Mortal Kombat™ 1 ushers in a new era of the iconic franchise with a new fighting system, game modes, and fatalities! ",
+    "imageAssets": "images/mortalkombat.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1971870/ss_a991cfaf5752d48c1374b635deb041ab2d1332d2.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1971870/ss_29b0a9e87d5a4981d7403994b661c43117a87d84.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1971870/ss_02b8c4f08fbf4d1a5affb9e6e64716d63df16760.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1971870/ss_2509da69bd12d209bd0ef9eed13f25cfa551f8e5.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Ultimate MMA",
+    "developer": "Anton Pushkarev",
+    "releaseDate": "2020-03-05",
+    "rating": 5.0,
+    "price": 5.99,
+    "device": ["Windows"],
+    "genre": ["Fighting", "Sport"],
+    "description": "Ultimate MMA is a mixed martial art fighting game. Fight in the tournament, unlock new moves, create unique fighters and play with friends. ",
+    "imageAssets": "images/ultimatemma.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1237540/ss_302925fcf49ea12ffbdcc8daf353eb8f2dac0709.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1237540/ss_6f85ae78eea5c0dd57289822ceaffb95fc3d51a4.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1237540/ss_c47bd0d031c5fd2404db5ac6c9d39118aeda4f48.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1237540/ss_c62791ee9de1029b9a3114e6eaa08c2ddf1a6541.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel I5 4690 / AMD FX 8350",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GTX 970 / RX 480",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel i7 8700K / AMD r5 3600",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia 2060 Super / RX 5700 XT",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Dyson Sphere Program",
+    "developer": "Youthcat Studio",
+    "releaseDate": "2021-01-21",
+    "rating": 9.6,
+    "price": 19.99,
+    "device": ["Windows"],
+    "genre": ["Real-Time Strategy", "Indie", "Simulator"],
+    "description": "Dyson Sphere Program is a sci-fi sandbox construction game with space, adventure, exploration and factory automation elements. In the future, humanity creates a supercomputer known as the \"CentreBrain\" with the hope of utilizing its powerful computing capabilities to further expand the application of virtual worlds. ",
+    "imageAssets": "images/dysonsphere.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1366540/ss_7886f76352c9e2bf2bf2fe74434b8a50bb3312d3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1366540/ss_322d8cbffdd077e743ad1dbe82fee756c77659a2.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1366540/ss_36242c2930a50355982a0da128f37e23e25a1047.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1366540/ss_602b6ca003277c4a70f63bd723a494a5558e1aee.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Kenshi",
+    "developer": "Lo-Fi Games",
+    "releaseDate": "2018-12-06",
+    "rating": 9.4,
+    "price": 29.99,
+    "device": ["Windows"],
+    "genre": ["Real-Time Strategy", "Indie", "Role-Playing", "Simulator"],
+    "description": "A free-roaming squad based RPG focusing on open-ended sandbox gameplay features rather than a linear story. Be a trader, a thief, a rebel, a warlord, an adventurer, a farmer, a slave, or just food for the cannibals. ",
+    "imageAssets": "images/kenshi.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/233860/ss_67316693597e7caa0fbf75e850252e29dab0e416.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/233860/ss_55c6ebe05c8b09c893628c0a58d7d079aec23d0b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/233860/ss_e7870c7b73904dca2ea302848fa2ee3b7fd415d4.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/233860/ss_166224e7abc243e23e8479154685d1ef007da373.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel I5 4690 / AMD FX 8350",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GTX 970 / RX 480",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel i7 8700K / AMD r5 3600",
+        "Memory": "16 GB RAM",
+        "Graphics": "Nvidia 2060 Super / RX 5700 XT",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Desperados III",
+    "developer": "Mimimi Games",
+    "releaseDate": "2020-06-16",
+    "rating": 9.3,
+    "price": 9.99,
+    "device": ["Windows", "Linux", "Mac", "PlayStation", "Xbox"],
+    "genre": ["Real-Time Strategy"],
+    "description": "Desperados III is a story-driven, hardcore tactical stealth game, set in a ruthless Wild West scenario.",
+    "imageAssets": "images/desperados.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/610370/ss_0278ff2c4d3a7bc4b2e2968f27b07db332d81edf.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/610370/ss_f6460db130b27d95f8fc883045a648c256db40c6.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/610370/ss_94bf6cd34055f7219290e6191a124eaa9c40f6e3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/610370/ss_e772cbea173029c7a4182a70e3f13de6a7f26e16.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Mindustry",
+    "developer": "AnukenDev",
+    "releaseDate": "2019-09-26",
+    "rating": 9.3,
+    "price": 9.99,
+    "device": ["Windows", "Android", "Linux", "iOS", "Mac"],
+    "genre": ["Real-Time Strategy"],
+    "description": "Mindustry is an industrial development management game with RTS elements and defense towers. Create an elaborate supply chain to incorporate ammunition into your tower, produce the materials used to build, and create units. Order units to seize enemy headquarters, and expand your production. Keep your core from the waves of the enemy.",
+    "imageAssets": "images/mindustry.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1127400/ss_19dbb62a615fc63788cf499ab948947fe365a9d2.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1127400/ss_e072ee95cfadac2674575814218137caaad2ee69.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1127400/ss_6dec4c801cd7ddca04a04ad97a0e85e4c315f9a2.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1127400/ss_4394351c612e1114b2b3d945e2b2d80d00bb2dcb.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 5 1600X",
+        "Memory": "8 GB RAM",
+        "Graphics": " NVIDIA GeForce GTX 1060 6 GB / AMD Radeon RX 5600 XT 6 GB",
+        "Storage": "55 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i7-12700K / AMD Ryzen 7 5800X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3060 Ti 8 GB / AMD Radeon RX 6800 XT 16 GB",
+        "Storage": "55 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Emberward",
+    "developer": "Refic Games",
+    "releaseDate": "2024-06-25",
+    "rating": 9.3,
+    "price": 14.99,
+    "device": ["Windows", "Android", "iOS", "Mac", "Linux"],
+    "genre": ["Real-Time Strategy", "Indie"],
+    "description": "Build twisting mazes with tetromino blocks and deploy unique towers in this strategic roguelite tower defense adventure!",
+    "imageAssets": "images/emberward.png",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2459550/80b9f622576d1c9ccfef45c57f1504378215c90d/ss_80b9f622576d1c9ccfef45c57f1504378215c90d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2459550/ss_4861d31990950a67a1797beadecb90b1cd79e22c.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2459550/7896ee82f91888ab1b130ee866b395e9d04aa9e6/ss_7896ee82f91888ab1b130ee866b395e9d04aa9e6.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2459550/ss_e6c8b7c97196be240300452b4ac4411aed0597ba.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-7700K / Ryzen 5 1600",
+        "Memory": "16 GB RAM",
+        "Graphics": "GTX 1060(6GB) / RX 480(8GB)",
+        "Storage": "100 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10/11",
+        "Processor": "Core i7-10700 / Ryzen 7 3700X",
+        "Memory": "32 GB RAM",
+        "Graphics": "RTX 2070 SUPER / RX 6700 XT / ARC A750",
+        "Storage": "100 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Rise of Tomb Raider",
+    "developer": "Crystal Dynamics, Eidos-Montréal, Feral Interactive (Mac), Feral Interactive (Linux), Nixxes",
+    "releaseDate": "2016-01-28",
+    "rating": 9.2,
+    "price": 2.99,
+    "device": ["Windows", "MacOS", "Linux"],
+    "genre": ["Shooter", "Adventure", "Sports", "Platformer"],
+    "description": "Rise of the Tomb Raider: 20 Year Celebration includes the base game and Season Pass featuring all-new content. Explore Croft Manor in the new “Blood Ties” story, then defend it against a zombie invasion in “Lara’s Nightmare”. Survive extreme conditions with a friend in the new online Co-Op Endurance mode, and brave the new “Extreme Survivor” difficulty. Also features an outfit and weapon inspired by Tomb Raider III, and 5 classic Lara skins. Existing DLC will challenge you to explore a new tomb that houses an ancient terror in Baba Yaga: The Temple of the Witch, and combat waves of infected predators in Cold Darkness Awakened.",
+    "imageAssets": "images/riseoftombrider.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_3250c1e6aeae1968dfa085eac1cd33da2b00b253.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_5c6df47fd4137af659bd8bf962a3f75a2d2362cd.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_3ac12b9b101f75921af73784abad91bea9ccbf6a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2378500/ss_5d48a7a5eee94c5f941bed03e17c7c340a7bfd3f.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64bit",
+        "Processor": "Intel Core i3-2100 or AMD equivalent",
+        "Memory": "6 GB RAM",
+        "Graphics": "NVIDIA GTX 650 2GB or AMD HD7770 2GB",
+        "Storage": "25 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10 64 bit",
+        "Processor": " Intel Core i7-3770K",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GTX 980Ti 2560x1440 or NVIDIA GTX 970 1920x1080",
+        "Storage": "25 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Deep Rock Galactic",
+    "developer": "Ghost Ship Games",
+    "releaseDate": "2020-05-13",
+    "rating": 9.6,
+    "price": 8.99,
+    "device": ["Windows"],
+    "genre": ["Shooter"],
+    "description": "Deep Rock Galactic is a 1-4 player co-op FPS featuring badass space Dwarves, 100% destructible environments, procedurally-generated caves, and endless hordes of alien monsters.",
+    "imageAssets": "images/deeprockgalactic.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/391220/ss_4ef0868ecfc6b19bc1af18b88cabe33fe8147cf7.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/391220/ss_749f99146e5ebad371e37d95bfab7b17847c1d81.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/391220/ss_2b612bfa62d920b061e900e1f7a975a2de6729ec.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/391220/ss_3b46aa127290e6ad2f62c125096bf5e901458ad6.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64 Bit",
+        "Processor": "Intel i5, 3rd gen (or equivalent)",
+        "Memory": "6 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 660 or AMD Radeon HD 7870",
+        "Storage": "3 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10 64 Bit",
+        "Processor": "Intel i5, 7th gen (or equivalent)",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA 970 / AMD Radeon 290",
+        "Storage": "3 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "ACE COMBAT 7: SKIES UNKNOWN",
+    "developer": "Bandai Namco Studios Inc.",
+    "releaseDate": "2019-01-31",
+    "rating": 8.6,
+    "price": 4.79,
+    "device": ["Windows"],
+    "genre": ["Shooter", "Arcade"],
+    "description": "Padukan gaya dan pengalamanmu di panggung kompetitif global. Kamu memiliki 13 ronde untuk menyerang dan mempertahankan sisimu dengan keahlian tembak-menembak sengit serta kemampuan taktis. Dengan satu nyawa per ronde, kamu harus berpikir lebih cepat daripada lawan jika ingin tetap hidup. Habisi musuh baik di mode Competitive maupun Unranked serta Deathmatch dan Spike Rush.",
+    "imageAssets": "images/acecombat7.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/502500/ss_2240172f5e842938e1c32adc6ad1451d3ddad747.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/502500/ss_66e4f50c10b0edcb63b6eb41bdbf2b376f34a924.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/502500/ss_6d18660705fe2f2950c64b10cea116b00d232774.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/502500/ss_8c540a07244c80211c0218e272abce97073332d7.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7",
+        "Processor": "Intel i5, 3rd gen (or equivalent)",
+        "Memory": "6 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 660 or AMD Radeon HD 7870",
+        "Storage": "3 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel i5, 7th gen (or equivalent)",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA 970 / AMD Radeon 290",
+        "Storage": "3 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Grand Theft Auto V Enhanced",
+    "developer": "Rockstar North",
+    "releaseDate": "2025-04-04",
+    "rating": 7.7,
+    "price": 19.79,
+    "device": ["Windows"],
+    "genre": ["Shooter", "Adventure", "Racing"],
+    "description": "Experience entertainment blockbusters Grand Theft Auto V and Grand Theft Auto Online — now upgraded for a new generation with stunning visuals, faster loading, 3D audio, and more, plus exclusive content for GTA Online players.",
+    "imageAssets": "images/gtav.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/d61184a98c1cf2db2b08b2999c04b0519e3615bb/ss_d61184a98c1cf2db2b08b2999c04b0519e3615bb.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/60690d0fdbd022ab1527ba6d080d42c1812a0f39/ss_60690d0fdbd022ab1527ba6d080d42c1812a0f39.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/808b550269f898e227dae2c64b5e026f90da85f9/ss_808b550269f898e227dae2c64b5e026f90da85f9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/7f432690bd6365e871a2463a5db9cc4e7ebe1151/ss_7f432690bd6365e871a2463a5db9cc4e7ebe1151.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64 Bit",
+        "Processor": "Intel i5, 3rd gen (or equivalent)",
+        "Memory": "6 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 660 or AMD Radeon HD 7870",
+        "Storage": "3 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10 64 Bit",
+        "Processor": "Intel i5, 7th gen (or equivalent)",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA 970 / AMD Radeon 290",
+        "Storage": "3 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Metro Exodus",
+    "developer": "4A Games",
+    "releaseDate": "2020-09-08",
+    "rating": 8.8,
+    "price": 4.49,
+    "device": [" Windows", "macOS", "Linux"],
+    "genre": ["Shooter", "Adventure"],
+    "description": "Flee the shattered ruins of the Moscow Metro and embark on an epic, continent-spanning journey across the post-apocalyptic Russian wilderness. Explore vast, non-linear levels, lose yourself in an immersive, sandbox survival experience, and follow a thrilling story-line that spans an entire year in the greatest Metro adventure yet.",
+    "imageAssets": "images/metro.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/412020/ss_f0297eacbfb4266f311a8cb4137e4ef8b7cdd00b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/412020/ss_23815433fdd4a63064da79222fdefb569eeafaba.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/412020/ss_4613c0b4d861ac5dbbac9a1e06a8abecfa3b34d5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/412020/ss_46cdfb7cda6e1ca0873e93b2133d277ba2191e32.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7/8/10",
+        "Processor": "Intel Core i5-4440 or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "GeForce GTX 670 / GeForce GTX 1050 / AMD Radeon HD 7870",
+        "Storage": "59 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-4770k or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "GeForce GTX 1070 / GeForce RTX 2060 / AMD RX VEGA 56",
+        "Storage": "59 GB "
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Rust",
+    "developer": "Facepunch Studios",
+    "releaseDate": "2018-02-08",
+    "rating": 8.6,
+    "price": 19.99,
+    "device": ["Windows", "macOS"],
+    "genre": ["Shooter", "Adventure", "RPG"],
+    "description": "The only aim in Rust is to survive. Everything wants you to die - the island’s wildlife, other inhabitants, the environment, and other survivors. Do whatever it takes to last another night.",
+    "imageAssets": "images/rust.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252490/ss_271feae67943bdc141c1249aba116349397e9ba9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252490/ss_e825b087b95e51c3534383cfd75ad6e8038147c3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252490/ss_1c2d0d1eefee54f0c67626c74eb21699bbb0ef52.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252490/ss_bbf6c96e490326ec877ae548cb148e53516b5f83.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
+        "Memory": "12 GB RAM",
+        "Graphics": "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Storage": " 45 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Storage": "45 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Human Fall Flat",
+    "developer": "No Brakes Games",
+    "releaseDate": "2016-07-22",
+    "rating": 9.3,
+    "price": 5.99,
+    "device": ["Windows", "macOS"],
+    "genre": ["Puzzle", "Adventure"],
+    "description": "Human Fall Flat is a hilarious, light-hearted platformer set in floating dreamscapes that can be played solo or with up to 8 players online. Free new levels keep its vibrant community rewarded.",
+    "imageAssets": "images/humanfallflat.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/2f79e50b6aa294a0c9aa8f6fa65a5f4335d9f216/ss_2f79e50b6aa294a0c9aa8f6fa65a5f4335d9f216.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/324ea457c102d5223bb4e0d3fc1128922534e681/ss_324ea457c102d5223bb4e0d3fc1128922534e681.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/72fb001dad4b56fe9f1df4428f85cb14bbdb0b34/ss_72fb001dad4b56fe9f1df4428f85cb14bbdb0b34.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/477160/3256acf966f1038b43855f7251757d4dbfa3b605/ss_3256acf966f1038b43855f7251757d4dbfa3b605.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows XP/Vista/7/8/8.1/10 x86 and x64",
+        "Processor": "Intel Core2 Duo E6750 (2 * 2660) or equivalent | AMD Athlon 64 X2 Dual Core 6000+ (2 * 3000) or equivalent",
+        "Memory": "1024 MB RAM",
+        "Graphics": "GeForce GT 740 (2048 MB) or equivalent | Radeon HD 5770 (1024 MB)",
+        "Storage": " 500 MB"
+      },
+      "recommended": {
+        "OS": "Windows XP/Vista/7/8/8.1/10 x86 and x64",
+        "Processor": "Intel Core2 Quad Q9300 (4 * 2500) or equivalent | AMD A10-5800K APU (4*3800) or equivalent",
+        "Memory": " 2048 MB RAM",
+        "Graphics": "eForce GTX 460 (1024 MB) or equivalent | Radeon HD 7770 (1024 MB)",
+        "Storage": "500 MB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "SOMA",
+    "developer": "Frictional Games",
+    "releaseDate": "2015-09-22",
+    "rating": 9.4,
+    "price": 1.49,
+    "device": ["Windows", "macOS", "Linux "],
+    "genre": ["Puzzle", "Adventure"],
+    "description": "From the creators of Amnesia: The Dark Descent comes SOMA, a sci-fi horror game set below the waves of the Atlantic ocean. Struggle to survive a hostile world that will make you question your very existence.",
+    "imageAssets": "images/soma.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/282140/ss_e19b8e8b9b453aff00651ebd3e8a2639b581bc73.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/282140/ss_5ee5231b847ec7397554af8b2efe25caeef5d7c5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/282140/ss_17154e69032890890c1fa5920786d858968d8f9c.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/282140/ss_f72532983850e64b32428fd0e4b09e0ff8fcfc55.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": " 64-bit Windows Vista",
+        "Processor": "Core i3 / AMD A6 2.4Ghz",
+        "Memory": "4 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 260 / AMD Radeon HD 5750. OpenGL 3.3",
+        "Storage": "25 GB"
+      },
+      "recommended": {
+        "OS": "64-bit Windows 7",
+        "Processor": "Core i5 / AMD FX 2.4Ghz",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 480 / AMD Radeon HD 5970. OpenGL 3.3",
+        "Storage": "25 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Resident Evil",
+    "developer": "CAPCOM Co., Ltd.",
+    "releaseDate": "2015-01-20",
+    "rating": 9.0,
+    "price": 4.99,
+    "device": ["Windows"],
+    "genre": ["Puzzle", "Adventure"],
+    "description": "The game that defined the survival-horror genre is back! Check out the remastered HD version of Resident Evil.",
+    "imageAssets": "images/residentevil.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/304240/ss_d75906451d3a57bb8fc65fdea7ce09fbf1d3b726.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/304240/ss_d27983bb8176325d81cf0ca83dfb30ec247e6f23.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/304240/ss_063bf03851cd3e8bc9746fb4735e1aed2c3843c2.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/304240/ss_8ff9a328bbfa668034356554ceb3d29a7dc7262f.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel® Core™ 2 Duo 2.4 GHz, AMD Athlon™ X2 2.8 GHz, or better",
+        "Memory": "2 GB RAM",
+        "Graphics": "NVIDIA® GeForce® GTX260, ATI Radeon HD 6790, or better",
+        "Storage": "20 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel® Core™ 2 Quad 2.7 GHz, AMD Phenom™ II X4 3.0 GHz or better",
+        "Memory": "4 GB RAM",
+        "Graphics": "NVIDIA® GeForce® GTX 560, ATI Radeon HD 6950, or better",
+        "Storage": "20 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Monster Hunter: World",
+    "developer": "CAPCOM Co., Ltd.",
+    "releaseDate": "2018-08-09",
+    "rating": 8.7,
+    "price": 9.89,
+    "device": ["Windows"],
+    "genre": ["Hack and Slash"],
+    "description": "Welcome to a new world! In Monster Hunter: World, the latest installment in the series, you can enjoy the ultimate hunting experience, using everything at your disposal to hunt monsters in a new world teeming with surprises and excitement.",
+    "imageAssets": "images/monsterhunter.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/ss_a262c53b8629de7c6547933dc0b49d31f4e1b1f1.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/ss_6b4986a37c7b5c185a796085c002febcdd5357b5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/ss_681cc5358ec55a997aee9f757ffe8b418dc79a32.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582010/ss_669f9008f708c19fe3c41d647516f7a73bf26d24.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 (64-bit required)",
+        "Processor": "Intel® Core™ i5 4460 or Core™ i3 9100F or AMD FX-6300 or Ryzen™ 3 3200G",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA®GeForce®GTX 760 or GTX1050 or AMD Radeon™ R7 260x or RX 560 ",
+        "Storage": " 52 GB "
+      },
+      "recommended": {
+        "OS": "WINDOWS® 10 (64-bit required)",
+        "Processor": "Intel® Core™ i7 3770 or Core™ i3 8350 or Core™ i3 9350F / AMD Ryzen™ 5 1500X or Ryzen™ 5 3400G",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA® GeForce® GTX 1060 (VRAM 3GB) or GTX 1650 / AMD Radeon™ RX 480 or RX 570",
+        "Storage": "20 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Dead Cells",
+    "developer": "Motion Twin",
+    "releaseDate": "2015-09-11",
+    "rating": 8.6,
+    "price": 17.49,
+    "device": ["Windows", "macOS", "Linux"],
+    "genre": ["Hack and Slash", "Platformer"],
+    "description": "Dead Cells is a roguelite, metroidvania inspired, action-platformer. You'll explore a sprawling, ever-changing castle... assuming you’re able to fight your way past its keepers in 2D souls-lite combat. No checkpoints. Kill, die, learn, repeat.",
+    "imageAssets": "images/deadcells.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/ss_ac28000ade40cc2fe5c128f32ac98ba33c008a7a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/ss_e87e72a247918d8493892e035d5e1b4b84470d2f.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/ss_a099416b9f3e09d47c42f87667e6ad6f394ba652.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/ss_ffef382d2a1ace63b82184caf3f6c5b293c66483.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7+",
+        "Processor": "Intel i5+",
+        "Memory": "2 GB RAM",
+        "Graphics": "Nvidia 450 GTS / Radeon HD 5750 or better",
+        "Storage": "500 MB"
+      },
+      "recommended": {
+        "OS": "Windows 7+",
+        "Processor": "Intel i5+",
+        "Memory": "4 GB RAM",
+        "Graphics": "Nvidia GTX 460 / Radeon HD 7800 or better",
+        "Storage": "500 MB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Chivalry 2",
+    "developer": "Torn Banner Studios",
+    "releaseDate": "2022-06-12",
+    "rating": 7.8,
+    "price": 7.99,
+    "device": ["Windows"],
+    "genre": ["Hack and Slash"],
+    "description": "Chivalry 2 is a multiplayer first person slasher inspired by epic medieval movie battles. Players are thrust into the action of every iconic moment of the era - from clashing swords, to storms of flaming arrows, to sprawling castle sieges and more.",
+    "imageAssets": "images/chivalry2.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1824220/ss_52c26b2ce4b3a340962022e5c97af69e0dc38523.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1824220/ss_6eab882f82ba56145065e87c4454edfb7cb1467c.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1824220/ss_3da2e1dd30880c0d6f525b5d4adad7f8024c2caf.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1824220/ss_aa128bc708eac669063482a139de785b3d4290b0.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel i3-4370",
+        "Memory": "8 GB RAM",
+        "Graphics": " Nvidia GeForce GTX 660 or AMD Radeon HD 7870 2 GB ",
+        "Storage": "35 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel i7 6700 or AMD Ryzen 5 3500x",
+        "Memory": "8 GB RAM",
+        "Graphics": "Nvidia GTX 1070 or AMD RX Vega-56",
+        "Storage": "35 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "CODE VEIN",
+    "developer": "Bandai Namco Studios",
+    "releaseDate": "2019-09-26",
+    "rating": 8.2,
+    "price": 8.99,
+    "device": ["Windows"],
+    "genre": ["Hack and Slash"],
+    "description": "In the face of certain death, we rise. Team up and embark on a journey to the ends of hell to unlock your past and escape your living nightmare in CODE VEIN.",
+    "imageAssets": "images/codevein.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/678960/ss_8872f9fd79ef968f3a3023f17811c9f9133f7d64.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/678960/ss_4f2662706d87964e979c223f0264622574f151bc.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/678960/ss_ada0fd6894bcd9e1e316073f1e3ab61326d87b70.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/678960/ss_d7671321de57658244e4bdc75c23dc63d78d0d7a.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 SP1 or Windows 10 (64-bit)",
+        "Processor": "Intel Core i5-2300",
+        "Memory": "6 GB RAM",
+        "Graphics": "GeForce GTX 760 or Radeon HD 7850",
+        "Storage": "35 GB"
+      },
+      "recommended": {
+        "OS": "Windows 7 SP1 or Windows 10 (64-bit)",
+        "Processor": "Intel Core i5-7400 or AMD Ryzen 3 2200G",
+        "Memory": "8 GB RAM",
+        "Graphics": "GeForce GTX 960 or Radeon R9 380X",
+        "Storage": " 35 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Skul: The Hero Slayer",
+    "developer": "SOUTHPAW GAMES",
+    "releaseDate": "2021-01-20",
+    "rating": 9.1,
+    "price": 9.99,
+    "device": ["Windows", "macOS", "Linux"],
+    "genre": ["Hack and Slash", "Indie", "Platformer"],
+    "description": "Guide 'Skul' on his quest to single-handedly take on the Imperial Army and rescue his King from captivity, in an action-packed rogue-lite 2D platformer for the ages.",
+    "imageAssets": "images/skull.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1147560/ss_b5ed9f9f5c95df4e168107d024cd4107bc2223e3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1147560/ss_44eae43480fa6d9c350bf6d1100e6d8dc911d8ee.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1147560/ss_c29cf7bfb3dfc5dd7ca0428f92c12a68c8c632cb.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1147560/ss_43e7cf01e7f6066fadf8bd725aa437311820a755.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7+",
+        "Processor": "Dual core from Intel or AMD at 2.8 GHz",
+        "Memory": "4 GB RAM",
+        "Graphics": "Nvidia 450 GTS / Radeon HD 5750 or better",
+        "Storage": "1 GB"
+      },
+      "recommended": {
+        "OS": "Windows 7+",
+        "Processor": "Dual core from Intel or AMD at 2.8 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": " Nvidia GTX 460 / Radeon HD 7800 or better",
+        "Storage": "2 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Megabonk",
+    "developer": "vedinad",
+    "releaseDate": "2025-09-18",
+    "rating": 9.3,
+    "price": 7.99,
+    "device": ["Windows", "Linux"],
+    "genre": ["Arcade", "Indie"],
+    "description": "Hajar gelombang musuh tanpa akhir dan jadi absurdly OP! Ambil loot, level up character, unlock karakter baru, upgrade senjata dan bikin build unik serta gokil sambil nahan hordes makhluk!",
+    "imageAssets": "images/megabonk.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/ce4d8d24a3731a91490ab92b8687f07314c600b9/ss_ce4d8d24a3731a91490ab92b8687f07314c600b9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/9ecc4f12f9031e38e546e80416c98eab310dea8b/ss_9ecc4f12f9031e38e546e80416c98eab310dea8b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/b1e906ba6bbac4b9017fb786a1b2d88ec3b41578/ss_b1e906ba6bbac4b9017fb786a1b2d88ec3b41578.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/1d012ef02e5fbd1ed8245a62d60d620b25e84856/ss_1d012ef02e5fbd1ed8245a62d60d620b25e84856.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7+",
+        "Processor": "Dual core from Intel or AMD at 2.8 GHz",
+        "Memory": "4 GB RAM",
+        "Graphics": "Nvidia 450 GTS / Radeon HD 5750 or better",
+        "Storage": "1 GB"
+      },
+      "recommended": {
+        "OS": "Windows 7+",
+        "Processor": "Dual core from Intel or AMD at 2.8 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": " Nvidia GTX 460 / Radeon HD 7800 or better",
+        "Storage": "2 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Brotato",
+    "developer": "Blobfish",
+    "releaseDate": "2023-06-23",
+    "rating": 9.5,
+    "price": 2.99,
+    "device": ["Windows", "macOS", "Linux"],
+    "genre": ["Arcade", "Hack and Slash", "Indie", "Role-playing"],
+    "description": "Guide 'Skul' on his quest to single-handedly take on the Imperial Army and rescue his King from captivity, in an action-packed rogue-lite 2D platformer for the ages.",
+    "imageAssets": "images/brotato.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1942280/ss_79be0eea0299da76bc50cef160fb669509f74e0b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1942280/ss_61ad3d242282311207828c1a7d87c1c9d7b4d8bf.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1942280/ss_d4b4c0b552e655169719e35c964765bd27d05900.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1942280/ss_6d2f09b839af705c732d4eaf8080a24b9939aca9.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7+",
+        "Processor": " 2 Ghz",
+        "Memory": "4 GB RAM",
+        "Graphics": "128MB, OpenGL 3+",
+        "Storage": "200 MB"
+      },
+      "recommended": {
+        "OS": "Windows 7+",
+        "Processor": " 2 Ghz",
+        "Memory": "4 GB RAM",
+        "Graphics": "128MB, OpenGL 3+",
+        "Storage": "200 MB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "The Crew Motorfest",
+    "developer": "Ubisoft Ivory Tower",
+    "releaseDate": "2024-04-18",
+    "rating": 7.7,
+    "price": 13.99,
+    "device": ["Windows"],
+    "genre": ["Racing", "Sports", "Point-and-click"],
+    "description": "Welcome to Motorfest, the ultimate open-world driving experience. Explore the Hawaiian islands of O'ahu and Maui. Celebrate the best of car culture through 20+ themed campaigns (street racing, offroad, drift...) and collect hundreds of iconic vehicles. Enjoy the game free for five hours!",
+    "imageAssets": "images/motorfest.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2698940/ss_933b5c1de0571f4e0c26c39ca3a4f68a314b2e38.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2698940/ss_8f7be2c7a031b730a817773f4a1cc9b9cca301df.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2698940/ss_702c9e2b856e5cb051216cca34b9c82d654254cc.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2698940/ss_faff713d5b0c3ab73f8d0af8023c0af2f6d796ab.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7+",
+        "Processor": " 2 Ghz",
+        "Memory": "4 GB RAM",
+        "Graphics": "128MB, OpenGL 3+",
+        "Storage": "200 MB"
+      },
+      "recommended": {
+        "OS": "Windows 7+",
+        "Processor": " 2 Ghz",
+        "Memory": "4 GB RAM",
+        "Graphics": "128MB, OpenGL 3+",
+        "Storage": "200 MB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "The Crew 2",
+    "developer": "Ivory Tower",
+    "releaseDate": "2025-06-29",
+    "rating": 7.6,
+    "price": 5.99,
+    "device": ["Windows"],
+    "genre": ["Racing"],
+    "description": "Take on the American motorsports scene as you explore and dominate the land, air, and sea across the entire USA. New: play The Crew 2 offline or online with the new Hybrid mode, available now!",
+    "imageAssets": "images/crew2.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646910/ss_4fe5544b606d1e99fddd46f6e98064077615f03c.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646910/ss_34662385e6d2ab37b49eae52bee0800f5e2dc767.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646910/ss_d7a89f47597c4c1ce2d0b49b0fc3e5f5e8e671e6.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646910/ss_7d9c6b2762f425e5c469e331381d0762f86021cc.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7+",
+        "Processor": "Intel Core i5-2400s @ 2.5 GHz or AMD FX-6100 @ 3.3 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Windows 7+",
+        "Processor": "Intel Core i5-2400s @ 2.5 GHz or AMD FX-6100 @ 3.3 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Haste",
+    "developer": "Landfall",
+    "releaseDate": "2018-04-01",
+    "rating": 8.9,
+    "price": 13.99,
+    "device": ["Windows"],
+    "genre": ["Racing", "Adventure", "Indie", "Platformer"],
+    "description": "Run fast, soar through the air, and master your landings as you speed through procedural worlds to outrun the end of the universe, by yourself and with friends!",
+    "imageAssets": "images/haste.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1796470/f07ff3c9df2ccba52797f4914dba555516f2b1c3/ss_f07ff3c9df2ccba52797f4914dba555516f2b1c3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1796470/d69c8353a438ebced15c876e1e7c38b27bbf685a/ss_d69c8353a438ebced15c876e1e7c38b27bbf685a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1796470/86d361a11cef4338e6f2a8cf1f01cc5457e10d9a/ss_86d361a11cef4338e6f2a8cf1f01cc5457e10d9a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1796470/bd92701872941816705668c70489a32cea400de5/ss_bd92701872941816705668c70489a32cea400de5.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Win 10",
+        "Processor": "Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Win 10",
+        "Processor": "ntel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Black Desert",
+    "developer": "Pearl Abyss",
+    "releaseDate": "2017-05-24",
+    "rating": 7.3,
+    "price": 9.99,
+    "device": ["Windows"],
+    "genre": ["Sports", "Adventure", "Role-playing", "Strategy"],
+    "description": "Played by over 20 million Adventurers - Black Desert Online is an open-world, action MMORPG. Experience intense, action-packed combat, battle massive world bosses, fight alongside friends to siege and conquer castles, and train in professions such as fishing, trading, crafting, cooking, and more!",
+    "imageAssets": "images/blackdesert.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/b784aa30aea23768ef2b793b9a064347d3609b6d/ss_b784aa30aea23768ef2b793b9a064347d3609b6d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/ss_e8cf6710f8ab86f933d0e212e2d2b0e620cb70c9.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/ss_8cd369deed11b84f64e37d08ea8e835be888d3f5.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/582660/ss_e2cfd7db29677295dc76311d151d795ea818ced2.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 (64-bit)",
+        "Processor": "Intel Core i3 (4th Generation)",
+        "Memory": "8 GB RAM",
+        "Graphics": "GeForce GTX 970, Radeon RX 480",
+        "Storage": "80 GB"
+      },
+      "recommended": {
+        "OS": "Windows 10 (64-bit)",
+        "Processor": "Intel Core i3 (4th Generation)",
+        "Memory": "8 GB RAM",
+        "Graphics": "GeForce GTX 970, Radeon RX 480",
+        "Storage": "80 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Escape Simulator 2",
+    "developer": "Pine Studio",
+    "releaseDate": "2025-10-27",
+    "rating": 8.9,
+    "price": 15.99,
+    "device": ["Windows", "macOS"],
+    "genre": ["Point-and-click", "Indie", "Adventure", "Simulation"],
+    "description": "Played by over 20 million Adventurers - Black Desert Online is an open-world, action MMORPG. Experience intense, action-packed combat, battle massive world bosses, fight alongside friends to siege and conquer castles, and train in professions such as fishing, trading, crafting, cooking, and more!",
+    "imageAssets": "images/escapesim2.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2879840/d6b0836c1df5b7286c54228434b87725bef9f89e/ss_d6b0836c1df5b7286c54228434b87725bef9f89e.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2879840/a6e6c2ad9d3f12fb380d9eb1580770bedc7bd39a/ss_a6e6c2ad9d3f12fb380d9eb1580770bedc7bd39a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2879840/0c1171c0b7fa863f976cf919fd6fc60ebaed193a/ss_0c1171c0b7fa863f976cf919fd6fc60ebaed193a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2879840/6667b999dc09931283c28051f093f741af6eea83/ss_6667b999dc09931283c28051f093f741af6eea83.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
+        "Memory": "12 GB RAM",
+        "Graphics": "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Storage": "45 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Storage": "45 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "TEKKEN 7",
+    "developer": "BANDAI NAMCO Studios Inc.",
+    "releaseDate": "2017-06-01",
+    "rating": 8.2,
+    "price": 9.99,
+    "device": ["Windows"],
+    "genre": ["Point-and-click", "Sports", "Adventure", "Simulation"],
+    "description": "Played by over 20 million Adventurers - Black Desert Online is an open-world, action MMORPG. Experience intense, action-packed combat, battle massive world bosses, fight alongside friends to siege and conquer castles, and train in professions such as fishing, trading, crafting, cooking, and more!",
+    "imageAssets": "images/tekken7.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_d92a558644ad60ae5814fc4d2bbaebc5abf62fa3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_ed3246605518907954918eb06e90705249be77d6.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_40faa5ba39563cb899f1ab2ddd2afbf8b451d52f.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_e4266a29ed7485522c85ff61b454f3765151a0db.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
+        "Memory": "12 GB RAM",
+        "Graphics": "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Storage": "45 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Storage": "45 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Cats & Cups",
+    "developer": "Rogue Duck Interactive",
+    "releaseDate": "2025-11-01",
+    "rating": 8.2,
+    "price": 5.99,
+    "device": ["Windows", "macOS", "Linux"],
+    "genre": ["Point-and-click", "Indie", "Simulation", "Strategy"],
+    "description": "Played by over 20 million Adventurers - Black Desert Online is an open-world, action MMORPG. Experience intense, action-packed combat, battle massive world bosses, fight alongside friends to siege and conquer castles, and train in professions such as fishing, trading, crafting, cooking, and more!",
+    "imageAssets": "images/catscup.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_d92a558644ad60ae5814fc4d2bbaebc5abf62fa3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_ed3246605518907954918eb06e90705249be77d6.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_40faa5ba39563cb899f1ab2ddd2afbf8b451d52f.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/389730/ss_e4266a29ed7485522c85ff61b454f3765151a0db.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Win 10",
+        "Processor": "Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Win 10",
+        "Processor": "ntel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Wartales",
+    "developer": "Shiro Games",
+    "releaseDate": "2025-04-12",
+    "rating": 8.6,
+    "price": 13.99,
+    "device": ["Windows"],
+    "genre": ["Turn-based Strategy", "Strategy", "Indie", "Role-playing"],
+    "description": "Wartales is an open world RPG in which you lead a group of mercenaries in their search for wealth across a massive medieval universe. Explore the world, recruit companions, collect bounties and unravel the secrets of the tombs of the ancients!",
+    "imageAssets": "images/wartales.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1527950/ss_09714a62ca142a8a1eb27fa5a408cfc168d9e786.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1527950/ss_e407391b8719bb941b74f6edec9f95f91e9c043b.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1527950/ss_6654e16f9b86732b1be46f246bef63359219c02a.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1527950/ss_1bfaa045d41a258ee7072078a55738f78a42cbf9.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
+        "Memory": "12 GB RAM",
+        "Graphics": "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Storage": "45 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Storage": "45 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Songs Of Silence",
+    "developer": "Firaxis Games, Feral Interactive (Mac), Feral Interactive (Linux)",
+    "releaseDate": "2024-11-13",
+    "rating": 7.7,
+    "price": 14.99,
+    "device": ["Windows"],
+    "genre": ["Turn-based Strategy", "Strategy", "Indie", "Role-playing"],
+    "description": "Lead armies, rebuild fallen kingdoms, and rise to greatness! Embark on an epic journey of strategy in an Art Nouveau-inspired fantasy world. Fight intense battles and uncover a captivating story.",
+    "imageAssets": "images/songofsilence.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2195410/ss_3162b32a69b1fb78bda88223b2d1d23627cf49f3.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2195410/ss_eb3f8e766844113ccd7ab243d914a2d59f2b485f.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2195410/ss_cb82910918c56231fc18ba7afd9021cfbb68e05d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2195410/ss_adfa37886941737e9c01dc14e182d5642d130288.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 5 1400 or Intel Core i5-6600",
+        "Memory": "12 GB RAM",
+        "Graphics": "AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580",
+        "Storage": "45 GB"
+      },
+      "recommended": {
+        "OS": "Windows 11 64bit",
+        "Processor": "AMD Ryzen 7 3700X or Intel® Core i7-6700K",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580",
+        "Storage": "45 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Songs of Conquest",
+    "developer": "Lavapotion",
+    "releaseDate": "2024-05-20",
+    "rating": 8.3,
+    "price": 7.49,
+    "device": ["Windows", "macOS"],
+    "genre": ["Turn-based Strategy", "Adventure", "Role-playing"],
+    "description": "Raise mighty armies, wield ancient magic and forge an empire. This turn-based strategy adventure game fuses strategic decision making, tactical combat and kingdom management.",
+    "imageAssets": "images/songofconquest.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/867210/ss_1c38ce7a38d35207ce440c50cc2c2fc88ce8a770.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/867210/ss_05aa6a23efd2bb4ef348f496836ea99287307763.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/867210/ss_3300c853abec9643113916ceb6569d9728f4cb03.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/867210/ss_669bb5c811e023f69e38dc035d89f7a89d583d13.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 SP1 or Windows 10 (64-bit)",
+        "Processor": "Intel Core i5-2300",
+        "Memory": "6 GB RAM",
+        "Graphics": "GeForce GTX 760 or Radeon HD 7850",
+        "Storage": "35 GB"
+      },
+      "recommended": {
+        "OS": "Windows 7 SP1 or Windows 10 (64-bit)",
+        "Processor": "Intel Core i5-7400 or AMD Ryzen 3 2200G",
+        "Memory": "8 GB RAM",
+        "Graphics": "GeForce GTX 960 or Radeon R9 380X",
+        "Storage": " 35 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Blasphemous",
+    "developer": "The Game Kitchen",
+    "releaseDate": "2019-09-10",
+    "rating": 8.8,
+    "price": 2.49,
+    "device": ["Windows", "macOS", "Linux"],
+    "genre": ["Platformer", "Adventure", "Indie"],
+    "description": "Blasphemous is a brutal action-platformer with skilled hack’n slash combat set in the nightmare world of Cvstodia. Explore, upgrade your abilities, and perform savage executions on the hordes of enemies that stand between you and your quest to break eternal damnation.",
+    "imageAssets": "images/blasphemous.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_23c70f980432d67b527ed562a42c41f55d9f9fc8.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_a0e79191b0488482e5175ce1c0b4386d817f8c3d.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_bd57bcb1e9183cbea61339727a97bcc5206677b2.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/ss_933510ac0fd13c6bd4ecc4c187e0506d520f2e70.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Win 10",
+        "Processor": "Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Win 10",
+        "Processor": "ntel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  },
+  {
+    "title": "Little Nightmares III",
+    "developer": "Supermassive Games",
+    "releaseDate": "2025-10-09",
+    "rating": 4.6,
+    "price": 39.59,
+    "device": ["Windows"],
+    "genre": ["Platformer", "Adventure"],
+    "description": "Little Nightmares III is an atmospheric adventure game in which you follow the journey of Low and Alone, two best friends in search of a way out of the Nowhere. In 2 players online cooperation or solo with an A.I., work together to solve puzzles and survive in this nightmarish world.",
+    "imageAssets": "images/lilnight3.jpg",
+    "screenshots": [
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1392860/d0802b426b1116c4d0f7c92cc81de359bc342345/ss_d0802b426b1116c4d0f7c92cc81de359bc342345.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1392860/c4ff1a965b1a769314a9952f40e6bf445b2adfac/ss_c4ff1a965b1a769314a9952f40e6bf445b2adfac.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1392860/951d2a14c6ac62284111d3708816df8766d39b17/ss_951d2a14c6ac62284111d3708816df8766d39b17.jpg",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1392860/dad38fdb7026a015146f21be5268192f25eb54f2/ss_dad38fdb7026a015146f21be5268192f25eb54f2.jpg"
+    ],
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Win 10",
+        "Processor": "Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      },
+      "recommended": {
+        "OS": "Win 10",
+        "Processor": "ntel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)",
+        "Storage": "4 GB"
+      }
+    },
+    "isFavorite": false
+  }
+]
