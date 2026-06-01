@@ -3,6 +3,7 @@ import 'package:gamepedia/data/game_repository.dart';
 import 'package:gamepedia/data/favorites_service.dart';
 import 'package:gamepedia/models/game.dart';
 import 'package:gamepedia/screens/game_detail_screen.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WishlistScreen extends StatefulWidget {
@@ -77,7 +78,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
         builder: (context, snapshot) {
           final count = snapshot.data?.length ?? 0;
           return Text(
-            '$count games saved.',
+            AppLocalizations.of(context)!.gamesSaved(count),
             style: TextStyle(
               color: Colors.white.withOpacity(0.6),
               fontSize: 13,
@@ -90,7 +91,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
     }
 
     return Text(
-      '${favoriteTitles.length} games saved.',
+      AppLocalizations.of(context)!.gamesSaved(favoriteTitles.length),
       style: TextStyle(
         color: Colors.white.withOpacity(0.6),
         fontSize: 13,
@@ -112,9 +113,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
           onPressed: () => Navigator.pop(context),
           color: const Color(0xFF6A5AF9),
         ),
-        title: const Text(
-          'Wishlist',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.wishlist,
+          style: const TextStyle(
             color: Color(0xFF6A5AF9),
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -165,9 +166,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ).createShader(bounds),
-                child: const Text(
-                  'Wishlist',
-                  style: TextStyle(
+                child: Text(
+                  AppLocalizations.of(context)!.wishlist,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 32,
                     fontFamily: 'Quicksand',
@@ -182,23 +183,23 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 const Center(child: CircularProgressIndicator())
               else if (!isSignedIn && favoriteTitles.isEmpty)
                 Column(
-                  children: const [
-                    SizedBox(height: 40),
+                  children: [
+                    const SizedBox(height: 40),
                     Text(
-                      'Your wishlist is empty :(',
+                      AppLocalizations.of(context)!.yourWishlistEmpty,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontFamily: 'Quicksand',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      "Start adding games you're interested in!",
+                      AppLocalizations.of(context)!.startAddingGames,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 14,
                         fontFamily: 'Quicksand',
@@ -218,9 +219,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         ),
                         builder: (context, favSnap) {
                           if (favSnap.hasError) {
-                            return const Text(
-                              'Unable to load wishlist games.',
-                              style: TextStyle(color: Colors.white70),
+                            return Text(
+                              AppLocalizations.of(
+                                context,
+                              )!.unableToLoadWishlistGames,
+                              style: const TextStyle(color: Colors.white70),
                             );
                           }
                           if (favSnap.connectionState ==
@@ -235,9 +238,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
                             stream: GameRepository.streamAllGames(),
                             builder: (context, snap) {
                               if (snap.hasError) {
-                                return const Text(
-                                  'Unable to load wishlist games.',
-                                  style: TextStyle(color: Colors.white70),
+                                return Text(
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.unableToLoadWishlistGames,
+                                  style: const TextStyle(color: Colors.white70),
                                 );
                               }
                               if (snap.connectionState ==
@@ -252,23 +257,27 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                   .toList();
                               if (favorites.isEmpty) {
                                 return Column(
-                                  children: const [
-                                    SizedBox(height: 40),
+                                  children: [
+                                    const SizedBox(height: 40),
                                     Text(
-                                      'Your wishlist is empty :(',
+                                      AppLocalizations.of(
+                                        context,
+                                      )!.yourWishlistEmpty,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
                                         fontFamily: 'Quicksand',
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(height: 8),
+                                    const SizedBox(height: 8),
                                     Text(
-                                      "Start adding games you're interested in!",
+                                      AppLocalizations.of(
+                                        context,
+                                      )!.startAddingGames,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white70,
                                         fontSize: 14,
                                         fontFamily: 'Quicksand',
@@ -577,23 +586,27 @@ class _WishlistScreenState extends State<WishlistScreen> {
                               .toList();
                           if (favorites.isEmpty) {
                             return Column(
-                              children: const [
-                                SizedBox(height: 40),
+                              children: [
+                                const SizedBox(height: 40),
                                 Text(
-                                  'Your wishlist is empty :(',
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.yourWishlistEmpty,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
                                     fontFamily: 'Quicksand',
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                                 Text(
-                                  "Start adding games you're interested in!",
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.startAddingGames,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white70,
                                     fontSize: 14,
                                     fontFamily: 'Quicksand',

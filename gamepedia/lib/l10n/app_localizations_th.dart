@@ -308,6 +308,15 @@ class AppLocalizationsTh extends AppLocalizations {
   String get systemRequirements => 'ความต้องการของระบบ';
 
   @override
+  String get thumbnailUrl => 'URL รูปขนาดย่อ';
+
+  @override
+  String get termsOfService => 'ข้อกำหนดในการให้บริการ';
+
+  @override
+  String get iUnderstand => 'ฉันเข้าใจ';
+
+  @override
   String get minimum => 'ขั้นต่ำ';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsTh extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return 'โหลดเกมไม่สำเร็จ: $error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count เกมที่บันทึกไว้ลำแน่';
+  }
+
+  @override
+  String get yourWishlistEmpty => 'ลิสต์ที่อยากไดืของคุณว่างเปล่า :(';
+
+  @override
+  String get startAddingGames => 'เริ่มเพิ่มเกมที่คุณสนใจ!';
+
+  @override
+  String get unableToLoadWishlistGames => 'ไม่สามารถโหลดเกมลิสต์ที่อยากไดื';
+
+  @override
+  String get welcomeToGamePedia => 'ยินดีต้อนรับการเจอ กาเมฟัล!';
+
+  @override
+  String get termsOfServiceDescription => 'โปรดอ่านข้อกำหนดปันนิคนี้อย่างถี่่องถ้วจันหรือ ใช้ GamePedia';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => 'ระบบปฏิบัติการ';
+
+  @override
+  String get sysReqProcessor => 'ตัวประมวลผล';
+
+  @override
+  String get sysReqMemory => 'หน่วยความจำ (RAM)';
+
+  @override
+  String get sysReqGraphics => 'การ์ดกราฟิกส์';
+
+  @override
+  String get sysReqStorage => 'พื้นที่จัดเก็บข้อมูล';
+
+  @override
+  String get sysReqDirectX => 'เวอร์ชัน DirectX';
+
+  @override
+  String get sysReqNetwork => 'เครือข่าย';
+
+  @override
+  String get sysReqSoundCard => 'การ์ดเสียง';
 }

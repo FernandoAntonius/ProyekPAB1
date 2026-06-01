@@ -308,6 +308,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get systemRequirements => 'Requisitos del sistema';
 
   @override
+  String get thumbnailUrl => 'URL de miniatura';
+
+  @override
+  String get termsOfService => 'Términos del Servicio';
+
+  @override
+  String get iUnderstand => 'Entiendo';
+
+  @override
   String get minimum => 'Mínimo';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsEs extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return 'Error al cargar los juegos: $error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count juegos guardados.';
+  }
+
+  @override
+  String get yourWishlistEmpty => 'Tu lista de deseos está vacía :(';
+
+  @override
+  String get startAddingGames => '¡Comienza a agregar juegos que te interesen!';
+
+  @override
+  String get unableToLoadWishlistGames => 'No se pueden cargar los juegos de la lista de deseos.';
+
+  @override
+  String get welcomeToGamePedia => '¡Bienvenido a GamePedia!';
+
+  @override
+  String get termsOfServiceDescription => 'Por favor, lee estos Términos del Servicio cuidadosamente antes de usar GamePedia.';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => 'Sistema Operativo';
+
+  @override
+  String get sysReqProcessor => 'Procesador';
+
+  @override
+  String get sysReqMemory => 'Memoria (RAM)';
+
+  @override
+  String get sysReqGraphics => 'Tarjeta de Gráficos';
+
+  @override
+  String get sysReqStorage => 'Espacio de Almacenamiento';
+
+  @override
+  String get sysReqDirectX => 'Versión DirectX';
+
+  @override
+  String get sysReqNetwork => 'Red';
+
+  @override
+  String get sysReqSoundCard => 'Tarjeta de Sonido';
 }

@@ -68,7 +68,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
           const SizedBox(height: 12),
           // Minimum Requirements
           Text(
-            loc.minimum,
+            AppLocalizations.of(context)!.minimum,
             style: const TextStyle(
               color: Colors.white,
               fontFamily: "Quicksand",
@@ -89,7 +89,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
           // Recommended Requirements
           const SizedBox(height: 12),
           Text(
-            loc.recommended,
+            AppLocalizations.of(context)!.recommended,
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

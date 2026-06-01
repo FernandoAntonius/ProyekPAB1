@@ -93,6 +93,9 @@
   "descriptionField": "الوصف",
   "screenshotImageUrlField": "رابط صورة لقطة الشاشة",
   "systemRequirements": "متطلبات النظام",
+  "thumbnailUrl": "رابط الصورة المصغرة",
+  "termsOfService": "شروط الخدمة",
+  "iUnderstand": "أنا أفهم",
   "minimum": "الحد الأدنى",
   "osField": "نظام التشغيل",
   "processorField": "المعالج",
@@ -168,5 +171,12 @@
   "allReviewsTitle": "جميع المراجعات",
   "reviewsFor": "مراجعات {gameName}",
   "noReviewsYetMsg": "لا توجد مراجعات بعد",
-  "failedToLoadGames": "فشل تحميل الألعاب: {error}"
+  "failedToLoadGames": "فشل تحميل الألعاب: {error}",
+  "gamesSaved": "{count} لعبة محفوظة.",
+  "yourWishlistEmpty": "قائمة الأمنيات الخاصة بك فارغة :(",
+  "startAddingGames": "ابدأ في إضافة الألعاب التي تهتم بها!",
+  "unableToLoadWishlistGames": "تعذر تحميل ألعاب قائمة الأمنيات.",
+  "welcomeToGamePedia": "أهلا وسهلا بك في GamePedia!",
+  "termsOfServiceDescription": "يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام GamePedia.",
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 }

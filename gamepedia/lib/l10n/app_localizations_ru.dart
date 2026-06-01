@@ -308,6 +308,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get systemRequirements => 'Системные требования';
 
   @override
+  String get thumbnailUrl => 'URL миниатюры';
+
+  @override
+  String get termsOfService => 'Условия обслуживания';
+
+  @override
+  String get iUnderstand => 'Понятно';
+
+  @override
   String get minimum => 'Минимальные';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsRu extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return 'Не удалось загрузить игры: $error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count сохранённых игр.';
+  }
+
+  @override
+  String get yourWishlistEmpty => 'Ваш список желаний пуст :(';
+
+  @override
+  String get startAddingGames => 'Начните добавлять интересующие вас игры!';
+
+  @override
+  String get unableToLoadWishlistGames => 'Не удалось загрузить игры со списка желаний.';
+
+  @override
+  String get welcomeToGamePedia => 'Добро пожаловать в GamePedia!';
+
+  @override
+  String get termsOfServiceDescription => 'Пожалуйста, внимательно прочитайте эти Условия обслуживания перед использованием GamePedia.';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => 'Операционная система';
+
+  @override
+  String get sysReqProcessor => 'Процессор';
+
+  @override
+  String get sysReqMemory => 'Память (ОЗУ)';
+
+  @override
+  String get sysReqGraphics => 'Видеокарта';
+
+  @override
+  String get sysReqStorage => 'Место на диске';
+
+  @override
+  String get sysReqDirectX => 'Версия DirectX';
+
+  @override
+  String get sysReqNetwork => 'Сеть';
+
+  @override
+  String get sysReqSoundCard => 'Звуковая карта';
 }

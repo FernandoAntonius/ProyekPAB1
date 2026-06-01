@@ -308,6 +308,15 @@ class AppLocalizationsJa extends AppLocalizations {
   String get systemRequirements => '動作環境';
 
   @override
+  String get thumbnailUrl => 'サムネイル URL';
+
+  @override
+  String get termsOfService => '利用規約';
+
+  @override
+  String get iUnderstand => '確認しました';
+
+  @override
   String get minimum => '最低';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsJa extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return 'ゲームの読み込みに失敗しました: $error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count個のゲームが保存されています。';
+  }
+
+  @override
+  String get yourWishlistEmpty => 'ウィッシュリストが空です :(';
+
+  @override
+  String get startAddingGames => '興味のあるゲームを追加し始めましょう！';
+
+  @override
+  String get unableToLoadWishlistGames => 'ウィッシュリストのゲームを読み込めません。';
+
+  @override
+  String get welcomeToGamePedia => 'GamePediaへようこそ！';
+
+  @override
+  String get termsOfServiceDescription => 'GamePediaを使用する前に、これらの利用規約をよくお読みください。';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => 'オペレーティングシステム';
+
+  @override
+  String get sysReqProcessor => 'プロセッサ';
+
+  @override
+  String get sysReqMemory => 'メモリ (RAM)';
+
+  @override
+  String get sysReqGraphics => 'グラフィックスカード';
+
+  @override
+  String get sysReqStorage => 'ストレージスペース';
+
+  @override
+  String get sysReqDirectX => 'DirectXバージョン';
+
+  @override
+  String get sysReqNetwork => 'ネットワーク';
+
+  @override
+  String get sysReqSoundCard => 'サウンドカード';
 }

@@ -93,6 +93,9 @@
   "descriptionField": "Deskripsi",
   "screenshotImageUrlField": "URL Gambar Tangkapan Layar",
   "systemRequirements": "Persyaratan Sistem",
+  "thumbnailUrl": "URL Thumbnail",
+  "termsOfService": "Ketentuan Layanan",
+  "iUnderstand": "Saya Mengerti",
   "minimum": "Minimum",
   "osField": "OS",
   "processorField": "Prosesor",
@@ -168,6 +171,13 @@
   "allReviewsTitle": "Semua Ulasan",
   "reviewsFor": "Ulasan untuk {gameName}",
   "noReviewsYetMsg": "Belum ada ulasan",
-  "failedToLoadGames": "Gagal memuat game: {error}"
+  "failedToLoadGames": "Gagal memuat game: {error}",
+  "gamesSaved": "{count} game tersimpan.",
+  "yourWishlistEmpty": "Daftar keinginan Anda kosong :(",
+  "startAddingGames": "Mulai tambahkan game yang Anda minati!",
+  "unableToLoadWishlistGames": "Tidak dapat memuat game daftar keinginan.",
+  "welcomeToGamePedia": "Selamat datang di GamePedia!",
+  "termsOfServiceDescription": "Silakan baca Ketentuan Layanan ini dengan hati-hati sebelum menggunakan GamePedia.",
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 }

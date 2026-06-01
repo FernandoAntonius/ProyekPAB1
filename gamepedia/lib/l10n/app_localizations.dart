@@ -669,6 +669,24 @@ abstract class AppLocalizations {
   /// **'System Requirements'**
   String get systemRequirements;
 
+  /// No description provided for @thumbnailUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Thumbnail URL'**
+  String get thumbnailUrl;
+
+  /// No description provided for @termsOfService.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get termsOfService;
+
+  /// No description provided for @iUnderstand.
+  ///
+  /// In en, this message translates to:
+  /// **'I Understand'**
+  String get iUnderstand;
+
   /// No description provided for @minimum.
   ///
   /// In en, this message translates to:
@@ -1124,6 +1142,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to load games: {error}'**
   String failedToLoadGames(Object error);
+
+  /// No description provided for @gamesSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} games saved.'**
+  String gamesSaved(Object count);
+
+  /// No description provided for @yourWishlistEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wishlist is empty :('**
+  String get yourWishlistEmpty;
+
+  /// No description provided for @startAddingGames.
+  ///
+  /// In en, this message translates to:
+  /// **'Start adding games you\'re interested in!'**
+  String get startAddingGames;
+
+  /// No description provided for @unableToLoadWishlistGames.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load wishlist games.'**
+  String get unableToLoadWishlistGames;
+
+  /// No description provided for @welcomeToGamePedia.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to GamePedia!'**
+  String get welcomeToGamePedia;
+
+  /// No description provided for @termsOfServiceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read these Terms of Service carefully before using GamePedia.'**
+  String get termsOfServiceDescription;
+
+  /// No description provided for @tosTermsContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'**
+  String get tosTermsContent;
+
+  /// No description provided for @sysReqOS.
+  ///
+  /// In en, this message translates to:
+  /// **'Operating System'**
+  String get sysReqOS;
+
+  /// No description provided for @sysReqProcessor.
+  ///
+  /// In en, this message translates to:
+  /// **'Processor'**
+  String get sysReqProcessor;
+
+  /// No description provided for @sysReqMemory.
+  ///
+  /// In en, this message translates to:
+  /// **'Memory (RAM)'**
+  String get sysReqMemory;
+
+  /// No description provided for @sysReqGraphics.
+  ///
+  /// In en, this message translates to:
+  /// **'Graphics Card'**
+  String get sysReqGraphics;
+
+  /// No description provided for @sysReqStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage Space'**
+  String get sysReqStorage;
+
+  /// No description provided for @sysReqDirectX.
+  ///
+  /// In en, this message translates to:
+  /// **'DirectX Version'**
+  String get sysReqDirectX;
+
+  /// No description provided for @sysReqNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Network'**
+  String get sysReqNetwork;
+
+  /// No description provided for @sysReqSoundCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound Card'**
+  String get sysReqSoundCard;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

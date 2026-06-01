@@ -308,6 +308,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get systemRequirements => '시스템 요구 사항';
 
   @override
+  String get thumbnailUrl => '썸네일 URL';
+
+  @override
+  String get termsOfService => '서비스 약관';
+
+  @override
+  String get iUnderstand => '이해했습니다';
+
+  @override
   String get minimum => '최소';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsKo extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return '게임 로드 실패: $error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count개의 게임이 저장되었습니다.';
+  }
+
+  @override
+  String get yourWishlistEmpty => '위시리스트가 비어있습니다 :(';
+
+  @override
+  String get startAddingGames => '관심 있는 게임을 추가하기 시작하세요!';
+
+  @override
+  String get unableToLoadWishlistGames => '위시리스트 게임을 로드할 수 없습니다.';
+
+  @override
+  String get welcomeToGamePedia => 'GamePedia에 오신 것을 환영합니다!';
+
+  @override
+  String get termsOfServiceDescription => 'Please read these Terms of Service carefully before using GamePedia.';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => '운영 제제';
+
+  @override
+  String get sysReqProcessor => '프로세서';
+
+  @override
+  String get sysReqMemory => '메모리(RAM)';
+
+  @override
+  String get sysReqGraphics => '그래픽 카드';
+
+  @override
+  String get sysReqStorage => '스토리지 공간';
+
+  @override
+  String get sysReqDirectX => 'DirectX 버전';
+
+  @override
+  String get sysReqNetwork => '네트워크';
+
+  @override
+  String get sysReqSoundCard => '사운드 카드';
 }

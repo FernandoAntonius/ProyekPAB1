@@ -1,5 +1,6 @@
 import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter/material.dart';
+import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
@@ -249,9 +250,9 @@ class _EditProfileScreen extends State<EditProfileScreen> {
           onPressed: () => Navigator.pop(context),
           color: Color(0xFF6A5AF9),
         ),
-        title: const Text(
-          'Edit Profile',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.editProfile,
+          style: const TextStyle(
             color: Color(0xFF6A5AF9),
             fontSize: 20,
             fontWeight: FontWeight.bold,

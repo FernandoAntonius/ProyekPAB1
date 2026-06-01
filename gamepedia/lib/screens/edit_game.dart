@@ -433,7 +433,10 @@ class _EditGameScreen extends State<EditGameScreen> {
               AppLocalizations.of(context)!.studioField,
               controller: _studioController,
             ),
-            builEditGame('Thumbnail URL', controller: _thumbnailController),
+            builEditGame(
+              AppLocalizations.of(context)!.thumbnailUrl,
+              controller: _thumbnailController,
+            ),
             builEditGame(
               AppLocalizations.of(context)!.releaseDateField,
               controller: _releaseDateController,

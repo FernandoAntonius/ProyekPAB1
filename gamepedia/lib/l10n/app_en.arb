@@ -93,6 +93,9 @@
   "descriptionField": "Description",
   "screenshotImageUrlField": "Screenshot Image URL",
   "systemRequirements": "System Requirements",
+  "thumbnailUrl": "Thumbnail URL",
+  "termsOfService": "Terms of Service",
+  "iUnderstand": "I Understand",
   "minimum": "Minimum",
   "osField": "OS",
   "processorField": "Processor",
@@ -168,6 +171,12 @@
   "allReviewsTitle": "All Reviews",
   "reviewsFor": "Reviews for {gameName}",
   "noReviewsYetMsg": "No reviews yet",
-  "failedToLoadGames": "Failed to load games: {error}"
-
+  "failedToLoadGames": "Failed to load games: {error}",
+  "gamesSaved": "{count} games saved.",
+  "yourWishlistEmpty": "Your wishlist is empty :(",
+  "startAddingGames": "Start adding games you're interested in!",
+  "unableToLoadWishlistGames": "Unable to load wishlist games.",
+  "welcomeToGamePedia": "Welcome to GamePedia!",
+  "termsOfServiceDescription": "Please read these Terms of Service carefully before using GamePedia.",
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 }

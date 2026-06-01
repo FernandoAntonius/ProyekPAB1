@@ -93,6 +93,9 @@
   "descriptionField": "描述",
   "screenshotImageUrlField": "截图图片 URL",
   "systemRequirements": "系统要求",
+  "thumbnailUrl": "缩略图 URL",
+  "termsOfService": "服务条款",
+  "iUnderstand": "我已了解",
   "minimum": "最低配置",
   "osField": "操作系统",
   "processorField": "处理器",
@@ -168,5 +171,12 @@
   "allReviewsTitle": "所有评测",
   "reviewsFor": "{gameName} 的评测",
   "noReviewsYetMsg": "暂无评测",
-  "failedToLoadGames": "游戏加载失败：{error}"
+  "failedToLoadGames": "游戏加载失败：{error}",
+  "gamesSaved": "{count}个游戏已保存。",
+  "yourWishlistEmpty": "您的愿望清单是空的 :(",
+  "startAddingGames": "开始添加您感兴趣的游戏！",
+  "unableToLoadWishlistGames": "无法加载愿望清单游戏。",
+  "welcomeToGamePedia": "欢迎来到 GamePedia！",
+  "termsOfServiceDescription": "在使用 GamePedia 之前，请仔细阅读这些服务条款。",
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 }

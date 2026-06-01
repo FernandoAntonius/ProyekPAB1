@@ -168,5 +168,15 @@
   "allReviewsTitle": "すべてのレビュー",
   "reviewsFor": "{gameName}のレビュー",
   "noReviewsYetMsg": "まだレビューがありません",
-  "failedToLoadGames": "ゲームの読み込みに失敗しました: {error}"
+  "failedToLoadGames": "ゲームの読み込みに失敗しました: {error}",
+  "gamesSaved": "{count}個のゲームが保存されています。",
+  "yourWishlistEmpty": "ウィッシュリストが空です :(",
+  "startAddingGames": "興味のあるゲームを追加し始めましょう！",
+  "unableToLoadWishlistGames": "ウィッシュリストのゲームを読み込めません。",
+  "welcomeToGamePedia": "GamePediaへようこそ！",
+  "termsOfServiceDescription": "GamePediaを使用する前に、これらの利用規約をよくお読みください。",
+  "tosTermsContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "thumbnailUrl": "サムネイル URL",
+  "termsOfService": "利用規約",
+  "iUnderstand": "確認しました"
 }

@@ -473,7 +473,10 @@ class _AddGameScreen extends State<AddGameScreen> {
               AppLocalizations.of(context)!.studioField,
               controller: _studioController,
             ),
-            buildAddGame('Thumbnail URL', controller: _thumbnailController),
+            buildAddGame(
+              AppLocalizations.of(context)!.thumbnailUrl,
+              controller: _thumbnailController,
+            ),
             buildAddGame(
               AppLocalizations.of(context)!.releaseDateField,
               controller: _releaseDateController,

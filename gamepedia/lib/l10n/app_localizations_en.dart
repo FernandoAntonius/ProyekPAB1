@@ -308,6 +308,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get systemRequirements => 'System Requirements';
 
   @override
+  String get thumbnailUrl => 'Thumbnail URL';
+
+  @override
+  String get termsOfService => 'Terms of Service';
+
+  @override
+  String get iUnderstand => 'I Understand';
+
+  @override
   String get minimum => 'Minimum';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsEn extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return 'Failed to load games: $error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count games saved.';
+  }
+
+  @override
+  String get yourWishlistEmpty => 'Your wishlist is empty :(';
+
+  @override
+  String get startAddingGames => 'Start adding games you\'re interested in!';
+
+  @override
+  String get unableToLoadWishlistGames => 'Unable to load wishlist games.';
+
+  @override
+  String get welcomeToGamePedia => 'Welcome to GamePedia!';
+
+  @override
+  String get termsOfServiceDescription => 'Please read these Terms of Service carefully before using GamePedia.';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => 'Operating System';
+
+  @override
+  String get sysReqProcessor => 'Processor';
+
+  @override
+  String get sysReqMemory => 'Memory (RAM)';
+
+  @override
+  String get sysReqGraphics => 'Graphics Card';
+
+  @override
+  String get sysReqStorage => 'Storage Space';
+
+  @override
+  String get sysReqDirectX => 'DirectX Version';
+
+  @override
+  String get sysReqNetwork => 'Network';
+
+  @override
+  String get sysReqSoundCard => 'Sound Card';
 }

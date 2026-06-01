@@ -308,6 +308,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get systemRequirements => '系统要求';
 
   @override
+  String get thumbnailUrl => '缩略图 URL';
+
+  @override
+  String get termsOfService => '服务条款';
+
+  @override
+  String get iUnderstand => '我已了解';
+
+  @override
   String get minimum => '最低配置';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsZh extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return '游戏加载失败：$error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count个游戏已保存。';
+  }
+
+  @override
+  String get yourWishlistEmpty => '您的愿望清单是空的 :(';
+
+  @override
+  String get startAddingGames => '开始添加您感兴趣的游戏！';
+
+  @override
+  String get unableToLoadWishlistGames => '无法加载愿望清单游戏。';
+
+  @override
+  String get welcomeToGamePedia => '欢迎来到 GamePedia！';
+
+  @override
+  String get termsOfServiceDescription => '在使用 GamePedia 之前，请仔细阅读这些服务条款。';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => '操作系统';
+
+  @override
+  String get sysReqProcessor => '处理器';
+
+  @override
+  String get sysReqMemory => '内存 (RAM)';
+
+  @override
+  String get sysReqGraphics => '显卡';
+
+  @override
+  String get sysReqStorage => '存储空间';
+
+  @override
+  String get sysReqDirectX => 'DirectX 版本';
+
+  @override
+  String get sysReqNetwork => '网络';
+
+  @override
+  String get sysReqSoundCard => '声卡';
 }

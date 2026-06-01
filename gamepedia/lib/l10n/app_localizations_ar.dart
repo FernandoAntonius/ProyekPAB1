@@ -308,6 +308,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get systemRequirements => 'متطلبات النظام';
 
   @override
+  String get thumbnailUrl => 'رابط الصورة المصغرة';
+
+  @override
+  String get termsOfService => 'شروط الخدمة';
+
+  @override
+  String get iUnderstand => 'أنا أفهم';
+
+  @override
   String get minimum => 'الحد الأدنى';
 
   @override
@@ -542,4 +551,51 @@ class AppLocalizationsAr extends AppLocalizations {
   String failedToLoadGames(Object error) {
     return 'فشل تحميل الألعاب: $error';
   }
+
+  @override
+  String gamesSaved(Object count) {
+    return '$count لعبة محفوظة.';
+  }
+
+  @override
+  String get yourWishlistEmpty => 'قائمة الأمنيات الخاصة بك فارغة :(';
+
+  @override
+  String get startAddingGames => 'ابدأ في إضافة الألعاب التي تهتم بها!';
+
+  @override
+  String get unableToLoadWishlistGames => 'تعذر تحميل ألعاب قائمة الأمنيات.';
+
+  @override
+  String get welcomeToGamePedia => 'أهلا وسهلا بك في GamePedia!';
+
+  @override
+  String get termsOfServiceDescription => 'يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام GamePedia.';
+
+  @override
+  String get tosTermsContent => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  @override
+  String get sysReqOS => 'نظام التشغيل';
+
+  @override
+  String get sysReqProcessor => 'المعالج';
+
+  @override
+  String get sysReqMemory => 'الذاكرة (RAM)';
+
+  @override
+  String get sysReqGraphics => 'بطاقة الرسومات';
+
+  @override
+  String get sysReqStorage => 'مساحة التخزين';
+
+  @override
+  String get sysReqDirectX => 'إصدار DirectX';
+
+  @override
+  String get sysReqNetwork => 'الشبكة';
+
+  @override
+  String get sysReqSoundCard => 'بطاقة الصوت';
 }
