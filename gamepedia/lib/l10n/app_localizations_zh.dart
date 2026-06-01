@@ -125,7 +125,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get genreShooting => '射击';
 
   @override
-  String get genrePlatformer => '平台跳跃';
+  String get genrePlatformer => '平台';
 
   @override
   String get genrePuzzle => '益智';
@@ -137,16 +137,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get genreRealTimeStrategy => '即时战略';
 
   @override
-  String get genreTurnBaseStrategy => '回合制策略';
+  String get genreTurnBaseStrategy => '回合制战略';
 
   @override
-  String get genreIndie => '独立游戏';
+  String get genreIndie => '独立';
 
   @override
-  String get genreRacing => '赛车';
+  String get genreRacing => '竞速';
 
   @override
-  String get genreSport => '体育';
+  String get genreSport => '运动';
 
   @override
   String get genreFighting => '格斗';
@@ -155,7 +155,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get genreArcade => '街机';
 
   @override
-  String get genreSimulator => '模拟器';
+  String get genreSimulator => '模拟';
 
   @override
   String get genrePointAndClick => '点击冒险';
@@ -621,4 +621,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get processor => '处理器';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

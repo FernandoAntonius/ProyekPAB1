@@ -119,46 +119,46 @@ class AppLocalizationsTh extends AppLocalizations {
   String get genreAdventure => 'ผจญภัย';
 
   @override
-  String get genreRolePlay => 'สวมบทบาท';
+  String get genreRolePlay => 'เล่นบทบาท';
 
   @override
   String get genreShooting => 'ยิงปืน';
 
   @override
-  String get genrePlatformer => 'แพลตฟอร์เมอร์';
+  String get genrePlatformer => 'แพลตฟอร์ม';
 
   @override
   String get genrePuzzle => 'ปริศนา';
 
   @override
-  String get genreHackAndSlash => 'แฮ็กแอนด์สแลช';
+  String get genreHackAndSlash => 'ตัดและเฉือน';
 
   @override
-  String get genreRealTimeStrategy => 'วางแผนแบบเรียลไทม์';
+  String get genreRealTimeStrategy => 'กลยุทธ์แบบเรียลไทม์';
 
   @override
-  String get genreTurnBaseStrategy => 'วางแผนแบบผลัดตา';
+  String get genreTurnBaseStrategy => 'กลยุทธ์แบบผลัดกัน';
 
   @override
-  String get genreIndie => 'อินดี้';
+  String get genreIndie => 'อิสระ';
 
   @override
-  String get genreRacing => 'แข่งรถ';
+  String get genreRacing => 'แข่องรถ';
 
   @override
   String get genreSport => 'กีฬา';
 
   @override
-  String get genreFighting => 'ต่อสู้';
+  String get genreFighting => 'การสู้รณ';
 
   @override
   String get genreArcade => 'อาร์เคด';
 
   @override
-  String get genreSimulator => 'จำลองสถานการณ์';
+  String get genreSimulator => 'ตัวจำลอง';
 
   @override
-  String get genrePointAndClick => 'ชี้แล้วคลิก';
+  String get genrePointAndClick => 'ชี้และคลิก';
 
   @override
   String get addPost => 'เพิ่มโพสต์';
@@ -621,4 +621,10 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get processor => 'โปรเซสเซอร์';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

@@ -119,16 +119,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get genreAdventure => 'Aventura';
 
   @override
-  String get genreRolePlay => 'Rol';
+  String get genreRolePlay => 'Juego de rol';
 
   @override
   String get genreShooting => 'Disparos';
 
   @override
-  String get genrePlatformer => 'Plataformas';
+  String get genrePlatformer => 'Plataforma';
 
   @override
-  String get genrePuzzle => 'Puzle';
+  String get genrePuzzle => 'Rompecabezas';
 
   @override
   String get genreHackAndSlash => 'Hack and Slash';
@@ -146,7 +146,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get genreRacing => 'Carreras';
 
   @override
-  String get genreSport => 'Deportes';
+  String get genreSport => 'Deporte';
 
   @override
   String get genreFighting => 'Lucha';
@@ -158,7 +158,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get genreSimulator => 'Simulador';
 
   @override
-  String get genrePointAndClick => 'Apunta y clica';
+  String get genrePointAndClick => 'Point and Click';
 
   @override
   String get addPost => 'Agregar publicación';
@@ -621,4 +621,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get processor => 'Procesador';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

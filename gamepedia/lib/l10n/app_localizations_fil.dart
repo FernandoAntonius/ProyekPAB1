@@ -116,40 +116,40 @@ class AppLocalizationsFil extends AppLocalizations {
   String get genreAll => 'Lahat';
 
   @override
-  String get genreAdventure => 'Adventure';
+  String get genreAdventure => 'Pakikipagsapalaran';
 
   @override
-  String get genreRolePlay => 'Role Play';
+  String get genreRolePlay => 'Pagganap ng papel';
 
   @override
-  String get genreShooting => 'Shooting';
+  String get genreShooting => 'Pagbabaril';
 
   @override
-  String get genrePlatformer => 'Platformer';
+  String get genrePlatformer => 'Platform';
 
   @override
   String get genrePuzzle => 'Puzzle';
 
   @override
-  String get genreHackAndSlash => 'Hack and Slash';
+  String get genreHackAndSlash => 'Hack at Slash';
 
   @override
-  String get genreRealTimeStrategy => 'Real Time Strategy';
+  String get genreRealTimeStrategy => 'Estratehiya sa Real Time';
 
   @override
-  String get genreTurnBaseStrategy => 'Turn Base Strategy';
+  String get genreTurnBaseStrategy => 'Estratehiya na Nakabatay sa Liko';
 
   @override
   String get genreIndie => 'Indie';
 
   @override
-  String get genreRacing => 'Racing';
+  String get genreRacing => 'Pag-race';
 
   @override
-  String get genreSport => 'Sports';
+  String get genreSport => 'Esports';
 
   @override
-  String get genreFighting => 'Fighting';
+  String get genreFighting => 'Pagkilala';
 
   @override
   String get genreArcade => 'Arcade';
@@ -158,7 +158,7 @@ class AppLocalizationsFil extends AppLocalizations {
   String get genreSimulator => 'Simulator';
 
   @override
-  String get genrePointAndClick => 'Point and Click';
+  String get genrePointAndClick => 'Point at Click';
 
   @override
   String get addPost => 'Magdagdag ng Post';
@@ -621,4 +621,10 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String get processor => 'Processor';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

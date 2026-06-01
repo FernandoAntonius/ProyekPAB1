@@ -116,16 +116,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get genreAll => '모두';
 
   @override
-  String get genreAdventure => '모험';
+  String get genreAdventure => '어드벤처';
 
   @override
-  String get genreRolePlay => '역할극';
+  String get genreRolePlay => '롤플레잉';
 
   @override
-  String get genreShooting => '촬영';
+  String get genreShooting => '슈팅';
 
   @override
-  String get genrePlatformer => '플랫폼 게임';
+  String get genrePlatformer => '플랫포머';
 
   @override
   String get genrePuzzle => '퍼즐';
@@ -143,19 +143,19 @@ class AppLocalizationsKo extends AppLocalizations {
   String get genreIndie => '인디';
 
   @override
-  String get genreRacing => '경마';
+  String get genreRacing => '레이싱';
 
   @override
   String get genreSport => '스포츠';
 
   @override
-  String get genreFighting => '화이팅';
+  String get genreFighting => '파이팅';
 
   @override
   String get genreArcade => '아케이드';
 
   @override
-  String get genreSimulator => '모의 실험 장치';
+  String get genreSimulator => '시뮬레이터';
 
   @override
   String get genrePointAndClick => '포인트 앤 클릭';
@@ -621,4 +621,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get processor => '프로세서';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

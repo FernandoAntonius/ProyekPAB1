@@ -119,19 +119,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get genreAdventure => 'Petualangan';
 
   @override
-  String get genreRolePlay => 'Bermain Peran';
+  String get genreRolePlay => 'Role-playing';
 
   @override
-  String get genreShooting => 'Menembak';
+  String get genreShooting => 'Penembakan';
 
   @override
   String get genrePlatformer => 'Platformer';
 
   @override
-  String get genrePuzzle => 'Teka Teki';
+  String get genrePuzzle => 'Puzzle';
 
   @override
-  String get genreHackAndSlash => 'Tebas Dan Potong';
+  String get genreHackAndSlash => 'Hack and Slash';
 
   @override
   String get genreRealTimeStrategy => 'Strategi Waktu Nyata';
@@ -149,16 +149,16 @@ class AppLocalizationsId extends AppLocalizations {
   String get genreSport => 'Olahraga';
 
   @override
-  String get genreFighting => 'Berkelahi';
+  String get genreFighting => 'Pertarungan';
 
   @override
-  String get genreArcade => 'Arkade';
+  String get genreArcade => 'Arcade';
 
   @override
-  String get genreSimulator => 'Simulasi';
+  String get genreSimulator => 'Simulator';
 
   @override
-  String get genrePointAndClick => 'Arahkan Dan Click';
+  String get genrePointAndClick => 'Point and Click';
 
   @override
   String get addPost => 'Tambah Laporan';
@@ -621,4 +621,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get processor => 'Prosesor';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

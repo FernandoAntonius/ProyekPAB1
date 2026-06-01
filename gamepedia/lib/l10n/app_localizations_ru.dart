@@ -119,7 +119,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get genreAdventure => 'Приключения';
 
   @override
-  String get genreRolePlay => 'Ролевые игры';
+  String get genreRolePlay => 'Ролевая игра';
 
   @override
   String get genreShooting => 'Шутер';
@@ -131,7 +131,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get genrePuzzle => 'Головоломка';
 
   @override
-  String get genreHackAndSlash => 'Рубилово';
+  String get genreHackAndSlash => 'Hack and Slash';
 
   @override
   String get genreRealTimeStrategy => 'Стратегия в реальном времени';
@@ -140,7 +140,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get genreTurnBaseStrategy => 'Пошаговая стратегия';
 
   @override
-  String get genreIndie => 'Инди';
+  String get genreIndie => 'Независимые';
 
   @override
   String get genreRacing => 'Гонки';
@@ -158,7 +158,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get genreSimulator => 'Симулятор';
 
   @override
-  String get genrePointAndClick => 'Поинт-энд-клик';
+  String get genrePointAndClick => 'Point and Click';
 
   @override
   String get addPost => 'Добавить пост';
@@ -621,4 +621,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get processor => 'Процессор';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

@@ -125,22 +125,22 @@ class AppLocalizationsJa extends AppLocalizations {
   String get genreShooting => 'シューティング';
 
   @override
-  String get genrePlatformer => 'アクション';
+  String get genrePlatformer => 'プラットフォーマー';
 
   @override
   String get genrePuzzle => 'パズル';
 
   @override
-  String get genreHackAndSlash => 'ハック＆スラッシュ';
+  String get genreHackAndSlash => 'ハック・アンド・スラッシュ';
 
   @override
-  String get genreRealTimeStrategy => 'リアルタイムストラテジー';
+  String get genreRealTimeStrategy => 'リアルタイム戦略';
 
   @override
-  String get genreTurnBaseStrategy => 'ターン制ストラテジー';
+  String get genreTurnBaseStrategy => 'ターンベース戦略';
 
   @override
-  String get genreIndie => 'インディー';
+  String get genreIndie => 'インディーズ';
 
   @override
   String get genreRacing => 'レーシング';
@@ -149,7 +149,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get genreSport => 'スポーツ';
 
   @override
-  String get genreFighting => '格闘';
+  String get genreFighting => 'ファイティング';
 
   @override
   String get genreArcade => 'アーケード';
@@ -158,7 +158,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get genreSimulator => 'シミュレーター';
 
   @override
-  String get genrePointAndClick => 'ポイント＆クリック';
+  String get genrePointAndClick => 'ポイント・アンド・クリック';
 
   @override
   String get addPost => '投稿を追加';
@@ -620,5 +620,11 @@ class AppLocalizationsJa extends AppLocalizations {
   String get storage => 'ストレージ';
 
   @override
-  String get processor => 'プロセッサ';
+  String get processor => 'プロセッサー';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

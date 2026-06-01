@@ -119,28 +119,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get genreAdventure => 'مغامرة';
 
   @override
-  String get genreRolePlay => 'لعب أدوار';
+  String get genreRolePlay => 'لعب الأدوار';
 
   @override
   String get genreShooting => 'إطلاق نار';
 
   @override
-  String get genrePlatformer => 'منصات';
+  String get genrePlatformer => 'منصة';
 
   @override
-  String get genrePuzzle => 'ألغاز';
+  String get genrePuzzle => 'لغز';
 
   @override
-  String get genreHackAndSlash => 'هاك آند سلاش';
+  String get genreHackAndSlash => 'فتح وضرب';
 
   @override
   String get genreRealTimeStrategy => 'استراتيجية في الوقت الفعلي';
 
   @override
-  String get genreTurnBaseStrategy => 'استراتيجية بالأدوار';
+  String get genreTurnBaseStrategy => 'استراتيجية قائمة على الأدوار';
 
   @override
-  String get genreIndie => 'إندي';
+  String get genreIndie => 'مستقل';
 
   @override
   String get genreRacing => 'سباق';
@@ -155,10 +155,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get genreArcade => 'أركيد';
 
   @override
-  String get genreSimulator => 'محاكاة';
+  String get genreSimulator => 'محاكي';
 
   @override
-  String get genrePointAndClick => 'أشر وانقر';
+  String get genrePointAndClick => 'نقطة وانقر';
 
   @override
   String get addPost => 'إضافة منشور';
@@ -620,5 +620,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get storage => 'التخزين';
 
   @override
-  String get processor => 'المعالج';
+  String get processor => 'معالج';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

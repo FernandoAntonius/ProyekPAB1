@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gamepedia/screens/by_genre.dart/arcade.dart';
+import 'package:gamepedia/screens/by_genre.dart/fighting.dart';
+import 'package:gamepedia/screens/by_genre.dart/hack_and_slash.dart';
+import 'package:gamepedia/screens/by_genre.dart/indie.dart';
+import 'package:gamepedia/screens/by_genre.dart/point_and_click.dart';
+import 'package:gamepedia/screens/by_genre.dart/racing.dart';
+import 'package:gamepedia/screens/by_genre.dart/simulator.dart';
+import 'package:gamepedia/screens/by_genre.dart/sports.dart';
+import 'package:gamepedia/screens/by_genre.dart/turn_base.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/data/game_repository.dart';
 import 'package:gamepedia/models/game.dart';
@@ -428,6 +437,60 @@ class _HomeScreenState extends State<HomeScreen> {
                       AppLocalizations.of(context)!.genreRealTimeStrategy,
                       Icons.account_tree_rounded,
                       const StrategyScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreHackAndSlash,
+                      Icons.whatshot_rounded,
+                      const HackAndSlashScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreTurnBaseStrategy,
+                      Icons.border_all_rounded,
+                      const TurnBasedStrategyScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genrePointAndClick,
+                      Icons.touch_app_rounded,
+                      const PointAndClickScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreIndie,
+                      Icons.star_rounded,
+                      const IndieScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreRacing,
+                      Icons.local_fire_department_rounded,
+                      const RacingScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreSport,
+                      Icons.sports_basketball_rounded,
+                      const SportsScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreFighting,
+                      Icons.sports_martial_arts_rounded,
+                      const FightingScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreArcade,
+                      Icons.games_rounded,
+                      const ArcadeScreen(),
+                    ),
+                    _buildGenreCard(
+                      context,
+                      AppLocalizations.of(context)!.genreSimulator,
+                      Icons.settings_rounded,
+                      const SimulatorScreen(),
                     ),
                   ],
                 ),

@@ -621,4 +621,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get processor => 'Processor';
+
+  @override
+  String get deviceMacOS => 'MacOS';
+
+  @override
+  String get deviceIOS => 'iOS';
 }

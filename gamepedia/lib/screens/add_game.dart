@@ -157,13 +157,23 @@ class _AddGameScreen extends State<AddGameScreen> {
     'PlayStation',
     'Linux',
   ];
-  final List<String> _genres = [
+  final List<String> _genreCodes = [
+    'all',
     'Adventure',
-    'Role-playing',
-    'Shooter',
+    'Role Play',
+    'Shooting',
     'Platformer',
     'Puzzle',
-    'Strategy',
+    'Real Time Strategy',
+    'Hack And Slash',
+    'Turn Base Strategy',
+    'Point And Click',
+    'Indie',
+    'Racing',
+    'Sport',
+    'Fighting',
+    'Arcade',
+    'Simulator',
   ];
 
   final TextEditingController _titleController = TextEditingController();
@@ -203,6 +213,70 @@ class _AddGameScreen extends State<AddGameScreen> {
     });
   }
 
+  String _getGenreLabel(String genreCode) {
+    final loc = AppLocalizations.of(context)!;
+    switch (genreCode) {
+      case 'all':
+        return loc.genreAll;
+      case 'Adventure':
+        return loc.genreAdventure;
+      case 'Role Play':
+        return loc.genreRolePlay;
+      case 'Shooting':
+        return loc.genreShooting;
+      case 'Platformer':
+        return loc.genrePlatformer;
+      case 'Puzzle':
+        return loc.genrePuzzle;
+      case 'Real Time Strategy':
+        return loc.genreRealTimeStrategy;
+      case 'Hack And Slash':
+        return loc.genreHackAndSlash;
+      case 'Turn Base Strategy':
+        return loc.genreTurnBaseStrategy;
+      case 'Point And Click':
+        return loc.genrePointAndClick;
+      case 'Indie':
+        return loc.genreIndie;
+      case 'Racing':
+        return loc.genreRacing;
+      case 'Sport':
+        return loc.genreSport;
+      case 'Fighting':
+        return loc.genreFighting;
+      case 'Arcade':
+        return loc.genreArcade;
+      case 'Simulator':
+        return loc.genreSimulator;
+      default:
+        return genreCode;
+    }
+  }
+
+  String _getDeviceLabel(String deviceCode) {
+    final loc = AppLocalizations.of(context)!;
+    switch (deviceCode) {
+      case 'Windows':
+        return loc.deviceWindows;
+      case 'MacOS':
+        return loc.deviceMacOS;
+      case 'Android':
+        return loc.deviceAndroid;
+      case 'iOS':
+        return loc.deviceIOS;
+      case 'Xbox':
+        return loc.deviceXbox;
+      case 'Nintendo Switch':
+        return loc.deviceNintendoSwitch;
+      case 'PlayStation':
+        return loc.devicePlayStation;
+      case 'Linux':
+        return loc.deviceLinux;
+      default:
+        return deviceCode;
+    }
+  }
+
   Future<void> _selectDate() async {
     DateTime? picked = await showDatePicker(
       context: context,
@@ -238,13 +312,19 @@ class _AddGameScreen extends State<AddGameScreen> {
                   shrinkWrap: true,
                   children: options.map((option) {
                     final isSelected = tempSelected.contains(option);
+                    final displayLabel =
+                        title == AppLocalizations.of(context)!.genreField
+                        ? _getGenreLabel(option)
+                        : title == AppLocalizations.of(context)!.deviceField
+                        ? _getDeviceLabel(option)
+                        : option;
                     return CheckboxListTile(
                       value: isSelected,
                       activeColor: Colors.blue,
                       checkColor: Colors.white,
                       tileColor: Colors.transparent,
                       title: Text(
-                        option,
+                        displayLabel,
                         style: const TextStyle(color: Colors.white),
                       ),
                       onChanged: (val) {
@@ -504,7 +584,7 @@ class _AddGameScreen extends State<AddGameScreen> {
               readOnly: true,
               onTap: () => _showMultiSelectDialog(
                 title: AppLocalizations.of(context)!.genreField,
-                options: _genres,
+                options: _genreCodes,
                 selectedList: selectedGenres,
                 controller: _genreController,
               ),

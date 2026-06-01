@@ -1274,6 +1274,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Processor'**
   String get processor;
+
+  /// No description provided for @deviceMacOS.
+  ///
+  /// In en, this message translates to:
+  /// **'MacOS'**
+  String get deviceMacOS;
+
+  /// No description provided for @deviceIOS.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS'**
+  String get deviceIOS;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
