@@ -20,10 +20,12 @@ import 'package:gamepedia/data/favorites_service.dart';
 import 'package:provider/provider.dart';
 import 'package:gamepedia/helper/locale_provider.dart';
 import 'package:gamepedia/data/review_provider.dart';
+import 'package:gamepedia/helper/notification_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await NotificationService().initializeNotifications();
   try {
     final prefs = await SharedPreferences.getInstance();
     final migrated = prefs.getBool('favorites_migrated') ?? false;
@@ -33,8 +35,7 @@ Future<void> main() async {
       await FavoritesService.migrateLocalFavoritesFromPrefs(username);
       await prefs.setBool('favorites_migrated', true);
     }
-  } catch (e) {
-  }
+  } catch (e) {}
   runApp(
     MultiProvider(
       providers: [

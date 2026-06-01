@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:gamepedia/helper/notification_service.dart';
 
 class AddGameScreen extends StatefulWidget {
   const AddGameScreen({super.key});
@@ -11,6 +12,7 @@ class AddGameScreen extends StatefulWidget {
   @override
   State<AddGameScreen> createState() => _AddGameScreen();
 }
+
 Widget buildAddGame(
   String label, {
   required TextEditingController controller,
@@ -48,6 +50,7 @@ Widget buildAddGame(
     ),
   );
 }
+
 Widget buildDropDown({
   required String? value,
   required List<String> items,
@@ -93,6 +96,7 @@ Widget buildDropDown({
     ),
   );
 }
+
 Widget buildSystemReq(String label, TextEditingController controller) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 12),
@@ -338,6 +342,9 @@ class _AddGameScreen extends State<AddGameScreen> {
           },
         },
       });
+      await NotificationService().showGameAddedNotification(
+        _titleController.text.trim(),
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context)!.gameAdded)),
       );

@@ -4,6 +4,7 @@ import 'package:gamepedia/models/review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gamepedia/l10n/app_localizations.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:gamepedia/helper/notification_service.dart';
 
 class AddReviewScreen extends StatefulWidget {
   final String? fixedGameName;
@@ -112,6 +113,10 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
         'longitude': _longitude,
         'createdAt': FieldValue.serverTimestamp(),
       });
+      await NotificationService().showReviewAddedNotification(
+        selectedGameName ?? '',
+        authorController.text.trim(),
+      );
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(loc.reviewSubmittedSuccessfully)));
