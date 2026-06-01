@@ -11,7 +11,6 @@ class AddGameScreen extends StatefulWidget {
   @override
   State<AddGameScreen> createState() => _AddGameScreen();
 }
-
 Widget buildAddGame(
   String label, {
   required TextEditingController controller,
@@ -49,7 +48,6 @@ Widget buildAddGame(
     ),
   );
 }
-
 Widget buildDropDown({
   required String? value,
   required List<String> items,
@@ -95,8 +93,6 @@ Widget buildDropDown({
     ),
   );
 }
-
-// Widget helper untuk System Requirements
 Widget buildSystemReq(String label, TextEditingController controller) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 12),
@@ -393,7 +389,6 @@ class _AddGameScreen extends State<AddGameScreen> {
         ),
       );
     }
-
     if (!_isAdmin) {
       return Scaffold(
         backgroundColor: const Color.fromARGB(255, 6, 2, 26),
@@ -409,7 +404,6 @@ class _AddGameScreen extends State<AddGameScreen> {
         ),
       );
     }
-
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 6, 2, 26),
       appBar: AppBar(

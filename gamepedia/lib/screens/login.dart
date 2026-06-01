@@ -34,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
       await prefs.setBool('isSignedIn', true);
       await prefs.setBool('isAdmin', true);
       await prefs.setString('username', 'Admin');
-
       setState(() {
         _errorText = '';
       });
@@ -53,27 +52,22 @@ class _LoginScreenState extends State<LoginScreen> {
             email: enteredEmail,
             password: enteredPassword,
           );
-
-      // Find user document by email to get username
       final userSnapshot = await FirebaseFirestore.instance
           .collection('users')
           .where('email', isEqualTo: enteredEmail)
           .limit(1)
           .get();
-
       if (userSnapshot.docs.isEmpty) {
         setState(() {
           _errorText = 'User profile not found. Please register again.';
         });
         return;
       }
-
       final username =
           userSnapshot.docs.first.data()['username'] as String? ?? '';
       await prefs.setBool('isSignedIn', true);
       await prefs.setBool('isAdmin', false);
       await prefs.setString('username', username);
-
       setState(() {
         _errorText = '';
       });

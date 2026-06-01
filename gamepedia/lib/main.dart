@@ -24,8 +24,6 @@ import 'package:gamepedia/data/review_provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // One-time migration: if user is signed in and local favorites haven't been migrated,
-  // copy SharedPreferences favorites into Firestore.
   try {
     final prefs = await SharedPreferences.getInstance();
     final migrated = prefs.getBool('favorites_migrated') ?? false;
@@ -36,7 +34,6 @@ Future<void> main() async {
       await prefs.setBool('favorites_migrated', true);
     }
   } catch (e) {
-    // ignore errors; migration is optional and will be retried later.
   }
   runApp(
     MultiProvider(

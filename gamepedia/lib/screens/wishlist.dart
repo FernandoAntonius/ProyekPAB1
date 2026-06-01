@@ -43,7 +43,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
         favoritesLoaded = true;
       });
     } else {
-      // we'll rely on Firestore stream for favorites when building
       setState(() {
         favoritesLoaded = true;
       });
@@ -54,13 +53,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
     final prefs = await SharedPreferences.getInstance();
     isSignedIn = prefs.getBool('isSignedIn') ?? false;
     username = prefs.getString('username') ?? 'guest';
-
     if (isSignedIn) {
       await FavoritesService.removeFavorite(username, game.title);
     } else {
       final currentStatus = prefs.getBool('favorite_${game.title}') ?? false;
       await prefs.setBool('favorite_${game.title}', !currentStatus);
-
       setState(() {
         if (currentStatus) {
           favoriteTitles.remove(game.title);
@@ -89,7 +86,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
         },
       );
     }
-
     return Text(
       AppLocalizations.of(context)!.gamesSaved(favoriteTitles.length),
       style: TextStyle(
@@ -212,7 +208,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 Builder(
                   builder: (context) {
                     if (isSignedIn) {
-                      // For signed-in users, stream favorites from Firestore and combine with games
                       return StreamBuilder<List<String>>(
                         stream: FavoritesService.streamFavoritesForUser(
                           username,
@@ -233,7 +228,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                             );
                           }
                           final favTitles = favSnap.data ?? <String>[];
-
                           return StreamBuilder<List<Game>>(
                             stream: GameRepository.streamAllGames(),
                             builder: (context, snap) {
@@ -287,7 +281,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                   ],
                                 );
                               }
-
                               return ListView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
@@ -562,7 +555,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         },
                       );
                     } else {
-                      // not signed in: use local favorites (already loaded)
                       return StreamBuilder<List<Game>>(
                         stream: GameRepository.streamAllGames(),
                         builder: (context, snapshot) {
@@ -616,7 +608,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                               ],
                             );
                           }
-
                           return ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),

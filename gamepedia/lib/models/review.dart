@@ -20,7 +20,6 @@ class Review {
     this.longitude,
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
-
   factory Review.fromFirestore(Map<String, dynamic> data) {
     final rawCreatedAt = data['createdAt'];
     DateTime parsedCreatedAt;
@@ -31,7 +30,6 @@ class Review {
     } else {
       parsedCreatedAt = DateTime.now();
     }
-
     return Review(
       author: data['author']?.toString() ?? 'Anonymous',
       username: data['username']?.toString() ?? '',

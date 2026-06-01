@@ -11,7 +11,6 @@ class LoadingScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Logo
             Column(
               children: [
                 ShaderMask(

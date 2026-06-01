@@ -70,11 +70,9 @@ class GamesListScreen extends StatelessWidget {
                 ),
               );
             }
-
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             }
-
             final games = snapshot.data ?? [];
             if (games.isEmpty) {
               return Center(
@@ -84,7 +82,6 @@ class GamesListScreen extends StatelessWidget {
                 ),
               );
             }
-
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: ListView.builder(

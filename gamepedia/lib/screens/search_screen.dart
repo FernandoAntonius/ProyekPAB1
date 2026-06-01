@@ -63,46 +63,39 @@ class _SearchScreenState extends State<SearchScreen> {
   Set<int> selectedGenres = {0};
   Set<int> selectedDevices = {0};
   int selectedPriceSort = 0;
-
+  
   List<Game> _filterGames(List<Game> games) {
     final genres = _genreOptions(context);
     final devices = _deviceOptions(context);
-
     final filtered = games.where((game) {
       final titleMatch = game.title.toLowerCase().contains(
         _searchQuery.toLowerCase(),
       );
-
       final gameGenreCodes = game.genre
           .expand((item) => item.split(',').map((s) => s.trim().toLowerCase()))
           .toList();
       final gameDeviceCodes = game.device
           .expand((item) => item.split(',').map((s) => s.trim().toLowerCase()))
           .toList();
-
       final genreMatch =
           selectedGenres.contains(0) ||
           selectedGenres.any(
             (index) =>
                 gameGenreCodes.contains(genres[index]['code']!.toLowerCase()),
           );
-
       final deviceMatch =
           selectedDevices.contains(0) ||
           selectedDevices.any(
             (index) =>
                 gameDeviceCodes.contains(devices[index]['code']!.toLowerCase()),
           );
-
       return titleMatch && genreMatch && deviceMatch;
     }).toList();
-
     if (selectedPriceSort == 1) {
       filtered.sort((a, b) => a.price.compareTo(b.price));
     } else if (selectedPriceSort == 2) {
       filtered.sort((a, b) => b.price.compareTo(a.price));
     }
-
     return filtered;
   }
 
@@ -117,7 +110,6 @@ class _SearchScreenState extends State<SearchScreen> {
           final genreOptions = _genreOptions(context);
           final deviceOptions = _deviceOptions(context);
           final priceSort = _priceSort(context);
-
           return Container(
             height: MediaQuery.of(context).size.height * 0.7,
             decoration: const BoxDecoration(
@@ -442,7 +434,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final int activeFilters = _getActiveFilterCount();
-
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       body: SafeArea(
@@ -619,16 +610,13 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     );
                   }
-
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Padding(
                       padding: EdgeInsets.only(bottom: 16),
                       child: Center(child: CircularProgressIndicator()),
                     );
                   }
-
                   final filteredGames = _filterGames(snapshot.data ?? []);
-
                   return Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

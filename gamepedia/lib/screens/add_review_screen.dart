@@ -60,29 +60,22 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
   Future<void> _getLocation() async {
     try {
       LocationPermission permission = await Geolocator.checkPermission();
-
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
       }
-
       if (permission == LocationPermission.denied ||
           permission == LocationPermission.deniedForever) {
         return;
       }
-
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-
       if (!serviceEnabled) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Please turn on GPS to get location.')),
         );
-
         await Geolocator.openLocationSettings();
         return;
       }
-
       final position = await Geolocator.getCurrentPosition();
-
       setState(() {
         _latitude = position.latitude;
         _longitude = position.longitude;
@@ -103,11 +96,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
       ).showSnackBar(SnackBar(content: Text(loc.fillAllFields)));
       return;
     }
-
     setState(() {
       isLoading = true;
     });
-
     try {
       final prefs = await SharedPreferences.getInstance();
       final storedUsername = prefs.getString('username')?.trim();
@@ -121,7 +112,6 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
         'longitude': _longitude,
         'createdAt': FieldValue.serverTimestamp(),
       });
-
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(loc.reviewSubmittedSuccessfully)));

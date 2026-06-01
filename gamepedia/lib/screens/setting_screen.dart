@@ -37,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
       'ja': loc.japanese,
       'ar': loc.arabic,
     };
-
+    
     return Scaffold(
       backgroundColor: const Color(0xFF0E1126),
       appBar: AppBar(

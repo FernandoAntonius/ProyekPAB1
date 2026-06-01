@@ -123,8 +123,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-
-                // SEARCH BAR
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
@@ -150,8 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 24),
-
-                // POPULAR GAMES SLIDER
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -207,7 +203,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());
                       }
-
                       final popularGames = snapshot.data ?? [];
                       if (popularGames.isEmpty) {
                         return Center(
@@ -217,7 +212,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       }
-
                       return ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: popularGames.length,
@@ -252,7 +246,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
-
                 const SizedBox(height: 24),
                 Row(
                   children: [
@@ -268,7 +261,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                // SEARCHED / ALL GAMES LIST
                 StreamBuilder<List<Game>>(
                   stream: GameRepository.streamAllGames(),
                   builder: (context, snapshot) {
@@ -283,7 +275,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
-
                     final firebaseGames = snapshot.data ?? [];
                     final filteredGames = firebaseGames
                         .where(
@@ -292,7 +283,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         )
                         .toList();
-
                     if (filteredGames.isEmpty) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 40),
@@ -304,7 +294,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     }
-
                     return ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -379,8 +368,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 const SizedBox(height: 24),
-
-                // BROWSE BY GENRE
                 Row(
                   children: [
                     const Icon(
@@ -445,8 +432,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 const SizedBox(height: 32),
-
-                // BROWSE BY DEVICE
                 Row(
                   children: [
                     const Icon(Icons.device_hub, color: Colors.cyanAccent),

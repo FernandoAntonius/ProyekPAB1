@@ -69,7 +69,6 @@ Widget buildTag(String text, {void Function()? onTap}) {
       style: const TextStyle(color: Colors.white, fontSize: 12),
     ),
   );
-
   if (onTap != null) {
     return GestureDetector(onTap: onTap, child: tag);
   }

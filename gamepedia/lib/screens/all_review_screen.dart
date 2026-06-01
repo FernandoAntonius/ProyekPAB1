@@ -60,7 +60,6 @@ class AllReviewScreen extends StatelessWidget {
               child: CircularProgressIndicator(color: Colors.white),
             );
           }
-
           final isAdmin = adminSnapshot.data?['isAdmin'] ?? false;
           final currentUsername = adminSnapshot.data?['username'] ?? '';
           return SafeArea(
@@ -88,7 +87,6 @@ class AllReviewScreen extends StatelessWidget {
                             ),
                           );
                         }
-
                         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                           return Center(
                             child: Text(
@@ -97,7 +95,6 @@ class AllReviewScreen extends StatelessWidget {
                             ),
                           );
                         }
-
                         final docs = snapshot.data!.docs;
                         final reviewEntries =
                             docs
@@ -113,7 +110,6 @@ class AllReviewScreen extends StatelessWidget {
                                   a.value.createdAt,
                                 ),
                               );
-
                         return ListView.builder(
                           itemCount: reviewEntries.length,
                           itemBuilder: (context, index) {
@@ -148,7 +144,6 @@ class ReviewCard extends StatelessWidget {
   final String? reviewId;
   final bool isAdmin;
   final String currentUsername;
-
   const ReviewCard({
     super.key,
     required this.review,
@@ -183,9 +178,7 @@ class ReviewCard extends StatelessWidget {
               backgroundColor: Colors.white,
               child: Icon(Icons.person, color: Colors.blue),
             ),
-
             const SizedBox(width: 10),
-
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,7 +206,6 @@ class ReviewCard extends StatelessWidget {
                       ],
                     ],
                   ),
-
                   if (review.gameName.isNotEmpty) ...[
                     const SizedBox(height: 4),
                     Text(
@@ -225,7 +217,6 @@ class ReviewCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                   ],
-
                   Row(
                     children: List.generate(
                       5,
@@ -238,9 +229,7 @@ class ReviewCard extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 8),
-
                   Text(
                     review.content,
                     style: TextStyle(color: Colors.grey.shade300, fontSize: 12),

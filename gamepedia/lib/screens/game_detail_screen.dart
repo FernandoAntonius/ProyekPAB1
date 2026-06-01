@@ -39,7 +39,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   bool _isAdmin = false;
   String _currentUsername = '';
 
-  //SYSTEM REQUIRENMENTS
   Widget _buildSystemRequirements(BuildContext context, Game game) {
     final loc = AppLocalizations.of(context)!;
     final sysReq = game.systemRequirements;
@@ -86,7 +85,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 ),
               ),
             ),
-          // Recommended Requirements
           const SizedBox(height: 12),
           Text(
             AppLocalizations.of(context)!.recommended,
@@ -202,9 +200,7 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
         ],
       ),
     );
-
     if (confirmed != true) return;
-
     try {
       await FirebaseFirestore.instance
           .collection('games')
@@ -215,7 +211,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               doc.reference.delete();
             }
           });
-
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Game deleted successfully')),
@@ -261,7 +256,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
       Navigator.pushNamed(context, "/login");
       return;
     }
-
     final username = prefs.getString('username') ?? 'guest';
     if (isFavorite) {
       await FavoritesService.removeFavorite(username, widget.game.title);
@@ -503,13 +497,11 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                 .snapshots(),
             builder: (context, snapshot) {
               final reviewCount = snapshot.data?.docs.length ?? 0;
-
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
                   child: CircularProgressIndicator(color: Colors.white),
                 );
               }
-
               final docs = snapshot.data?.docs ?? [];
               final reviews =
                   docs
@@ -520,7 +512,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                     ..sort(
                       (a, b) => b.value.createdAt.compareTo(a.value.createdAt),
                     );
-
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -689,13 +680,11 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            //TITLE, DEVELOPER, FAVORITE, RATING
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // TITLE DAN DEVELOPER DI KIRI
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -718,10 +707,8 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                       ],
                     ),
                   ),
-                  // RATING DAN FAVORITE
                   Row(
                     children: [
-                      // RATING
                       Row(
                         children: [
                           const Icon(Icons.star, color: Colors.amber, size: 20),
@@ -748,7 +735,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                                 );
                                 averageRating = totalRating / ratings.length;
                               }
-
                               return Text(
                                 averageRating.toStringAsFixed(1),
                                 style: const TextStyle(
@@ -762,7 +748,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                         ],
                       ),
                       const SizedBox(width: 8),
-                      // FAVORITE BUTTON
                       IconButton(
                         onPressed: _toggleFavorite,
                         icon: Icon(
@@ -777,7 +762,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            // RELEASE DATE & PRICE CARDS
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -797,7 +781,6 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            // AVAILABLE ON
             buildSectionTitle(loc.availableOn),
             SizedBox(
               height: 50,

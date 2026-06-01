@@ -36,21 +36,16 @@ class _EditProfileScreen extends State<EditProfileScreen> {
     final String savedKey = prefs.getString('key') ?? '';
     final String savedIV = prefs.getString('iv') ?? '';
     final username = prefs.getString('username') ?? '';
-
     final encrypt.Key key = encrypt.Key.fromBase64(savedKey);
     final encrypt.IV iv = encrypt.IV.fromBase64(savedIV);
     final decrypter = encrypt.Encrypter(encrypt.AES(key));
-
     final decryptedEmail = decrypter.decrypt64(savedEncryptedEmail, iv: iv);
-
     try {
-      // Try to load from Firestore first
       if (username.isNotEmpty) {
         final docSnapshot = await FirebaseFirestore.instance
             .collection('users')
             .doc(username)
             .get();
-
         if (docSnapshot.exists) {
           final data = docSnapshot.data() ?? {};
           setState(() {
@@ -59,8 +54,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
             _locationController.text = data['location'] ?? '';
             _username = data['username'] ?? username;
             _email = data['email'] ?? '';
-
-            // Parse birth date if it exists
             if (data['birthDate'] != null &&
                 data['birthDate'].toString().isNotEmpty) {
               try {
@@ -76,15 +69,12 @@ class _EditProfileScreen extends State<EditProfileScreen> {
     } catch (e) {
       debugPrint('Error loading from Firestore: $e');
     }
-
-    // Fallback to SharedPreferences
     setState(() {
       _usernameController.text = prefs.getString('username') ?? '';
       _bioController.text = prefs.getString('profile_bio') ?? '';
       _locationController.text = prefs.getString('profile_location') ?? '';
       _username = prefs.getString('username') ?? 'User123749';
       _email = decryptedEmail;
-
       final birthDateStr = prefs.getString('profile_birthDate');
       if (birthDateStr != null && birthDateStr.isNotEmpty) {
         try {
@@ -100,14 +90,11 @@ class _EditProfileScreen extends State<EditProfileScreen> {
     setState(() {
       _isLoadingLocation = true;
     });
-
     try {
       LocationPermission permission = await Geolocator.checkPermission();
-
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
       }
-
       if (permission == LocationPermission.denied ||
           permission == LocationPermission.deniedForever) {
         if (mounted) {
@@ -117,7 +104,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
         }
         return;
       }
-
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         if (mounted) {
@@ -127,13 +113,11 @@ class _EditProfileScreen extends State<EditProfileScreen> {
         }
         return;
       }
-
       final position = await Geolocator.getCurrentPosition();
       setState(() {
         _locationController.text =
             '${position.latitude.toStringAsFixed(4)}, ${position.longitude.toStringAsFixed(4)}';
       });
-
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Location updated successfully')),
@@ -156,15 +140,12 @@ class _EditProfileScreen extends State<EditProfileScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final oldUsername = prefs.getString('username') ?? '';
     final newUsername = _usernameController.text;
-
     if (newUsername.isEmpty) {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Username cannot be empty')));
       return;
     }
-
-    // Save to SharedPreferences
     await prefs.setString('username', newUsername);
     await prefs.setString('profile_bio', _bioController.text);
     await prefs.setString(
@@ -172,20 +153,14 @@ class _EditProfileScreen extends State<EditProfileScreen> {
       _selectedBirthDate?.toIso8601String() ?? '',
     );
     await prefs.setString('profile_location', _locationController.text);
-
     try {
-      // Update username in Firestore if changed
       if (oldUsername.isNotEmpty && oldUsername != newUsername) {
-        // Delete old user doc
         await FirebaseFirestore.instance
             .collection('users')
             .doc(oldUsername)
             .delete();
       }
-
-      // Update user document in Firestore with all profile data
       if (oldUsername.isNotEmpty && oldUsername != newUsername) {
-        // When username changes, delete old and create new
         await FirebaseFirestore.instance
             .collection('users')
             .doc(newUsername)
@@ -198,7 +173,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
               'updatedAt': FieldValue.serverTimestamp(),
             }, SetOptions(merge: true));
       } else {
-        // Keep same username - just update profile fields
         await FirebaseFirestore.instance
             .collection('users')
             .doc(newUsername)
@@ -209,7 +183,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
               'updatedAt': FieldValue.serverTimestamp(),
             });
       }
-
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Profile saved successfully!')),
@@ -273,7 +246,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // PROFILE AVATAR & INFO
               Container(
                 width: 100,
                 height: 100,
@@ -302,8 +274,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                 style: const TextStyle(color: Colors.white70, fontSize: 14),
               ),
               const SizedBox(height: 32),
-
-              // FORM FIELDS
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
@@ -326,7 +296,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                 style: const TextStyle(color: Colors.white),
               ),
               const SizedBox(height: 16),
-
               TextField(
                 controller: _bioController,
                 decoration: InputDecoration(
@@ -349,7 +318,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                 style: const TextStyle(color: Colors.white),
               ),
               const SizedBox(height: 16),
-
               GestureDetector(
                 onTap: () async {
                   final picked = await showDatePicker(
@@ -402,7 +370,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-
               Row(
                 children: [
                   Expanded(
@@ -464,8 +431,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                 ],
               ),
               const SizedBox(height: 32),
-
-              // SAVE BUTTON
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -498,8 +463,6 @@ class _EditProfileScreen extends State<EditProfileScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // LOGOUT BUTTON
               SizedBox(
                 width: double.infinity,
                 height: 50,

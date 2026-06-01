@@ -13,7 +13,6 @@ class Game {
   final List<String> screenShots;
   final Map<String, Map<String, String>> systemRequirements;
 
-  // 1. Ini Constructor Utama bawaan model kamu
   Game({
     required this.title,
     required this.developer,
@@ -28,11 +27,9 @@ class Game {
     required this.systemRequirements,
   });
 
-  // 2. Taruh Fungsi factory dari saya TEPAT DI SINI (di dalam class Game)
   factory Game.fromFirestore(Map<String, dynamic> data) {
     final dynamic rawReleaseDate = data['releaseDate'];
     DateTime parsedReleaseDate = DateTime.now();
-
     if (rawReleaseDate is Timestamp) {
       parsedReleaseDate = rawReleaseDate.toDate();
     } else if (rawReleaseDate is DateTime) {
@@ -40,7 +37,6 @@ class Game {
     } else if (rawReleaseDate is String && rawReleaseDate.isNotEmpty) {
       parsedReleaseDate = DateTime.tryParse(rawReleaseDate) ?? DateTime.now();
     }
-
     return Game(
       title: data['title'] ?? '',
       developer: data['studio'] ?? '',

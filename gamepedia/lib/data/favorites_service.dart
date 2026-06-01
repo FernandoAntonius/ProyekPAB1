@@ -5,7 +5,6 @@ class FavoritesService {
   static final CollectionReference<Map<String, dynamic>> _favoritesCollection =
       FirebaseFirestore.instance.collection('favorites');
 
-  /// Stream of favorite titles for a given username (document id = username)
   static Stream<List<String>> streamFavoritesForUser(String username) {
     return _favoritesCollection.doc(username).snapshots().map((snap) {
       if (!snap.exists) return <String>[];
@@ -17,7 +16,6 @@ class FavoritesService {
     });
   }
 
-  /// Get favorites once (non-stream)
   static Future<List<String>> getFavoritesOnce(String username) async {
     final snap = await _favoritesCollection.doc(username).get();
     if (!snap.exists) return <String>[];
@@ -40,7 +38,6 @@ class FavoritesService {
     }, SetOptions(merge: true));
   }
 
-  /// Overwrite user's favorites (used for migration)
   static Future<void> setFavoritesForUser(
     String username,
     List<String> titles,
@@ -48,7 +45,6 @@ class FavoritesService {
     await _favoritesCollection.doc(username).set({'titles': titles});
   }
 
-  /// Migrate any local SharedPreferences favorites into Firestore for the given username.
   static Future<void> migrateLocalFavoritesFromPrefs(String username) async {
     final prefs = await SharedPreferences.getInstance();
     final titles = prefs
@@ -58,7 +54,6 @@ class FavoritesService {
         })
         .map((k) => k.substring('favorite_'.length))
         .toList();
-
     if (titles.isNotEmpty) {
       await setFavoritesForUser(username, titles);
     }
